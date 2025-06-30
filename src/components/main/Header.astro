@@ -1,5 +1,3 @@
-
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,11 +9,12 @@
     <title>
       B2B &amp; SaaS Digital Marketing Agency For IT Companies - Demanzo
     </title>
+ 
   </head>
   <body>
 	<div class="w-full flex justify-center">
   <div class="w-[1400px] max-w-full mx-auto">
-    <header>
+    <header id="siteheader" class="fixed top-0 left-0 right-0 z-50 bg-white shadow transition-transform duration-300">
       <div class="bg-[#323232] flex items-center justify-around">
         <div class="flex items-center justify-around text-[#e7e7e7]">
           <a href="#" class="border border-b-0 border-t-0 border-[#585858] p-4">
@@ -152,3 +151,45 @@
         </div>
       </div>
     </header>
+
+
+
+    <!-- to animate header -->
+
+    <style>
+      .-translate-y-full {
+        transform: translateY(-100%);
+      }
+
+      #siteheader {
+        transition: transform 0.3s ease-in-out;
+      }
+
+      body {
+        height: 100px; 
+        margin: 0;
+      }
+    </style>
+
+    <script is:inline>
+      if (typeof window !== 'undefined') {
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('DOMContentLoaded', () => {
+          const header = document.getElementById('siteheader');
+          if (!header) return;
+
+          window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+              header.classList.add('-translate-y-full');
+            } else {
+              header.classList.remove('-translate-y-full');
+            }
+
+            lastScrollY = currentScrollY;
+          });
+        });
+      }
+    </script>

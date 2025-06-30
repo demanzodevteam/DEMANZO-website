@@ -1,8 +1,9 @@
 ---
 import axios from 'axios';
+import { API_URL } from '../../../config/urls';
 import HeroTwoAnnimation from '../../HeroTwoAnnimation';
 
-const response = await axios.get('https://demanzo.com/wp-json/elementor/v1/raw-data/51272');
+const response = await axios.get(API_URL+'elementor/v1/raw-data/51272');
 const post = response;
 ---
 
