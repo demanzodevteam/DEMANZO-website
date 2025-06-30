@@ -1,19 +1,10 @@
 ---
-import axios from 'axios';
 import HeroAnimation from '../../HeroAnimation';
-import { API_URL } from '../../../config/urls';
-
-const response = await axios.get(API_URL+'elementor/v1/raw-data/51272');
-const post = response.data;
+import HeroSection from './HeroLogger';
 
 ---
 
-
 <div class="bg-[#e6f8ff] grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] px-2 lg:px-8">
-    <div class="flex flex-col justify-center gap-4 py-8 lg:py-16">
-        <p  class="text-[30px] md:text-[40px] font-[600] text-[#191d27]">{}</p>
-        <p class="text-[16px] font-[500] text-[#616670]">{}</p>
-		<a href={''} class="bg-[#2d89bf] text-white rounded-full px-6 py-4 md:mt-6 text-[15px] font-[500] w-fit">{}</a>
-    </div>
+<HeroSection client:load/>
     <HeroAnimation client:load />
 </div>
