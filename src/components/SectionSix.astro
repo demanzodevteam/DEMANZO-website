@@ -1,0 +1,83 @@
+---
+import FormAnnimation from "./FormAnnimation"
+
+const data = [
+    {
+        symbol: '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.4 3h13.2A2.4 2.4 0 0 1 21 5.4v13.2a2.4 2.4 0 0 1-2.4 2.4H5.4A2.4 2.4 0 0 1 3 18.6V5.4A2.4 2.4 0 0 1 5.4 3m11.414 6.581a1 1 0 1 0-1.628-1.162l-4.314 6.04l-2.165-2.166a1 1 0 0 0-1.414 1.414l3 3a1 1 0 0 0 1.52-.126z" clip-rule="evenodd"/></svg>',
+        content: 'Leads come in, but sales doesn’t trust them'
+    },
+    {
+        symbol: '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.4 3h13.2A2.4 2.4 0 0 1 21 5.4v13.2a2.4 2.4 0 0 1-2.4 2.4H5.4A2.4 2.4 0 0 1 3 18.6V5.4A2.4 2.4 0 0 1 5.4 3m11.414 6.581a1 1 0 1 0-1.628-1.162l-4.314 6.04l-2.165-2.166a1 1 0 0 0-1.414 1.414l3 3a1 1 0 0 0 1.52-.126z" clip-rule="evenodd"/></svg>',
+        content: 'You’re spending on ads, but there’s no clarity on ROI'
+    },
+    {
+        symbol: '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.4 3h13.2A2.4 2.4 0 0 1 21 5.4v13.2a2.4 2.4 0 0 1-2.4 2.4H5.4A2.4 2.4 0 0 1 3 18.6V5.4A2.4 2.4 0 0 1 5.4 3m11.414 6.581a1 1 0 1 0-1.628-1.162l-4.314 6.04l-2.165-2.166a1 1 0 0 0-1.414 1.414l3 3a1 1 0 0 0 1.52-.126z" clip-rule="evenodd"/></svg>',
+        content: 'Content is being created, but it’s not driving revenue'
+    },
+    {
+        symbol: '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.4 3h13.2A2.4 2.4 0 0 1 21 5.4v13.2a2.4 2.4 0 0 1-2.4 2.4H5.4A2.4 2.4 0 0 1 3 18.6V5.4A2.4 2.4 0 0 1 5.4 3m11.414 6.581a1 1 0 1 0-1.628-1.162l-4.314 6.04l-2.165-2.166a1 1 0 0 0-1.414 1.414l3 3a1 1 0 0 0 1.52-.126z" clip-rule="evenodd"/></svg>',
+        content: 'SEO is happening, but no one’s ranking where it matters'
+    },
+    {
+        symbol: '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.4 3h13.2A2.4 2.4 0 0 1 21 5.4v13.2a2.4 2.4 0 0 1-2.4 2.4H5.4A2.4 2.4 0 0 1 3 18.6V5.4A2.4 2.4 0 0 1 5.4 3m11.414 6.581a1 1 0 1 0-1.628-1.162l-4.314 6.04l-2.165-2.166a1 1 0 0 0-1.414 1.414l3 3a1 1 0 0 0 1.52-.126z" clip-rule="evenodd"/></svg>',
+        content: 'Your marketing team is stuck in execution mode, not strategy'
+    },
+]
+---
+
+<!-- 
+<div class="grid grid-cols-1 md:grid-cols-2 px-4 md:px-8 py-20 bg-gradient-to-b from-[#f8f8f8] to-white gap-4">
+    <div>
+        <p class="text-[30px] md:text-[40px] font-[600] text-[#e05c24] pb-4">Problems We Solve</p>
+        {
+            data.map(item => (
+                <div class="flex gap-1 items-start py-3">
+                    <div set:html={item.symbol} class="text-[#61ce70] text-7xl"></div>
+                    <p class="text-[18px] font-[700] md:text-[20px] md:font-[600] text-[#191d27]">{item.content}</p>
+                </div>    
+            ))
+        }
+        <p class='text-[16px] lg:text-[18px] font-[400] text-[#616670] py-3 pl-6'>🎯 Demanzo gives you leadership, systems, and execution—built for IT growth.</p>
+    </div>
+    <FormAnnimation client:load />
+</div> -->
+
+
+<div class="relative">
+  <div class="absolute top-16 left-0 w-full overflow-hidden leading-none -translate-y-full">
+    <svg
+      class="relative block w-full h-24"
+      viewBox="0 0 1440 100"
+      xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none"
+    >
+      <path
+        fill="#f8f8f8"
+        d="M0,0 Q720,100 1440,0 L1440,100 L0,100 Z"
+      ></path>
+    </svg>
+  </div>
+
+  {/* Section Content */}
+  <div class="grid grid-cols-1 md:grid-cols-2 px-4 md:px-8 py-16 bg-gradient-to-b from-[#f8f8f8] to-white gap-4">
+    <div>
+      <p class="text-[30px] md:text-[40px] font-[600] text-[#e05c24] pb-4">
+        Problems We Solve
+      </p>
+      {
+        data.map((item) => (
+          <div class="flex gap-1 items-start py-3">
+            <div set:html={item.symbol} class="text-[#61ce70] text-7xl"></div>
+            <p class="text-[18px] font-[700] md:text-[20px] md:font-[600] text-[#191d27]">
+              {item.content}
+            </p>
+          </div>
+        ))
+      }
+      <p class="text-[16px] lg:text-[18px] font-[400] text-[#616670] py-3 pl-6">
+        🎯 Demanzo gives you leadership, systems, and execution—built for IT growth.
+      </p>
+    </div>
+    <FormAnnimation client:load />
+  </div>
+</div>

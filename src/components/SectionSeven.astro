@@ -1,0 +1,47 @@
+---
+import Accordian from '../components/Accordian.jsx'
+import cs1 from '../assets/cs1.webp'
+import cs2 from '../assets/cs2.webp'
+import cs3 from '../assets/cs3.webp'
+import cs4 from '../assets/cs4.jpg'
+---
+
+<div class="py-20 px-4 lg:px-8 bg-gradient-to-b from-[#f8f8f8] to-white">
+    <div class="flex gap-2 px-4 py-4 rounded-full bg-white w-fit shadow">
+        <svg xmlns="http://www.w3.org/2000/svg" class="text-[#1962f2]" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m15.07 11.25l-.9.92C13.45 12.89 13 13.5 13 15h-2v-.5c0-1.11.45-2.11 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41a2 2 0 0 0-2-2a2 2 0 0 0-2 2H8a4 4 0 0 1 4-4a4 4 0 0 1 4 4a3.2 3.2 0 0 1-.93 2.25M13 19h-2v-2h2M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10c0-5.53-4.5-10-10-10"/></svg>
+        <p class="text-[16px] font-[500] text-[#616670]">Frequently Asked Questions</p>
+    </div>
+    <p class="text-[30px] md:text-[40px] font-[600] text-[#191d27] pt-6">Outsourcing To Digital Marketing Agency in India:
+    <span class="text-[30px] md:text-[40px] font-[600] text-[#e05c24] pb-3 lg:block">FAQ’s Answered</span></p>
+
+    <Accordian  client:load />
+
+    <p class="text-center text-[30px] lg:text-[40px] font-[600] text-[#191d27] pt-10">Case Studies</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 lg:px-8 py-10">
+        <div class="w-full rounded h-[380px] relative hover:scale-105 transition-all duration-500 group">
+            <div class="absolute inset-0 bg-black/40 group-hover:bg-gradient-to-r from-[#ff9966]/40 to-[#ff5e62]/40 z-10 rounded"></div>
+            <p class="absolute text-[20px] font-[600] text-white bottom-8 px-10 z-20">Transforming Sales and Expanding Horizons</p>
+            <img class="w-full h-full rounded object-cover" src={cs1.src}/>
+        </div>
+        <div class="w-full rounded h-[380px] relative hover:scale-105 transition-all duration-500 group">
+            <div class="absolute inset-0 bg-black/40 group-hover:bg-gradient-to-r from-[#ff9966]/40 to-[#ff5e62]/40 z-10 rounded"></div>
+            <p class="absolute text-[20px] font-[600] text-white bottom-8 px-10 z-20">Transforming Beauty Retail</p>
+            <img class="w-full h-full rounded object-cover" src={cs2.src}/>
+        </div>
+        <div class="w-full rounded h-[380px] relative hover:scale-105 transition-all duration-500 group">
+            <div class="absolute inset-0 bg-black/40 group-hover:bg-gradient-to-r from-[#ff9966]/40 to-[#ff5e62]/40 z-10 rounded"></div>
+            <p class="absolute text-[20px] font-[600] text-white bottom-8 px-10 z-20">SEO IoT</p>
+            <img class="w-full h-full rounded object-cover" src={cs3.src}/>
+        </div>
+        <div class="w-full rounded h-[380px] relative hover:scale-105 transition-all duration-500 group">
+            <div class="absolute inset-0 bg-black/40 group-hover:bg-gradient-to-r from-[#ff9966]/40 to-[#ff5e62]/40 z-10 rounded"></div>
+            <p class="absolute text-[20px] font-[600] text-white bottom-8 px-10 z-20">Dento Facial & Cosmetic Treatment</p>
+            <img class="w-full h-full rounded object-cover" src={cs4.src}/>
+        </div>
+    </div>
+    <div class="flex justify-center">
+        <a href="#" class="bg-[#0a6aad] text-white rounded-full px-8 py-3 text-[17px] font-[400] cursor-pointer">
+            View All
+        </a>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+---
+import axios from 'axios';
+import HeroAnimation from './HeroAnimation';
+
+const response = await axios.get('https://demanzo.com/wp-json/elementor/v1/raw-data/51272');
+const post = response;
+---
+
+<div class="bg-[#e6f8ff] grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] px-2 lg:px-8">
+    <div class="flex flex-col justify-center gap-4 py-8 lg:py-16">
+        <p  class="text-[30px] md:text-[40px] font-[600] text-[#191d27]">{post.data[0].elements[0].elements[0].settings.title}</p>
+        <p class="text-[16px] font-[500] text-[#616670]">{post.data[0].elements[0].elements[1].settings.editor.replace(/<\/?p>/g, '')}</p>
+		<a href={post.data[0].elements[0].elements[2].settings.link.url} class="bg-[#2d89bf] text-white rounded-full px-6 py-4 md:mt-6 text-[15px] font-[500] w-fit">{post.data[0].elements[0].elements[2].settings.text}</a>
+    </div>
+    <HeroAnimation client:load />
+</div>
