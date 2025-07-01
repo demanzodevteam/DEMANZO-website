@@ -9,7 +9,7 @@ const ListCard = ({
   return (
     <div className="flex flex-col items-center text-center gap-2 sm:flex-row sm:items-center sm:text-left sm:gap-3 text-[#1C1C1C]">
       <div
-        className="p-3 rounded-full"
+        className="p-3 rounded-full hover:-translate-y-4 transition-all duration-500"
         style={{ backgroundColor: iconBg, color: iconColor }}
       >
         {Icon && <Icon />}
