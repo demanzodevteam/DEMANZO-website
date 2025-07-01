@@ -1,7 +1,7 @@
 // src/components/HeroLogger.tsx
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { API_URL } from '../../../config/urls';
+import { API_URL } from '../../../../config/urls';
 
 export default function HeroSection() {
 

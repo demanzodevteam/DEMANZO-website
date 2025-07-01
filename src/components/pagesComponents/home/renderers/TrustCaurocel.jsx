@@ -6,7 +6,7 @@ import "swiper/css";
 import axios from "axios";
 import "../../styles.css";
 import { useState, useEffect } from "react";
-import { API_URL } from "../../../config/urls";
+import { API_URL } from "../../../../config/urls";
 
 export default function TrustCaurocel() {
   const [category, setCategory] = useState({

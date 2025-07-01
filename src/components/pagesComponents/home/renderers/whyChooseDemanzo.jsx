@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { API_URL } from '../../../config/urls';
-import HeroTwoAnnimation from '../../HeroTwoAnnimation';
+import { API_URL } from '../../../../config/urls';
+import HeroTwoAnnimation from '../../../HeroTwoAnnimation';
 
 const WhyChooseDemanzo = () => {
   const [data, setData] = useState({

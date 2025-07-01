@@ -8,7 +8,7 @@ import "swiper/css/pagination";
 import axios from "axios";
 import "../../styles.css";
 import { useState, useEffect } from "react";
-import { API_URL } from "../../../config/urls";
+import { API_URL } from "../../../../config/urls";
 
 export default function Caurosel() {
 
