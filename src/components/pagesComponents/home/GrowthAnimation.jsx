@@ -3,6 +3,80 @@ import { useState, useEffect } from "react";
 import { API_URL, BASE_URL } from "../../../config/urls";
 import axios from "axios";
 
+const GrowthAnimation = () => {
+
+const columns = 3;
+
+  const [category, setCategory] = useState({
+    name: '',
+    slug: '',
+    description: '',
+    button: '',
+    posts: [],
+    image: '',
+  });
+
+  const getLastRowPosts = (posts, columns = 3) => {
+  const remainder = posts.length % columns;
+  if (remainder === 0) return [];
+  return posts.slice(-remainder);
+};
+
+const getNonLastRowPosts = (posts, columns = 3) => {
+  const remainder = posts.length % columns;
+  if (remainder === 0) return posts;
+  return posts.slice(0, posts.length - remainder);
+};
+const nonLastRowPosts = getNonLastRowPosts(category.posts, columns);
+const lastRowPosts = getLastRowPosts(category.posts, columns);
+  useEffect(() => {
+    axios.get(API_URL + 'category/3')
+      .then((response) => {
+        setCategory(response.data);
+      })
+      .catch((error) => {
+        console.error('Failed to fetch category:', error);
+      });
+  }, []);
+
+  return (
+    <>
+      <p className="text-[30px] md:text-[35px] lg:text-[50px] font-[600] text-center text-[#191d27]">{category.name}</p>
+      <svg width="100%" height="18" viewBox="0 0 246 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 15C61.0465 4.16687 163.744 -2.79729 243 9.58344" stroke="url(#paint0_linear_1_401)" strokeWidth="6" strokeLinecap="round" />
+        <defs>
+          <linearGradient id="paint0_linear_1_401" x1="3" y1="15" x2="257.174" y2="2.13431" gradientUnits="userSpaceOnUse">
+            <stop offset="100%" stopColor="#7D80E6" />
+            <stop offset="1" stopColor="#CE7474" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <p className="text-[20px] font-[600] text-center text-[#ff5f55] py-8">{category.description}</p>
+
+     <div className="px-4 md:px-16 space-y-8">
+  {/* Full rows */}
+  <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    {nonLastRowPosts.map((post, index) => (
+      <ParticleCard key={index} post={post} />
+    ))}
+  </div>
+
+  {/* Centered last row */}
+  {lastRowPosts.length > 0 && (
+    <div className="flex justify-center gap-8 flex-wrap">
+      {lastRowPosts.map((post, index) => (
+        <div key={`last-${index}`} className="w-full max-w-[400px]">
+          <ParticleCard post={post} />
+        </div>
+      ))}
+    </div>
+  )}
+</div>
+
+    </>
+  );
+};
+
 // Reusable ParticleCard Component
 const ParticleCard = ({ post }) => {
   const [hovered, setHovered] = useState(false);
@@ -35,32 +109,34 @@ const ParticleCard = ({ post }) => {
     />
   );
 
-  const triggerParticles = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const relX = e.clientX - rect.left;
-    const relY = e.clientY - rect.top;
-    setOrigin({ x: relX, y: relY });
+//   const triggerParticles = (e) => {
+//     const rect = e.currentTarget.getBoundingClientRect();
+//     const relX = e.clientX - rect.left;
+//     const relY = e.clientY - rect.top;
+//     setOrigin({ x: relX, y: relY });
 
-    const burst = Array.from({ length: 12 }).map((_, i) => ({
-      x: Math.random() * 120 - 60,
-      y: Math.random() * 120 - 60,
-      color: gradientColors[i % gradientColors.length],
-    }));
+//     const burst = Array.from({ length: 12 }).map((_, i) => ({
+//       x: Math.random() * 120 - 60,
+//       y: Math.random() * 120 - 60,
+//       color: gradientColors[i % gradientColors.length],
+//     }));
 
-    setParticles(burst);
-    setHovered(true);
-    setTimeout(() => setHovered(false), 700);
-  };
+//     setParticles(burst);
+//     setHovered(true);
+//     setTimeout(() => setHovered(false), 700);
+//   };
 
   return (
     <motion.div
-      onMouseEnter={triggerParticles}
-      onMouseMove={triggerParticles}
-      initial={{ opacity: 0, y: 100 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: 1.03, y: -5 }}
-      transition={{ duration: 0.5 }}
-      className="relative rounded-xl shadow-2xl p-6 bg-white overflow-hidden"
+    //   onMouseEnter={triggerParticles}
+    //   onMouseMove={triggerParticles}
+    //   initial={{ opacity: 0, y: 100 }}
+    //   whileInView={{ opacity: 1, y: 0 }}
+    //   whileHover={{ scale: 1.03, y: -5 }}
+    //   transition={{ duration: 0.5 }}
+    whileHover={{scale: 1.03, y: -5, boxShadow: "0 0 30px rgba(125, 128, 230, 0.5)" }}
+  transition={{ duration: 0.4 }}
+      className="relative rounded-xl shadow-2xl p-6 bg-white overflow-hidden "
     >
       <AnimatePresence>
         {hovered &&
@@ -87,48 +163,5 @@ const ParticleCard = ({ post }) => {
   );
 };
 
-
-const GrowthAnimation = () => {
-  const [category, setCategory] = useState({
-    name: '',
-    slug: '',
-    description: '',
-    button: '',
-    posts: [],
-    image: '',
-  });
-
-  useEffect(() => {
-    axios.get(API_URL + 'category/3')
-      .then((response) => {
-        setCategory(response.data);
-      })
-      .catch((error) => {
-        console.error('Failed to fetch category:', error);
-      });
-  }, []);
-
-  return (
-    <>
-      <p className="text-[30px] md:text-[35px] lg:text-[50px] font-[600] text-center text-[#191d27]">{category.name}</p>
-      <svg width="100%" height="18" viewBox="0 0 246 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3 15C61.0465 4.16687 163.744 -2.79729 243 9.58344" stroke="url(#paint0_linear_1_401)" strokeWidth="6" strokeLinecap="round" />
-        <defs>
-          <linearGradient id="paint0_linear_1_401" x1="3" y1="15" x2="257.174" y2="2.13431" gradientUnits="userSpaceOnUse">
-            <stop offset="100%" stopColor="#7D80E6" />
-            <stop offset="1" stopColor="#CE7474" />
-          </linearGradient>
-        </defs>
-      </svg>
-      <p className="text-[20px] font-[600] text-center text-[#ff5f55] py-8">{category.description}</p>
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 px-4 md:px-16">
-        {category.posts.map((post, index) => (
-          <ParticleCard key={index} post={post} />
-        ))}
-      </div>
-    </>
-  );
-};
 
 export default GrowthAnimation;
