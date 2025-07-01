@@ -14,7 +14,7 @@ const WhyChooseDemanzo = () => {
 
   useEffect(() => {
     axios
-      .get(API_URL+'why-it-companies-choose-demanzo')
+      .get(API_URL + 'why-it-companies-choose-demanzo')
       .then((response) => {
         setData(response.data);
       })
@@ -26,19 +26,19 @@ const WhyChooseDemanzo = () => {
   return (
     <>
 
-    <div class="flex flex-col justify-center gap-4 py-8 lg:py-20">
-         <p className="text-[40px] font-[700] text-[#191d27]">
+      <div class="flex flex-col justify-center gap-4 py-8 lg:py-20">
+        <p className="text-[40px] font-[700] text-[#191d27]">
           {data?.title}
         </p>
         <p
           className="text-[16px] font-[500] text-[#616670] leading-relaxed"
-        
+
         >{data.content}</p>
-    </div>
-    <HeroTwoAnnimation image={data.image} client:load/>
+      </div>
+      <HeroTwoAnnimation image={data.image} client:load />
 
     </>
-  
+
   );
 };
 
