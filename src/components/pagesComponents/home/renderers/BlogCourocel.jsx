@@ -5,14 +5,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import "./styles.css";
+import "../../../styles.css";
 import { Pagination } from 'swiper/modules';
-import rb1 from '../assets/rb1.webp'
-import rb2 from '../assets/rb2.jpg'
-import rb3 from '../assets/rb3.jpg'
-import rb4 from '../assets/rb4.jpg'
-import rb5 from '../assets/rb5.jpg'
-import rb6 from '../assets/rb6.jpg'
+import rb1 from '../../../../assets/rb1.webp'
 
 export default function BlogCourocel() {
   return (
