@@ -130,8 +130,8 @@ const ParticleCard = ({ post }) => {
     <motion.div
     //   onMouseEnter={triggerParticles}
     //   onMouseMove={triggerParticles}
-    //   initial={{ opacity: 0, y: 100 }}
-    //   whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 200 }}
+      whileInView={{ opacity: 1, y: 0 }}
     //   whileHover={{ scale: 1.03, y: -5 }}
     //   transition={{ duration: 0.5 }}
     whileHover={{scale: 1.03, y: -5, boxShadow: "0 0 30px rgba(125, 128, 230, 0.5)" }}
