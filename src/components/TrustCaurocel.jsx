@@ -45,78 +45,7 @@ export default function TrustCaurocel() {
           </div>
         </SwiperSlide>
 
-        <SwiperSlide>
-          <div className="card-wrapper">
-            <div className="card-inner">
-              <div className="card-face card-front">
-                <img src={shopbossa.src} class="w-28" alt="" />
-              </div>
-              <div className="card-face card-back">
-                <img src={shopbossa.src} class="w-28" alt="" />
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="card-wrapper">
-            <div className="card-inner">
-              <div className="card-face card-front">
-                <img src={shopinspiredlivinglogo.src} class="w-28 object-fit" alt="" />
-              </div>
-              <div className="card-face card-back">
-                <img src={shopinspiredlivinglogo.src} class="w-28" alt="" />
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="card-wrapper">
-            <div className="card-inner">
-              <div className="card-face card-front">
-                <img src={tredence.src} class="w-28" alt="" />
-              </div>
-              <div className="card-face card-back">
-                <img src={tredence.src} class="w-28" alt="" />
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="card-wrapper">
-            <div className="card-inner">
-              <div className="card-face card-front">
-                <img src={totango.src} class="w-28" alt="" />
-              </div>
-              <div className="card-face card-back">
-                <img src={totango.src} class="w-28" alt="" />
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="card-wrapper">
-            <div className="card-inner">
-              <div className="card-face card-front">
-                <img src={manthan.src} class="w-28" alt="" />
-              </div>
-              <div className="card-face card-back">
-                <img src={manthan.src} class="w-28" alt="" />
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="card-wrapper">
-            <div className="card-inner">
-              <div className="card-face card-front">
-                <img src={embitel.src} class="w-28" alt="" />
-              </div>
-              <div className="card-face card-back">
-                <img src={embitel.src} class="w-28" alt="" />
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
+        
       </Swiper>
     </div>
   );

@@ -25,24 +25,6 @@ const data = [
 ]
 ---
 
-<!-- 
-<div class="grid grid-cols-1 md:grid-cols-2 px-4 md:px-8 py-20 bg-gradient-to-b from-[#f8f8f8] to-white gap-4">
-    <div>
-        <p class="text-[30px] md:text-[40px] font-[600] text-[#e05c24] pb-4">Problems We Solve</p>
-        {
-            data.map(item => (
-                <div class="flex gap-1 items-start py-3">
-                    <div set:html={item.symbol} class="text-[#61ce70] text-7xl"></div>
-                    <p class="text-[18px] font-[700] md:text-[20px] md:font-[600] text-[#191d27]">{item.content}</p>
-                </div>    
-            ))
-        }
-        <p class='text-[16px] lg:text-[18px] font-[400] text-[#616670] py-3 pl-6'>🎯 Demanzo gives you leadership, systems, and execution—built for IT growth.</p>
-    </div>
-    <FormAnnimation client:load />
-</div> -->
-
-
 <div class="relative">
   <div class="absolute top-16 left-0 w-full overflow-hidden leading-none -translate-y-full">
     <svg
@@ -78,6 +60,6 @@ const data = [
         🎯 Demanzo gives you leadership, systems, and execution—built for IT growth.
       </p>
     </div>
-    <FormAnnimation client:load />
+    <FormAnnimation client:visible />
   </div>
 </div>

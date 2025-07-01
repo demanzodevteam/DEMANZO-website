@@ -92,3 +92,13 @@
 .card-wrapper:hover .card-back {
   transform: translateY(0%);
 }
+
+
+/* Motion flip card */
+
+.perspective {
+  perspective: 1000px;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
