@@ -1,0 +1,64 @@
+---
+import HeroImg from "../../../assets/Service-Banner-Imgs.webp"
+import { Mail , PhoneCall , AlarmClock } from "lucide-react";
+import ListCard from "../../common/contactCard";
+---
+
+<div class="bg-[#e6f8ff] grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] px-4 lg:px-28 lg:h-[80vh]">
+  <div class="flex flex-col justify-center gap-6 py-10 lg:py-20 text-center lg:text-left">
+    <h1 class="text-[#FF5F55] font-semibold text-[18px] lg:text-[20px]">GET IN TOUCH</h1>
+
+    <div class="inline-block relative mx-auto lg:mx-0">
+      <h1 class="text-[45px] md:text-[48px] lg:text-[54px] font-bold relative z-10">
+        Schedule Meeting
+      </h1>
+      <svg
+        class="absolute left-1/2 -translate-x-1/2 lg:left-30 lg:translate-x-0 bottom-2 z-0"
+        width="270"
+        height="20"
+        viewBox="0 0 270 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M5 15C80 5 190 0 265 12"
+          stroke="#FF5F55"
+          stroke-width="6"
+          stroke-linecap="round"
+        />
+      </svg>
+    </div>
+
+    <p class="text-[#616670] font-medium max-w-xl mx-auto lg:mx-0">
+      Contact us for any queries related to our services
+    </p>
+
+    <div class="flex flex-col gap-6 mt-6 w-full">
+      <div class="flex flex-col lg:flex-row justify-center gap-4 lg:gap-10 w-full">
+        <div class="flex-1 w-full">
+          <ListCard Icon={PhoneCall} title="Call Us Now:" value="+91-9751840872" />
+        </div>
+        <div class="flex-1 w-full">
+          <ListCard Icon={Mail} title="Send Us An Email" value="info@demanzo.com" />
+        </div>
+      </div>
+      <div class="flex justify-center">
+        <div class="w-full lg:w-1/2">
+          <ListCard
+            Icon={AlarmClock}
+            title="Open Hours:"
+            value="Aus 11 AM to 6 PM & UK 9 AM to 6 PM"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0 ">
+  <div class="w-full max-w-[500px] h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px] relative">
+    <img src={HeroImg.src} alt="Hero Image" class="w-full h-full object-cover rounded" />
+  </div>
+</div>
+
+</div>
+
