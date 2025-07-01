@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 import axios from "axios";
-import "../../styles.css";
+import "../../../styles.css";
 import { useState, useEffect } from "react";
 import { API_URL } from "../../../../config/urls";
 

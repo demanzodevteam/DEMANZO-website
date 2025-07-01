@@ -54,6 +54,27 @@ body {
 }
 
 :root {
+  /* custom variyables */
+
+--demanzo-header-menu-text: ;
+--demanzo-h1 : ;
+--demanzo-h2: ;
+--demanzo-card-headings: ;
+--demanzo-accordion-heading: ;
+--demanzo-accordion-para: ;
+--demanzo-faded-text: ;
+--demanzo-date-text: ;
+--demanzo-line-height: ;
+--demanzo-footer-text: ;
+--demanzo-footer-headings: ;
+--demanzo-button: ;
+--demanzo-button-text: ;
+--demanzo-paragraphs: ;
+
+
+  /* ------------------ */
+
+
     --radius: 0.625rem;
     --background: oklch(1 0 0);
     --foreground: oklch(0.145 0 0);

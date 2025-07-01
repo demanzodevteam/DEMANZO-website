@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import axios from "axios";
-import "../../styles.css";
+import "../../../styles.css";
 import { useState, useEffect } from "react";
 import { API_URL } from "../../../../config/urls";
 

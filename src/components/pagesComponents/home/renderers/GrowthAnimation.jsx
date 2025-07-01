@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { API_URL, BASE_URL } from "../../../config/urls";
+import { API_URL, BASE_URL } from "../../../../config/urls";
 import axios from "axios";
 
 const GrowthAnimation = () => {
