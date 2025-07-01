@@ -1,0 +1,27 @@
+import { motion } from "framer-motion";
+import hero from '../../../../assets/hero1.webp';
+
+const HeroAnimation = () => {
+  return (
+    <motion.div
+  initial={{ opacity: 0, x: -100 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  animate={{ 
+    y: [0, -10, 0, 10, 0],
+    x: [0, 5, 0, -5, 0],
+    rotate: [0, 1, 0, -1, 0]
+  }}
+  transition={{
+    duration: 8,
+    repeat: Infinity,
+    repeatType: "loop",
+    ease: "easeInOut"
+  }}
+>
+  <img src={hero.src} alt="image" className="w-[600px] md:mx-auto lg:mx-0" />
+</motion.div>
+
+  )
+}
+
+export default HeroAnimation
