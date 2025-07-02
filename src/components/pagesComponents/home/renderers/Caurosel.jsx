@@ -50,7 +50,7 @@ export default function Caurosel() {
           loop={true}
           grabCursor={true}
           modules={[]}
-          className="mySwiper py-10"
+          className="mySwiper py-10 !overflow-visible"
         >
           {category.posts?.map((testimonial, index) => (
           <SwiperSlide style={{ boxShadow: '0 0 12px rgba(0, 0, 0, 0.15)' }}>
