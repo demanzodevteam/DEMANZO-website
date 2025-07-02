@@ -292,10 +292,38 @@ function format_category_recursive($term) {
 
         return $images;
     })(),
+    'publishedOn' => get_the_modified_date('F j, Y', $post),
                 'title' => get_the_title($post),
                 'slug'    => $post->post_name, 
                 'link'  => get_permalink($post),
                 'content' => get_the_excerpt($post),
+                'summaries' => (function() use ($post) {
+    $content = apply_filters('the_content', $post->post_content);
+    
+    preg_match_all('/<summary[^>]*>(.*?)<\/summary>/is', $content, $matches);
+    
+    // Return only non-empty, trimmed entries
+    return array_values(array_filter(array_map('trim', $matches[1])));
+})(),
+'list_items' => (function() use ($post) {
+    $content = apply_filters('the_content', $post->post_content);
+    $groups = [];
+
+    // Match all <ul> or <ol> blocks
+    if (preg_match_all('/<(ul|ol)[^>]*>(.*?)<\/\1>/is', $content, $matches)) {
+        foreach ($matches[2] as $listHtml) {
+            if (preg_match_all('/<li[^>]*>(.*?)<\/li>/is', $listHtml, $liMatches)) {
+                $items = array_map('strip_tags', array_map('trim', $liMatches[1]));
+                if (!empty($items)) {
+                    $groups[] = $items;
+                }
+            }
+        }
+    }
+
+    return $groups;
+})(),
+
             ];
         }, $posts),
         'children' => array_map('format_category_recursive', $children),
