@@ -24,6 +24,7 @@ const HeaderMenus = () => {
 
 
     return (
+        <>
         <nav>
             {/* Desktop Nav */}
             <div className="max-w-7xl mx-auto px-2 hidden lg:flex justify-between items-center h-16">
@@ -34,6 +35,7 @@ const HeaderMenus = () => {
                             link.children.some((sub) => currentPath === sub.href);
 
                         return (
+                            <>
                             <div className="relative group" key={index}>
                                 <div className="px-2 py-2 flex items-center">
                                     <a
@@ -86,8 +88,19 @@ const HeaderMenus = () => {
                                     })}
                                 </div>
                             </div>
+
+                            </>
+                            
                         );
                     })}
+                    <div className="hidden md:block md:pr-2">
+          <a
+            href="#"
+            className="bg-[#2d89bf] hover:bg-[#f5a31c] text-white rounded-full px-4 py-3 text-[15px] block font-[500] text-center transition-transform duration-300 ease-in-out
+             hover:scale-105 hover:shadow-[0_0_20px_#f5a31c]"
+            >Build My Growth Engine
+          </a>
+        </div>
                 </div>
             </div>
 
@@ -180,7 +193,10 @@ const HeaderMenus = () => {
                     </div>
                 </>
             )}
+             
         </nav>
+        
+        </>
     );
 };
 
