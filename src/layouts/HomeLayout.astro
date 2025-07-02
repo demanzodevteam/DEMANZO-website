@@ -4,6 +4,7 @@ import logo from "../assets/logo.png";
 import NavLinks from "../components/navitems/NavLinks.astro";
 import Header from '../components/main/Header.astro';
 import '../styles/global.css'
+import HeaderMenus from "../components/main/renderers/HeaderMenus";
 ---
 
 <Header />
@@ -19,7 +20,8 @@ import '../styles/global.css'
 	</div>
 
 	<div class="hidden lg:block">
-		<NavLinks />
+		<!-- <NavLinks /> -->
+		 <HeaderMenus client:load/>
 	</div>
 </div>
 
