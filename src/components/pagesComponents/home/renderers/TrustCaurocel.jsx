@@ -39,7 +39,7 @@ export default function TrustCaurocel() {
         </p>
       ))}
 
-      {/* <p class="text-[30px] lg:text-[40px] font-[600] text-[#e05c24] text-center">SaaS leaders across industries</p> */}
+      {/* <p className="text-[30px] lg:text-[40px] font-[600] text-[#e05c24] text-center">SaaS leaders across industries</p> */}
       <div className="px-8 py-8 md:px-4">
         <Swiper
           breakpoints={{

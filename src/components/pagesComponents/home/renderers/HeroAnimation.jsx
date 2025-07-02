@@ -13,7 +13,7 @@ const HeroAnimation = () => {
   }}
 
       >
-        <img src={hero.src} alt="image" class="w-[600px] md:mx-auto lg:mx-0" />
+        <img src={hero.src} alt="image" className="w-[600px] md:mx-auto lg:mx-0" />
     </motion.div>
 
   )

@@ -36,7 +36,7 @@ export default function BlogCourocel() {
 
     return (
         <>
-            <p class="text-[30px] font-[600] md:text-[40px] md:font-[700] text-[#191d27] text-center py-16">Recent Blogs</p>
+            <p className="text-[30px] font-[600] md:text-[40px] md:font-[700] text-[#191d27] text-center py-16">Recent Blogs</p>
             <div className="px-8 pb-10">
                 <Swiper
                     breakpoints={{
@@ -95,7 +95,7 @@ export default function BlogCourocel() {
                                     <hr />
                                     <div className="flex justify-between items-center py-3 pt-6">
                                         <div className="flex gap-1">
-                                            <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M16.8263 3.28809H2.88559C2.38584 3.28921 1.90688 3.48823 1.55351 3.8416C1.20013 4.19498 1.00112 4.67393 1 5.17368V19.1144C1.00112 19.6141 1.20013 20.0931 1.55351 20.4464C1.90688 20.7998 2.38584 20.9988 2.88559 21H16.8263C17.326 20.9988 17.805 20.7998 18.1584 20.4464C18.5117 20.0931 18.7107 19.6141 18.7119 19.1144V5.17368C18.7107 4.67393 18.5117 4.19498 18.1584 3.8416C17.805 3.48823 17.326 3.28921 16.8263 3.28809V3.28809Z" stroke="#7347FC" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round"></path> <path d="M4.79297 9.5166H9.28449" stroke="#7347FC" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round"></path> <path d="M4.79297 13.3945H14.5175" stroke="#7347FC" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round"></path> <path d="M7.12305 1V5.15254" stroke="#7347FC" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round"></path> <path d="M12.5898 1V5.15254" stroke="#7347FC" stroke-width="1.2" stroke-miterlimit="10" stroke-linecap="round"></path> </svg>
+                                            <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M16.8263 3.28809H2.88559C2.38584 3.28921 1.90688 3.48823 1.55351 3.8416C1.20013 4.19498 1.00112 4.67393 1 5.17368V19.1144C1.00112 19.6141 1.20013 20.0931 1.55351 20.4464C1.90688 20.7998 2.38584 20.9988 2.88559 21H16.8263C17.326 20.9988 17.805 20.7998 18.1584 20.4464C18.5117 20.0931 18.7107 19.6141 18.7119 19.1144V5.17368C18.7107 4.67393 18.5117 4.19498 18.1584 3.8416C17.805 3.48823 17.326 3.28921 16.8263 3.28809V3.28809Z" stroke="#7347FC" strokeWidth="1.2" strokeMiterlimit="10" strokeLinecap="round"></path> <path d="M4.79297 9.5166H9.28449" stroke="#7347FC" strokeWidth="1.2" strokeMiterlimit="10" strokeLinecap="round"></path> <path d="M4.79297 13.3945H14.5175" stroke="#7347FC" strokeWidth="1.2" strokeMiterlimit="10" strokeLinecap="round"></path> <path d="M7.12305 1V5.15254" stroke="#7347FC" strokeWidth="1.2" strokeMiterlimit="10" strokeLinecap="round"></path> <path d="M12.5898 1V5.15254" stroke="#7347FC" strokeWidth="1.2" strokeMiterlimit="10" strokeLinecap="round"></path> </svg>
                                             <p className="text-[17px] font-[500] text-[#252525]">{blog.publishedOn}</p>
                                         </div>
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

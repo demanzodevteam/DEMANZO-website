@@ -26,7 +26,7 @@ const WhyChooseDemanzo = () => {
   return (
     <>
 
-      <div class="flex flex-col justify-center gap-4 py-8 lg:py-20">
+      <div className="flex flex-col justify-center gap-4 py-8 lg:py-20">
         <p className="text-[40px] font-[700] text-[#191d27]">
           {data?.title}
         </p>

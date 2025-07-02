@@ -15,7 +15,7 @@ const HeaderMenus = () => {
 		axios.get(NAV_URLS + '128')
 			.then((response) => {
 				setnavLinks(response.data);
-				console.log(response.data);
+				// console.log(response.data);
 			})
 			.catch((error) => {
 				console.error('Failed to fetch navLinks:', error);

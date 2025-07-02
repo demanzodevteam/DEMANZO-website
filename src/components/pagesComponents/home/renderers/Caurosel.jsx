@@ -32,7 +32,7 @@ export default function Caurosel() {
 
   return (
     <>
-      <p class="text-[30px] lg:text-[40px] font-[600] text-[#191d27] text-center pb-6">{category.name}</p>
+      <p className="text-[30px] lg:text-[40px] font-[600] text-[#191d27] text-center pb-6">{category.name}</p>
       <div className="px-8">
         <Swiper
           breakpoints={{
