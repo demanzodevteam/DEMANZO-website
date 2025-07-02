@@ -33,7 +33,7 @@ export default function Caurosel() {
   return (
     <>
       <p className="text-[30px] lg:text-[40px] font-[600] text-[#191d27] text-center pb-6">{category.name}</p>
-      <div className="px-8">
+      <div className="w-full px-4 sm:px-6 md:px-8">
         <Swiper
           breakpoints={{
             0: {
@@ -50,7 +50,7 @@ export default function Caurosel() {
           loop={true}
           grabCursor={true}
           modules={[]}
-          className="mySwiper py-10 !overflow-visible"
+          className="mySwiper py-10 w-full max-w-screen !overflow-y-auto"
         >
           {category.posts?.map((testimonial, index) => (
           <SwiperSlide style={{ boxShadow: '0 0 12px rgba(0, 0, 0, 0.15)' }}>
