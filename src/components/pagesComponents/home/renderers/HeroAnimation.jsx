@@ -4,12 +4,12 @@ import hero from '../../../../assets/hero1.webp';
 const HeroAnimation = () => {
   return (
     <motion.div
-        initial={{ opacity: 0, x: -300 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, y: -50 }}
+        whileInView={{ opacity: 1, y: 0 }}
         // transition={{ duration: 1 }}
         transition={{
-    duration: 2,
-    ease: "easeInOut"
+    duration: 1,
+    ease: "easeIn"
   }}
 
       >
