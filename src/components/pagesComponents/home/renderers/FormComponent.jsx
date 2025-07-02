@@ -1,9 +1,90 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { API_URL } from "../../../../config/urls";
+import { API_URL, FORM_URL } from "../../../../config/urls";
 import axios from "axios";
 
-const FormComponent = () => {
+export default function ContactForm() {
+  const [form, setForm] = useState({
+    "your-name": "",
+    "your-email": "",
+    "your-number": "",
+    "your-url": "",
+    "your-message": "",
+  });
+
+  const [errors, setErrors] = useState({});
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+
+    if (value.trim() !== "") {
+      setErrors((prev) => ({ ...prev, [name]: false }));
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const newErrors = {};
+    Object.keys(form).forEach((field) => {
+      if (!form[field] || form[field].trim() === "") {
+        newErrors[field] = true;
+      }
+    });
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length > 0) return;
+
+    const formData = new FormData();
+    formData.append("your-name", form["your-name"]);
+    formData.append("your-email", form["your-email"]);
+    formData.append("your-number", form["your-number"]);
+    formData.append("your-url", form["your-url"]);
+    formData.append("your-message", form["your-message"]);
+
+    try {
+      const res = await fetch(
+        FORM_URL + '101/feedback',
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      const data = await res.json();
+
+      if (data.status === "mail_sent") {
+        const audio = new Audio("/notification.mp3");
+        audio.play();
+
+        setSubmitted(true);
+        setForm({
+          "your-name": "",
+          "your-email": "",
+          "your-number": "",
+          "your-url": "",
+          "your-message": "",
+        });
+
+        setTimeout(() => setSubmitted(false), 2000);
+      } else {
+        alert("Submission failed: " + data.message);
+      }
+    } catch (error) {
+      alert(" Network error. Please try again.");
+      console.error(error);
+    }
+  };
+
+  const inputVariants = {
+    shake: {
+      x: [0, -10, 10, -10, 10, 0],
+      transition: { duration: 0.4 },
+    },
+  };
 
   const [category, setCategory] = useState({
     name: '',
@@ -14,6 +95,13 @@ const FormComponent = () => {
     image: '',
   });
 
+  const formFields = [
+    { name: "your-name", label: "Your Name", type: "text" },
+    { name: "your-email", label: "Your Email", type: "email" },
+    { name: "your-number", label: "Your Number", type: "number" },
+    { name: "your-url", label: "Your Website", type: "text" },
+  ];
+
   useEffect(() => {
     axios.get(API_URL + 'category/14')
       .then((response) => {
@@ -23,16 +111,38 @@ const FormComponent = () => {
         console.error('Failed to fetch category:', error);
       });
   }, []);
+  
 
-  const data = [
-    {
-      symbol: '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.4 3h13.2A2.4 2.4 0 0 1 21 5.4v13.2a2.4 2.4 0 0 1-2.4 2.4H5.4A2.4 2.4 0 0 1 3 18.6V5.4A2.4 2.4 0 0 1 5.4 3m11.414 6.581a1 1 0 1 0-1.628-1.162l-4.314 6.04l-2.165-2.166a1 1 0 0 0-1.414 1.414l3 3a1 1 0 0 0 1.52-.126z" clip-rule="evenodd"/></svg>',
-      content: 'Leads come in, but sales doesn’t trust them'
-    }
-  ]
+  const renderInput = (name, type, label) => (
+    
+    <motion.div
+      variants={inputVariants}
+      animate={errors[name] ? "shake" : ""}
+      className="relative"
+    >
+      <input
+        name={name}
+        type={type}
+        value={form[name]}
+        onChange={handleChange}
+        placeholder=" "
+        className={`peer w-full border px-4 py-4 text-[#050607] text-[16px] font-[400] ${errors[name] ? "border-red-500" : "border-[#e7e7e7]"
+          } focus:border-black focus:outline-none rounded-md`}
+      />
+      <label className="absolute text-[#050607] text-[14px] font-[400] left-4 top-4 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-[16px] peer-placeholder-shown:text-gray-500 peer-focus:top-1 peer-focus:text-[12px] peer-focus:text-black">
+        {label}
+      </label>
+    </motion.div>
+  );
+
   return (
     <>
-      <div>
+      <motion.div
+        initial={{ opacity: 0, x: -200 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+        className=""
+      >
         <p className="text-[30px] md:text-[40px] font-[600] text-[#e05c24] pb-4">
           {category.name}
         </p>
@@ -52,34 +162,71 @@ const FormComponent = () => {
         <p className="text-[16px] lg:text-[18px] font-[400] text-[#616670] py-3 pl-6">
           🎯 {category.description}
         </p>
-      </div>
+      </motion.div>
       <motion.div
-        initial={{ opacity: 0, y: 100 }}
+        initial={{ opacity: 0, y: 300 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
         className="rounded-3xl bg-white shadow px-6 lg:px-12 py-8 relative"
       >
-        <form>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 py-3">
-            <input type="text" placeholder="Your Name" className="border border-[#e7e7e7] hover:border-black focus:border-black  focus:outline-none active:border-black px-2 py-4 placeholder-[#050607] text-[16px] font-[400] text-[#050607]" required />
-            <input type="email" placeholder="Your Email" className="border border-[#e7e7e7] hover:border-black focus:border-black  focus:outline-none active:border-black px-2 py-4 placeholder-[#050607] text-[16px] font-[400] text-[#050607]" required />
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {renderInput("your-name", "text", "Name")}
+            {renderInput("your-email", "email", "Email")}
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 py-3">
-            <input type="number" placeholder="Your Number" className="border border-[#e7e7e7] hover:border-black focus:border-black  focus:outline-none active:border-black px-2 py-4 placeholder-[#050607] text-[16px] font-[400] text-[#050607]" required />
-            <input type="url" placeholder="Your Website" className="border border-[#e7e7e7] hover:border-black focus:border-black  focus:outline-none active:border-black px-2 py-4 placeholder-[#050607] text-[16px] font-[400] text-[#050607]" required />
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {renderInput("your-number", "number", "Number")}
+            {renderInput("your-url", "text", "Website")}
           </div>
-          <div className="py-3">
-            <textarea rows="4" placeholder="Your Message" className="w-full border border-[#e7e7e7] focus:border-black hover:border-black focus:outline-none px-2 py-4 placeholder-[#050607] text-[16px] font-[400] text-[#050607] resize-none"></textarea>
-          </div>
-          <div className="py-3">
-            <input type="text" className="w-full border border-[#e7e7e7] hover:border-black focus:border-black  focus:outline-none active:border-black px-2 py-4 text-[16px] font-[400] text-[#050607]" required />
-          </div>
-          <button type="submit" className="w-[290px] lg:w-[530px] bg-[#2d89bf] hover:bg-[#f5a31c] text-white rounded-full px-6 py-3 cursor-pointer text-[15px] font-[500] absolute -bottom-6">Submit Request</button>
+
+          <motion.div
+            variants={inputVariants}
+            animate={errors["your-message"] ? "shake" : ""}
+            className="relative"
+          >
+            <textarea
+              name="your-message"
+              rows="4"
+              value={form["your-message"]}
+              onChange={handleChange}
+              placeholder=""
+              className={`peer w-full border px-4 py-4 text-[#050607] text-[16px] font-[400] resize-none ${errors["your-message"] ? "border-red-500" : "border-[#e7e7e7]"
+                } focus:border-black focus:outline-none rounded-md`}
+            />
+            <label className="absolute text-[#050607] text-[14px] font-[400] left-4 top-4 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-[16px] peer-placeholder-shown:text-gray-500 peer-focus:top-1 peer-focus:text-[12px] peer-focus:text-black">
+              Message
+            </label>
+          </motion.div>
+
+          <motion.button
+            type="submit"
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0px 0px 16px rgba(0, 123, 255, 0.6)",
+            }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 300 }}
+            className="w-full lg:w-[530px] bg-[#0e71b9] text-white rounded-full px-6 py-4 text-[15px] font-[500] shadow-md hover:bg-[#0e71b9] focus:outline-none"
+          >
+            Submit Request
+          </motion.button>
+
+          <AnimatePresence>
+            {submitted && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                className="text-green-600 font-medium text-center"
+              >
+                ✅ Submitted successfully!
+              </motion.div>
+            )}
+          </AnimatePresence>
         </form>
       </motion.div>
     </>
 
-  )
+  );
 }
-
-export default FormComponent;
