@@ -2,13 +2,31 @@
 
 import HeroAnimation from '../renderers/HeroAnimation';
 import HeroSection from '../renderers/Hero';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { API_URL } from '../../../../config/urls';
 
 
+const res = await fetch(API_URL + 'home-hero');
+const pageData = await res.json();
+// const currentPath = Astro.url.pathname;
+
+// const [pageData, setPageData] = useState({})
+//     useEffect(() => {
+//         axios.get(API_URL + 'home-hero')
+//             .then((res) => {
+//                 setPageData(res.data);
+//                 // console.log(res.data)
+//             })
+//             .catch((err) => {
+//                 console.error('Error in browser:', err);
+//             });
+//     }, []);
 ---
 
 <!-- ---------------------- section 1 ------------------- -->
 
 <div class="bg-[#e6f8ff] grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] px-2 lg:px-14">
-    <HeroSection client:visible/>
-    <HeroAnimation client:visible />
+    <HeroSection pageData={pageData}/>
+    <HeroAnimation client:load />
 </div>

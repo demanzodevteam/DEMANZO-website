@@ -3,19 +3,19 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API_URL } from '../../../../config/urls';
 
-export default function HeroSection() {
+export default function HeroSection({pageData}) {
 
-    const [pageData, setPageData] = useState({})
-    useEffect(() => {
-        axios.get(API_URL + 'home-hero')
-            .then((res) => {
-                setPageData(res.data);
-                // console.log(res.data)
-            })
-            .catch((err) => {
-                console.error('Error in browser:', err);
-            });
-    }, []);
+    // const [pageData, setPageData] = useState({})
+    // useEffect(() => {
+    //     axios.get(API_URL + 'home-hero')
+    //         .then((res) => {
+    //             setPageData(res.data);
+    //             // console.log(res.data)
+    //         })
+    //         .catch((err) => {
+    //             console.error('Error in browser:', err);
+    //         });
+    // }, []);
 
     return (
         <>
