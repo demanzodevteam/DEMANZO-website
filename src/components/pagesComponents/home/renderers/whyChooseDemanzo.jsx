@@ -3,25 +3,25 @@ import axios from 'axios';
 import { API_URL } from '../../../../config/urls';
 import HeroTwoAnnimation from './HeroTwoAnnimation';
 
-const WhyChooseDemanzo = () => {
-  const [data, setData] = useState({
-    title: '',
-    content: '',
-    button: '',
-    link: '',
-    image: '',
-  });
+const WhyChooseDemanzo = (data) => {
+  // const [data, setData] = useState({
+  //   title: '',
+  //   content: '',
+  //   button: '',
+  //   link: '',
+  //   image: '',
+  // });
 
-  useEffect(() => {
-    axios
-      .get(API_URL + 'why-it-companies-choose-demanzo')
-      .then((response) => {
-        setData(response.data);
-      })
-      .catch((error) => {
-        console.error('Failed to fetch data:', error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(API_URL + 'why-it-companies-choose-demanzo')
+  //     .then((response) => {
+  //       setData(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Failed to fetch data:', error);
+  //     });
+  // }, []);
 
   return (
     <>
