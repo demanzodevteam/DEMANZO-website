@@ -1,5 +1,10 @@
 ---
-import TrustCaurocel from "../../../pagesComponents/home/renderers/TrustCaurocel"
+import { API_URL } from "../../../../config/urls";
+import TrustCaurocel from "../../../pagesComponents/home/renderers/TrustCaurocel";
+
+
+const res = await fetch(API_URL + 'category/4');
+const category = await res.json();
 ---
 
 
@@ -7,7 +12,7 @@ import TrustCaurocel from "../../../pagesComponents/home/renderers/TrustCaurocel
 
 <div class="py-6 lg:py-12 px-4">
    
-    <TrustCaurocel client:visible/>
+    <TrustCaurocel category={category} client:visible/>
 </div>
 
 <style>
