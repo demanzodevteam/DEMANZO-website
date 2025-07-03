@@ -5,6 +5,11 @@ import NavLinks from "../components/navitems/NavLinks.astro";
 import Header from '../components/main/Header.astro';
 import '../styles/global.css'
 import HeaderMenus from "../components/main/renderers/HeaderMenus";
+import { NAV_URLS } from "../config/urls";
+
+const res = await fetch(NAV_URLS + "128");
+const navLinks = await res.json();
+const currentPath = Astro.url.pathname;
 ---
 
 <Header />
@@ -21,7 +26,7 @@ import HeaderMenus from "../components/main/renderers/HeaderMenus";
 
 	<div class="hidden lg:block">
 		<!-- <NavLinks /> -->
-		 <HeaderMenus client:load/>
+		 <HeaderMenus navLinks={navLinks} currentPath={currentPath}/>
 	</div>
 </div>
 

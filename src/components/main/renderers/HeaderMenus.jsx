@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import { NAV_URLS } from "../../../config/urls";
 import axios from "axios";
 
-const HeaderMenus = () => {
-    const [navLinks, setnavLinks] = useState([]);
+
+const HeaderMenus = ({navLinks,currentPath}) => {
+    // const [navLinks, setnavLinks] = useState([]);
     const [menuOpen, setMenuOpen] = useState(false);
     const [activeMenu, setActiveMenu] = useState(null);
-    const [currentPath, setCurrentPath] = useState("");
+    // const [currentPath, setCurrentPath] = useState("");
 
     useEffect(() => {
         if (typeof window !== "undefined") {

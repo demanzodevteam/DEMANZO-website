@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { NAV_URLS } from "../../../config/urls";
-import axios from "axios";
+// import { useState, useEffect } from "react";
+// import { NAV_URLS } from "../../../config/urls";
+// import axios from "axios";
 
 export default function FooterGrid({category}) {
 	// const [category, setCategory] = useState([]);
