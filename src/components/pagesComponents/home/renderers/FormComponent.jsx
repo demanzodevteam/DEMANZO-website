@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { API_URL, FORM_URL } from "../../../../config/urls";
 import axios from "axios";
 
-export default function ContactForm() {
+export default function ContactForm({category}) {
   const [form, setForm] = useState({
     "your-name": "",
     "your-email": "",
@@ -86,14 +86,14 @@ export default function ContactForm() {
     },
   };
 
-  const [category, setCategory] = useState({
-    name: '',
-    slug: '',
-    description: '',
-    button: '',
-    posts: [],
-    image: '',
-  });
+  // const [category, setCategory] = useState({
+  //   name: '',
+  //   slug: '',
+  //   description: '',
+  //   button: '',
+  //   posts: [],
+  //   image: '',
+  // });
 
   const formFields = [
     { name: "your-name", label: "Your Name", type: "text" },
@@ -102,15 +102,15 @@ export default function ContactForm() {
     { name: "your-url", label: "Your Website", type: "text" },
   ];
 
-  useEffect(() => {
-    axios.get(API_URL + 'category/14')
-      .then((response) => {
-        setCategory(response.data);
-      })
-      .catch((error) => {
-        console.error('Failed to fetch category:', error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios.get(API_URL + 'category/14')
+  //     .then((response) => {
+  //       setCategory(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Failed to fetch category:', error);
+  //     });
+  // }, []);
   
 
   const renderInput = (name, type, label) => (

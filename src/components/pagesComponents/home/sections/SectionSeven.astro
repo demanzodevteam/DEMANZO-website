@@ -1,6 +1,9 @@
 ---
+import { API_URL } from '../../../../config/urls';
 import FaqAccordion from '../renderers/Accordian.jsx'
 
+const res = await fetch(API_URL + 'category/14');
+const category = await res.json();
 ---
 
 
@@ -10,7 +13,7 @@ import FaqAccordion from '../renderers/Accordian.jsx'
 <div class="py-20 px-4 lg:px-8 bg-gradient-to-b from-[#f8f8f8] to-white">
   
     
-    <FaqAccordion  client:visible />
+    <FaqAccordion category={category} client:visible />
 
    
 </div>

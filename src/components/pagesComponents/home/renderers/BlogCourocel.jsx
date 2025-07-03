@@ -13,26 +13,26 @@ import { API_URL } from "../../../../config/urls";
 import axios from "axios";
 
 
-export default function BlogCourocel() {
+export default function BlogCourocel({category}) {
 
-    const [category, setCategory] = useState({
-        name: '',
-        slug: '',
-        description: '',
-        button: '',
-        posts: [],
-        image: '',
-    });
+    // const [category, setCategory] = useState({
+    //     name: '',
+    //     slug: '',
+    //     description: '',
+    //     button: '',
+    //     posts: [],
+    //     image: '',
+    // });
 
-    useEffect(() => {
-        axios.get(API_URL + 'category/8')
-            .then((response) => {
-                setCategory(response.data);
-            })
-            .catch((error) => {
-                console.error('Failed to fetch category:', error);
-            });
-    }, []);
+    // useEffect(() => {
+    //     axios.get(API_URL + 'category/8')
+    //         .then((response) => {
+    //             setCategory(response.data);
+    //         })
+    //         .catch((error) => {
+    //             console.error('Failed to fetch category:', error);
+    //         });
+    // }, []);
 
     return (
         <>

@@ -1,12 +1,17 @@
 ---
+import { API_URL } from '../../../../config/urls';
 import BlogCaurocel from '../renderers/BlogCourocel';
 
+
+
+const res = await fetch(API_URL + 'category/14');
+const category = await res.json();
 ---
 
 
 <!---------------------- section 9 ----------------------------- -->
 
 <div class="bg-gradient-to-b from-[#fff8eb] to-[#ffffff]">
-    <BlogCaurocel  client:visible />
+    <BlogCaurocel category={category} client:visible />
 </div>
 

@@ -1,28 +1,28 @@
 
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import { API_URL, BASE_URL } from "../../config/urls";
-import axios from "axios";
+// import axios from "axios";
 import cs1 from '../../assets/cs1.webp';
 
 
-export default function CaseStudyCard() {
-    const [category, setCategory] = useState({
-        name: '',
-        slug: '',
-        description: '',
-        button: '',
-        posts: [],
-        image: '',
-    });
-    useEffect(() => {
-        axios.get(API_URL + 'category/7')
-            .then((response) => {
-                setCategory(response.data);
-            })
-            .catch((error) => {
-                console.error('Failed to fetch category:', error);
-            });
-    }, []);
+export default function CaseStudyCard({category}) {
+    // const [category, setCategory] = useState({
+    //     name: '',
+    //     slug: '',
+    //     description: '',
+    //     button: '',
+    //     posts: [],
+    //     image: '',
+    // });
+    // useEffect(() => {
+    //     axios.get(API_URL + 'category/7')
+    //         .then((response) => {
+    //             setCategory(response.data);
+    //         })
+    //         .catch((error) => {
+    //             console.error('Failed to fetch category:', error);
+    //         });
+    // }, []);
 
     return (
         <>

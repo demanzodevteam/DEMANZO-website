@@ -1,5 +1,10 @@
 ---
+import { API_URL } from '../../../../config/urls';
 import CaseStudyCard from '../../../common/CaseStudyCard';
+
+
+const res = await fetch(API_URL + 'category/14');
+const category = await res.json();
 ---
 
 
@@ -7,5 +12,5 @@ import CaseStudyCard from '../../../common/CaseStudyCard';
 
 
 <section class="py-20 px-4 lg:px-8 bg-gradient-to-b from-[#f8f8f8] to-white">
- <CaseStudyCard client:visible/>
+ <CaseStudyCard category={category} client:visible/>
 </section>
