@@ -35,7 +35,7 @@ const WhyChooseDemanzo = () => {
 
         >{data.content}</p>
       </div>
-      <HeroTwoAnnimation image={data.image} client:visible />
+      {/* <HeroTwoAnnimation image={data.image} /> */}
 
     </>
 

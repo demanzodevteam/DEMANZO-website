@@ -1,12 +1,18 @@
 ---
 
 // import HeroTwoAnnimation from '../../HeroTwoAnnimation';
-import WhyChooseDemanzo from "../renderers/whyChooseDemanzo"
+import { API_URL } from "../../../../config/urls";
+import HeroTwoAnnimation from "../renderers/HeroTwoAnnimation";
+import WhyChooseDemanzo from "../renderers/whyChooseDemanzo";
+
+const res = await fetch(API_URL + 'why-it-companies-choose-demanzo');
+const pageData = await res.json();
 ---
 
 <!-- ------------section 2 -------------------- -->
  
 <div class="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] px-4 lg:px-14 gap-4">
     <WhyChooseDemanzo client:visible/>
+    <HeroTwoAnnimation image={pageData.image} alt={pageData.alt} client:visible/>
 </div>
 

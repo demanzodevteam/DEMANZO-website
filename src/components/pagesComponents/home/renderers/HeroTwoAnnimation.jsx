@@ -5,7 +5,7 @@ const HeroTwoAnnimation = ({ image, alt }) => {
     <div className="relative lg:pt-16 md:ml-20 lg:ml-0 group hover:-translate-y-4 transition-all duration-500">
       {/* Background Box Animation */}
       <motion.div
-  animate={{ y: [0, -200, 0, 200, 0] }} // Gentle but noticeable float
+  animate={{ y: [0, -200, 0, 200, 0] }} 
   transition={{ 
     duration: 3,
     repeat: Infinity,
