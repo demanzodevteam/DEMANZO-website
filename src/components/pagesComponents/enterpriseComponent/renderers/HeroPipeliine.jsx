@@ -10,7 +10,7 @@ export default function HeroPiplineSection() {
   const [pageData, setPageData] = useState({});
   useEffect(() => {
     axios
-      .get(API_URL + "pipeline-acceleration")
+      .get(API_URL + "enterprise-seo-for-it-companies")
       .then((res) => {
         setPageData(res.data);
         // console.log(res.data)

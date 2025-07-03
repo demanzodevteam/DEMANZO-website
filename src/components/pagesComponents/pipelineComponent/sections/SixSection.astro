@@ -1,5 +1,5 @@
 ---
-import SixthSection from '../renderers/SecondSection.jsx';
+import Sixthsection from '../renderers/SecondSection.jsx';
 
 const cards = [
   {
@@ -24,4 +24,5 @@ const sectionTitle = "Why IT Companies Trust Demanzo <br> For  Pipeline Accelera
 ---
 <!------ Sixth Section ------>
 
-<SixthSection slug={sectionTitle} bgClass="bg-[#FEF2F2]" colVal='4' />
+<!-- <SixthSection slug={sectionTitle} bgClass="bg-[#FEF2F2]" colVal='4' /> -->
+<Sixthsection title={sectionTitle} cards={cards as any} bgClass="bg-[#FEF2F2]" colVal='4'  client:load />

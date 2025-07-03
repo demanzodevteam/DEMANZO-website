@@ -8,7 +8,7 @@ const HeroAnimation = ({image}) => {
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 1 }}
     >
-      <img src={image} alt="image" class="w-[500px] md:mx-auto lg:mx-0" />
+      <img src={image} alt="image" class="w-[600px] md:mx-auto lg:mx-0" />
     </motion.div>
   );
 };
