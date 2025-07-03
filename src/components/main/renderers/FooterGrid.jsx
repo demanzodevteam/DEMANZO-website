@@ -2,19 +2,19 @@ import { useState, useEffect } from "react";
 import { NAV_URLS } from "../../../config/urls";
 import axios from "axios";
 
-export default function FooterGrid() {
-	const [category, setCategory] = useState([]);
+export default function FooterGrid({category}) {
+	// const [category, setCategory] = useState([]);
 
-	useEffect(() => {
-		axios.get(NAV_URLS + '108')
-			.then((response) => {
-				setCategory(response.data);
-				// console.log(response.data);
-			})
-			.catch((error) => {
-				console.error('Failed to fetch category:', error);
-			});
-	}, []);
+	// useEffect(() => {
+	// 	axios.get(NAV_URLS + '108')
+	// 		.then((response) => {
+	// 			setCategory(response.data);
+	// 			// console.log(response.data);
+	// 		})
+	// 		.catch((error) => {
+	// 			console.error('Failed to fetch category:', error);
+	// 		});
+	// }, []);
 
 	return (
 		<>

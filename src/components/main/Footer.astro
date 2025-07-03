@@ -1,6 +1,10 @@
 ---
 import logo from "../../assets/logo.png";
 import FooterGrid from "./renderers/FooterGrid";
+import { NAV_URLS } from "../../config/urls";
+
+const res = await fetch(NAV_URLS + '108');
+const category = await res.json();
 ---
 
 <footer
@@ -15,7 +19,7 @@ import FooterGrid from "./renderers/FooterGrid";
 				the demand generation process as simple as it gets.
 			</p>
 		</div>
-		<FooterGrid client:visible />
+		<FooterGrid category={category} />
 	</div>
 	<hr />
 	<div class="text-center pt-8">
