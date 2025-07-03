@@ -8,24 +8,24 @@ import "../../../styles.css";
 import { useState, useEffect } from "react";
 import { API_URL } from "../../../../config/urls";
 
-export default function TrustCaurocel() {
-  const [category, setCategory] = useState({
-    name: '',
-    slug: '',
-    description: '',
-    button: '',
-    posts: [],
-    image: '',
-  });
-  useEffect(() => {
-    axios.get(API_URL + 'category/4')
-      .then((response) => {
-        setCategory(response.data);
-      })
-      .catch((error) => {
-        console.error('Failed to fetch category:', error);
-      });
-  }, []);
+export default function TrustCaurocel({category}) {
+  // const [category, setCategory] = useState({
+  //   name: '',
+  //   slug: '',
+  //   description: '',
+  //   button: '',
+  //   posts: [],
+  //   image: '',
+  // });
+  // useEffect(() => {
+  //   axios.get(API_URL + 'category/4')
+  //     .then((response) => {
+  //       setCategory(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Failed to fetch category:', error);
+  //     });
+  // }, []);
 
   return (
     <>
