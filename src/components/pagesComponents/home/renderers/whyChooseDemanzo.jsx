@@ -3,7 +3,7 @@ import axios from 'axios';
 import { API_URL } from '../../../../config/urls';
 import HeroTwoAnnimation from './HeroTwoAnnimation';
 
-const WhyChooseDemanzo = (data) => {
+const WhyChooseDemanzo = ({data}) => {
   // const [data, setData] = useState({
   //   title: '',
   //   content: '',
