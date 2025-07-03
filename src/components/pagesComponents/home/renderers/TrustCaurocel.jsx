@@ -29,7 +29,7 @@ export default function TrustCaurocel({category}) {
 
   return (
     <>
-      {category.description.split(/\r?\n/).map((line, index) => (
+      {category?.description.split(/\r?\n/).map((line, index) => (
         <p
           key={index}
           className={`text-[30px] lg:text-[40px] font-[600] text-center leading-tight ${index === 0 ? "text-[#191d27]" : "text-[#f15a29]"

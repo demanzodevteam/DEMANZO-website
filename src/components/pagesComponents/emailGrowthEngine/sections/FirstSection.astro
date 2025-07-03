@@ -1,0 +1,10 @@
+---
+import { API_URL } from "../../../../config/urls";
+import HeroPiplineSection from "../renderers/HeroPipeliine";
+
+const res = await fetch(API_URL + 'pipeline-acceleration');
+const pageData = await res.json();
+---
+<!-- First Section -->
+<HeroPiplineSection pageData={pageData} client:load />
+
