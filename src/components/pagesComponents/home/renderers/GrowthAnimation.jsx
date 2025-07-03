@@ -1,20 +1,20 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { API_URL, BASE_URL } from "../../../../config/urls";
-import axios from "axios";
+// import { API_URL, BASE_URL } from "../../../../config/urls";
+// import axios from "axios";
 
-const GrowthAnimation = () => {
+const GrowthAnimation = ({category}) => {
 
 const columns = 3;
 
-  const [category, setCategory] = useState({
-    name: '',
-    slug: '',
-    description: '',
-    button: '',
-    posts: [],
-    image: '',
-  });
+  // const [category, setCategory] = useState({
+  //   name: '',
+  //   slug: '',
+  //   description: '',
+  //   button: '',
+  //   posts: [],
+  //   image: '',
+  // });
 
   const getLastRowPosts = (posts, columns = 3) => {
   const remainder = posts.length % columns;
@@ -29,15 +29,15 @@ const getNonLastRowPosts = (posts, columns = 3) => {
 };
 const nonLastRowPosts = getNonLastRowPosts(category.posts, columns);
 const lastRowPosts = getLastRowPosts(category.posts, columns);
-  useEffect(() => {
-    axios.get(API_URL + 'category/3')
-      .then((response) => {
-        setCategory(response.data);
-      })
-      .catch((error) => {
-        console.error('Failed to fetch category:', error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios.get(API_URL + 'category/3')
+  //     .then((response) => {
+  //       setCategory(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Failed to fetch category:', error);
+  //     });
+  // }, []);
 
   return (
     <>
