@@ -14,12 +14,18 @@
 // };
 
 // export default HeroAnimation;
-
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 import heroImg from "../../../../assets/hero-cropped.webp";
 
 const HeroAnimation = ({ image }) => {
+  useEffect(() => {
+  AOS.init();
+}, []);
+
   return (
-    <div className="animate-slide-in-left !opacity-1 animate-fade-in w-[500px] md:mx-auto lg:mx-0">
+    <div data-aos="fade-right">
       <img src={image} alt="image" />
     </div>
   );
