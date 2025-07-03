@@ -5,30 +5,30 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import axios from "axios";
+// import axios from "axios";
 import "../../../styles.css";
-import { useState, useEffect } from "react";
-import { API_URL } from "../../../../config/urls";
+// import { useState, useEffect } from "react";
+// import { API_URL } from "../../../../config/urls";
 
-export default function Caurosel() {
+export default function Caurosel({category}) {
 
-   const [category, setCategory] = useState({
-    name: '',
-    slug: '',
-    description: '',
-    button: '',
-    posts: [],
-    image: '',
-  });
-  useEffect(() => {
-    axios.get(API_URL + 'category/5')
-      .then((response) => {
-        setCategory(response.data);
-      })
-      .catch((error) => {
-        console.error('Failed to fetch category:', error);
-      });
-  }, []);
+  //  const [category, setCategory] = useState({
+  //   name: '',
+  //   slug: '',
+  //   description: '',
+  //   button: '',
+  //   posts: [],
+  //   image: '',
+  // });
+  // useEffect(() => {
+  //   axios.get(API_URL + 'category/5')
+  //     .then((response) => {
+  //       setCategory(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Failed to fetch category:', error);
+  //     });
+  // }, []);
 
   return (
     <>
