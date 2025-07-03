@@ -11,7 +11,6 @@ const HeroAnimation = () => {
     duration: 1,
     ease: "easeIn"
   }}
-
       >
         <img src={hero.src} alt="image" className="w-[600px] md:mx-auto lg:mx-0" />
     </motion.div>

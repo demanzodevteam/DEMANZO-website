@@ -329,3 +329,131 @@ function format_category_recursive($term) {
         'children' => array_map('format_category_recursive', $children),
     ];
 }
+
+
+//-----------------to get footer menu in seperate api
+
+add_action('rest_api_init', function () {
+    register_rest_route('custom/v1', '/parsed-navigation/(?P<id>\d+)', [
+        'methods' => 'GET',
+        'callback' => 'parse_navigation_block_data',
+        'permission_callback' => '__return_true'
+    ]);
+});
+
+function parse_navigation_block_data($data) {
+    $id = intval($data['id']);
+    $post = get_post($id);
+
+    if (!$post || $post->post_type !== 'wp_navigation') {
+        return new WP_Error('not_found', 'Navigation menu not found', ['status' => 404]);
+    }
+
+    $raw_content = $post->post_content;
+
+    // Parse raw block content
+    $blocks = parse_blocks($raw_content);
+    $structured = extract_menu_from_blocks($blocks);
+
+    return rest_ensure_response($structured);
+}
+
+function extract_menu_from_blocks($blocks) {
+    $menu = [];
+
+    foreach ($blocks as $block) {
+        if ($block['blockName'] === 'core/navigation-submenu') {
+            $submenu = [
+                'label' => $block['attrs']['label'] ?? '',
+                'url' => $block['attrs']['url'] ?? '',
+                'children' => extract_menu_from_blocks($block['innerBlocks']),
+            ];
+            $menu[] = $submenu;
+        } elseif ($block['blockName'] === 'core/navigation-link') {
+            $menu[] = [
+                'label' => strip_tags($block['attrs']['label'] ?? ''),
+                'url' => $block['attrs']['url'] ?? '',
+            ];
+        }
+    }
+
+    return $menu;
+}
+
+
+//to get whole page data in blocks
+
+add_action('rest_api_init', function () {
+    register_rest_route('custom/v1', '/blocks/(?P<id>\d+)', [
+        'methods'  => 'GET',
+        'callback' => 'get_content_blocks',
+    ]);
+});
+
+function get_content_blocks($data) {
+    $post_id = $data['id'];
+    return parse_content_blocks($post_id);
+}
+function parse_content_blocks($post_id) {
+    $post = get_post($post_id);
+    $html = $post->post_content;
+
+    $dom = new DOMDocument();
+    libxml_use_internal_errors(true); // Suppress HTML5 tag warnings
+    $dom->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
+
+    $blocks = [];
+    foreach ($dom->getElementsByTagName('section') as $section) {
+        $block = [];
+
+        $h1 = $section->getElementsByTagName('h1')->item(0);
+        if ($h1) {
+            $block['title'] = $h1->textContent;
+        }
+
+         // Get all <h1> tags
+        $headings = [];
+        foreach ($section->getElementsByTagName('h1') as $h1) {
+            $text = trim($h1->textContent);
+            if (!empty($text)) {
+                $headings[] = $text;
+            }
+        }
+        $block['headings'] = array_values($headings);
+
+
+        $paragraphs = [];
+        foreach ($section->getElementsByTagName('p') as $p) {
+            if ($p->getElementsByTagName('img')->length == 0) {
+                $paragraphs[] = $p->textContent;
+            }
+        }
+        $block['paragraphs'] = $paragraphs;
+
+        $images = [];
+
+        foreach ($section->getElementsByTagName('img') as $img) {
+    $images[] = [
+        'src'    => $img->getAttribute('src'),
+        'alt'    => $img->getAttribute('alt'),
+        'width'  => $img->getAttribute('width'),
+        'height' => $img->getAttribute('height')
+    ];
+}
+$block['images'] = array_values($images); // ensure index
+
+        // $img = $section->getElementsByTagName('img')->item(0);
+        // if ($img) {
+        //     $block['image'] = [
+        //         'src' => $img->getAttribute('src'),
+        //         'alt' => $img->getAttribute('alt'),
+        //         'width' => $img->getAttribute('width'),
+        //         'height' => $img->getAttribute('height')
+        //     ];
+        // }
+
+        $blocks[] = $block;
+    }
+
+    return $blocks;
+}
