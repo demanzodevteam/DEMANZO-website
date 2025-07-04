@@ -1,7 +1,13 @@
 // src/components/SecondSection.jsx
 import React from "react";
 
-const SecondSection = ({ title, description, cards = [] ,bgClass = "bg-white" ,colVal="3" }) => {
+const Secondsection = ({
+  title,
+  description,
+  cards = [],
+  bgClass = "bg-white",
+  colVal = "3",
+}) => {
   return (
     <section className={`${bgClass} px-4 md:px-10 lg:px-20 py-16 text-center`}>
       <div className="inline-block relative mx-auto lg:mx-0 mb-10">
@@ -28,7 +34,9 @@ const SecondSection = ({ title, description, cards = [] ,bgClass = "bg-white" ,c
         </div>
       </div>
 
-      <div className={`grid grid-cols-1 lg:grid-cols-${colVal} gap-8 lg:px-30 mt-10`}>
+      <div
+        className={`grid grid-cols-1 lg:grid-cols-${colVal} gap-8 lg:px-30 mt-10`}
+      >
         {cards.map((card, index) => (
           <div
             key={index}
@@ -54,7 +62,7 @@ const SecondSection = ({ title, description, cards = [] ,bgClass = "bg-white" ,c
   );
 };
 
-export default SecondSection;
+export default Secondsection;
 
 
 

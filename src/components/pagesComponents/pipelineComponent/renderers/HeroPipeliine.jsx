@@ -5,20 +5,19 @@ import { API_URL } from "../../../../config/urls";
 import curveImg from "../../../../assets/Curve-main-bg.webp";
 import HeroAnimation from "./HeroAnimation";
 
-
-export default function HeroPiplineSection() {
-  const [pageData, setPageData] = useState({});
-  useEffect(() => {
-    axios
-      .get(API_URL + "pipeline-acceleration")
-      .then((res) => {
-        setPageData(res.data);
-        // console.log(res.data)
-      })
-      .catch((err) => {
-        console.error("Error in browser:", err);
-      });
-  }, []);
+export default function HeroPiplineSection({ pageData }) {
+  // const [pageData, setPageData] = useState({});
+  // useEffect(() => {
+  //   axios
+  //     .get(API_URL + "pipeline-acceleration")
+  //     .then((res) => {
+  //       setPageData(res.data);
+  //       // console.log(res.data)
+  //     })
+  //     .catch((err) => {
+  //       console.error("Error in browser:", err);
+  //     });
+  // }, []);
 
   return (
     <>
@@ -27,13 +26,11 @@ export default function HeroPiplineSection() {
         style={{ backgroundImage: `url(${curveImg.src})` }}
       >
         <div class="flex flex-col justify-center gap-4 py-8 px-4 lg:px-15 lg:py-10">
-          <h1 class="text-[#FF5F55] font-semibold text-[18px] lg:text-[20px]">
-            {pageData.title}
-          </h1>
+          <h1 class="text-[#FF5F55] font-semibold text-[18px] lg:text-[20px]"></h1>
 
           <div class="inline-block relative mx-auto lg:mx-0">
             <h1 class="text-[45px] md:text-[48px] lg:text-[50px] font-semibold relative z-10">
-              Turn MQLs into SQLs Faster and Drive More Revenue
+              {pageData.title}
             </h1>
             <svg
               class="absolute left-1/2 -translate-x-1/2 lg:left-30 lg:translate-x-0 bottom-20 z-0"
@@ -53,12 +50,17 @@ export default function HeroPiplineSection() {
           </div>
 
           <p class="text-[16px] font-[500] text-[#616670] leading-6">
-            {pageData.content}
+            {pageData.paragraphs?.[0]}
           </p>
         </div>
 
         <div class="flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0 ">
-          <HeroAnimation image={pageData.image} client:load />
+          {/* <HeroAnimation image={pageData.image} client:load /> */}
+          <img
+            src={pageData.images?.[0]?.src}
+            alt="image"
+            class="w-[500px] md:mx-auto lg:mx-0"
+          />
         </div>
       </div>
     </>
