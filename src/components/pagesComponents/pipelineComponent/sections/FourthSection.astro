@@ -1,15 +1,33 @@
 ---
+import { API_URL } from "../../../../config/urls";
+import FeatureSection from "../../../common/FeatureSection.jsx";
+
+// Static or dynamic slug
+const slug = "280"; 
+
+const res = await fetch(`${API_URL}blocks/${slug}`);
+const data = await res.json();
+const pageData = data[3];
+
+
 ---
 
-<!-- Fourth Section -->
+<FeatureSection pageData={pageData} />
 
+
+
+
+
+
+
+<!-- 
 <section class="bg-[#FFFFFF] px-4 md:px-10 lg:px-20 py-16 space-y-4 text-center">
     <div class="inline-block relative mx-auto lg:mx-0 mb-20">
         <div class="relative inline-block">
           <h1 class="text-[45px] md:text-[48px] lg:text-[45px] font-semibold relative z-10 leading-tight text-center lg:text-left">
              1. Hyper-Targeted Lead Generation
           </h1>
-          <!-- SVG exactly below the heading text -->
+     
           <svg
             class="absolute left-1/2 -translate-x-1/2 bottom-[-10px] lg:left-[180px] lg:translate-x-0 z-0"
             width="270"
@@ -70,4 +88,4 @@
         </div>
         
     </div>
-</section>
+</section> -->
