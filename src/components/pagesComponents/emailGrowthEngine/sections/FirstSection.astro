@@ -1,10 +1,11 @@
 ---
 import { API_URL } from "../../../../config/urls";
-import HeroPiplineSection from "../renderers/HeroPipeliine";
+import HeroSection from "../../../common/HeroSection";
 
-const res = await fetch(API_URL + 'pipeline-acceleration');
+const res = await fetch(API_URL + 'blocks/183');
 const pageData = await res.json();
 ---
 <!-- First Section -->
-<HeroPiplineSection pageData={pageData} client:load />
+<!-- <HeroPiplineSection pageData={pageData} client:load /> -->
+<HeroSection pageData={pageData[0]} />
 

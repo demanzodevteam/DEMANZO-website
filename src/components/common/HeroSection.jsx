@@ -1,20 +1,14 @@
 // src/components/HeroLogger.tsx
 import curveImg from "../../assets/Curve-main-bg.webp";
+import { useEffect } from "react";
 import HeroAnimation from "../pagesComponents/pipelineComponent/renderers/HeroAnimation";
+import { MEDIA_URL } from "../../config/urls";
 
 export default function HeroSection({ pageData }) {
   // const [pageData, setPageData] = useState({});
-  // useEffect(() => {
-  //   axios
-  //     .get(API_URL + "pipeline-acceleration")
-  //     .then((res) => {
-  //       setPageData(res.data);
-  //       // console.log(res.data)
-  //     })
-  //     .catch((err) => {
-  //       console.error("Error in browser:", err);
-  //     });
-  // }, []);
+  useEffect(() => {
+    console.log(pageData)
+  }, []);
 
   return (
     <>
@@ -29,7 +23,7 @@ export default function HeroSection({ pageData }) {
 
           <div class="inline-block relative mx-auto lg:mx-0 ">
             <h1 class="text-[45px] md:text-[48px] lg:text-[50px] font-semibold relative z-10">
-              {pageData.headings}
+              {pageData.headings[0]}
             </h1>
             <svg
               class="absolute left-1/2 -translate-x-1/2 lg:left-30 lg:translate-x-0 bottom-20 z-0"
@@ -47,17 +41,18 @@ export default function HeroSection({ pageData }) {
               />
             </svg>
           </div>
-
-          <p class="text-[16px] font-[500] text-[#616670] leading-6">
-            {pageData.paragraphs?.[0]}
+        {pageData?.paragraphs?.map((para, index) => (
+          <p key={index} class="text-[16px] font-[500] text-[#616670] leading-6">
+            {para}
           </p>
+        ))}
         </div>
 
         <div class="flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0 ">
           {/* <HeroAnimation image={pageData.image} client:load /> */}
           <img
-            src={pageData.images?.[0]?.src}
-            alt="image"
+            src={MEDIA_URL+pageData.images?.[0]?.src}
+            alt={pageData.images?.[0]?.alt}
             class="w-[500px] md:mx-auto lg:mx-0"
           />
         </div>

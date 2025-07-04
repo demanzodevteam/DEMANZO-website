@@ -406,7 +406,7 @@ function parse_content_blocks($post_id) {
     foreach ($dom->getElementsByTagName('section') as $section) {
         $block = [];
 
-        $h1 = $section->getElementsByTagName('h1')->item(0);
+        $h1 = $section->getElementsByTagName('title')->item(0);
         if ($h1) {
             $block['title'] = $h1->textContent;
         }
