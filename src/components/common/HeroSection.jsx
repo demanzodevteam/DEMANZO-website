@@ -23,11 +23,13 @@ export default function HeroSection({ pageData }) {
         style={{ backgroundImage: `url(${curveImg.src})` }}
       >
         <div class="flex flex-col justify-center gap-4 py-8 px-4 lg:px-15 lg:py-10">
-          <h1 class="text-[#FF5F55] font-semibold text-[18px] lg:text-[20px]"></h1>
+          <h1 class="text-[#FF5F55] font-semibold text-[18px] lg:text-[20px]">
+            {pageData.title}
+          </h1>
 
-          <div class="inline-block relative mx-auto lg:mx-0">
+          <div class="inline-block relative mx-auto lg:mx-0 ">
             <h1 class="text-[45px] md:text-[48px] lg:text-[50px] font-semibold relative z-10">
-              {pageData.title}
+              {pageData.headings}
             </h1>
             <svg
               class="absolute left-1/2 -translate-x-1/2 lg:left-30 lg:translate-x-0 bottom-20 z-0"
