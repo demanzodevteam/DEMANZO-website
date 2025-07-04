@@ -1,11 +1,8 @@
 // src/components/HeroLogger.tsx
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { API_URL } from "../../../../config/urls";
-import curveImg from "../../../../assets/Curve-main-bg.webp";
-import HeroAnimation from "./HeroAnimation";
+import curveImg from "../../assets/Curve-main-bg.webp";
+import HeroAnimation from "../pagesComponents/pipelineComponent/renderers/HeroAnimation";
 
-export default function HeroPiplineSection({ pageData }) {
+export default function HeroSection({ pageData }) {
   // const [pageData, setPageData] = useState({});
   // useEffect(() => {
   //   axios

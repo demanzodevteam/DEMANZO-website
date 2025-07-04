@@ -1,5 +1,9 @@
 ---
+import { API_URL } from "../../../../config/urls";
 import Secondsection from '../renderers/SecondSection';
+
+const res = await fetch(API_URL + 'blocks/280');
+const data = await res.json();
 
 const cards = [
   {

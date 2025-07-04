@@ -1,82 +1,21 @@
 ---
-import CaptchaImg from '../../../../assets/Captcha.png'
-import BackGroundImg from '../../../../assets/Background-SEO-Traffic.jpg'
-import rocketImg from '../../../../assets/rocket.png'
-import skyImg from '../../../../assets/sky2.png'
+import cs1 from '../../../../assets/cs1.webp'
+
 ---
 <!-- Tenth Section -->
-<div
-  class="flex items-center justify-center px-4 py-16 bg-cover bg-center"
-  style={`background-image: url(${BackGroundImg.src})`}
->
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-7xl w-full overflow-hidden p-8 lg:p-14">
-
-    <!-- Left Side -->
-    <div class="flex flex-col items-center justify-center text-center gap-6 px-4">
-      <img src={rocketImg.src} alt="" class="hover:-translate-y-4 transition-all duration-500" />
-      <h2 class="text-3xl lg:text-4xl font-bold text-[#ffffff]">Accelerate Your IT Sales Today</h2>
-      <p class="text-[#979ba3] leading-8">
-        The faster your leads convert, the quicker your revenue grows. Let’s build a high-performance sales pipeline that keeps your IT business ahead of the competition.
-      </p>
-      <p class="mt-4 text-[#979ba3]">Schedule a Free Strategy Call Today</p>
-      <img src={skyImg.src} alt="" class="hover:-translate-y-4 transition-all duration-500 mt-6" />
+<div class="py-20 px-4 lg:px-8 bg-gradient-to-b from-[#f8f8f8] to-white">
+    <p class="text-center text-[30px] lg:text-[40px] font-[600] text-[#191d27] pt-10">Case Studies</p>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 lg:px-8 py-10">
+    <div class="w-full rounded h-[380px] relative hover:scale-105 transition-all duration-500 group">
+        <div class="absolute inset-0 bg-black/40 group-hover:bg-gradient-to-r from-[#ff9966]/40 to-[#ff5e62]/40 z-10 rounded"></div>
+        <p class="absolute text-[20px] font-[600] text-white bottom-8 px-10 z-20">Transforming Sales and Expanding Horizons</p>
+        <img class="w-full h-full rounded object-cover" src={cs1.src}/>
     </div>
-
-    <!-- Right Side - Form -->
-    <div class="bg-white rounded-2xl shadow-lg p-6 lg:p-10">
-      <form class="space-y-6">
-        <!-- Name & Email -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <input type="text" placeholder="Your Name" required
-            class="border border-[#e7e7e7] hover:border-black focus:border-black focus:outline-none px-4 py-3 text-[16px] text-[#050607]" />
-          <input type="email" placeholder="Your Email" required
-            class="border border-[#e7e7e7] hover:border-black focus:border-black focus:outline-none px-4 py-3 text-[16px] text-[#050607]" />
-        </div>
-
-        <!-- Number & Website -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <input type="number" placeholder="Your Number" required
-            class="border border-[#e7e7e7] hover:border-black focus:border-black focus:outline-none px-4 py-3 text-[16px] text-[#050607]" />
-          <input type="url" placeholder="Your Website" required
-            class="border border-[#e7e7e7] hover:border-black focus:border-black focus:outline-none px-4 py-3 text-[16px] text-[#050607]" />
-        </div>
-
-        <!-- Dropdown -->
-        <div>
-          <label for="messageType" class="block mb-1 text-[#050607] text-[16px]">Reason To Contact</label>
-          <select
-            id="messageType"
-            class="w-full border border-[#e7e7e7] hover:border-black focus:border-black focus:outline-none px-4 py-3 text-[16px] text-[#050607]"
-          >
-            <option value="" disabled selected>I'm interested in</option>
-            <option value="inquiry">Digital Marketing</option>
-            <option value="support">Social Media Management</option>
-            <option value="feedback">Website Development</option>
-            <option value="design">Graphic Design</option>
-            <option value="white-label">White Label Digital Marketing</option>
-          </select>
-        </div>
-
-        <!-- Message -->
-        <textarea rows="4" placeholder="Your Message"
-          class="w-full border border-[#e7e7e7] hover:border-black focus:border-black focus:outline-none px-4 py-3 text-[16px] text-[#050607] resize-none"></textarea>
-
-        <!-- Extra Text Input -->
-        <input type="text" placeholder="Anything else?"
-          class="w-full border border-[#e7e7e7] hover:border-black focus:border-black focus:outline-none px-4 py-3 text-[16px] text-[#050607]" />
-
-        <!-- Buttons -->
-        <div class="flex flex-col items-center gap-4">
-          <button
-            type="submit"
-            class="w-full lg:w-auto text-white bg-blue-600 px-6 py-3 rounded-full hover:bg-[#f5a31c] transition"
-          >
-            Request a demo
-          </button>
-
-        </div>
-      </form>
-    </div>
-  </div>
+    
 </div>
-
+<div class="flex justify-center">
+    <a href="#" class="bg-[#0a6aad] text-white rounded-full px-8 py-3 text-[17px] font-[400] cursor-pointer">
+        View All
+    </a>
+</div>
+</div>
