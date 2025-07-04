@@ -1,14 +1,11 @@
 // src/components/SecondSection.jsx
 import React, { useEffect } from "react";
 
-const WhyYouNeedSection = ({ SectionData,colVal }) => {
+const WhyYouNeedSection = ({ SectionData, colVal }) => {
 
-    useEffect(()=>{
-        console.log(colVal)
-    },[])
   return (
     <section className={` px-4 md:px-10 lg:px-[var(--demanzo-section-spacing)] py-[var(--demanzo-section-spacing)] text-center`}>
-       <div className="inline-block relative mx-auto lg:mx-0 mb-10">
+      <div className="inline-block relative mx-auto lg:mx-0 mb-10">
         <div className="relative inline-block">
           <h1 className="text-[45px] md:text-[48px] lg:text-[45px] font-semibold relative z-10 leading-tight text-center lg:text-center">{SectionData.headings[0]} </h1>
           <svg
@@ -27,11 +24,11 @@ const WhyYouNeedSection = ({ SectionData,colVal }) => {
             />
           </svg>
           <h1 className="text-[45px] md:text-[48px] lg:text-[45px] font-semibold relative z-10 leading-tight text-center lg:text-center">{SectionData.headings[1]} </h1>
-         
-          
+
+
         </div>
       </div>
- <p className="mt-12 text-gray-600 font-medium max-w-7xl mx-auto text-[16px] leading-relaxed">
+      <p className="mt-12 text-gray-600 font-medium max-w-7xl mx-auto text-[16px] leading-relaxed">
         {SectionData.paragraphs[0]}
       </p>
       <div className={`grid grid-cols-1 lg:grid-cols-${colVal[2].value} gap-8 lg:px-30 mt-10`}>
@@ -41,12 +38,12 @@ const WhyYouNeedSection = ({ SectionData,colVal }) => {
             className="bg-white shadow-md rounded-xl p-6 flex flex-col items-center space-y-4 hover:shadow-lg transition"
           >
             <div
-      className="w-14 h-14"
-      dangerouslySetInnerHTML={{ __html: card.svgs }}
-    />
+              className="w-14 h-14"
+              dangerouslySetInnerHTML={{ __html: card.svg }}
+            />
             <p
               className="text-gray-600 font-medium"
-              dangerouslySetInnerHTML={{ __html: card.spans }}
+              dangerouslySetInnerHTML={{ __html: card.para }}
             />
             <hr className="w-full border-gray-200 mt-4" />
           </div>

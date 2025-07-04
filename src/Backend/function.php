@@ -442,24 +442,33 @@ function parse_content_blocks($post_id) {
 }
 $block['images'] = array_values($images); // ensure index
 
- // Extract list items with span and svg
-     $list_items = [];
+ // ✅ Extract list items with span and svg
+$list_items = [];
 
 foreach ($section->getElementsByTagName('ul') as $ul) {
     $ul_items = [];
 
     foreach ($ul->getElementsByTagName('li') as $li) {
         $text = '';
-        $svg  = '';
+        $svg = '';
+        $heading = '';
 
         // Get <span> inside <li>
         $spanElement = $li->getElementsByTagName('span')->item(0);
 
         if ($spanElement) {
-            // Get <p> inside <span>
-            $pElement = $spanElement->getElementsByTagName('p')->item(0);
-            if ($pElement) {
-                $text = trim($pElement->textContent);
+            // Prefer <h2> if present
+            $h2Element = $spanElement->getElementsByTagName('h2')->item(0);
+            if ($h2Element) {
+                $heading = trim($h2Element->textContent);
+            }
+
+            // Fallback to <p> if <h2> not found
+            if (!$heading) {
+                $pElement = $spanElement->getElementsByTagName('p')->item(0);
+                if ($pElement) {
+                    $text = trim($pElement->textContent);
+                }
             }
         }
 
@@ -469,10 +478,11 @@ foreach ($section->getElementsByTagName('ul') as $ul) {
             $svg = $dom->saveHTML($svgElement);
         }
 
-        if ($text || $svg) {
+        if ($heading || $text || $svg) {
             $ul_items[] = [
-                'text' => $text,
-                'svg'  => $svg
+                'heading' => $heading ,
+                'svg'     => $svg,
+                'para'    => $text,
             ];
         }
     }
@@ -484,6 +494,61 @@ foreach ($section->getElementsByTagName('ul') as $ul) {
 
 $block['list_items'] = $list_items;
 
+
+
+// to fetch datas from div 
+
+ $card_details = [];
+
+foreach ($section->getElementsByTagName('div') as $div) {
+    foreach ($div->getElementsByTagName('span') as $span) {
+        $h2 = '';
+        $svg = '';
+        $paras = [];
+
+        // Get <h2>
+        $h2Element = $span->getElementsByTagName('h2')->item(0);
+        if ($h2Element) {
+            $h2 = trim($h2Element->textContent);
+        }
+
+        // Get <svg>
+        $svgElement = $span->getElementsByTagName('svg')->item(0);
+        if ($svgElement) {
+            $svg = $dom->saveHTML($svgElement);
+        }
+
+        // Get <p> tags
+        $pElements = $span->getElementsByTagName('p');
+        foreach ($pElements as $p) {
+            $paras[] = trim($p->textContent);
+        }
+
+        // Get all <li> items inside any <ul>
+        foreach ($span->getElementsByTagName('ul') as $ul) {
+            foreach ($ul->getElementsByTagName('li') as $li) {
+                $list_items[] = trim($li->textContent);
+            }
+        }
+        // Optional: Get <ul> if you need it
+
+        // $ulElement = $span->getElementsByTagName('ul')->item(0);
+        // $ulHTML = $ulElement ? $dom->saveHTML($ulElement) : '';
+
+        if ($h2 || $svg || !empty($paras)) {
+            $card_details[] = [
+                'heading' => $h2,
+                'svg'     => $svg,
+                'para'    => $paras, 
+                'list'    => $list_items
+                // You can implode if you want a single string
+                // 'list' => $ulHTML,
+            ];
+        }
+    }
+}
+
+$block['card_details'] = $card_details;
 
         $blocks[] = $block;
     }

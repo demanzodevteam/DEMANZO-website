@@ -6,9 +6,7 @@ import { MEDIA_URL } from "../../config/urls";
 
 export default function HeroSection({ pageData }) {
   // const [pageData, setPageData] = useState({});
-  useEffect(() => {
-    console.log(pageData)
-  }, []);
+
 
   return (
     <>
