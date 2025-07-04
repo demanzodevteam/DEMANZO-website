@@ -442,15 +442,39 @@ function parse_content_blocks($post_id) {
 }
 $block['images'] = array_values($images); // ensure index
 
-        // $img = $section->getElementsByTagName('img')->item(0);
-        // if ($img) {
-        //     $block['image'] = [
-        //         'src' => $img->getAttribute('src'),
-        //         'alt' => $img->getAttribute('alt'),
-        //         'width' => $img->getAttribute('width'),
-        //         'height' => $img->getAttribute('height')
-        //     ];
-        // }
+ // ✅ Extract list items with span and svg
+       $list_items = [];
+foreach ($section->getElementsByTagName('ul') as $ul) {
+    $ul_items = [];
+
+    foreach ($ul->getElementsByTagName('li') as $li) {
+        $span = '';
+        $svg  = '';
+
+        $spanElement = $li->getElementsByTagName('span')->item(0);
+        if ($spanElement) {
+            $span = trim($spanElement->textContent);
+        }
+
+        $svgElement = $li->getElementsByTagName('svg')->item(0);
+        if ($svgElement) {
+            $svg = $dom->saveHTML($svgElement);
+        }
+
+        if ($span || $svg) {
+            $ul_items[] = [
+                'spans' => $span,
+                'svgs'  => $svg
+            ];
+        }
+    }
+
+    if (!empty($ul_items)) {
+        $list_items[] = $ul_items;
+    }
+}
+$block['list_items'] = $list_items;
+
 
         $blocks[] = $block;
     }

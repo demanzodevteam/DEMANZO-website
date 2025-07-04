@@ -55,21 +55,22 @@ body {
 
 :root {
   /* custom variyables */
-
---demanzo-header-menu-text: ;
---demanzo-h1 : ;
---demanzo-h2: ;
---demanzo-card-headings: ;
---demanzo-accordion-heading: ;
---demanzo-accordion-para: ;
---demanzo-faded-text: ;
---demanzo-date-text: ;
---demanzo-line-height: ;
---demanzo-footer-text: ;
---demanzo-footer-headings: ;
---demanzo-button: ;
---demanzo-button-text: ;
---demanzo-paragraphs: ;
+  
+--demanzo-header-menu-text: #1f2937;           /* dark gray */
+  --demanzo-section-spacing: 0.5rem;             /* spacing utility */
+  --demanzo-h1: 2.25rem;                          /* text-4xl */
+  --demanzo-h2: 1.875rem;                         /* text-3xl */
+  --demanzo-card-headings: #111827;              /* dark text */
+  --demanzo-accordion-heading: #1f2937;
+  --demanzo-accordion-para: #6b7280;             /* gray-500 */
+  --demanzo-faded-text: #9ca3af;                 /* gray-400 */
+  --demanzo-date-text: #6b7280;
+  --demanzo-line-height: 1.6;                    /* normal line-height */
+  --demanzo-footer-text: #9ca3af;
+  --demanzo-footer-headings: #f9fafb;            /* almost white */
+  --demanzo-button: #2563eb;                     /* blue-600 */
+  --demanzo-button-text: #ffffff;
+  --demanzo-paragraphs: #374151;                 /* gray-700 */
 
 
   /* ------------------ */
