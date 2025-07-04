@@ -442,29 +442,37 @@ function parse_content_blocks($post_id) {
 }
 $block['images'] = array_values($images); // ensure index
 
- // ✅ Extract list items with span and svg
-       $list_items = [];
+ // Extract list items with span and svg
+     $list_items = [];
+
 foreach ($section->getElementsByTagName('ul') as $ul) {
     $ul_items = [];
 
     foreach ($ul->getElementsByTagName('li') as $li) {
-        $span = '';
+        $text = '';
         $svg  = '';
 
+        // Get <span> inside <li>
         $spanElement = $li->getElementsByTagName('span')->item(0);
+
         if ($spanElement) {
-            $span = trim($spanElement->textContent);
+            // Get <p> inside <span>
+            $pElement = $spanElement->getElementsByTagName('p')->item(0);
+            if ($pElement) {
+                $text = trim($pElement->textContent);
+            }
         }
 
+        // Optional: Get <svg> if present
         $svgElement = $li->getElementsByTagName('svg')->item(0);
         if ($svgElement) {
             $svg = $dom->saveHTML($svgElement);
         }
 
-        if ($span || $svg) {
+        if ($text || $svg) {
             $ul_items[] = [
-                'spans' => $span,
-                'svgs'  => $svg
+                'text' => $text,
+                'svg'  => $svg
             ];
         }
     }
@@ -473,6 +481,7 @@ foreach ($section->getElementsByTagName('ul') as $ul) {
         $list_items[] = $ul_items;
     }
 }
+
 $block['list_items'] = $list_items;
 
 
