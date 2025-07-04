@@ -1,12 +1,10 @@
 // src/components/SecondSection.jsx
 import React, { useEffect } from "react";
 
-const WhyYouNeedSection = ({ SectionData }) => {
-
-  const [colVal,setColVal] = '3';
+const WhyYouNeedSection = ({ SectionData,colVal }) => {
 
     useEffect(()=>{
-        console.log(SectionData)
+        console.log(colVal)
     },[])
   return (
     <section className={` px-4 md:px-10 lg:px-[var(--demanzo-section-spacing)] py-[var(--demanzo-section-spacing)] text-center`}>
@@ -36,7 +34,7 @@ const WhyYouNeedSection = ({ SectionData }) => {
  <p className="mt-12 text-gray-600 font-medium max-w-7xl mx-auto text-[16px] leading-relaxed">
         {SectionData.paragraphs[0]}
       </p>
-      <div className={`grid grid-cols-1 lg:grid-cols-${colVal} gap-8 lg:px-30 mt-10`}>
+      <div className={`grid grid-cols-1 lg:grid-cols-${colVal[2].value} gap-8 lg:px-30 mt-10`}>
         {SectionData?.list_items[0]?.map((card, index) => (
           <div
             key={index}

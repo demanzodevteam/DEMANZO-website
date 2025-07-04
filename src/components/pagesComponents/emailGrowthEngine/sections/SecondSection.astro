@@ -5,9 +5,13 @@ import WhyYouNeedSection from '../../../common/WhatMattersForItCompanies';
 
 const res = await fetch(API_URL + 'blocks/183');
 const SectionData = await res.json();
-
+const colVal = [
+  { value: 1 },
+  { value: 2 },
+  { value: 3 }
+];
 ---
 
 <!-------- Second Section ------->
-<WhyYouNeedSection SectionData={SectionData[1]} />
+<WhyYouNeedSection SectionData={SectionData[1]} colVal={colVal} client:load/>
 
