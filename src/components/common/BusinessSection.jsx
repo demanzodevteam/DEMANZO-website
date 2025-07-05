@@ -58,10 +58,10 @@ const BusinessSection = ({ SectionData ,Background}) => {
                     {list.heading}
                   </h2>
                 </div>
-                <p className="text-start text-[#616670] px-4">
+                <p className="text-start text-[#616670] px-4 mt-3 font-semibold">
                   {list.para}
                 </p>
-                {/* <hr className="border-t border-[#E0E0E0] w-full mb-6" /> */}
+                {/* <hr className="border-t border-[#E0E0E0] w-full mb-6 mt-3" /> */}
               </div>
             ))}
           </div>

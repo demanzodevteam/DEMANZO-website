@@ -1,0 +1,17 @@
+---
+import ApiImg from "../../../../assets/API-Run-Time.webp";
+import { API_URL } from "../../../../config/urls";
+import BusinessSection from "../../../common/BusinessSection";
+
+
+const res = await fetch(API_URL + 'blocks/280');
+const SectionData = await res.json();
+const colVal = [
+  { value: 1 },
+  { value: 2 },
+  { value: 3 }
+];
+---
+<!-- Seventh Section -->
+
+<BusinessSection SectionData={SectionData[6]} Background={'#ffffff'} client:load/>

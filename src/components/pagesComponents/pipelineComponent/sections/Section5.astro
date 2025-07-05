@@ -1,14 +1,30 @@
 ---
-import meetingImg from "../../../../assets/API-Run-Time.webp";
+import ApiImg from "../../../../assets/API-Run-Time.webp";
+import { API_URL } from "../../../../config/urls";
+import BusinessSection from "../../../common/BusinessSection";
+
+
+const res = await fetch(API_URL + 'blocks/280');
+const SectionData = await res.json();
+const colVal = [
+  { value: 1 },
+  { value: 2 },
+  { value: 3 }
+];
 ---
-<!-- Seventh Section -->
+<!-- Fifth Section -->
+
+<BusinessSection SectionData={SectionData[4]} Background={'#ffffff'} client:load/>
+
+<!-- Fifth Section -->
+<!-- 
 <section class="bg-[#FFFFFF] px-4 md:px-10 lg:px-20 py-16 space-y-4 text-center">
     <div class="inline-block relative mx-auto lg:mx-0 mb-20">
             <div class="relative inline-block">
               <h1 class="text-[45px] md:text-[48px] lg:text-[45px] font-semibold relative z-10 leading-tight text-center lg:text-left">
                 2. Lead Qualification & Nurturing
               </h1>
-              <!-- SVG exactly below the heading text -->
+               
               <svg
                 class="absolute left-1/2 -translate-x-1/2 bottom-[-10px] lg:left-[180px] lg:translate-x-0 z-0"
                 width="270"
@@ -73,4 +89,4 @@ import meetingImg from "../../../../assets/API-Run-Time.webp";
                 </div>
             </div>
     </div>
-</section>
+</section> -->
