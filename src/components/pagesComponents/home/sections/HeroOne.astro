@@ -27,6 +27,6 @@ const pageData = await res.json();
 <!-- ---------------------- section 1 ------------------- -->
 
 <div class="bg-[#e6f8ff] grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] px-2 lg:px-14">
-    <HeroSection pageData={pageData}/>
+    <HeroSection pageData={pageData} client:load/>
     <HeroAnimation client:load />
 </div>
