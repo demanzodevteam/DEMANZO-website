@@ -5,7 +5,7 @@ const ServicesWeOffer = ({ SectionData, colVal }) => {
 
     return (
         <section className={` px-4 md:px-10 lg:px-[var(--demanzo-section-spacing)] py-[var(--demanzo-section-spacing)] text-center`}>
-            <div className="inline-block relative mx-auto lg:mx-0 mb-10">
+            <div className="inline-block relative mx-auto lg:mx-0 ">
                 <div className="relative inline-block">
                     <h1 className="text-[45px] md:text-[48px] lg:text-[45px] font-semibold relative z-10 leading-tight text-center lg:text-center">{SectionData.headings[0]} </h1>
                     <svg
@@ -37,7 +37,7 @@ const ServicesWeOffer = ({ SectionData, colVal }) => {
                         key={index}
                         className="bg-white shadow-md rounded-xl p-6 flex flex-col items-center space-y-4 hover:shadow-lg transition"
                     >
-                        <div className="flex pb-2">
+                        <div className="flex pb-2 justify-center items-center text-gray-700">
                             <div
                                 className="w-14 h-14"
                                 dangerouslySetInnerHTML={{ __html: card.svg }}
