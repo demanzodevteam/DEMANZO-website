@@ -1,0 +1,64 @@
+---
+import { API_URL } from "../../../../config/urls";
+import TrustCaurocel from "../../../pagesComponents/home/renderers/TrustCaurocel";
+
+
+const res = await fetch(API_URL + 'category/4');
+const category = await res.json();
+---
+
+
+<!-- ------------------------section 9 -------------------- -->
+
+<div class="py-6 lg:py-12 px-4">
+   
+    <TrustCaurocel category={category} client:visible/>
+</div>
+
+<style>
+.card-wrapper {
+  position: relative;
+  width: 200px;
+  height: 40px;
+  overflow: hidden;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Initial Positions */
+.card-front {
+  z-index: 2;
+  transform: translateY(0%);
+}
+
+.card-back {
+  z-index: 1;
+  transform: translateY(-100%);
+}
+
+/* On hover: move front down, back into place */
+.card-wrapper:hover .card-front {
+  transform: translateY(100%);
+}
+
+.card-wrapper:hover .card-back {
+  transform: translateY(0%);
+}
+
+
+
+</style>

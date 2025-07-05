@@ -1,0 +1,11 @@
+---
+import meetingImg from '../../../../assets/meeting-2.webp';
+import { API_URL } from '../../../../config/urls';
+import WhyMarketing from '../../../common/WhyMarketing';
+
+const res = await fetch(API_URL + 'blocks/457');
+const pageData = await res.json();
+---
+
+<!-- Second Section -->
+<WhyMarketing pageData ={pageData[1] }/>

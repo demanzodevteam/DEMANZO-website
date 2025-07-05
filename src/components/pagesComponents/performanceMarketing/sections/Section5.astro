@@ -1,0 +1,10 @@
+---
+import { API_URL } from "../../../../config/urls";
+import SalesContactSection from "../../../common/SalesContactSection";
+
+
+const res = await fetch(API_URL + 'blocks/457');
+const pageData = await res.json();
+---
+
+<SalesContactSection  SectionData={pageData[4]} client:load/>

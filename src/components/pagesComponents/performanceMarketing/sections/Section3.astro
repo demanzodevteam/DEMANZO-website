@@ -1,0 +1,22 @@
+---
+import { API_URL } from '../../../../config/urls';
+import DetailedListing from '../../../common/DetailedListing.jsx';
+
+const res = await fetch(API_URL + 'blocks/457');
+const pageData = await res.json();
+
+const background = 'bg-[#FFFFF]';
+const colVal = [
+  { value: 1 },
+  { value: 2 },
+  { value: 3 }
+];
+const combinedData = {
+    ...pageData[2],
+    background,colVal
+  };
+---
+<!------ Third Section ------>
+
+<DetailedListing pageData={combinedData}  />
+

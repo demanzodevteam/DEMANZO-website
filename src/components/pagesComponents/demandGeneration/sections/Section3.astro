@@ -1,0 +1,16 @@
+---
+import { API_URL } from '../../../../config/urls';
+import FeatureSteps from '../../../common/FeatureSteps.jsx';
+
+const res = await fetch(API_URL + 'blocks/499');
+const data = await res.json();
+const background = 'from-white to-[#FEF2F2]';
+
+const pageData = data[2];
+---
+
+<!-- Third Section -->
+
+  
+<FeatureSteps pageData={pageData} background={background} client:load />
+          
