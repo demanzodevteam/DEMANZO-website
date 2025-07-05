@@ -3,8 +3,8 @@ import { API_URL } from "../../../../config/urls";
 import SalesContactSection from "../../../common/SalesContactSection";
 
 
-const res = await fetch(API_URL + 'blocks/183');
+const res = await fetch(API_URL + 'blocks/510');
 const pageData = await res.json();
 ---
 
-<SalesContactSection  SectionData={pageData[5]} client:load/>
+<SalesContactSection  SectionData={pageData[3]} client:load/>
