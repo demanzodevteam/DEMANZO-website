@@ -1,0 +1,11 @@
+---
+import Accordian from "../../../common/Accordian"
+import { API_URL } from "../../../../config/urls";
+
+const res = await fetch(API_URL + 'blocks/314');
+const data = await res.json();
+
+const pageData = data[5];
+---
+
+<Accordian category={pageData}/>

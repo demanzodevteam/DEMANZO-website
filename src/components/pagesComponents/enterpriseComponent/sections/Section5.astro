@@ -1,0 +1,69 @@
+---
+import ComparisonTableSection from "../renderers/ComparisonTableSection.jsx";
+
+// You can fetch from an API here instead if needed
+const title = "Enterprise SEO Comparison";
+const subtitle = "What's the Difference?";
+const footerText = "Want the Enterprise SEO advantage? Let's make it happen!";
+
+const tableHeadings = ["Feature", "Traditional SEO", "Enterprise SEO"];
+const tableData = [
+  ["Keyword Targeting", "Broad & general", "Niche, high-intent, competitive"],
+  ["Content Strategy", "Basic blogs", "AI-powered, pillar clusters, technical content"],
+  ["Link Building", "Generic backlinks", "High-authority industry links & digital PR"],
+  ["Technical SEO", "Basic fixes", "Advanced site performance, structured data, schema markup"],
+  ["Analytics & Optimization", "Manual updates", "AI-driven real-time tracking & testing"],
+];
+---
+
+<ComparisonTableSection
+  title={title}
+  subtitle={subtitle}
+  footerText={footerText}
+  tableHeadings={tableHeadings}
+  tableData={tableData}
+/>
+
+
+
+
+<!-- 
+<div class="overflow-x-auto">
+    <table class="min-w-full table-auto border border-gray-300 text-left text-sm text-gray-700">
+      <thead class="bg-gray-100 text-gray-900 uppercase">
+        <tr>
+          <th class="border border-gray-300 px-4 py-3">Feature</th>
+          <th class="border border-gray-300 px-4 py-3">Traditional SEO</th>
+          <th class="border border-gray-300 px-4 py-3">Enterprise SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="hover:bg-gray-50">
+          <td class="border border-gray-300 px-4 py-3 font-medium">Keyword Targeting</td>
+          <td class="border border-gray-300 px-4 py-3">Broad & general</td>
+          <td class="border border-gray-300 px-4 py-3">Niche, high-intent, competitive</td>
+        </tr>
+        <tr class="hover:bg-gray-50">
+          <td class="border border-gray-300 px-4 py-3 font-medium">Content Strategy</td>
+          <td class="border border-gray-300 px-4 py-3">Basic blogs</td>
+          <td class="border border-gray-300 px-4 py-3">AI-powered, pillar clusters, technical content</td>
+        </tr>
+        <tr class="hover:bg-gray-50">
+          <td class="border border-gray-300 px-4 py-3 font-medium">Link Building</td>
+          <td class="border border-gray-300 px-4 py-3">Generic backlinks</td>
+          <td class="border border-gray-300 px-4 py-3">High-authority industry links & digital PR</td>
+        </tr>
+        <tr class="hover:bg-gray-50">
+          <td class="border border-gray-300 px-4 py-3 font-medium">Technical SEO</td>
+          <td class="border border-gray-300 px-4 py-3">Basic fixes</td>
+          <td class="border border-gray-300 px-4 py-3">Advanced site performance, structured data, schema markup</td>
+        </tr>
+        <tr class="hover:bg-gray-50">
+          <td class="border border-gray-300 px-4 py-3 font-medium">Analytics & Optimization</td>
+          <td class="border border-gray-300 px-4 py-3">Manual updates</td>
+          <td class="border border-gray-300 px-4 py-3">AI-driven real-time tracking & testing</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+   -->
