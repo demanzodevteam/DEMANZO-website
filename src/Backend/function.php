@@ -463,14 +463,14 @@ foreach ($section->getElementsByTagName('ul') as $ul) {
                 $heading = trim($h2Element->textContent);
             }
 
-            // Fallback to <p> if <h2> not found
-            if (!$heading) {
+            // Fallback to <p> 
+            // if (!$heading) {
                 $pElement = $spanElement->getElementsByTagName('p')->item(0);
                 if ($pElement) {
                     $text = trim($pElement->textContent);
                 }
             }
-        }
+        // }
 
         // Optional: Get <svg> if present
         $svgElement = $li->getElementsByTagName('svg')->item(0);
