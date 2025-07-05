@@ -1,0 +1,18 @@
+---
+import { API_URL } from '../../../../config/urls';
+import ServicesWeOffer from '../../../common/ServicesWeOffer';
+
+
+const res = await fetch(API_URL + 'blocks/158');
+const SectionData = await res.json();
+const colVal = [
+  { value: 1 },
+  { value: 2 },
+  { value: 3 }
+];
+
+---
+
+<!-------- Second Section ------->
+<ServicesWeOffer SectionData={SectionData[1]} colVal={colVal} client:load/>
+
