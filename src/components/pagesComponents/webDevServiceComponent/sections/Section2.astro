@@ -1,0 +1,54 @@
+---
+import { API_URL } from "../../../../config/urls";
+
+const res = await fetch(API_URL + 'blocks/188');
+const data = await res.json();
+
+const pageData = data[1];
+const headings = pageData.headings.slice(1);  
+---
+
+    <section class='bg-[#fcfcfc] px-4 md:px-10 lg:px-20 py-16 text-center'>
+      <div class="inline-block relative mx-auto lg:mx-0 mb-10">
+        <div class="relative inline-block">
+          <h1 class="text-[35px] lg:text-[50px] text-[] font-semibold relative z-10 leading-tight text-center lg:text-center">
+            {pageData?.headings[0]}
+        </h1>
+          <svg
+            class="absolute left-1/2 -translate-x-1/2 bottom-[34px] md:bottom-[-8px] md:left-[220px] lg:bottom-[-10px] lg:left-[140px] lg:translate-x-0 z-0"
+            width="270"
+            height="20"
+            viewBox="0 0 270 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5 15C80 5 190 0 265 12"
+              stroke="#7D80E6"
+              stroke-width="6"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+      </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {headings?.map((item: any, index: number) => {
+            const isEven = (index + 1) % 2 === 0;
+
+            return (
+            <div
+                class={`px-[30px] py-[50px] rounded-xl transition duration-300 ${
+                isEven
+                    ? 'bg-white shadow'
+                    : 'bg-transparent hover:bg-white hover:shadow'
+                }`}
+            >
+                    <div class="flex items-center justify-center pb-[15px]" set:html={pageData.list_items[0][index].svg}></div>
+                    <h1 class="text-left text-[20px] font-[600] text-[#191d27] pb-[17px]">{item}</h1>
+                    <p class="text-left text-[16px] font-[500] text-[#616670] pb-[20px]">{pageData.paragraphs[index]}</p>
+            </div>
+            );
+        })}
+        </div>
+    </section>

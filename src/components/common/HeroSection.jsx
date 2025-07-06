@@ -12,7 +12,7 @@ export default function HeroSection({ pageData }) {
     <>
       <div
         class="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] px-2 gap-2 lg:px-14 lg:py-10 bg-no-repeat bg-bottom bg-cover min-h-[80vh]"
-        style={{ backgroundImage: `url(${curveImg.src})` }}
+        style={{ backgroundImage: `url('${curveImg.src}')` }}
       >
         <div class="flex flex-col justify-center gap-4 py-8 px-4 lg:px-15 lg:py-10">
           <h1 class="text-[#FF5F55] font-semibold text-[18px] lg:text-[20px]">
