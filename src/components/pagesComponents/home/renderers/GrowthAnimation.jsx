@@ -1,3 +1,6 @@
+'use client';
+
+
 import { motion, AnimatePresence } from "framer-motion";
 // import { API_URL, BASE_URL } from "../../../../config/urls";
 // import axios from "axios";
