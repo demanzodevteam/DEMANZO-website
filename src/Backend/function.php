@@ -422,13 +422,53 @@ function parse_content_blocks($post_id) {
         $block['headings'] = array_values($headings);
 
 
-        $paragraphs = [];
-        foreach ($section->getElementsByTagName('p') as $p) {
-            if ($p->getElementsByTagName('img')->length == 0) {
-                $paragraphs[] = $p->textContent;
-            }
+        // $paragraphs = [];
+        // foreach ($section->getElementsByTagName('p') as $p) {
+        //     if ($p->getElementsByTagName('img')->length == 0) {
+        //         $paragraphs[] = $p->textContent;
+        //     }
+        // }
+        // $block['paragraphs'] = $paragraphs;
+//         $paragraphs = [];
+// foreach ($section->getElementsByTagName('p') as $p) {
+//     // Exclude <p> tags that are inside a <div>
+//     $isInsideDiv = false;
+//     $parent = $p->parentNode;
+//     while ($parent !== null && $parent !== $section) {
+//         if ($parent->nodeName === 'div') {
+//             $isInsideDiv = true;
+//             break;
+//         }
+//         $parent = $parent->parentNode;
+//     }
+
+//     if (!$isInsideDiv && $p->getElementsByTagName('img')->length == 0) {
+//         $paragraphs[] = trim($p->textContent);
+//     }
+// }
+
+$paragraphs = [];
+foreach ($section->getElementsByTagName('p') as $p) {
+    $exclude = false;
+    $parent = $p->parentNode;
+
+    // Traverse up to see if inside a list
+    while ($parent !== null && $parent !== $section) {
+        if (in_array($parent->nodeName, ['ul', 'li'])) {
+            $exclude = true;
+            break;
         }
-        $block['paragraphs'] = $paragraphs;
+        $parent = $parent->parentNode;
+    }
+
+    if (!$exclude && $p->getElementsByTagName('img')->length === 0) {
+        $paragraphs[] = trim($p->textContent);
+    }
+}
+// $block['paragraphs'] = $paragraphs;
+
+$block['paragraphs'] = $paragraphs;
+
 
         $images = [];
 
@@ -505,7 +545,7 @@ foreach ($section->getElementsByTagName('div') as $div) {
         $h2 = '';
         $svg = '';
         $paras = [];
-
+$list_items = []; 
         // Get <h2>
         $h2Element = $span->getElementsByTagName('h2')->item(0);
         if ($h2Element) {
@@ -520,8 +560,8 @@ foreach ($section->getElementsByTagName('div') as $div) {
 
         // Get <p> tags
         $pElements = $span->getElementsByTagName('p');
-        foreach ($pElements as $p) {
-            $paras[] = trim($p->textContent);
+        foreach ($pElements as $ptag) {
+            $paras[] = trim($ptag->textContent);
         }
 
         // Get all <li> items inside any <ul>
