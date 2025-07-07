@@ -12,7 +12,6 @@ import Breadcrumb from "../components/common/BreadCrumb";
 const res = await fetch(NAV_URLS + "128");
 const navLinks = await res.json();
 const currentPath = Astro.url.pathname;
-const pathname = Astro.url.pathname; // this is how you get the current URL in Astro
 ---
 <PageProgressBar client:visible />
 <Header />
@@ -34,6 +33,6 @@ const pathname = Astro.url.pathname; // this is how you get the current URL in A
 </div>
 
 <slot />
-<Breadcrumb pathname={pathname} client:visible />
+<!-- <Breadcrumb pathname={pathname} client:visible /> -->
 
 <Footer/>
