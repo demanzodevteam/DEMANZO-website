@@ -1,0 +1,13 @@
+---
+import { API_URL } from "../../../../config/urls";
+import WhyShouldDownload from "../../../common/WhyShouldDownload";
+
+const res = await fetch(API_URL + 'blocks/200');
+const pageData = await res.json();
+---
+<!-- console.log(pageData,'pagedata') -->
+
+<!-- First Section -->
+<!-- <HeroPiplineSection pageData={pageData} client:load /> -->
+<WhyShouldDownload pageData={pageData[3]} />
+
