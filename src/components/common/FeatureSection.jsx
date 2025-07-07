@@ -1,12 +1,17 @@
 // src/components/FeatureSection.jsx
-import React from "react";
+import React, { useEffect } from "react";
 import { CircleCheckBig } from "lucide-react";
 
 const FeatureSection = ({ pageData }) => {
   // const { title = "", cards = [] } = pageData || {};
+  useEffect(() => {
+    console.log("FeatureSection - pageData:", pageData);
+  }, [pageData]); // logs every time pageData changes
 
   return (
-    <section className="bg-[#FFFFFF] px-4 md:px-10 lg:px-20 py-16 space-y-4 text-center">
+    <section
+      className={`bg-[${pageData.background}]  px-4 md:px-10 lg:px-20 py-16 space-y-4 text-center`}
+    >
       <div className="inline-block relative mx-auto lg:mx-0 mb-20">
         <div className="relative inline-block">
           <h1 className="text-[45px] md:text-[48px] lg:text-[45px] font-semibold relative z-10 leading-tight text-center lg:text-left">
@@ -38,7 +43,9 @@ const FeatureSection = ({ pageData }) => {
             className="flex flex-col items-start justify-center p-6 bg-white rounded-lg shadow-md space-y-4"
           >
             <div className="flex flex-row items-center justify-center px-3 space-x-2">
-              <div className="text-[#447EFC]"><CircleCheckBig /></div>
+              <div className="text-[#447EFC]">
+                <CircleCheckBig />
+              </div>
               <h2 className="text-[20px] font-semibold mb-2">
                 {card_details.heading}
               </h2>
