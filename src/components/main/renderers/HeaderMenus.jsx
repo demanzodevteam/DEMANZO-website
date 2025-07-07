@@ -76,7 +76,7 @@ const HeaderMenus = ({navLinks,currentPath}) => {
                                                     <div key={subIdx}>
                                                         <a
                                                             href={sub.url}
-                                                            className={`block px-4 py-2 text-[12px] font-[600] ${isSubActive
+                                                            className={`block px-4 p-4 text-[12px] font-[600] ${isSubActive
                                                                 ? "text-[#2d89bf]"
                                                                 : "text-gray-700 hover:text-[#2d89bf]"
                                                                 }`}
@@ -97,7 +97,7 @@ const HeaderMenus = ({navLinks,currentPath}) => {
                         <div className="hidden md:block md:pr-2">
                             <a
                                 href="#"
-                                className="bg-[#2d89bf] hover:bg-[#f5a31c] text-white rounded-full px-4 py-3 text-[15px] block font-[500] text-center transition-transform duration-300 ease-in-out
+                                className="bg-[#2d89bf] hover:bg-[#f5a31c] text-white rounded-full px-4 p-4 text-[15px] block font-[500] text-center transition-transform duration-300 ease-in-out
              hover:scale-105 hover:shadow-[0_0_20px_#f5a31c]"
                             >Build My Growth Engine
                             </a>
