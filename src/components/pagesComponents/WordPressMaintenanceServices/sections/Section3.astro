@@ -2,8 +2,9 @@
 import { API_URL } from '../../../../config/urls';
 import WhyYouNeedSection from '../../../common/WhatMattersForItCompanies';
 
+const slug = "189"; 
 
-const res = await fetch(API_URL + 'blocks/280');
+const res = await fetch(`${API_URL}blocks/${slug}`);
 const SectionData = await res.json();
 const colVal = [
   { value: 1 },
@@ -13,4 +14,4 @@ const colVal = [
 ---
 
 <!-------- Second Section ------->
-<WhyYouNeedSection SectionData={SectionData[1]} colVal={colVal} client:load/>
+<WhyYouNeedSection SectionData={SectionData[2]} colVal={colVal} client:load/>

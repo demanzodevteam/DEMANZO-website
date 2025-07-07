@@ -96,7 +96,7 @@ const HeaderMenus = ({navLinks,currentPath}) => {
                         })}
                         <div className="hidden md:block md:pr-2">
                             <a
-                                href="#"
+                                href="/build-my-growth-engine"
                                 className="bg-[#2d89bf] hover:bg-[#f5a31c] text-white rounded-full px-4 p-4 text-[15px] block font-[500] text-center transition-transform duration-300 ease-in-out
              hover:scale-105 hover:shadow-[0_0_20px_#f5a31c]"
                             >Build My Growth Engine

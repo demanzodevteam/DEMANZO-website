@@ -3,9 +3,11 @@ import meetingImg from '../../../../assets/meeting-2.webp';
 import { API_URL } from '../../../../config/urls';
 import WhyMarketing from '../../../common/WhyMarketing';
 
-const res = await fetch(API_URL + 'blocks/510');
+const slug = "189"; 
+
+const res = await fetch(`${API_URL}blocks/${slug}`);
 const pageData = await res.json();
 ---
 
 <!-- Fourth Section -->
-<WhyMarketing pageData ={pageData[2] } client:load/>
+<WhyMarketing pageData ={pageData[3] } client:load/>

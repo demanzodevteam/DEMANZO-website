@@ -2,7 +2,9 @@
 import { API_URL } from "../../../../config/urls";
 import HeroSection from "../../../common/HeroSection";
 
-const res = await fetch(API_URL + 'blocks/280');
+const slug = "189"; 
+
+const res = await fetch(`${API_URL}blocks/${slug}`);
 const data = await res.json();
 
 const pageData = data[0];
