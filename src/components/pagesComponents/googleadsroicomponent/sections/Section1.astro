@@ -7,13 +7,11 @@ const res = await fetch(API_URL + "blocks/199");
 const data = await res.json();
 
 const pageData = data[0];
-
-// const firstPart = pageData.headings[0].slice(0, index)
 ---
 
 <!-- Section-1 -->
 <div class="bg-[#e6f8ff] px-[15px] py-[90px] relative">
-    <div class="relative mx-auto text-center flex items-center justify-center">
+    <div class="relative mx-auto lg:mx-[260px] text-center flex items-center justify-center">
         <h1 class="text-[45px] md:text-[50px] font-semibold relative z-10">
             {pageData.headings[0]}
         </h1>
@@ -34,6 +32,6 @@ const pageData = data[0];
     <img
         src={MEDIA_URL+pageData.images?.[0]?.src}
         alt={pageData.images?.[0]?.alt}
-        class="absolute bottom-0 left-40 hidden lg:block"
+        class="absolute bottom-16 left-30 hidden lg:block"
       />
 </div>

@@ -1,0 +1,29 @@
+---
+import { API_URL } from "../../../../config/urls";
+
+const res = await fetch(API_URL + 'blocks/199');
+const data = await res.json();
+
+const pageData = data[5];
+---
+
+<div class="mx-[20px] mb-[30px]">
+    <div class="flex flex-col lg:flex-row items-center gap-4 lg:mx-10">
+        <div class="hidden lg:block flex-grow border-t border-[#e6f8ff]"></div>
+            <h1 class="mb-[20px] text-[35px] md:text-[45px] font-[600] text-[#616670] text-center">
+                {pageData.headings[0]}
+            </h1>
+        <div class="flex-grow border-t border-[#e6f8ff]"></div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-[30px] lg:px-[70px] pb-[60px]">
+        {
+            pageData?.list_items[0]?.map((_: any, index: number) => (
+                <div class="lg:mr-[20px] pt-[35px] pr-[30px] pb-[30px] pl-[40px] rounded bg-white flex flex-col lg:flex-row gap-3 lg:gap-10 shadow text-center lg:text-left">
+                    <div class="flex items-center justify-center pb-[15px]" set:html={pageData.list_items[0][index].svg}></div>
+                    <p class="text-[16px] font-[500] text-[#616670]">{pageData.list_items[0][index].heading}</p>
+                </div>
+            ))
+        }
+    </div>
+    <p class="text-[16px] font-[500] text-[#616670] mb-[20px] text-center">{pageData.paragraphs[0]}</p>
+</div>
