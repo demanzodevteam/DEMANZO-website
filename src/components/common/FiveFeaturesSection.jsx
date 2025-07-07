@@ -1,12 +1,8 @@
 // src/components/FeatureSection.jsx
-import React, { useEffect } from "react";
 import { CircleCheckBig } from "lucide-react";
 
 const FiveFeatureSection = ({ pageData }) => {
-  // const { title = "", cards = [] } = pageData || {};
-  useEffect(() => {
-    console.log("FeatureSection - pageData:", pageData);
-  }, [pageData]); // logs every time pageData changes
+
 
   return (
     <section

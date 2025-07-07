@@ -1,13 +1,9 @@
 // src/components/HeroLogger.tsx
 import curveImg from "../../assets/Curve-main-bg.webp";
-import { useEffect } from "react";
-import HeroAnimation from "../pagesComponents/pipelineComponent/renderers/HeroAnimation";
 import { MEDIA_URL } from "../../config/urls";
 
 export default function HeroSection({ pageData, bgImg }) {
-  // const [pageData, setPageData] = useState({});
-
-  console.log(pageData?.list_items, 'pageData')
+  
   return (
     <>
       <div
