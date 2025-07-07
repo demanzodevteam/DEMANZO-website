@@ -4,7 +4,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { API_URL, MEDIA_URL } from "../../../../config/urls";
+import { API_URL, MEDIA_URL } from "../../config/urls";
 
 export default function GridWithModalSlider() {
   const [modalOpen, setModalOpen] = useState(false);

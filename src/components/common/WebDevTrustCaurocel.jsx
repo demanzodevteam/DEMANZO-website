@@ -1,8 +1,8 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import { API_URL } from "../../../../config/urls";
+import { API_URL } from "../../config/urls";
 import "swiper/css";
-import "./styles.css";
+import "../styles.css";
 
 const res = await fetch(API_URL + 'category/4');
 const category = await res.json();
