@@ -1,6 +1,6 @@
 ---
 import { API_URL } from "../../../../config/urls";
-import FeatureSection from "../../../common/FeatureSection.jsx";
+import FiveFeatureSection from "../../../common/FiveFeaturesSection";
 
 // Static or dynamic slug
 const slug = "189"; 
@@ -8,12 +8,10 @@ const slug = "189";
 const res = await fetch(`${API_URL}blocks/${slug}`);
 const data = await res.json();
 const pageData = data[1];
-
-
 ---
 <!-- Section Three -->
 
-<FeatureSection pageData={pageData} />
+<FiveFeatureSection pageData={pageData} />
 
 
 

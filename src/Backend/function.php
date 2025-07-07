@@ -454,7 +454,7 @@ foreach ($section->getElementsByTagName('p') as $p) {
 
     // Traverse up to see if inside a list
     while ($parent !== null && $parent !== $section) {
-        if (in_array($parent->nodeName, ['ul', 'li'])) {
+        if (in_array($parent->nodeName, ['ul', 'li', 'span'])) {
             $exclude = true;
             break;
         }

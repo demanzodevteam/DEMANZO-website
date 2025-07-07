@@ -6,8 +6,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
+
+@tailwind utilities;
+
 body {
-    font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
+  color: #111827;
 }
 
 [x-cloak] {
@@ -59,6 +63,7 @@ body {
 --demanzo-header-menu-text: #1f2937;           /* dark gray */
   --demanzo-section-spacing: 0.5rem;             /* spacing utility */
   --demanzo-h1: 2.25rem;                          /* text-4xl */
+  --demanzo-h1-spacing: 55px;
   --demanzo-h2: 1.875rem;                         /* text-3xl */
   --demanzo-card-headings: #111827;              /* dark text */
   --demanzo-accordion-heading: #1f2937;

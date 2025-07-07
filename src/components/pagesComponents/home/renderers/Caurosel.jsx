@@ -5,84 +5,76 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 
-// import axios from "axios";
+// Import required modules
+import { Pagination, Autoplay } from "swiper/modules";
+
 import "../../../styles.css";
-// import { useState, useEffect } from "react";
-// import { API_URL } from "../../../../config/urls";
 
-export default function Caurosel({category}) {
-
-  //  const [category, setCategory] = useState({
-  //   name: '',
-  //   slug: '',
-  //   description: '',
-  //   button: '',
-  //   posts: [],
-  //   image: '',
-  // });
-  // useEffect(() => {
-  //   axios.get(API_URL + 'category/5')
-  //     .then((response) => {
-  //       setCategory(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Failed to fetch category:', error);
-  //     });
-  // }, []);
-
+export default function Caurosel({ category }) {
   return (
     <>
-      <p className="text-[30px] lg:text-[40px] font-[600] text-[#191d27] text-center pb-6">{category.name}</p>
+      <p className="text-[30px] lg:text-[40px] font-[600] text-[#191d27] text-center pb-6">
+        {category.name}
+      </p>
+
       <div className="w-full px-4 sm:px-6 md:px-8">
         <Swiper
+          loop={true}
+          loopAdditionalSlides={1} // 🔁 Helps Swiper loop even if # of slides = view
+          slidesPerView={2.9}       // 👈 Slightly less than 3
+          spaceBetween={32}
+          autoplay={{
+            delay: 3500,
+            disableOnInteraction: false,
+          }}
           breakpoints={{
             0: {
-              slidesPerView: 1,
+              slidesPerView: 1.1,
             },
             640: {
               slidesPerView: 2,
             },
             1024: {
-              slidesPerView: 3,
+              slidesPerView: 2.5,
             },
           }}
-          spaceBetween={50}
-          loop={true}
-          grabCursor={true}
-          modules={[]}
-          className="mySwiper py-10 w-full max-w-screen !overflow-y-auto"
+
+          modules={[Autoplay]}
         >
-          {category.posts?.map((testimonial, index) => (
-          <SwiperSlide style={{ boxShadow: '0 0 12px rgba(0, 0, 0, 0.15)' }}>
-            <div className="p-8">
-              <p className="text-[16px] font-[500] text-[#616670]">
-               {testimonial.content}
-              </p>
-              <div className="flex justify-center items-center mx-auto w-fit bg-[#fef9d9] py-1 my-4">
-                {[...Array(5)].map((_, i) => (
-                  <svg
-                    key={i}
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="text-[#ffd400]"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2
-           L9.19 8.63L2 9.24l5.46 4.73L5.82 21z"
-                    />
-                  </svg>
-                ))}
+
+          {[...category.posts, ...category.posts].map((testimonial, index) => (
+            <SwiperSlide key={index} style={{ boxShadow: "0 0 12px rgba(0, 0, 0, 0.15)" }}
+            >
+              <div className="p-8">
+                <p className="text-[16px] font-[500] text-[#616670]">
+                  {testimonial.content}
+                </p>
+                <div className="flex justify-center items-center mx-auto w-fit bg-[#fef9d9] py-1 my-4">
+                  {[...Array(5)].map((_, i) => (
+                    <svg
+                      key={i}
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="text-[#ffd400]"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2
+                     L9.19 8.63L2 9.24l5.46 4.73L5.82 21z"
+                      />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-[20px] font-[600] text-center text-[#30353b]">
+                  {testimonial.title}
+                </p>
               </div>
-              <p className="text-[20px] font-[600] text-center text-[#30353b]">{testimonial.title}</p>
-            </div>
-          </SwiperSlide>
+            </SwiperSlide>
           ))}
         </Swiper>
       </div>
     </>
-
   );
 }
