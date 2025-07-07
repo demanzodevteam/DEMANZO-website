@@ -4,7 +4,6 @@ import BackGroundImg from '../../assets/Background-SEO-Traffic.jpg'
 import rocketImg from '../../assets/rocket.png'
 import skyImg from '../../assets/sky2.png'
 export default function DownloadReport({ pageData }) {
-    // console.log(pageData, 'pageData')
     return (
         <div
             className="flex items-center justify-center px-4 py-16 bg-cover bg-center"

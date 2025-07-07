@@ -3,7 +3,6 @@ import { MEDIA_URL } from "../../config/urls";
 
 
 export default function ResourceHeader({ pageData }) {
-    console.log(pageData, 'pageData')
     return (<>
         <div className="w-full flex flex-row items-center justify-center px-8 py-10 bg-[#E6F8FF]">
             <div >
