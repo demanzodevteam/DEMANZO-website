@@ -1,10 +1,14 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
 // import { API_URL, BASE_URL } from "../../../../config/urls";
 // import axios from "axios";
+import { useEffect, useState } from 'react';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const GrowthAnimation = ({category}) => {
-
+      useEffect(() => {
+  AOS.init();
+}, []);
 const columns = 3;
 
   // const [category, setCategory] = useState({
@@ -41,9 +45,10 @@ const lastRowPosts = getLastRowPosts(category.posts, columns);
 
   return (
     <>
-      <p className="text-[30px] md:text-[35px] lg:text-[50px] font-[600] text-center text-[#191d27]">{category.name}</p>
-      <svg width="100%" height="18" viewBox="0 0 246 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3 15C61.0465 4.16687 163.744 -2.79729 243 9.58344" stroke="url(#paint0_linear_1_401)" strokeWidth="6" strokeLinecap="round" />
+      <p className="text-[30px] md:text-[35px] lg:text-[50px] font-[600] text-center text-[#191d27]"
+     data-aos="fade-up" data-aos-duration="2000" >{category.name}</p>
+      <svg width="100%" height="18" viewBox="0 0 246 18" fill="none" xmlns="http://www.w3.org/2000/svg" >
+        <path  d="M3 15C61.0465 4.16687 163.744 -2.79729 243 9.58344" stroke="url(#paint0_linear_1_401)" strokeWidth="6" strokeLinecap="round" />
         <defs>
           <linearGradient id="paint0_linear_1_401" x1="3" y1="15" x2="257.174" y2="2.13431" gradientUnits="userSpaceOnUse">
             <stop offset="100%" stopColor="#7D80E6" />
@@ -51,7 +56,8 @@ const lastRowPosts = getLastRowPosts(category.posts, columns);
           </linearGradient>
         </defs>
       </svg>
-      <p className="text-[20px] font-[600] text-center text-[#ff5f55] py-8">{category.description}</p>
+      <p className="text-[20px] font-[600] text-center text-[#ff5f55] py-8" 
+     data-aos="fade-up" data-aos-duration="2000">{category.description}</p>
 
      <div className="px-4 md:px-16 space-y-8">
   {/* Full rows */}

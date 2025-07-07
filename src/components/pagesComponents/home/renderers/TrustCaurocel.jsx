@@ -1,14 +1,18 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import { useEffect, useState } from 'react';
+import AOS from "aos";
+import "aos/dist/aos.css";
 // Import Swiper styles
 import "swiper/css";
 import axios from "axios";
 import "../../../styles.css";
-import { useState, useEffect } from "react";
 import { API_URL } from "../../../../config/urls";
 
 export default function TrustCaurocel({category}) {
+        useEffect(() => {
+    AOS.init();
+  }, []);
   // const [category, setCategory] = useState({
   //   name: '',
   //   slug: '',
@@ -30,7 +34,8 @@ export default function TrustCaurocel({category}) {
   return (
     <>
       {category?.description.split(/\r?\n/).map((line, index) => (
-        <p
+        <p 
+     data-aos="fade-up" data-aos-duration="2000" 
           key={index}
           className={`text-[30px] lg:text-[40px] font-[600] text-center leading-tight ${index === 0 ? "text-[#191d27]" : "text-[#f15a29]"
             }`}
@@ -40,7 +45,7 @@ export default function TrustCaurocel({category}) {
       ))}
 
       {/* <p className="text-[30px] lg:text-[40px] font-[600] text-[#e05c24] text-center">SaaS leaders across industries</p> */}
-      <div className="px-8 py-8 md:px-4">
+      <div className="px-8 py-8 md:px-4" data-aos="fade-up" data-aos-duration="2000" >
         <Swiper
           breakpoints={{
             0: {

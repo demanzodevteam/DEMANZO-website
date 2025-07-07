@@ -1,6 +1,8 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import { useEffect, useState } from 'react';
+import AOS from "aos";
+import "aos/dist/aos.css";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -11,17 +13,20 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "../../../styles.css";
 
 export default function Caurosel({ category }) {
+       useEffect(() => {
+      AOS.init();
+    }, []);
   return (
     <>
-      <p className="text-[30px] lg:text-[40px] font-[600] text-[#191d27] text-center pb-6">
+      <p className="text-[30px] lg:text-[40px] font-[600] text-[#191d27] text-center pb-6" data-aos="fade-up" data-aos-duration="2000" >
         {category.name}
       </p>
 
-      <div className="w-full px-4 sm:px-6 md:px-8">
+      <div className="w-full px-4 sm:px-6 md:px-8" data-aos="fade-up" data-aos-duration="2000" >
         <Swiper
           loop={true}
-          loopAdditionalSlides={1} // 🔁 Helps Swiper loop even if # of slides = view
-          slidesPerView={2.9}       // 👈 Slightly less than 3
+          loopAdditionalSlides={1} // Helps Swiper loop even if # of slides = view
+          slidesPerView={2.9}       //  Slightly less than 3
           spaceBetween={32}
           autoplay={{
             delay: 3500,
