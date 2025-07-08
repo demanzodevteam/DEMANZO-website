@@ -105,7 +105,7 @@ const ParticleCard = ({ post }) => {
 
   const Particle = ({ x, y, color }) => (
     <motion.span
-      initial={{ opacity: 1, x: 0, y: 0, scale: 1 }}
+      initial={typeof window === 'undefined' ? false :{ opacity: 1, x: 0, y: 0, scale: 1 }}
       animate={{ x, y, opacity: 0, scale: 0.5 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.8 }}
@@ -139,7 +139,7 @@ const ParticleCard = ({ post }) => {
     <motion.div
     //   onMouseEnter={triggerParticles}
     //   onMouseMove={triggerParticles}
-      initial={{ opacity: 0, y: 200 }}
+      initial={typeof window === 'undefined' ? false :{ opacity: 0, y: 200 }}
       whileInView={{ opacity: 1, y: 0 }}
     //   whileHover={{ scale: 1.03, y: -5 }}
     //   transition={{ duration: 0.5 }}
