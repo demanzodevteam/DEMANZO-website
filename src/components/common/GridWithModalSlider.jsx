@@ -100,13 +100,13 @@ export default function GridWithModalSlider() {
         >
           {headings.map((item, index) => (
             <SwiperSlide key={index} className="flex items-center justify-center !bg-transparent" >
-               <div className="w-full h-[80vh] flex items-center justify-center overflow-hidden relative">
+              <div className="w-full h-auto max-h-[80vh] flex items-center justify-center relative overflow-hidden">
                 <img
                   src={MEDIA_URL + pageData.images[index]?.src}
                   alt={pageData.images[index]?.alt}
-                  className="object-fill"
+                  className="w-full max-h-[80vh] object-contain"
                 />
-                <p className="text-white text-[16px] font-bold absolute bottom-0 text-left bg-black/90 w-full py-3 pl-4">
+                <p className="absolute bottom-0 left-0 w-full bg-black/70 text-white text-sm sm:text-base md:text-[16px] font-semibold py-2 px-3 sm:py-3 sm:px-4 text-left">
                   {item?.heading}
                 </p>
               </div>
