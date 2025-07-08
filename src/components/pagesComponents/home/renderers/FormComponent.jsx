@@ -215,7 +215,7 @@ export default function ContactForm({category}) {
           <AnimatePresence>
             {submitted && (
               <motion.div
-                initial={typeof window === 'undefined' ? false :{ opacity: 0, y: 10 }}
+                initial={typeof window === 'undefined' ? false :  { opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 className="text-green-600 font-medium text-center"
