@@ -5,7 +5,8 @@ const res = await fetch(API_URL + 'blocks/188');
 const data = await res.json();
 
 const pageData = data[1];
-const headings = pageData.headings.slice(1);  
+
+const list = pageData?.list_items[0];
 ---
 
     <section class='bg-[#fcfcfc] px-4 md:px-10 lg:px-20 py-16 text-center'>
@@ -33,7 +34,7 @@ const headings = pageData.headings.slice(1);
       </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {headings?.map((item: any, index: number) => {
+        {list.map((item: any, index: number) => {
             const isEven = (index + 1) % 2 === 0;
 
             return (
@@ -44,9 +45,9 @@ const headings = pageData.headings.slice(1);
                     : 'bg-transparent hover:bg-white hover:shadow'
                 }`}
             >
-                    <div class="flex items-center justify-center pb-[15px]" set:html={pageData.list_items[0][index].svg}></div>
-                    <h1 class="text-left text-[20px] font-[600] text-[#191d27] pb-[17px]">{item}</h1>
-                    <p class="text-left text-[16px] font-[500] text-[#616670] pb-[20px]">{pageData.paragraphs[index]}</p>
+                    <div class="flex items-center justify-center pb-[15px]" set:html={item?.svg}></div>
+                    <h1 class="text-left text-[20px] font-[600] text-[#191d27] pb-[17px]">{item?.heading}</h1>
+                    <p class="text-left text-[16px] font-[500] text-[#616670] pb-[20px]">{item?.para}</p>
             </div>
             );
         })}

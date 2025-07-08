@@ -4,13 +4,14 @@ const res = await fetch(API_URL + 'blocks/199');
 const data = await res.json();
 
 const pageData = data[2];
+const list = pageData?.list_items[0];
 ---
 
 <div class="px-[20px] py-[80px] lg:p-[80px] bg-[#f8fdff]">
     <h1 class="mb-[20px] text-[35px] md:text-[45px] font-[600] text-[#191d27] text-center">{pageData.headings[0]}</h1>
     <div class="mt-[30px] grid grid-cols-1 md:grid-cols-3 gap-10">
         {
-            pageData?.list_items[0]?.map((_: any, index: number) =>  {
+            list?.map((item: any, index: number) =>  {
             const isEven = (index + 1) % 2 === 0;
 
             return (
@@ -19,8 +20,8 @@ const pageData = data[2];
                     ? 'bg-[#060a33]'
                     : 'bg-white hover:bg-[#060a33] transition duration-500'
                 }`}>
-                    <div class="flex items-center justify-center pb-[15px]" set:html={pageData.list_items[0][index].svg}></div>
-                    <p class={`mb-[10px] text-[17px] font-[500] group-hover:text-white transition duration-500 ${isEven ? 'text-white' : 'text-black'}`}>{pageData.list_items[0][index].heading}</p>
+                    <div class="flex items-center justify-center pb-[15px]" set:html={item.svg}></div>
+                    <p class={`mb-[10px] text-[17px] font-[500] group-hover:text-white transition duration-500 ${isEven ? 'text-white' : 'text-black'}`}>{item.heading}</p>
                 </div>
             );
         })}

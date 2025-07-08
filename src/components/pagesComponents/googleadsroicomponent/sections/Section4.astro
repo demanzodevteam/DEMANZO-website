@@ -6,6 +6,7 @@ const res = await fetch(API_URL + 'blocks/199');
 const data = await res.json();
 
 const pageData = data[3];
+const list = pageData?.list_items[0];
 ---
 
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-[40px] md:py-[90px]  px-[15px] md:px-[35px]">
@@ -19,13 +20,13 @@ const pageData = data[3];
     <div>
         <h1 class="text-[35px] md:text-[45px] font-[600] text-[#191d27] pb-[30px]">{pageData.headings[0]}</h1>
         {
-            pageData?.list_items[0]?.map((_: any, index: number) => (
+            list?.map((item: any, index: number) => (
                 <div class="flex items-center mb-[20px] gap-x-3">
                     <p class="w-[40px] h-[40px] flex items-center justify-center text-[16px] font-[600] text-[#ff5f55] border-[2px] border-[#ff5f55] border-dotted rounded-full shrink-0">
                         {index + 1}
                     </p>
                     <p class="text-[16px] font-[500] text-[#616670]">
-                        {pageData.list_items[0][index].heading}
+                        {item.heading}
                     </p>
                 </div>
             ))

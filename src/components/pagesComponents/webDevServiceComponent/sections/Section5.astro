@@ -4,19 +4,20 @@ import { API_URL } from "../../../../config/urls";
 const res = await fetch(API_URL + 'blocks/188');
 const data = await res.json();
 const pageData = data[4];
+const list = pageData?.list_items[0];
 ---
 
 <section class="bg-gradient-to-r from-[#0A0F3C] to-[#0D1B4A] py-12">
   <div class="max-w-7xl mx-auto px-4">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-      {pageData.headings.map((heading: any, index: number) => (
+      {list.map((item: any) => (
         <div class="w-full bg-[#1f2f4b] p-5 hover:bg-transparent border border-blue-400 rounded-md text-center text-white">
           <div class="text-center">
-            <div class="text-[65px] font-bold text-[#ff5f55] counter" data-target={heading}>
+            <div class="text-[65px] font-bold text-[#ff5f55] counter" data-target={item?.heading}>
               0
             </div>
             <h5 class="mt-2 font-semibold text-[20px] text-white tracking-wide">
-              {pageData.paragraphs[index]}
+              {item?.para}
             </h5>
           </div>
         </div>

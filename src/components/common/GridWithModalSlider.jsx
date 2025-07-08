@@ -18,9 +18,9 @@ export default function GridWithModalSlider() {
         const res = await fetch(API_URL + "blocks/188");
         const data = await res.json();
         const pageData  = data[2];
-        const headings = pageData.headings.slice(1);
+        const list = pageData?.list_items[0];
         setPageData(pageData);
-        setHeadings(headings);
+        setHeadings(list);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -54,9 +54,9 @@ export default function GridWithModalSlider() {
               />
               <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 <div>
-                  <p className="text-[18px] font-[700] text-white">{heading}</p>
+                  <p className="text-[18px] font-[700] text-white">{heading?.heading}</p>
                   <p className="text-[11px] font-[500] text-white">
-                    {pageData.paragraphs[index]}
+                    {heading?.para}
                   </p>
                 </div>
               </div>
@@ -98,16 +98,16 @@ export default function GridWithModalSlider() {
           loop={true}
           className="w-full max-w-5xl bg-transparent"
         >
-          {pageData.images.map((img, index) => (
+          {headings.map((item, index) => (
             <SwiperSlide key={index} className="flex items-center justify-center !bg-transparent" >
                <div className="w-full h-[80vh] flex items-center justify-center overflow-hidden relative">
                 <img
-                  src={MEDIA_URL + img?.src}
-                  alt={img?.alt || `Slide ${index + 1}`}
-                  className="w-full h-full object-fill"
+                  src={MEDIA_URL + pageData.images[index]?.src}
+                  alt={pageData.images[index]?.alt}
+                  className="object-fill"
                 />
                 <p className="text-white text-[16px] font-bold absolute bottom-0 text-left bg-black/90 w-full py-3 pl-4">
-                  {headings[index]}
+                  {item?.heading}
                 </p>
               </div>
             </SwiperSlide>
