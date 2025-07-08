@@ -1,0 +1,44 @@
+---
+import { API_URL } from "../../../../config/urls";
+import { MEDIA_URL } from "../../../../config/urls";
+
+const res = await fetch(API_URL + "blocks/204");
+const data = await res.json();
+
+const pageData = data[3];
+const list = pageData?.list_items[0];
+---
+
+<div class="pt-[80px] px-[15px] pb-[100px]">
+    <div class="grid grid-cols-1 md:grid-cols-2">
+        <div class="md:p-[10px]">
+            <h1 class="text-[35px] md:text-[40px] font-[600] text-[#191d27]">{pageData.headings[0]}</h1>
+        </div>
+        <div class="pt-[16px] md:pl-[32px]">
+            <h1 class="text-[16px] font-[500] text-[#616670] leading-relaxed">{pageData.paragraphs[0]}</h1>
+        </div>
+    </div>
+    <div class="mt-[32px] grid grid-cols-1 lg:grid-cols-2">
+        <div class="mt-[30px] lg:mt-0 md:p-[10px] lg:mr-[30px] order-2 lg:order-1">
+            <img
+                src={MEDIA_URL + pageData.images?.[0]?.src}
+                alt={pageData.images?.[0]?.alt}
+                class="w-full object-cover rounded hover:-translate-y-4 transition duration-500"
+            />
+        </div>
+        <div class="lg:pl-[32px] pt-10px order-1 lg:order-2">
+            <div class="mb-[40px]">
+                {
+                    list.map((item: any) => (
+                        <div class="mb-[20px]">
+                            <p class="text-[16px] font-[500] text-[#616670] leading-loose">{item.para}</p>
+                        </div>
+                    ))
+                }
+            </div>
+            <a href="#form" class="bg-[#0a6aad] text-center mt-[40px] text-white text-[14px] font-[500] w-fit px-9 py-3 mx-auto rounded-full cursor-pointer">
+                {pageData.paragraphs[1]}
+            </a>
+        </div>
+    </div>
+</div>

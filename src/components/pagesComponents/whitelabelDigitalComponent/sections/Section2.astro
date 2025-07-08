@@ -1,0 +1,46 @@
+---
+import { API_URL } from "../../../../config/urls";
+import { MEDIA_URL } from "../../../../config/urls";
+
+
+const res = await fetch(API_URL + "blocks/204");
+const data = await res.json();
+
+const pageData = data[1];
+const list = pageData?.list_items[0];
+---
+
+<div class="pt-[70px] px-[15px] pb-[100px]">
+    <h1 class="pb-[16px] text-[35px] md:text-[40px] font-[600] text-[#191d27] text-center">{pageData.headings[0]}</h1>
+    <div class="mb-[20px] text-center">
+        <p class="text-[16px] font-[500] text-[#616670] mb-[20px]">{pageData.paragraphs[0]}</p>
+        <p class="text-[16px] font-[500] text-[#616670] mb-[20px]">{pageData.paragraphs[1]}</p>
+    </div>
+    <div class="mt-[32px] grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="p-[10px]">
+            <img
+                src={MEDIA_URL + pageData.images?.[0]?.src}
+                alt={pageData.images?.[0]?.alt}
+                class="w-[500px] object-cover"
+            />
+        </div>
+        <div class="pt-[16px] tl-[32px]">
+            <h1 class="text-[30px] text-[#191d27] font-[600] pb-[16px] mb-[20px]">{pageData.headings[1]}</h1>
+            {
+            list?.map((item: any) => (
+                <div class="mb-[16px] flex">
+                    <img
+                        src={MEDIA_URL + pageData.images?.[1]?.src}
+                        alt={pageData.images?.[0]?.alt}
+                        class="w-[25px] h-[25px] object-cover"
+                    />
+                    <p class="text-[16px] text-[#7d7d7d] font-[600] pl-[16px]">{item.para}</p>
+                </div>
+            ))
+        }
+        <a href="#form" class="bg-[#0a6aad] text-center mt-[20px] text-white flex items-center justify-center text-[14px] font-[500] w-fit px-9 py-3 mx-auto rounded-full cursor-pointer">
+            {pageData.paragraphs[2]}
+        </a>
+        </div>
+    </div>
+</div>
