@@ -1,0 +1,11 @@
+---
+import HeadingBanner from "../../../common/HeadingBanner"
+import { API_URL } from '../../../../config/urls';
+
+
+const res = await fetch(API_URL + 'blocks/592');
+const json = await res.json();
+const SectionData = json[0];
+---
+
+<HeadingBanner pageData={SectionData}/>

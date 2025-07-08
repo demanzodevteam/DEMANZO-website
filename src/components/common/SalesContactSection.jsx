@@ -15,7 +15,7 @@ const SalesContactSection = ({ SectionData }) => {
         {/* Left Side */}
         <div className="flex flex-col items-center justify-center text-center gap-6 px-4">
           <img src={rocketImg.src} alt="Rocket" className="hover:-translate-y-4 transition-all duration-500" />
-          <h2 className="text-3xl lg:text-4xl font-bold text-[#ffffff]">{SectionData.headings[0]}</h2>
+          <h2 className="text-3xl lg:text-4xl font-bold text-[#ffffff]">{SectionData.headings}</h2>
 
           {SectionData.list_items[0].map((item, index) => (
             <p key={index} className="text-[#979ba3] leading-8">

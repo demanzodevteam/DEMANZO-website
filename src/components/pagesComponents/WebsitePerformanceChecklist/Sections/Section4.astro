@@ -1,0 +1,10 @@
+---
+import WhyYouNeedReport from "../../../common/WhyYouNeedReport";
+import { API_URL } from '../../../../config/urls';
+
+
+const res = await fetch(API_URL + 'blocks/689');
+const json = await res.json();
+const SectionData = json[3];
+---
+<WhyYouNeedReport pageData={SectionData}/>

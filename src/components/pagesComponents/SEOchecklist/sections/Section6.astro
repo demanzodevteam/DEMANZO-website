@@ -1,0 +1,18 @@
+---
+import HighlightSteps from "../../../../components/common/HighlightSteps";
+import { API_URL } from '../../../../config/urls';
+
+
+const res = await fetch(API_URL + 'blocks/592');
+const json = await res.json();
+const SectionData = json[5];
+const colVal = [
+  { value: 1 },
+  { value: 2 },
+  { value: 3 }
+];
+
+const combinedData ={...SectionData,colVal}
+---
+
+<HighlightSteps SectionData={combinedData} />
