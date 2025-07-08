@@ -1,11 +1,12 @@
 
-// import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { API_URL, BASE_URL } from "../../config/urls";
 // import axios from "axios";
 import cs1 from '../../assets/cs1.webp';
 
 
-export default function CaseStudyCard({category}) {
+export default function CaseStudyCard({ category }) {
+  
     // const [category, setCategory] = useState({
     //     name: '',
     //     slug: '',
@@ -26,9 +27,12 @@ export default function CaseStudyCard({category}) {
 
     return (
         <>
-            <h2 className="text-center text-[30px] lg:text-[40px] font-[600] text-[#191d27] pt-10">
-                {category.name}
-            </h2>
+            {category?.name !== '' && (
+                <h2 className="text-center text-[30px] lg:text-[40px] font-[600] text-[#191d27] pt-10">
+                    {category.name}
+                </h2>
+            )}
+
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 lg:px-8 py-10">
                 {category.posts?.map((caseStudy, index) => (
@@ -49,14 +53,22 @@ export default function CaseStudyCard({category}) {
                 ))}
             </div>
 
-            <div className="flex justify-center">
-                <a
-                    href={BASE_URL + category.slug}
-                    className="bg-[#0a6aad] text-white rounded-full px-8 py-3 text-[17px] font-[400] hover:bg-[#085a93] transition-colors duration-300"
-                >
-                    View All
-                </a>
-            </div>
+           {(
+  category?.button === undefined ||
+  category?.button === '' ||
+  category?.button === 'undefined'
+) && (
+  <div className="flex justify-center">
+    <a
+      href={BASE_URL + category.slug}
+      className="bg-[#0a6aad] text-white rounded-full px-8 py-3 text-[17px] font-[400] hover:bg-[#085a93] transition-colors duration-300"
+    >
+      View All
+    </a>
+  </div>
+)}
+
+
         </>
 
 

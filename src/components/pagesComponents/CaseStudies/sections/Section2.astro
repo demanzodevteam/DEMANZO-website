@@ -1,17 +1,20 @@
 ---
+import CaseStudyCard from "../../../common/CaseStudyCard";
+import HeadingBanner from "../../../common/HeadingBanner"
 import { API_URL } from '../../../../config/urls';
+import CardSection from "../../../common/CardSection";
 import BlogCards from "../../../common/BlogCards";
 
 // const res = await fetch(API_URL + 'blocks/592');
 // const json = await res.json();
 // const SectionData = json[0];
 
-const resond = await fetch(API_URL + "category/8");
+const resond = await fetch(API_URL + "category/7");
 const category = await resond.json();
 const button = false;
 
 const combinedData = { ...category, button };
 ---
 
-<BlogCards BlogData={combinedData} client:visible/>
-<!-- <BlogCards client:visible/> -->
+
+ <CaseStudyCard category={combinedData} /> 
