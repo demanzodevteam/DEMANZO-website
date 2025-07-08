@@ -25,7 +25,7 @@ const DynamicBanner = ({ pageData }) => {
       </div>
 
       <img
-        src={MEDIA_URL + pageData.images?.[0]?.src}
+        src={MEDIA_URL + '2025/07/Vector-668.png'}
         alt={pageData.images?.[0]?.alt}
         class="absolute bottom-0 left-40 hidden lg:block"
       />

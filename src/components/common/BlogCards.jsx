@@ -40,6 +40,7 @@ export default function BlogCards({BlogData}) {
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
+    console.log(BlogData)
     fetchCards().then((data) => {
       setCards(data);
       setLoading(false);
@@ -63,7 +64,7 @@ export default function BlogCards({BlogData}) {
             <div className="h-4 w-24 bg-gray-200 rounded mt-4" />
           </div>
         ))
-        : cards.map((card, idx) => (
+        : BlogData?.posts?.map((card, idx) => (
           <motion.div
             key={idx}
             initial={{ opacity: 0, y: 40 }}
@@ -73,8 +74,8 @@ export default function BlogCards({BlogData}) {
             className="bg-white shadow-lg rounded-2xl p-5 hover:shadow-xl transition"
           >
             <img
-              src={card.image}
-              alt={card.title}
+              src={card.images[0]?.src}
+              alt={card.images[0]?.alt}
               className="rounded-lg mb-4 w-full h-48 object-cover"
             />
             <span className="text-xs font-semibold text-blue-600 uppercase">

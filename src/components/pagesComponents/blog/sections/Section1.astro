@@ -1,13 +1,9 @@
 ---
-import HeadingBanner from "../../../common/HeadingBanner"
 import { API_URL } from '../../../../config/urls';
-import CardSection from "../../../common/CardSection";
-import BlogCards from "../../../common/BlogCards";
 import DynamicBanner from "../../../common/DynamicBanner";
 
 const resond = await fetch(API_URL + "category/8");
 const category = await resond.json();
-const button = false;
 
 ---
 
