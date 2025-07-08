@@ -138,7 +138,7 @@ export default function ContactForm({category}) {
   return (
     <>
       <motion.div
-        initial={{ opacity: 0, x: -200 }}
+        initial={typeof window === 'undefined' ? false :{ opacity: 0, x: -200 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
         className=""
@@ -164,7 +164,7 @@ export default function ContactForm({category}) {
         </p>
       </motion.div>
       <motion.div
-        initial={{ opacity: 0, y: 300 }}
+        initial={typeof window === 'undefined' ? false :{ opacity: 0, y: 300 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
         className="rounded-3xl bg-white shadow px-6 lg:px-12 py-8 relative"
@@ -215,7 +215,7 @@ export default function ContactForm({category}) {
           <AnimatePresence>
             {submitted && (
               <motion.div
-                initial={{ opacity: 0, y: 10 }}
+                initial={typeof window === 'undefined' ? false :{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 className="text-green-600 font-medium text-center"
