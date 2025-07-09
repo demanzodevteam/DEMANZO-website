@@ -595,3 +595,29 @@ $block['card_details'] = $card_details;
 
     return $blocks;
 }
+
+// Api to fectch blog post listing 
+
+add_action('rest_api_init', function () {
+    register_rest_route('custom/v1', '/post_details', [
+        'methods' => 'GET',
+        'callback' => function () {
+            $posts = get_posts([
+                'post_type'      => 'post',
+                'posts_per_page' => -1,
+                'post_status'    => 'publish',
+            ]);
+
+            return array_map(function ($post) {
+                return [
+                    'title' => get_the_title($post),
+                    'slug'  => $post->post_name,
+                    'image' => get_the_post_thumbnail_url($post->ID, 'full'),
+					'alt'   => get_post_meta($image_id, '_wp_attachment_image_alt', true),
+                    'link'  => get_permalink($post),
+				];
+            }, $posts);
+        },
+        'permission_callback' => '__return_true',
+    ]);
+});

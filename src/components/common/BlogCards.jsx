@@ -75,7 +75,7 @@ const dataArray = Array.isArray(BlogData) ? BlogData : Object.values(BlogData);
           >
             <img
               src={card?.image}
-              // alt={card.images[0]?.alt}
+              alt={card.image?.alt}
               className="rounded-lg mb-4 w-full h-48 object-cover"
             />
             <span className="text-xs font-semibold text-blue-600 uppercase">
