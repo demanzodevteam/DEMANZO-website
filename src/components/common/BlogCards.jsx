@@ -36,7 +36,7 @@ export default function BlogCards({ BlogData }) {
   key={idx}
   initial={{ opacity: 0, y: 100 }}
   whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6, delay: idx * 0.02 }} // <- This is the stagger
+  transition={{ duration: 0.4, delay: idx * 0.02 }} // <- This is the stagger
   viewport={{ once: true, amount: 0.3 }}
   className="bg-white shadow-lg rounded-2xl p-5 hover:shadow-xl transition overflow-hidden"
 >
@@ -51,7 +51,7 @@ export default function BlogCards({ BlogData }) {
            <span
   className="inline-block text-xs font-semibold text-white uppercase px-3 py-1 rounded-full bg-[linear-gradient(to_right,_#ff8c00,_#f12500)]"
 >
-  {card.category || "Blog"}
+  {card?.category}
 </span>
               <h3 className="text-lg font-semibold mt-2 text-gray-800">
                 {card.title}

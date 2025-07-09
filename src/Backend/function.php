@@ -597,7 +597,6 @@ $block['card_details'] = $card_details;
 }
 
 // Api to fectch blog post listing 
-
 add_action('rest_api_init', function () {
     register_rest_route('custom/v1', '/post_details', [
         'methods' => 'GET',
@@ -609,13 +608,25 @@ add_action('rest_api_init', function () {
             ]);
 
             return array_map(function ($post) {
+                $image_id = get_post_thumbnail_id($post->ID);
+                $image_url = wp_get_attachment_image_url($image_id, 'full');
+                $alt_text = get_post_meta($image_id, '_wp_attachment_image_alt', true) ?: null;
+
+                // Get categories and use the 7th (index 6) if available, otherwise fallback to first
+                $categories = get_the_category($post->ID);
+                $category_name = null;
+                if (!empty($categories)) {
+                    $category_name = $categories[6]->name ?? $categories[0]->name ?? null;
+                }
+
                 return [
-                    'title' => get_the_title($post),
-                    'slug'  => $post->post_name,
-                    'image' => get_the_post_thumbnail_url($post->ID, 'full'),
-					'alt'   => get_post_meta($image_id, '_wp_attachment_image_alt', true),
-                    'link'  => get_permalink($post),
-				];
+                    'title'    => get_the_title($post),
+                    'slug'     => $post->post_name,
+                    'image'    => $image_url,
+                    'alt'      => $alt_text,
+                    'link'     => get_permalink($post),
+                    'category' => $category_name,
+                ];
             }, $posts);
         },
         'permission_callback' => '__return_true',
