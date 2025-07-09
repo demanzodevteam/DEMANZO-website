@@ -1,0 +1,11 @@
+---
+import { API_URL } from "../../../../config/urls";
+import HeroSection from "../../../common/HeroSection";
+
+const res = await fetch(API_URL + 'blocks/201');
+const pageData = await res.json();
+---
+
+<HeroSection pageData={pageData[0]} bgImg={false} />
+
+

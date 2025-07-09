@@ -34,7 +34,7 @@ export default function DownloadReport({ pageData }) {
                         <div className="flex flex-col items-center gap-4">
                             <button
                                 type="submit"
-                                className=" absolute right-10 w-full lg:w-auto text-white bg-blue-600 px-6 py-3 rounded-full hover:bg-[#f5a31c] transition"
+                                className=" absolute right-10 lg:w-auto text-white bg-blue-600 px-6 py-3 rounded-full hover:bg-[#f5a31c] transition"
                             >
                                 Download Now
                             </button>

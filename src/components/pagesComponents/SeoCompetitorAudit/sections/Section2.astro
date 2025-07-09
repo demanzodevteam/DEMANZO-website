@@ -1,0 +1,12 @@
+---
+import { API_URL } from "../../../../config/urls";
+import SeoFeatureSection from "../../../common/SeoFeatureSection";
+
+const res = await fetch(API_URL + 'blocks/201');
+const pageData = await res.json();
+---
+
+<SeoFeatureSection pageData={pageData[1]}  />
+
+
+
