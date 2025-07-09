@@ -1,0 +1,18 @@
+---
+import { API_URL } from "../../../../config/urls";
+import InfoCardGrid from "../../../common/InfoCardGrid";
+
+const res = await fetch(API_URL + 'blocks/773');
+const data = await res.json();
+
+const pageData = data[1];
+const background='bg-gradient-to-b from-[#FFFFFF] to-[#FEF2F2]'
+const colVal = [
+  { value: 1 },
+  { value: 3 },
+  { value: 3 }
+];
+const combinedData = {...pageData,colVal,background};
+---
+<!-- Second Section -->
+<InfoCardGrid pageData={combinedData} client:load/>

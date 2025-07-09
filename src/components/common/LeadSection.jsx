@@ -55,6 +55,7 @@ export default function HeroSection({ pageData }) {
             class="relative w-[95%] max-w-[500px] h-auto aspect-[5/4] object-cover rounded-3xl z-10 shadow-lg"
           />
         </div>
+        
       </div>
     </>
   );

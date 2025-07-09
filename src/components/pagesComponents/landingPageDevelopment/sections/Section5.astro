@@ -1,0 +1,12 @@
+---
+import LeadSection from '../../../common/LeadSection'
+import { API_URL } from '../../../../config/urls'
+
+
+const res = await fetch(API_URL + 'blocks/773');
+const json = await res.json();
+const SectionData = json[4];
+---
+<!-- Fifth Section -->
+
+<LeadSection pageData={SectionData}/>

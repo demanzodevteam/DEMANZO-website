@@ -38,7 +38,7 @@ export default function WhyMarketing({ pageData }) {
 
           <div
             className="relative flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0"
-            data-aos="fade-left"
+            data-aos="fade-up"
           >
             {/* Back gray card */}
             <div className="absolute w-[350px] md:w-[500px] h-[300px] bg-gray-100 rounded-3xl top-6 left-6 z-0"></div>
