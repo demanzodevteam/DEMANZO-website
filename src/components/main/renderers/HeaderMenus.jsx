@@ -37,7 +37,7 @@ const HeaderMenus = ({navLinks,currentPath}) => {
 
                             return (
                                 <>
-                                    <div className="relative group" key={index}>
+                                    <div className="relative group" key={link.id || link.slug}>
                                         <div className="px-2 py-2 flex items-center">
                                             <a
                                                 href={link.url}
@@ -73,7 +73,7 @@ const HeaderMenus = ({navLinks,currentPath}) => {
                                             {link.children.map((sub, subIdx) => {
                                                 const isSubActive = currentPath === sub.href;
                                                 return (
-                                                    <div key={subIdx}>
+                                                    <div key={sub.id || sub.slug || sub.url}>
                                                         <a
                                                             href={sub.url}
                                                             className={`block px-4 p-4 text-[12px] font-[600] ${isSubActive
@@ -147,7 +147,7 @@ const HeaderMenus = ({navLinks,currentPath}) => {
 
                             <ul className="mt-12 space-y-4">
                                 {navLinks.map((item, index) => (
-                                    <li key={index}>
+                                    <li key={item.id || item.slug || item.url}>
                                         <button
                                             onClick={() =>
                                                 setActiveMenu(activeMenu === index ? null : index)
@@ -177,7 +177,7 @@ const HeaderMenus = ({navLinks,currentPath}) => {
                                         {activeMenu === index && (
                                             <ul className="pl-6 mt-2 space-y-2 text-sm text-gray-700 shadow py-2">
                                                 {item.subLinks.map((sub, subIdx) => (
-                                                    <li key={subIdx}>
+                                                    <li key={sub.id || sub.slug || sub.url}>
                                                         <a
                                                             href={sub.href}
                                                             className="block hover:text-[#2d89bf]"
