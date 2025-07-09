@@ -1,7 +1,9 @@
 ---
+import { BLOG_URL } from '../config/urls';
+
 
 export async function getStaticPaths() {
-  const res = await fetch('https://demanzo.com/wp-json/wp/v2/posts?per_page=100');
+  const res = await fetch(BLOG_URL + 'per_page=100');
   const posts = await res.json();
 
   const paths = posts.map((post: { slug: string }) => ({
@@ -13,7 +15,7 @@ export async function getStaticPaths() {
 
 const { Blog: slug } = Astro.params;
 
-const res = await fetch(`https://demanzo.com/wp-json/wp/v2/posts?slug=${slug}`);
+const res = await fetch(BLOG_URL +`slug=${slug}`);
 const postData = await res.json();
 const post = postData[0];
 ---
