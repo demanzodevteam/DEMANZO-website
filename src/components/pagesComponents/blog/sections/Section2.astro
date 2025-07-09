@@ -1,13 +1,16 @@
 ---
 import { API_URL } from '../../../../config/urls';
 import BlogCards from "../../../common/BlogCards";
+import { BLOG_URL } from '../../../../config/urls';
 
-const resond = await fetch(API_URL + "category/8");
-// const resond = await fetch(`https://demanzo.com/wp-json/wp/v2/posts?per_page=100`)
-const category = await resond.json();
+// export async function getStaticPaths() {
+  const res = await fetch('https://demanzo.com/wp-json/custom/v1/post_details');
+  const blogs = await res.json();
+const blogArray = Object.values(blogs);
+
 const button = false;
 
-const combinedData = { ...category, button };
+const combinedData = { ...blogArray, button };
 ---
 
 <BlogCards BlogData={combinedData} client:load/>

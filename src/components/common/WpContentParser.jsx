@@ -1,6 +1,10 @@
 import parse, { domToReact, Element } from "html-react-parser";
+import { useEffect } from "react";
 
-export default function WPContent({ content }) {
+export default function WpContentParser({ content }) {
+  useEffect(()=>{
+    console.log(content);
+  })
   return (
     <div className="space-y-6">
       {parse(content, {

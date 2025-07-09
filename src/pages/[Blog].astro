@@ -1,6 +1,6 @@
 ---
+import WpContentParser from '../components/common/WpContentParser';
 import { BLOG_URL } from '../config/urls';
-
 
 export async function getStaticPaths() {
   const res = await fetch(BLOG_URL + 'per_page=100');
@@ -25,9 +25,11 @@ const post = postData[0];
     <title>{post.title.rendered}</title>
   </head>
   <body>
-    <h1>{post.title.rendered}</h1>
+    <!-- <h1>{post.title.rendered}</h1>
     <article>
       <div set:html={post.content.rendered} />
-    </article>
+    </article> -->
+
+    <WpContentParser content={post.content.rendered} client:load/>
   </body>
 </html>
