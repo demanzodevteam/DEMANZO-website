@@ -10,7 +10,7 @@ export default function HowtogetReport({ pageData, colVal }) {
                     {pageData?.list_items[0]?.map((card, index) => (
                         <div
                             key={index}
-                            className="flex flex-col md:flex-row bg-white md:gap-4 shadow-md rounded-xl px-8 py-8 md:py-10 flex flex-col items-center space-y-4 transition"
+                            className="flex flex-col md:flex-row bg-white md:gap-4 shadow-md rounded-xl px-8 py-8 md:py-10  items-center space-y-4 transition"
                         >
                             <div
                                 className="w-14 h-14"

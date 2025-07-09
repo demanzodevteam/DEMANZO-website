@@ -1,11 +1,11 @@
 ---
 import { API_URL } from "../../../../config/urls";
-import FeatureSection from "../../../common/FeatureSection.jsx";
+import FiveFeaturesSection from "../../../common/FiveFeaturesSection.jsx";
 
 // Static or dynamic slug
 const slug = "457"; 
 
-const res = await fetch(`${API_URL}blocks/${slug}`);
+const res = await fetch(API_URL + 'blocks/457');
 const data = await res.json();
 const pageData = data[3];
 const background='#FEF2F2'
@@ -19,7 +19,7 @@ const combinedData = {...pageData,background,colVal}
 
 ---
 <!-- Section Four -->
-<FeatureSection pageData={combinedData} client:load/>
+<FiveFeaturesSection pageData={combinedData} client:load/>
 
 
 

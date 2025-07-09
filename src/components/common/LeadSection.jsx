@@ -6,7 +6,6 @@ import { CircleCheckBig } from "lucide-react";
 export default function HeroSection({ pageData }) {
   // const [pageData, setPageData] = useState({});
 
-
   return (
     <>
       <div class="grid grid-cols-1 lg:grid-cols-[1fr_0.6fr] px-2 gap-2 lg:px-14 lg:py-10 bg-no-repeat bg-bottom bg-cover min-h-[80vh]">
@@ -40,12 +39,20 @@ export default function HeroSection({ pageData }) {
           ))}
         </div>
 
-        <div class="flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0 ">
-          {/* <HeroAnimation image={pageData.image} client:load /> */}
+        {/* <div class="flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0 ">
+         
           <img
             src={MEDIA_URL + pageData.images?.[0]?.src}
             alt={pageData.images?.[0]?.alt}
             class="w-[500px] md:mx-auto lg:mx-0"
+          />
+        </div> */}
+        <div class="relative flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0">
+          <div class="absolute w-[90%] max-w-[480px] h-[75%] max-h-[350px] bg-gray-100 rounded-3xl top-4 left-12 z-0"></div>
+          <img
+            src={MEDIA_URL + pageData.images?.[0]?.src}
+            alt={pageData.images?.[0]?.alt}
+            class="relative w-[95%] max-w-[500px] h-auto aspect-[5/4] object-cover rounded-3xl z-10 shadow-lg"
           />
         </div>
       </div>

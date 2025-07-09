@@ -36,40 +36,48 @@ export default function HeroSection({ pageData, bgImg }) {
             </svg>
           </div>
           {pageData?.paragraphs?.map((para, index) => (
-            <p key={index} class="text-[16px] font-[500] text-[#616670] leading-6">
+            <p
+              key={index}
+              class="text-[16px] font-[500] text-[#616670] leading-6"
+            >
               {para}
             </p>
           ))}
         </div>
 
         <div class="flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0 ">
-          {bgImg ? (<>
-            <div class="relative w-full max-w-md">
-              <div class="absolute inset-0 h-[300px] bg-gray-100 transform translate-x-10 -translate-y-12 rounded-[30px] shadow-lg"></div>
-              <div class="relative z-10 flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0">
-                <img
-                  src={MEDIA_URL + pageData.images?.[0]?.src}
-                  alt={pageData.images?.[0]?.alt}
-                  class="w-[500px] md:mx-auto lg:mx-0 rounded-[30px]"
-                />
+          {bgImg ? (
+            <>
+              <div class="relative w-full max-w-md">
+                <div class="absolute inset-0 h-[300px] bg-gray-100 transform translate-x-10 -translate-y-12 rounded-[30px] shadow-lg"></div>
+                <div class="relative z-10 flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0">
+                  <img
+                    src={MEDIA_URL + pageData.images?.[0]?.src}
+                    alt={pageData.images?.[0]?.alt}
+                    class="w-[500px] md:mx-auto lg:mx-0 rounded-[30px] "
+                  />
+                </div>
               </div>
-            </div>
-          </>) : <>
-            {/* <HeroAnimation image={pageData.image} client:load /> */}
-            <img
-              src={MEDIA_URL + pageData.images?.[0]?.src}
-              alt={pageData.images?.[0]?.alt}
-              class="w-[500px] md:mx-auto lg:mx-0"
-            />
-          </>
-          }
-
+            </>
+          ) : (
+            <>
+              {/* <HeroAnimation image={pageData.image} client:load /> */}
+              <img
+                src={MEDIA_URL + pageData.images?.[0]?.src}
+                alt={pageData.images?.[0]?.alt}
+                class="w-[500px] md:mx-auto lg:mx-0 transition-transform duration-400 hover:-translate-y-4 rounded-sm"
+              />
+            </>
+          )}
         </div>
 
         <div className="lg:col-span-2 w-full flex flex-row justify-center gap-4 px-15">
           <div className="w-1/2 flex flex-col gap-4">
             {pageData?.list_items[0]?.slice(0, 3).map((item, index) => (
-              <div key={index} className="flex items-center justify-start gap-10">
+              <div
+                key={index}
+                className="flex items-center justify-start gap-10"
+              >
                 <svg
                   className="w-5 h-5 mr-2 text-red-500"
                   fill="none"
@@ -91,7 +99,10 @@ export default function HeroSection({ pageData, bgImg }) {
           </div>
           <div className="w-1/2 flex flex-col gap-4">
             {pageData?.list_items[0]?.slice(3, 6).map((item, index) => (
-              <div key={index} className="flex items-center justify-start gap-10">
+              <div
+                key={index}
+                className="flex items-center justify-start gap-10"
+              >
                 <svg
                   className="w-5 h-5 mr-2 text-red-500"
                   fill="none"
@@ -112,7 +123,6 @@ export default function HeroSection({ pageData, bgImg }) {
             ))}
           </div>
         </div>
-
       </div>
     </>
   );

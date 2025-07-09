@@ -6,6 +6,8 @@ const res = await fetch(API_URL + 'blocks/499');
 const data = await res.json();
 
 const pageData = data[4];
+const background = '[#FEF2F2]';
+
 ---
 <!-- Section 5 -->
-<Accordian category={pageData}/>                        
+<Accordian category={pageData} background={background} client:load/>                        

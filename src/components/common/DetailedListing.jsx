@@ -1,13 +1,22 @@
 // src/components/SecondSection.jsx
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const DetailedListing = ({ pageData }) => {
+  useEffect(()=>{
+    AOS.init();
+  })
 
   return (
-    <section className={`${pageData.background} px-4 md:px-10 lg:px-20 text-center`}>
-
+    <section
+      className={`${pageData.background} px-4 md:px-10 lg:px-20 text-center`}
+    >
       <div className="inline-block relative mx-auto lg:mx-0 mb-10">
         <div className="relative inline-block">
-          <h1 className="text-[45px] md:text-[48px] lg:text-[45px] font-semibold relative z-10 leading-tight text-center lg:text-center">{pageData.headings[0]} </h1>
+          <h1 className="text-[45px] md:text-[48px] lg:text-[45px] font-semibold relative z-10 leading-tight text-center lg:text-center">
+            {pageData.headings[0]}{" "}
+          </h1>
           <svg
             className="absolute left-1/2 -translate-x-1/2 bottom-[-10px] lg:left-[140px] lg:translate-x-0 z-0"
             width="270"
@@ -23,30 +32,34 @@ const DetailedListing = ({ pageData }) => {
               strokeLinecap="round"
             />
           </svg>
-
-
         </div>
       </div>
 
-
-      <div className={`grid grid-cols-1 lg:grid-cols-${pageData?.colVal[1]?.value} gap-8 lg:px-30 mt-10`}>
+      <div
+        className={`grid grid-cols-1 lg:grid-cols-${pageData?.colVal[1]?.value} gap-8 lg:px-30 mt-10`}
+      >
         {pageData?.card_details?.map((card, index) => (
           <div
             key={index}
             className="bg-white shadow-md rounded-xl flex flex-col items-center space-y-4 hover:shadow-lg transition p-10"
+            data-aos="zoom-in-up"
           >
             <div
               className="w-14 h-14"
               dangerouslySetInnerHTML={{ __html: card.svg }}
             />
-            <h2 className="text-black-600 font-bold text-2xl text-left">{card?.heading}</h2>
+            <h2 className="text-black-600 font-bold text-2xl text-left">
+              {card?.heading}
+            </h2>
             <p
               className="text-gray-600 font-medium text-left"
               dangerouslySetInnerHTML={{ __html: card.para[0] }}
             />
             <ul className="text-left text-gray-600 font-medium">
               {card?.list.map((listItem, index) => (
-                <li key={index} className="list-disc">{listItem}</li>
+                <li key={index} className="list-disc">
+                  {listItem}
+                </li>
               ))}
             </ul>
 
@@ -58,8 +71,6 @@ const DetailedListing = ({ pageData }) => {
           </div>
         ))}
       </div>
-
-
     </section>
   );
 };

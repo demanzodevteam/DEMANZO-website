@@ -1,12 +1,18 @@
 // src/components/FeatureSection.jsx
 import { CircleCheckBig } from "lucide-react";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 
 const FeatureSection = ({ pageData }) => {
-
+  useEffect(()=>{
+    AOS.init();
+  })
 
   return (
     <section
-      className={`bg-[${pageData.background}]  px-4 md:px-10 lg:px-20 py-16 space-y-4 text-center`}
+      className={`bg-${pageData.background}  px-4 md:px-10 lg:px-20 py-16 space-y-4 text-center`}
     >
       <div className="inline-block relative mx-auto lg:mx-0 mb-20">
         <div className="relative inline-block">
@@ -37,6 +43,7 @@ const FeatureSection = ({ pageData }) => {
           <div
             key={index}
             className="flex flex-col items-start justify-center p-6 bg-white rounded-lg shadow-md space-y-4"
+            data-aos="zoom-in-down"
           >
             <div className="flex flex-row items-center justify-center px-3 space-x-2">
               <div className="text-[#447EFC]">

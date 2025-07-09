@@ -8,28 +8,34 @@ const BusinessSection = ({ SectionData ,Background}) => {
       <div className="mt-14">
         <div className="inline-block relative mx-auto lg:mx-0 mb-20">
           <div className="relative inline-block my-0">
-            <h1 className="text-[45px] md:text-[48px] lg:text-[45px] font-semibold relative z-10 leading-tight text-center lg:text-center">{SectionData.headings[0]} </h1>
-          <svg
-            className="absolute left-1/2 -translate-x-1/2 bottom-[-10px] lg:left-[140px] lg:translate-x-0 z-0"
-            width="270"
-            height="20"
-            viewBox="0 0 270 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5 15C80 5 190 0 265 12"
-              stroke="#7D80E6"
-              strokeWidth="6"
-              strokeLinecap="round"
-            />
-          </svg>
+            <h1 className="text-[45px] md:text-[48px] lg:text-[45px] font-semibold relative z-10 leading-tight text-center lg:text-center">
+              {SectionData.headings[0]}{" "}
+            </h1>
+            <svg
+              className="absolute left-1/2 -translate-x-1/2 bottom-[-10px] lg:left-[140px] lg:translate-x-0 z-0"
+              width="270"
+              height="20"
+              viewBox="0 0 270 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5 15C80 5 190 0 265 12"
+                stroke="#7D80E6"
+                strokeWidth="6"
+                strokeLinecap="round"
+              />
+            </svg>
           </div>
         </div>
 
         <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-6">
           <div className="lg:p-5">
-            <img src={MEDIA_URL+SectionData?.images	[0]?.src} alt={SectionData?.images[0]?.alt} className="" />
+            <img
+              src={MEDIA_URL + SectionData?.images[0]?.src}
+              alt={SectionData?.images[0]?.alt}
+              className="tansition ease-in-out duration-300 hover:-translate-y-4"
+            />
           </div>
 
           <div className="grid lg:grid-cols-1 gap-6 lg:px-10">
@@ -37,6 +43,8 @@ const BusinessSection = ({ SectionData ,Background}) => {
               <div
                 key={index}
                 className="flex flex-col items-start justify-center p-3 bg-[#F8FDFF] rounded-lg shadow-md "
+                data-aos="flip-down"
+              
               >
                 <div className="flex flex-row items-center justify-center px-0">
                   <svg

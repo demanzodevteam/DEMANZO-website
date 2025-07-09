@@ -15,7 +15,7 @@ export default function HeroSection({ pageData }) {
           </h1>
 
           <div class="inline-block relative mx-auto lg:mx-0 ">
-            <h1 class="text-[45px] md:text-[48px] lg:text-[50px] font-semibold relative z-10">
+            <h1 class="text-[45px] md:text-[48px] lg:text-[48px] font-semibold relative z-10">
               {pageData.headings[0]}
             </h1>
           </div>
@@ -31,12 +31,23 @@ export default function HeroSection({ pageData }) {
           ))}
         </div>
 
-        <div class="flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0 ">
-          {/* <HeroAnimation image={pageData.image} client:load /> */}
+        {/* <div class="flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0 ">
+
           <img
             src={MEDIA_URL + pageData.images?.[0]?.src}
             alt={pageData.images?.[0]?.alt}
             class="w-[500px] md:mx-auto lg:mx-0"
+          />
+        </div> */}
+        <div class="relative flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0">
+          {/* Back gray card */}
+          <div class="absolute w-[450px] h-[600px] bg-gray-100 rounded-3xl top-1 right-1 z-0"></div>
+
+          {/* Foreground image */}
+          <img
+            src={MEDIA_URL + pageData.images?.[0]?.src}
+            alt={pageData.images?.[0]?.alt}
+            class="relative w-[450px] h-[600px] object-cover rounded-3xl z-10 shadow-lg"
           />
         </div>
       </div>

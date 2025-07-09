@@ -8,12 +8,15 @@ const slug = "314";
 const res = await fetch(`${API_URL}blocks/${slug}`);
 const data = await res.json();
 const pageData = data[2];
+const background = '#FEF2F2'
 
+
+const combinedData ={...pageData,background}
 
 ---
 <!-- Section Three -->
 
-<FeatureSection pageData={pageData} />
+<FeatureSection pageData={combinedData} />
 
 
 
