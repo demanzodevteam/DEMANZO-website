@@ -69,9 +69,9 @@ const renderInput = (name, type, label) => (
 );
 
 // Step Components
-const Step1 = ({ form, handleChange }) => (
+const Step1 = ({ form, category, errors, handleChange }) => (
   <div>
-    <h2 className="text-2xl font-bold text-center">Contact Information</h2>
+    <h2 className="text-2xl font-bold text-center">{category?.headings[0]}</h2>
     <ProgressBar step={1} />
     <div className="mt-8 space-y-6">
       <div>
@@ -151,10 +151,10 @@ const Step1 = ({ form, handleChange }) => (
   </div>
 );
 
-const Step2 = ({ form, errors, handleChange }) => (
+const Step2 = ({ form, category, errors, handleChange }) => (
   <div>
     <h2 className="text-2xl font-bold text-center">
-      What's Your Company All About?
+      {category?.headings[1]}
     </h2>
     <ProgressBar step={2} />
     <div className="mt-8 space-y-6">
@@ -239,10 +239,10 @@ const Step2 = ({ form, errors, handleChange }) => (
   </div>
 );
 
-const Step3 = ({ form, errors, handleChange }) => (
+const Step3 = ({ form, category, errors, handleChange }) => (
   <div>
-    <h2 className="text-xl font-bold text-center">
-      What's Slowing Down Your Growth?
+    <h2 className="text-2xl font-bold text-center">
+     {category?.headings[2]}
     </h2>
     <ProgressBar step={3} />
     <div className="mt-8 space-y-6">
@@ -290,10 +290,10 @@ const Step3 = ({ form, errors, handleChange }) => (
   </div>
 );
 
-const Step4 = ({ form, errors, handleChange }) => (
+const Step4 = ({ form, category, errors, handleChange }) => (
   <div>
-    <h2 className="text-xl font-bold text-center">
-      Where Do You Want To Be In The Next 6 Months?
+    <h2 className="text-2xl font-bold text-center">
+   {category?.headings[3]}
     </h2>
     <ProgressBar step={4} />
     <div className="mt-8 space-y-6">
@@ -349,10 +349,10 @@ const Step4 = ({ form, errors, handleChange }) => (
   </div>
 );
 
-const Step5 = ({ form, errors, handleChange }) => (
+const Step5 = ({ form, category, errors, handleChange }) => (
   <div>
-    <h2 className="text-xl font-bold text-center">
-      When Are You Looking To Kick Off Your Growth Journey?
+    <h2 className="text-2xl font-bold text-center">
+      {category?.headings[4]}
     </h2>
     <ProgressBar step={5} />
     <div className="mt-8 space-y-6">
@@ -603,11 +603,11 @@ const handleSubmit = async (e) => {
 };
 
   const steps = [
-    <Step1 form={form} handleChange={handleChange} />,
-    <Step2 form={form} errors={errors} handleChange={handleChange} />,
-    <Step3 form={form} errors={errors} handleChange={handleChange} />,
-    <Step4 form={form} errors={errors} handleChange={handleChange} />,
-    <Step5 form={form} errors={errors} handleChange={handleChange} />,
+    <Step1 form={form} category={category} errors={errors} handleChange={handleChange} />,
+    <Step2 form={form} category={category} errors={errors} handleChange={handleChange} />,
+    <Step3 form={form} category={category} errors={errors} handleChange={handleChange} />,
+    <Step4 form={form} category={category} errors={errors} handleChange={handleChange} />,
+    <Step5 form={form} category={category} errors={errors} handleChange={handleChange} />,
   ];
 
   console.log(form, "formdata");
@@ -616,7 +616,7 @@ const handleSubmit = async (e) => {
 
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="w-full max-w-md p-8 space-y-8 bg-white rounded shadow">
         {steps[step - 1]}
         <NavigationButtons

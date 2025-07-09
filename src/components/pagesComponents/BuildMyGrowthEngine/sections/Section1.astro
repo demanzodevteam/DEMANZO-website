@@ -1,5 +1,6 @@
 ---
 import { API_URL } from "../../../../config/urls";
+import BuildMyGrowthEngineSection from "../../../../components/common/BuildGrowthEngineSection";
 import HeroSection from "../../../common/HeroSection";
 
 const res = await fetch(API_URL + 'blocks/202');
@@ -8,6 +9,6 @@ const pageData = await res.json();
 <!-- console.log(pageData,'pagedata') -->
 
 <!-- First Section -->
-<!-- <HeroPiplineSection pageData={pageData} client:load /> -->
-<HeroSection pageData={pageData[0]} bgImg={false}/>
+<!-- <HeroSection pageData={pageData[0]} bgImg={false}/> -->
+ <BuildMyGrowthEngineSection pageData={pageData} bgImg={false} client:load/>
 
