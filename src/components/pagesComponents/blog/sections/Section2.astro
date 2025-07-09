@@ -3,6 +3,7 @@ import { API_URL } from '../../../../config/urls';
 import BlogCards from "../../../common/BlogCards";
 
 const resond = await fetch(API_URL + "category/8");
+// const resond = await fetch(`https://demanzo.com/wp-json/wp/v2/posts?per_page=100`)
 const category = await resond.json();
 const button = false;
 

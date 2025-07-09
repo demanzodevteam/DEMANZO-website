@@ -157,3 +157,7 @@ body {
     @apply bg-background text-foreground;
     }
 }
+
+.btn-orange{
+  background-color: orange;
+}
