@@ -1,0 +1,104 @@
+---
+import CaptchaImg from '../../../../assets/Captcha.png'
+import BackGroundImg from '../../../../assets/Background-SEO-Traffic.jpg'
+import Illustration from '../../../../assets/illustration-guava-mascot-as-graphic-designer-cute-style-design-t-shirt-sticker-logo-element_152558-3513-removebg-preview.png'
+---
+<!-- Section-9 -->
+<div
+  class="flex items-center justify-center px-4 py-16 bg-cover bg-center"
+  style={`background-image: url('${BackGroundImg.src}');`}
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-7xl w-full overflow-hidden p-8 lg:p-14">
+
+    <!-- Left Side -->
+    <div class="flex flex-col items-center justify-center text-center gap-6 px-4">
+      <h2 class="text-3xl lg:text-4xl font-bold text-[#ffffff]">Contact Us</h2>
+      <img src={Illustration.src} alt="" class="hover:-translate-y-4 transition-all duration-500 mt-6" />
+    </div>
+
+    <!-- Right Side - Form -->
+    <div class="lg:p-10">
+      <form class="space-y-6">
+        <!-- Name & Email -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <input type="text" placeholder="Full Name" required
+            class="border border-[#e7e7e7] focus:outline-none px-3 py-2 text-[16px] text-[#050607] bg-white placeholder:text-black" />
+          <input type="email" placeholder="Email Address" required
+           class="border border-[#e7e7e7] focus:outline-none px-3 py-2 text-[16px] text-[#050607] bg-white placeholder:text-black" />
+        </div>
+
+        <!-- Number & Country -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <input type="number" placeholder="Phone Number" required
+            class="border border-[#e7e7e7] focus:outline-none px-3 py-2 text-[16px] text-[#050607] bg-white placeholder:text-black" />
+          <input type="text" placeholder="Country" required
+            class="border border-[#e7e7e7] focus:outline-none px-3 py-2 text-[16px] text-[#050607] bg-white placeholder:text-black" />
+        </div>
+
+        <!-- Company type & Team Size -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <select
+            id="companyType"
+            class="w-fullborder border-[#e7e7e7] focus:outline-none px-3 py-2 text-[16px] text-[#050607] bg-white"
+          >
+            <option value="" disabled selected>Company Type</option>
+            <option value="freelancer">Freelancer</option>
+            <option value="agency">Agency</option>
+          </select>
+          <select
+            id="teamSize"
+            class="w-fullborder border-[#e7e7e7] focus:outline-none px-3 py-2 text-[16px] text-[#050607] bg-white"
+          >
+            <option value="" disabled selected>Team Size</option>
+            <option value="1">1</option>
+            <option value="2-5">2-5</option>
+            <option value="6-10">6-10</option>
+            <option value="&gt;10">&gt;10</option>
+          </select>
+        </div>
+
+        <!-- Total Clients & Where needs help -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <select
+            id="totalClients"
+            class="w-fullborder border-[#e7e7e7] focus:outline-none px-3 py-2 text-[16px] text-[#050607] bg-white"
+          >
+            <option value="" disabled selected>Total Clients</option>
+            <option value="juststarting">Just Starting</option>
+            <option value="1-5">1-5</option>
+            <option value="6-10">6-10</option>
+            <option value="&gt;10">&gt;10</option>
+          </select>
+          <select
+            id="whereHelp"
+            class="w-fullborder border-[#e7e7e7] focus:outline-none px-3 py-2 text-[16px] text-[#050607] bg-white"
+          >
+            <option value="" disabled selected>Where you need help?</option>
+            <option value="seo">SEO</option>
+            <option value="ppc">PPC</option>
+          </select>
+        </div>
+
+        <!-- Message -->
+        <textarea rows="4" placeholder="Message"
+          class="w-full border border-[#e7e7e7] focus:outline-none px-3 py-2 text-[16px] text-[#050607] bg-white placeholder:text-black resize-none"></textarea>
+
+        <!-- Captcha -->
+        <input type="text" placeholder="Captcha"
+          class="w-full border border-[#e7e7e7] focus:outline-none px-3 py-2 text-[16px] text-[#050607] bg-white placeholder:text-black" />
+
+        <!-- Buttons -->
+        <div class="flex flex-col items-end gap-4">
+          <button
+            type="submit"
+            class="w-full lg:w-auto text-blue-600 bg-white px-6 py-3 rounded-full hover:text-white cursor-pointer hover:bg-[#f5a31c] transition"
+          >
+            Request a demo
+          </button>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

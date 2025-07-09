@@ -1,0 +1,72 @@
+---
+import { API_URL } from "../../../../config/urls";
+import { MEDIA_URL } from "../../../../config/urls";
+
+const res = await fetch(API_URL + "blocks/204");
+const data = await res.json();
+
+const pageData = data[8];
+const list1 = pageData?.list_items[0];
+const list2 = pageData?.list_items[1];
+---
+
+<div class="pt-[70px] px-[15px]">
+    <div class="mx-[10px] lg:mx-[28px] grid grid-cols-1 md:grid-cols-2">
+        <h1 class="px-[10px] pt-[10px] pb-[26px] text-[35px] md:text-[40px] font-[600] leading-12 text-[#191d27] text-center md:text-left">{pageData.headings[0]}</h1>
+        <div class="md:pl-[32px] pt-[16px]">
+            <p class="pb-[40px] text-[16px] font-[500] text-[#616670]">{pageData.paragraphs[0]}</p>
+             <div>
+                <a href="#form" class="bg-[#0a6aad] text-center text-white text-[14px] font-[500] w-fit px-9 py-3 mx-auto rounded-full cursor-pointer">
+                    {pageData.paragraphs[1]}
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="mx-[10px]  md:mx-[28px] mt-[40px] md:mt-[30px] grid grid-cols-1 lg:grid-cols-2">
+        <div class="md:p-[10px]">
+            <img
+                src={MEDIA_URL + pageData.images?.[0]?.src}
+                alt={pageData.images?.[0]?.alt}
+                class="w-full object-cover rounded hover:-translate-y-4 transition duration-500"
+            />
+        </div>
+        <div class="lg:pl-[80px] pt-[16px]">
+            <h1 class="mb-[36px] text-[30px] font-[600] text-[#191d27] text-center md:text-left">{pageData.headings[1]}</h1>
+            <div>
+                {
+                    list1.map((item: any, index: number) => (
+                        <div class="pt-[16px] pb-[10px] flex gap-3">
+                            <div class="pt-[6px]">
+                                <img
+                                    src={MEDIA_URL + pageData.images?.[index + 1]?.src}
+                                    alt={pageData.images?.[index + 1]?.alt}
+                                    class="w-[30px] h-[30px] min-w-[30px] min-h-[30px] object-contain"
+                                />
+                            </div>
+                            <div>
+                                <h1 class="mb-[34px] text-[20px] font-[600] text-[#191d27]">{item?.heading}</h1>
+                                <p class="mb-[20px] text-[16px] font-[500] text-[#616670]">{item?.para}</p>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+    <div class="py-[30px] mx-[10px] lg:mx-[28px] grid grid-cols-1 md:grid-cols-2 gap-6">
+        {
+            list2.map((item: any, index: number) => {
+                const isEven = (index + 1) % 2 === 0;
+                return (
+                    <div class={`p-[20px] md:p-[30px] lg:pt-[36px] lg:pr-[30px] lg:pb-[30px] lg:pl-[50px] flex flex-col md:flex-row items-center md:items-start gap-4 rounded-md ${isEven ? 'bg-[#eef9ff]' : 'bg-[#fff0c6]'}`}>
+                        <div class="mb-[10px]" set:html={item?.svg}></div>
+                        <div>
+                            <h1 class="text-center md:text-left text-[20px] font-[600] text-[#191d27] mb-[16px]">{item?.heading}</h1>
+                            <p class="text-center md:text-left text-[16px] font-[500] text-[#616670] mb-[20px]">{item?.para}</p>
+                        </div>
+                    </div>
+                );
+            })
+        }
+    </div>
+</div>

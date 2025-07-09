@@ -1,0 +1,26 @@
+---
+import { API_URL } from "../../../../config/urls";
+import { MEDIA_URL } from "../../../../config/urls";
+
+const res = await fetch(API_URL + "blocks/204");
+const data = await res.json();
+
+const pageData = data[10];
+import BackGroundImg from '../../../../assets/Background-SEO-Traffic.jpg'
+---
+
+<div class="flex items-center justify-center px-[15px] py-[80px] bg-cover bg-center" style={`background-image: url('${BackGroundImg.src}');`}>
+    <div class="mx-[280px] mb-[20px]">
+        <h1 class="pb-[25px] text-[40px] font-[600] relative z-10 text-white text-center leading-12">
+            {pageData.headings[0]}
+        </h1>
+        <div class="relative text-center flex items-center justify-center">
+            <h1 class="pb-[25px] text-[40px] font-[600] relative z-10 text-white leading-12">
+                {pageData.headings[1]}
+            </h1>
+            <svg class="mt-2 mx-auto w-[200px] h-[20px] absolute bottom-5" viewBox="0 0 208 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 12.668C43.9929 5.60812 154.854 -4.27568 204.045 12.668" stroke="#FEB906" stroke-width="6" stroke-linecap="round"></path>
+            </svg>
+        </div>
+    </div>
+</div>

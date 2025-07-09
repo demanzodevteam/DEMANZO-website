@@ -16,8 +16,8 @@ const list = pageData?.list_items[0];
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         {
             list.map((item: any) => (
-                <div class="p-[30px] mx-[10px] md:mx-0 lg:mx-[24px] mt-[16px] rounded bg-white">
-                    <div class="flex items-center justify-center mb-[20px]" set:html={item?.svg}></div>
+                <div class="p-[30px] mx-[10px] md:mx-0 lg:mx-[24px] mt-[16px] rounded bg-white group">
+                    <div class="flex items-center justify-center mb-[20px] group-hover:-translate-y-3 transition duration-500" set:html={item?.svg}></div>
                     <h1 class=" text-center lg:text-lefttext-left text-[20px] font-[600] text-[#191d27] pb-[20px] mb-[20px]">{item?.heading}</h1>
                     <p class=" text-center lg:text-left text-[16px] font-[500] text-[#616670] mb-[20px]">{item?.para}</p>
                 </div>
