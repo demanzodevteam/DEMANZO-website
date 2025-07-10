@@ -1,9 +1,11 @@
 ---
-import WpContentParser from '../components/common/WpContentParser';
-import { BLOG_URL } from '../config/urls';
+import { ArticlesHeader } from "../components/common/ArticlesHeader";
+import WpContentParser from "../components/common/WpContentParser";
+import { BLOG_URL, MEDIA_URL } from "../config/urls";
+import HomeLayout from "../layouts/HomeLayout.astro";
 
 export async function getStaticPaths() {
-  const res = await fetch(BLOG_URL + 'per_page=100');
+  const res = await fetch(BLOG_URL + "per_page=100");
   const posts = await res.json();
 
   const paths = posts.map((post: { slug: string }) => ({
@@ -15,21 +17,12 @@ export async function getStaticPaths() {
 
 const { Blog: slug } = Astro.params;
 
-const res = await fetch(BLOG_URL +`slug=${slug}`);
+const res = await fetch(BLOG_URL + `slug=${slug}`);
 const postData = await res.json();
 const post = postData[0];
 ---
 
-<html>
-  <head>
-    <title>{post.title.rendered}</title>
-  </head>
-  <body>
-    <!-- <h1>{post.title.rendered}</h1>
-    <article>
-      <div set:html={post.content.rendered} />
-    </article> -->
-
-    <WpContentParser content={post.content.rendered} client:load/>
-  </body>
-</html>
+<HomeLayout>
+  <ArticlesHeader SectionData={post} />
+  <WpContentParser content={post.content.rendered} client:load />
+</HomeLayout>

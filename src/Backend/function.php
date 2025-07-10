@@ -624,7 +624,7 @@ add_action('rest_api_init', function () {
                     'slug'     => $post->post_name,
                     'image'    => $image_url,
                     'alt'      => $alt_text,
-                    'link'     => get_permalink($post),
+                    'link'     => wp_parse_url(get_permalink($post), PHP_URL_PATH),
                     'category' => $category_name,
                 ];
             }, $posts);
