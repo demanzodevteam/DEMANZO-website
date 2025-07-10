@@ -66,7 +66,7 @@ export default function WpContentParser({ content }) {
 
                   case "h3":
                     return (
-                      <h3 className="text-xl font-semibold text-gray-600 mt-6 mb-2">
+                      <h3 className="text-xl font-bold text-gray-800 mt-8 mb-4">
                         {domToReact(children)}
                       </h3>
                     );

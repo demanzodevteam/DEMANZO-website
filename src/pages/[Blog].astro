@@ -1,4 +1,5 @@
 ---
+import { ArticleFooter } from "../components/common/ArticleFooter";
 import { ArticlesHeader } from "../components/common/ArticlesHeader";
 import WpContentParser from "../components/common/WpContentParser";
 import { BLOG_URL, MEDIA_URL } from "../config/urls";
@@ -25,4 +26,5 @@ const post = postData[0];
 <HomeLayout>
   <ArticlesHeader SectionData={post} />
   <WpContentParser content={post.content.rendered} client:load />
+  <ArticleFooter/>
 </HomeLayout>
