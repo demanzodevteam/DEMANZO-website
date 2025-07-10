@@ -1,6 +1,8 @@
 import parse, { domToReact, Element } from "html-react-parser";
 import { useState } from "react";
-import { MEDIA_URL,SOURCE_BASE_URL } from "../../config/urls";
+import { MEDIA_URL, SOURCE_BASE_URL } from "../../config/urls";
+import { motion, AnimatePresence } from "framer-motion";
+import { ListTree, ChevronDown, ChevronUp } from "lucide-react";
 
 export default function WpContentParser({ content }) {
   return (
@@ -14,31 +16,31 @@ export default function WpContentParser({ content }) {
               const { name, attribs, children } = node;
 
 
-  // Detect the Table of Contents (TOC) <nav> block
-if (name === "nav") {
-  // Clean links inside TOC children before passing
-  const cleanedChildren = domToReact(children, {
-    replace: (node) => {
-      if (node instanceof Element && node.name === "a") {
-        let cleanHref = node.attribs?.href || "#";
-        if (cleanHref.startsWith(SOURCE_BASE_URL)) {
-          cleanHref = cleanHref.replace(SOURCE_BASE_URL, "/");
-        }
+              // Detect the Table of Contents (TOC) <nav> block
+              if (name === "nav") {
+                // Clean links inside TOC children before passing
+                const cleanedChildren = domToReact(children, {
+                  replace: (node) => {
+                    if (node instanceof Element && node.name === "a") {
+                      let cleanHref = node.attribs?.href || "#";
+                      if (cleanHref.startsWith(SOURCE_BASE_URL)) {
+                        cleanHref = cleanHref.replace(SOURCE_BASE_URL, "/");
+                      }
 
-        return (
-          <a
-            href={cleanHref}
-            className="text-blue-800 underline hover:text-blue-600 transition-colors duration-200"
-          >
-            {domToReact(node.children)}
-          </a>
-        );
-      }
-    },
-  });
+                      return (
+                        <a
+                          href={cleanHref}
+                          className="text-blue-800 underline hover:text-blue-600 transition-colors duration-200"
+                        >
+                          {domToReact(node.children)}
+                        </a>
+                      );
+                    }
+                  },
+                });
 
-  return <TableOfContents>{cleanedChildren}</TableOfContents>;
-}
+                return <TableOfContents>{cleanedChildren}</TableOfContents>;
+              }
 
 
               // Detect the Quick-summary div
@@ -61,28 +63,28 @@ if (name === "nav") {
 
               switch (name) {
                 case "a":
-  let cleanHref = attribs.href || "#";
+                  let cleanHref = attribs.href || "#";
 
-  // Strip SOURCE_BASE_URL from href if present
-  if (cleanHref.startsWith(SOURCE_BASE_URL)) {
-    cleanHref = cleanHref.replace(SOURCE_BASE_URL, "/");
-  }
+                  // Strip SOURCE_BASE_URL from href if present
+                  if (cleanHref.startsWith(SOURCE_BASE_URL)) {
+                    cleanHref = cleanHref.replace(SOURCE_BASE_URL, "/");
+                  }
 
-  return (
-    <a
-      href={cleanHref}
-      className="text-blue-800 underline hover:text-blue-600 transition-colors duration-200"
-    >
-      {domToReact(children)}
-    </a>
-  );
+                  return (
+                    <a
+                      href={cleanHref}
+                      className="text-blue-800 underline hover:text-blue-600 transition-colors duration-200"
+                    >
+                      {domToReact(children)}
+                    </a>
+                  );
 
-  case "p":
-    return (
-      <p className="text-gray-800 leading-relaxed text-base mb-5">
-        {domToReact(children)}
-      </p>
-    );
+                case "p":
+                  return (
+                    <p className="text-gray-800 leading-relaxed text-base mb-5">
+                      {domToReact(children)}
+                    </p>
+                  );
 
                 case "strong":
                   return (
@@ -179,19 +181,36 @@ export function TableOfContents({ children }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="mb-8">
-      <button
-        onClick={() => setIsOpen((prev) => !prev)}
-        className="mb-3 px-4 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700"
-      >
-        {isOpen ? "Hide Table of Contents" : "Show Table of Contents"}
-      </button>
-
-      {isOpen && (
-        <div className="border border-gray-300 rounded-md p-4 bg-gray-50">
-          {children}
+    <div className="mb-8 border border-gray-200 rounded-xl shadow-sm bg-white p-4">
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-2">
+          <ListTree className="text-blue-600" />
+          <h2 className="text-xl font-semibold text-gray-800">
+            Table of Contents
+          </h2>
         </div>
-      )}
+
+        <button
+          onClick={() => setIsOpen((prev) => !prev)}
+          className="flex items-center gap-1 px-3 py-1.5 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-md transition"
+        >
+          {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+          {isOpen ? "Hide" : "Show"}
+        </button>
+      </div>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="overflow-hidden text-sm text-gray-700 space-y-2"
+          >
+            {children}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
