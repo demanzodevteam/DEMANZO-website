@@ -14,10 +14,32 @@ export default function WpContentParser({ content }) {
               const { name, attribs, children } = node;
 
 
-              // Detect the Table of Contents (TOC) <nav> block
+  // Detect the Table of Contents (TOC) <nav> block
 if (name === "nav") {
-  return <TableOfContents>{domToReact(children)}</TableOfContents>;
+  // Clean links inside TOC children before passing
+  const cleanedChildren = domToReact(children, {
+    replace: (node) => {
+      if (node instanceof Element && node.name === "a") {
+        let cleanHref = node.attribs?.href || "#";
+        if (cleanHref.startsWith(SOURCE_BASE_URL)) {
+          cleanHref = cleanHref.replace(SOURCE_BASE_URL, "/");
+        }
+
+        return (
+          <a
+            href={cleanHref}
+            className="text-blue-800 underline hover:text-blue-600 transition-colors duration-200"
+          >
+            {domToReact(node.children)}
+          </a>
+        );
+      }
+    },
+  });
+
+  return <TableOfContents>{cleanedChildren}</TableOfContents>;
 }
+
 
               // Detect the Quick-summary div
               if (
