@@ -8,15 +8,16 @@ export const ArticlesHeader = ({ SectionData }) => {
 
     return (
         <>
-            <section className="container mx-auto my-10">
-                <div class="px-4 py-25` relative">
-                    <span
-                        className="inline-block text-xs font-semibold text-white uppercase px-3 py-2.5 my-4 rounded-full bg-[linear-gradient(to_right,_#ff8c00,_#f12500)]"
-                    >
-                        {SectionData?.title?.rendered}
-                    </span>
-                    <div class="relative mx-auto text-left flex items-center">
-                        <h1 class="text-[45px] md:text-[50px] font-semibold relative z-10">
+            <section className="container mx-auto px-4 sm:px-6 lg:px-8 my-auto">
+                <span
+                    className="break-words whitespace-normal inline-block text-xs font-semibold text-white uppercase px-3 py-2.5 my-4 rounded-full bg-[linear-gradient(to_right,_#ff8c00,_#f12500)]"
+                >
+                    {SectionData?.title?.rendered}
+                </span>
+                <div class="px-4 py-10 relative">
+
+                    <div class="relative mx-auto text-left flex items-center w-full">
+                        <h1 class="text-[45px] md:text-[50px] font-semibold relative z-10 break-words whitespace-normal w-full">
                             {SectionData?.title?.rendered}
                         </h1>
                     </div>

@@ -5,9 +5,7 @@ import "aos/dist/aos.css";
 
 const DetailedListing = ({ pageData }) => {
   useEffect(()=>{
-    AOS.init();
-    console.log(pageData);
-    
+    AOS.init();    
   })
 
   return (
