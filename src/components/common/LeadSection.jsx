@@ -1,14 +1,15 @@
 // src/components/HeroLogger.tsx
 import { useEffect } from "react";
 import { MEDIA_URL } from "../../config/urls";
-import { CircleCheckBig } from "lucide-react";
 
-export default function HeroSection({ pageData }) {
+export default function LeadSection({ pageData }) {
   // const [pageData, setPageData] = useState({});
 
   return (
     <>
-      <div class="grid grid-cols-1 lg:grid-cols-[1fr_0.6fr] px-2 gap-2 lg:px-14 lg:py-10 bg-no-repeat bg-bottom bg-cover min-h-[80vh]">
+      <div
+        class={`grid grid-cols-1 lg:grid-cols-[1fr_0.6fr] px-2 gap-2 lg:px-14 lg:py-10 bg-no-repeat bg-bottom bg-cover min-h-[80vh] ${pageData.background}`}
+      >
         <div class="flex flex-col justify-center gap-2 py-8 px-4 lg:px-15 lg:py-10">
           <h1 class="text-[#FF5F55] font-semibold text-[18px] lg:text-[18px]">
             {pageData.title}
@@ -32,7 +33,18 @@ export default function HeroSection({ pageData }) {
           {pageData?.card_details?.[1]?.list?.map((item, index) => (
             <div key={index} className="mb-1">
               <div className="flex items-start gap-2 text-[16px] font-[500] text-[#616670] leading-6">
-                <CircleCheckBig className="mt-1 w-5 h-5 text-[#FF5F55]" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="#ff5f55"
+                    d="m10.6 16.6l7.05-7.05l-1.4-1.4l-5.65 5.65l-2.85-2.85l-1.4 1.4zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"
+                  />
+                </svg>
+
                 <span>{item}</span>
               </div>
             </div>
@@ -52,7 +64,7 @@ export default function HeroSection({ pageData }) {
           <img
             src={MEDIA_URL + pageData.images?.[0]?.src}
             alt={pageData.images?.[0]?.alt}
-            class="relative w-[95%] max-w-[500px] h-auto aspect-[5/4] object-cover rounded-3xl z-10 shadow-lg"
+            class="relative w-[95%] max-w-[500px] h-auto aspect-[5/4] object-cover rounded-3xl z-10 shadow-lg transition duration-300 hover:-translate-y-4"
           />
         </div>
         

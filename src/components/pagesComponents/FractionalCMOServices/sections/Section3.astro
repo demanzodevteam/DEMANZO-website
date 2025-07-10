@@ -1,0 +1,25 @@
+---
+import { API_URL } from '../../../../config/urls';
+import DetailedListing from '../../../common/DetailedListing.jsx';
+
+const res = await fetch(API_URL + 'blocks/842');
+const pageData = await res.json();
+
+const background = 'bg-[#FFFFF]';
+const colVal = [
+  { value: 1 },
+  { value: 2 }, 
+  { value: 3 }
+];
+const combinedData = {
+    ...pageData[2],
+    background,colVal
+  };
+---
+<!------ Sixth Section ------>
+
+<!-- <SixthSection slug={sectionTitle} bgClass="bg-[#FEF2F2]" colVal='4' /> -->
+<!-- <Sixthsection cards={cards as any} bgClass="bg-[#FEF2F2]" colVal='4'  client:load /> -->
+
+<DetailedListing pageData={combinedData} client:load />
+

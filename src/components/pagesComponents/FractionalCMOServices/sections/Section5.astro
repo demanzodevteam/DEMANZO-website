@@ -1,0 +1,17 @@
+---
+import { API_URL } from '../../../../config/urls';
+import WhyYouNeedSection from '../../../common/WhatMattersForItCompanies';
+
+const slug = "842"; 
+
+const res = await fetch(`${API_URL}blocks/${slug}`);
+const SectionData = await res.json();
+const colVal = [
+  { value: 1 },
+  { value: 2 },
+  { value: 4 }
+];
+---
+
+<!-------- Second Section ------->
+<WhyYouNeedSection SectionData={SectionData[4]} colVal={colVal} client:load/>

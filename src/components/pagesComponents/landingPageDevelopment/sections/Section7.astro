@@ -3,9 +3,9 @@ import HighlightSteps from "../../../../components/common/HighlightSteps";
 import { API_URL } from '../../../../config/urls';
 
 
-const res = await fetch(API_URL + 'blocks/592');
+const res = await fetch(API_URL + 'blocks/773');
 const json = await res.json();
-const SectionData = json[5];
+const SectionData = json[6];
 const colVal = [
   { value: 1 },
   { value: 2 },
@@ -14,5 +14,5 @@ const colVal = [
 
 const combinedData ={...SectionData,colVal}
 ---
-
+<!-- Seventh Section -->
 <HighlightSteps SectionData={combinedData} client:load/>

@@ -6,6 +6,8 @@ import "aos/dist/aos.css";
 const DetailedListing = ({ pageData }) => {
   useEffect(()=>{
     AOS.init();
+    console.log(pageData);
+    
   })
 
   return (
@@ -55,7 +57,9 @@ const DetailedListing = ({ pageData }) => {
               className="text-gray-600 font-medium text-left"
               dangerouslySetInnerHTML={{ __html: card.para[0] }}
             />
-            <ul className="text-left text-gray-600 font-medium">
+            <ul
+              className={`text-left text-gray-600 font-medium ${pageData.noPoints}`}
+            >
               {card?.list.map((listItem, index) => (
                 <li key={index} className="list-disc">
                   {listItem}

@@ -3,9 +3,9 @@ import LeadSection from '../../../common/LeadSection'
 import { API_URL } from '../../../../config/urls'
 
 
-const res = await fetch(API_URL + 'blocks/592');
+const res = await fetch(API_URL + 'blocks/842');
 const json = await res.json();
 const SectionData = json[1];
 ---
 
-<LeadSection pageData={SectionData} client:load/>
+<LeadSection pageData={SectionData} />

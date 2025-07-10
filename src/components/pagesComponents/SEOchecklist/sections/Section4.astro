@@ -7,4 +7,4 @@ const res = await fetch(API_URL + 'blocks/592');
 const json = await res.json();
 const SectionData = json[3];
 ---
-<WhyYouNeedReport pageData={SectionData}/>
+<WhyYouNeedReport pageData={SectionData} client:load/>

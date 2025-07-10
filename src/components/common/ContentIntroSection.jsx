@@ -24,8 +24,8 @@ const ContentIntroSection = ({ SectionData }) => {
             {SectionData.paragraphs[0]}
           </p>
         </div>
-        <div className="mt-1">
-          <hr className="border-t-2 border-[#EEC9C9] mt-20 min-w-8xl" />
+        <div className="px-0">
+          <hr className="border-t-2 border-[#EEC9C9] mt-20 w-full" />
         </div>
       </div>
     </section>

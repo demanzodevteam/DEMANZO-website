@@ -1,0 +1,14 @@
+---
+import { API_URL } from "../../../../config/urls";
+import Caurosel from "../../home/renderers/Caurosel"
+
+const res = await fetch(API_URL + 'category/5');
+const category = await res.json();
+---
+
+
+<!------- Section 11 --------->
+ 
+<div class="mb-16">
+    <Caurosel category={category} client:visible />
+</div>

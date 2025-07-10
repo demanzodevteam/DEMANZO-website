@@ -12,7 +12,7 @@ export default function WhyYouNeedReport({pageData}) {
           {pageData.title}
         </h2>
 
-        <div className="flex flex-col items-center justify-center p-4 lg:flex-row md:p-8 my-10 gap-10 ">
+        <div className={`flex flex-col items-center justify-center p-4 lg:flex-row md:p-8 my-10 gap-10 ${pageData.background}`}>
           <div className="w-full p-4 md:w-1/2">
             <img
               src={
@@ -21,7 +21,7 @@ export default function WhyYouNeedReport({pageData}) {
                   : "https://demanzo.com/wp-content/uploads/2022/09/meeting-2.webp"
               }
               alt="People discussing"
-              className="w-full h-auto rounded-lg slide-in-left"
+              className="w-full h-auto rounded-lg slide-in-left transition duration-300 hover:-translate-y-4"
             />
           </div>
           <div className="flex flex-col md:flex-col w-full p-4 rounded-lg md:w-1/2  md:p-4 ">
