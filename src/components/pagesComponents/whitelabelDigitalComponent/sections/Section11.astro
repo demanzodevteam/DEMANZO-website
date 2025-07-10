@@ -1,6 +1,7 @@
 ---
 import { API_URL } from "../../../../config/urls";
 import { MEDIA_URL } from "../../../../config/urls";
+import BookMeetingSection from "../../../common/BookMeetingSection"
 
 const res = await fetch(API_URL + "blocks/204");
 const data = await res.json();
@@ -9,7 +10,7 @@ const pageData = data[10];
 import BackGroundImg from '../../../../assets/Background-SEO-Traffic.jpg'
 ---
 
-<div class="flex items-center justify-center px-[15px] py-[80px] bg-cover bg-center" style={`background-image: url('${BackGroundImg.src}');`}>
+<!-- <div class="flex items-center justify-center px-[15px] py-[80px] bg-cover bg-center" style={`background-image: url('${BackGroundImg.src}');`}>
     <div class="mx-[280px] mb-[20px]">
         <h1 class="pb-[25px] text-[40px] font-[600] relative z-10 text-white text-center leading-12">
             {pageData.headings[0]}
@@ -23,4 +24,5 @@ import BackGroundImg from '../../../../assets/Background-SEO-Traffic.jpg'
             </svg>
         </div>
     </div>
-</div>
+</div> -->
+<BookMeetingSection pageData={pageData}/>
