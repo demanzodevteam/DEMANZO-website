@@ -9,8 +9,8 @@ export default function WpContentParser({ content }) {
 
 
   return (
-    <div className="container mx-auto mt-8">
-      <div className="mb-10">
+    <section className="container mx-auto px-4 sm:px-6 lg:px-8 my-10">
+                <div class="px-4 py-25` relative">
         {parse(content, {
           replace: (node) => {
 
@@ -127,7 +127,7 @@ export default function WpContentParser({ content }) {
           },
         })}
       </div>
-    </div>
+    </section>
   );
 }
 
