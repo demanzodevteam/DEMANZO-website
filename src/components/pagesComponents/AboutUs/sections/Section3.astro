@@ -4,6 +4,11 @@ import TrustCaurocel from "../../home/renderers/TrustCaurocel";
 
 const res = await fetch(API_URL + 'category/4');
 const category = await res.json();
+const heading = true
+const combinedData = {
+    ...category,
+    heading
+}
 ---
 
 
@@ -11,7 +16,7 @@ const category = await res.json();
 
 <div class="py-6 lg:py-12 px-4">
    
-    <TrustCaurocel category={category} client:load heading={true}/>
+    <TrustCaurocel category={combinedData} client:load />
 </div>
 
 <style>

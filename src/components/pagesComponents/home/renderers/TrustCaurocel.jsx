@@ -9,7 +9,7 @@ import axios from "axios";
 import "../../../styles.css";
 import { API_URL } from "../../../../config/urls";
 
-export default function TrustCaurocel({category,heading}) {
+export default function TrustCaurocel({category}) {
         useEffect(() => {
     AOS.init();
   }, []);
@@ -35,7 +35,7 @@ export default function TrustCaurocel({category,heading}) {
 
   return (
     <>
-      {!heading && category?.description.split(/\r?\n/).map((line, index) => (
+      {!category?.heading && category?.description.split(/\r?\n/).map((line, index) => (
         <p 
      data-aos="fade-up" data-aos-duration="2000" 
           key={index}
