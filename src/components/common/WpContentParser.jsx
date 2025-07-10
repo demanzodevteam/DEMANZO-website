@@ -17,7 +17,7 @@ export default function WpContentParser({ content }) {
       </div>
 
       */}
-      <div className="container mx-auto">
+      <div className="container mx-auto mt-8">
 
         <div className="mb-10">
           {parse(content, {
@@ -26,6 +26,13 @@ export default function WpContentParser({ content }) {
                 const { name, children, attribs } = node;
 
                 switch (name) {
+                  case "a":
+                    return (
+                      <p className="text-blue-800 leading-relaxed text-base">
+                        {domToReact(children)}
+                      </p>
+                    );
+
                   case "p":
                     return (
                       <p className="text-gray-800 leading-relaxed text-base">
@@ -35,7 +42,7 @@ export default function WpContentParser({ content }) {
 
                   case "strong":
                     return (
-                      <strong className="text-blue-600 font-semibold">
+                      <strong className="text-gray-800 font-semibold">
                         {domToReact(children)}
                       </strong>
                     );
@@ -52,14 +59,14 @@ export default function WpContentParser({ content }) {
 
                   case "h2":
                     return (
-                      <h2 className="text-2xl font-bold text-blue-700 mt-8 mb-4">
+                      <h2 className="text-2xl font-bold text-gray-800 mt-8 mb-4">
                         {domToReact(children)}
                       </h2>
                     );
 
                   case "h3":
                     return (
-                      <h3 className="text-xl font-semibold text-blue-600 mt-6 mb-2">
+                      <h3 className="text-xl font-semibold text-gray-600 mt-6 mb-2">
                         {domToReact(children)}
                       </h3>
                     );

@@ -2,7 +2,7 @@
 import curveImg from "../../assets/Curve-main-bg.webp";
 import { MEDIA_URL } from "../../config/urls";
 
-export default function HeroSection({ pageData }) {
+export default function HeroSection({ pageData ,bgImg }) {
   
   return (
     <>
