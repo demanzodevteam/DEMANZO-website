@@ -3,7 +3,6 @@ import curveImg from "../../assets/Curve-main-bg.webp";
 import { MEDIA_URL } from "../../config/urls";
 
 export default function AboutUsFeatures({ pageData }) {
-
   return (
     <div
       class="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] px-2 gap-2 lg:px-14 lg:py-10 bg-no-repeat bg-bottom bg-cover min-h-[80vh]"
@@ -16,17 +15,14 @@ export default function AboutUsFeatures({ pageData }) {
           {pageData?.paragraphs[0]}
         </p>
       </div>
-      <div class="flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0 ">
-        {
-          <>
-            <img
-              src={MEDIA_URL + pageData.images?.[1]?.src}
-              alt={pageData.images?.[1]?.alt}
-              class="w-[500px] md:mx-auto lg:mx-0 transition-transform duration-400 hover:-translate-x-4 rounded-sm"
-            />
-          </>
-        }
+      <div class=" col-span-2 lg:col-span-1 flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0 ">
+        <img
+          src={MEDIA_URL + pageData.images?.[1]?.src}
+          alt={pageData.images?.[1]?.alt}
+          className="w-[500px] md:mx-auto mx-0 md:transition-transform duration-400 hover:-translate-x-4 rounded-sm"
+        />
       </div>
+
       <div class="flex flex-col justify-center gap-4 py-8 lg:py-10">
         <p class="text-[20px] font-[500] text-[#616670] mb-[40px]">
           {pageData?.paragraphs[1]}
@@ -58,7 +54,10 @@ export default function AboutUsFeatures({ pageData }) {
               dangerouslySetInnerHTML={{ __html: card.svg }}
             />
             <div className="flex flex-col gap-3">
-              <h1 className="text-[25px] font-bold text-center md:text-left leading-8" dangerouslySetInnerHTML={{ __html: card.heading }} />
+              <h1
+                className="text-[25px] font-bold text-center md:text-left leading-8"
+                dangerouslySetInnerHTML={{ __html: card.heading }}
+              />
               <p
                 className="text-gray-600 text-center md:text-left font-medium"
                 dangerouslySetInnerHTML={{ __html: card.para }}

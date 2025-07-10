@@ -4,10 +4,16 @@ import HeroSection from "../../../common/HeroSection";
 
 const res = await fetch(API_URL + 'blocks/200');
 const pageData = await res.json();
+
+const bgImg= true
+const combinedData ={
+    ...pageData[1],
+    bgImg
+}
 ---
 <!-- console.log(pageData,'pagedata') -->
 
 <!-- First Section -->
 <!-- <HeroPiplineSection pageData={pageData} client:load /> -->
-<HeroSection pageData={pageData[1]} bgImg={true}/>
+<HeroSection pageData={combinedData} />
 

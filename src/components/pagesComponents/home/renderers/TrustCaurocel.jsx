@@ -31,7 +31,6 @@ export default function TrustCaurocel({category}) {
   //     });
   // }, []);
 
-  console.log(category,'category')
 
   return (
     <>
