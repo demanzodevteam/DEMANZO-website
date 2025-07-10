@@ -1,6 +1,6 @@
 import parse, { domToReact, Element } from "html-react-parser";
 import { useState } from "react";
-import { MEDIA_URL } from "../../config/urls";
+import { MEDIA_URL,SOURCE_BASE_URL } from "../../config/urls";
 
 export default function WpContentParser({ content }) {
   return (
@@ -12,6 +12,12 @@ export default function WpContentParser({ content }) {
             if (node instanceof Element) {
 
               const { name, attribs, children } = node;
+
+
+              // Detect the Table of Contents (TOC) <nav> block
+if (name === "nav") {
+  return <TableOfContents>{domToReact(children)}</TableOfContents>;
+}
 
               // Detect the Quick-summary div
               if (
@@ -33,18 +39,28 @@ export default function WpContentParser({ content }) {
 
               switch (name) {
                 case "a":
-                  return (
-                    <p className="text-blue-800 leading-relaxed text-base">
-                      {domToReact(children)}
-                    </p>
-                  );
+  let cleanHref = attribs.href || "#";
 
-                case "p":
-                  return (
-                    <p className="text-gray-800 leading-relaxed text-base mb-5">
-                      {domToReact(children)}
-                    </p>
-                  );
+  // Strip SOURCE_BASE_URL from href if present
+  if (cleanHref.startsWith(SOURCE_BASE_URL)) {
+    cleanHref = cleanHref.replace(SOURCE_BASE_URL, "/");
+  }
+
+  return (
+    <a
+      href={cleanHref}
+      className="text-blue-800 underline hover:text-blue-600 transition-colors duration-200"
+    >
+      {domToReact(children)}
+    </a>
+  );
+
+  case "p":
+    return (
+      <p className="text-gray-800 leading-relaxed text-base mb-5">
+        {domToReact(children)}
+      </p>
+    );
 
                 case "strong":
                   return (
@@ -129,6 +145,29 @@ export function Accordion({ node }) {
       {isOpen && (
         <div className="px-4 py-3 bg-white border-t border-gray-200">
           {bodyContent}
+        </div>
+      )}
+    </div>
+  );
+}
+
+
+
+export function TableOfContents({ children }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="mb-8">
+      <button
+        onClick={() => setIsOpen((prev) => !prev)}
+        className="mb-3 px-4 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700"
+      >
+        {isOpen ? "Hide Table of Contents" : "Show Table of Contents"}
+      </button>
+
+      {isOpen && (
+        <div className="border border-gray-300 rounded-md p-4 bg-gray-50">
+          {children}
         </div>
       )}
     </div>
