@@ -10,7 +10,7 @@ export const ArticlesHeader = ({ SectionData }) => {
         <>
             <section className="container mx-auto px-4 sm:px-6 lg:px-8 my-auto">
                 <span
-                    className="break-words whitespace-normal w-full inline-block text-xs font-semibold text-white uppercase px-3 py-2.5 my-4 rounded-full bg-[linear-gradient(to_right,_#ff8c00,_#f12500)]"
+                    className="break-words whitespace-normal inline-block text-xs font-semibold text-white uppercase px-3 py-2.5 my-4 rounded-full bg-[linear-gradient(to_right,_#ff8c00,_#f12500)]"
                 >
                     {SectionData?.title?.rendered}
                 </span>
