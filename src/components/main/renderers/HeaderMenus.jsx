@@ -4,12 +4,17 @@ import axios from "axios";
 
 
 const HeaderMenus = ({navLinks,currentPath}) => {
+    
     // const [navLinks, setnavLinks] = useState([]);
     const [menuOpen, setMenuOpen] = useState(false);
     const [activeMenu, setActiveMenu] = useState(null);
     // const [currentPath, setCurrentPath] = useState("");
 
     useEffect(() => {
+        
+const res =  fetch(NAV_URLS + "128");
+const navLinks =  res.json();
+
         if (typeof window !== "undefined") {
             setCurrentPath(window.location.pathname);
         }
@@ -106,11 +111,15 @@ const HeaderMenus = ({navLinks,currentPath}) => {
                 </div>
 
                 {/* Mobile Nav Toggle */}
-                <div className="lg:hidden p-4">
-                    <button onClick={() => setMenuOpen(true)}>
+                <div className="lg:hidden p-4 z-50 relative">
+                    <button onClick={() => {
+    console.log("Opening mobile menu");
+    alert('ok')
+    setMenuOpen(true);
+}}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            className="border p-2"
+                            className="border p-2 text-black"
                             width="36"
                             height="36"
                             viewBox="0 0 24 24"
