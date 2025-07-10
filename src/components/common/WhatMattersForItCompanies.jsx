@@ -37,7 +37,7 @@ const WhyYouNeedSection = ({ SectionData, colVal ,background }) => {
           </h1>
         </div>
       </div>
-      <p className="mt-12 text-gray-600 font-medium max-w-7xl mx-auto text-[16px] leading-relaxed">
+      <p className=" text-gray-600 font-medium max-w-7xl mx-auto text-[16px] leading-relaxed">
         {SectionData.paragraphs[0]}
       </p>
       <div

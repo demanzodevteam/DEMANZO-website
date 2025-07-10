@@ -12,7 +12,7 @@ const DetailedListing = ({ pageData }) => {
 
   return (
     <section
-      className={`${pageData.background} px-4 md:px-10 lg:px-20 text-center`}
+      className={`${pageData.background} px-4 md:px-10 lg:px-20 lg:py-10 text-center`}
     >
       <div className="inline-block relative mx-auto lg:mx-0 mb-10">
         <div className="relative inline-block">
@@ -43,14 +43,16 @@ const DetailedListing = ({ pageData }) => {
         {pageData?.card_details?.map((card, index) => (
           <div
             key={index}
-            className="bg-white shadow-md rounded-xl flex flex-col items-center space-y-4 hover:shadow-lg transition p-10"
+            className="bg-white shadow-md rounded-xl flex flex-col items-start space-y-4 hover:shadow-lg transition p-10"
             data-aos="zoom-in-up"
           >
-            <div
-              className="w-14 h-14"
-              dangerouslySetInnerHTML={{ __html: card.svg }}
-            />
-            <h2 className="text-black-600 font-bold text-2xl text-left">
+            {card?.svg && (
+              <div
+                className="w-14 h-14 self-center"
+                dangerouslySetInnerHTML={{ __html: card.svg }}
+              />
+            )}
+            <h2 className="text-black-600 font-bold text-[22px] text-left">
               {card?.heading}
             </h2>
             <p
@@ -58,11 +60,14 @@ const DetailedListing = ({ pageData }) => {
               dangerouslySetInnerHTML={{ __html: card.para[0] }}
             />
             <ul
-              className={`text-left text-gray-600 font-medium ${pageData.noPoints}`}
+              className={`text-left text-gray-600 font-medium `}
             >
               {card?.list.map((listItem, index) => (
-                <li key={index} className="list-disc">
-                  {listItem}
+                <li key={index} className="flex items-start gap-2">
+                  <span className="text-[#616670] text-[14px] text-lg leading-[1.5]">
+                    ➤
+                  </span>
+                  <span>{listItem}</span>
                 </li>
               ))}
             </ul>

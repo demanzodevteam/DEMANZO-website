@@ -1,9 +1,15 @@
 // src/components/HeroLogger.tsx
 import { useEffect } from "react";
 import { MEDIA_URL } from "../../config/urls";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 
 export default function LeadSection({ pageData }) {
-  // const [pageData, setPageData] = useState({});
+  
+  useEffect(() => {
+    AOS.init({});
+  }, []);
 
   return (
     <>
@@ -21,12 +27,12 @@ export default function LeadSection({ pageData }) {
             </h1>
           </div>
           {pageData?.card_details?.map((para, index) => (
-            <div key={index} className="mb-6">
+            <div key={index} className="mb-1">
               <h3 className="text-[16px] font-bold text-[#616670] mb-2">
                 {para.heading}
               </h3>
               <p className="text-[16px] font-[500] text-[#616670] leading-6">
-                {para.para}
+                {para.para[0]}
               </p>
             </div>
           ))}
@@ -44,22 +50,22 @@ export default function LeadSection({ pageData }) {
                     d="m10.6 16.6l7.05-7.05l-1.4-1.4l-5.65 5.65l-2.85-2.85l-1.4 1.4zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"
                   />
                 </svg>
-
                 <span>{item}</span>
               </div>
             </div>
           ))}
+          {pageData?.card_details?.map((para, index) => (
+            <div key={index} className="mb-1">
+              <p className="text-[16px] font-[500] text-[#616670] leading-6">
+                {para.para[1]}
+              </p>
+            </div>
+          ))}
         </div>
-
-        {/* <div class="flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0 ">
-         
-          <img
-            src={MEDIA_URL + pageData.images?.[0]?.src}
-            alt={pageData.images?.[0]?.alt}
-            class="w-[500px] md:mx-auto lg:mx-0"
-          />
-        </div> */}
-        <div class="relative flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0">
+        <div
+          class="relative flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0"
+          data-aos="fade-up"
+        >
           <div class="absolute w-[90%] max-w-[480px] h-[75%] max-h-[350px] bg-gray-100 rounded-3xl top-4 left-12 z-0"></div>
           <img
             src={MEDIA_URL + pageData.images?.[0]?.src}
@@ -67,7 +73,6 @@ export default function LeadSection({ pageData }) {
             class="relative w-[95%] max-w-[500px] h-auto aspect-[5/4] object-cover rounded-3xl z-10 shadow-lg transition duration-300 hover:-translate-y-4"
           />
         </div>
-        
       </div>
     </>
   );
