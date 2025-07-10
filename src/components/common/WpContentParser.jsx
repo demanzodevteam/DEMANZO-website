@@ -1,10 +1,13 @@
 import parse, { domToReact, Element } from "html-react-parser";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { MEDIA_URL, SOURCE_BASE_URL } from "../../config/urls";
 import { motion, AnimatePresence } from "framer-motion";
 import { ListTree, ChevronDown, ChevronUp } from "lucide-react";
 
 export default function WpContentParser({ content }) {
+  // Place this in a useEffect or after page load
+
+
   return (
     <div className="container mx-auto mt-8">
       <div className="mb-10">
@@ -180,6 +183,49 @@ export function Accordion({ node }) {
 export function TableOfContents({ children }) {
   const [isOpen, setIsOpen] = useState(false);
 
+
+const handleClick = (e) => {
+  const anchor = e.target.closest("a[href^='#']");
+  if (!anchor) return;
+
+  const hash = anchor.getAttribute("href");
+  const id = hash.slice(1);
+  const target = document.getElementById(id);
+  if (!target) return;
+
+  e.preventDefault();
+
+  // Check if target is inside a collapsible/accordion
+  const accordion = target.closest(".accordion-container"); // or whatever class you use
+
+  if (accordion) {
+    // Find the toggle button inside the accordion
+    const toggleBtn = accordion.querySelector("button");
+
+    // If it's not already open, click to open it
+    const isOpen = accordion.classList.contains("open"); // optional if you track state via class
+    if (!isOpen && toggleBtn) toggleBtn.click();
+
+    // Wait for the accordion to expand
+    setTimeout(() => {
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+      history.pushState(null, "", hash);
+    }, 300); // wait for your accordion animation duration
+  } else {
+    // Not inside accordion, scroll immediately
+    setTimeout(() => {
+  scrollToCenter(target);
+  history.pushState(null, "", hash);
+}, 300); // Adjust delay based on any animation
+
+  }
+};
+
+
+
   return (
     <div className="mb-8 border border-gray-200 rounded-xl shadow-sm bg-white p-4">
       <div className="flex items-center justify-between mb-4">
@@ -192,7 +238,7 @@ export function TableOfContents({ children }) {
 
         <button
           onClick={() => setIsOpen((prev) => !prev)}
-          className="flex items-center gap-1 px-3 py-1.5 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-md transition"
+          className="flex items-center gap-1 px-3 py-1.5 text-sm font-medium text-white bg-[linear-gradient(to_right,_#ff8c00,_#f12500)] hover:bg-[linear-gradient(to_right,_#ff8c00,_#f12500)] rounded-md transition"
         >
           {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
           {isOpen ? "Hide" : "Show"}
@@ -213,4 +259,19 @@ export function TableOfContents({ children }) {
       </AnimatePresence>
     </div>
   );
+}
+function scrollToCenter(el) {
+  const rect = el.getBoundingClientRect();
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const offsetTop = rect.top + scrollTop;
+
+  const elementHeight = rect.height;
+  const viewportHeight = window.innerHeight;
+
+  const scrollTo = offsetTop - (viewportHeight / 10) + (elementHeight / 100);
+
+  window.scrollTo({
+    top: scrollTo,
+    behavior: "smooth"
+  });
 }
