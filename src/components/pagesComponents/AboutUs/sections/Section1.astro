@@ -1,0 +1,21 @@
+---
+import { API_URL } from "../../../../config/urls";
+// import HeroSection from "../../../common/HeroSection";
+import AboutUsSection1 from "../../../common/AboutUsSection1";
+
+
+const res = await fetch(API_URL + 'blocks/203');
+const pageData = await res.json();
+const bgImg= false
+const combinedData ={
+    ...pageData[0],
+    bgImg
+}
+---
+<!-- console.log(pageData,'pagedata') -->
+
+<!-- First Section -->
+<!-- <HeroPiplineSection pageData={pageData} client:load /> -->
+<!-- <HeroSection pageData={pageData[0]} bgImg={false}/> -->
+<AboutUsSection1 pageData={combinedData} />
+

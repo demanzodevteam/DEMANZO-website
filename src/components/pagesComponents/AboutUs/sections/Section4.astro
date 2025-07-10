@@ -1,0 +1,13 @@
+---
+import { API_URL } from "../../../../config/urls";
+import CaseStudiesSection from "../../../common/CaseStudiesSection";
+import SeoFeatureSection from "../../../common/SeoFeatureSection";
+
+const res = await fetch(API_URL + 'blocks/201');
+const pageData = await res.json();
+---
+
+<CaseStudiesSection  />
+
+
+

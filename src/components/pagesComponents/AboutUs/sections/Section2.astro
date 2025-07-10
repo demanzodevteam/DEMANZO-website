@@ -1,0 +1,10 @@
+---
+import { API_URL } from "../../../../config/urls";
+import AboutUsFeatures from "../../../common/AboutUsFeatures";
+
+const res = await fetch(API_URL + 'blocks/203');
+const pageData = await res.json();
+
+---
+<AboutUsFeatures pageData={pageData[1]} />
+
