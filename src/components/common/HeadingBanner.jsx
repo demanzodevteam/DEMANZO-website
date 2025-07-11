@@ -28,7 +28,7 @@ const HeadingBanner = ({ pageData }) => {
       <img
         src={MEDIA_URL + pageData.images?.[0]?.src}
         alt={pageData.images?.[0]?.alt}
-        class="absolute bottom-0 left-40 hidden lg:block"
+        className="absolute bottom-0 left-40 hidden lg:block"
       />
     </div>
   );
