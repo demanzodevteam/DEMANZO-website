@@ -3,31 +3,12 @@ import { NAV_URLS } from "../../../config/urls";
 import axios from "axios";
 
 
-const HeaderMenus = ({navLinks,currentPath}) => {
-    
+const HeaderMenus = ({ navLinks, currentPath }) => {
+
     // const [navLinks, setnavLinks] = useState([]);
     const [menuOpen, setMenuOpen] = useState(false);
     const [activeMenu, setActiveMenu] = useState(null);
     // const [currentPath, setCurrentPath] = useState("");
-
-    useEffect(() => {
-        
-const res =  fetch(NAV_URLS + "128");
-const navLinks =  res.json();
-
-        if (typeof window !== "undefined") {
-            setCurrentPath(window.location.pathname);
-        }
-        axios.get(NAV_URLS + '128')
-            .then((response) => {
-                setnavLinks(response.data);
-                // console.log(response.data);
-            })
-            .catch((error) => {
-                console.error('Failed to fetch navLinks:', error);
-            });
-    }, []);
-
 
     return (
         <>
@@ -36,14 +17,17 @@ const navLinks =  res.json();
                 <div className="max-w-7xl mx-auto px-2 hidden lg:flex justify-between items-center h-16">
                     <div className="flex gap-4">
                         {navLinks.map((link, index) => {
+                            const normalizePath = (path) => path.replace(/^\/|\/$/g, '');
                             const isActive =
-                                currentPath === link.href ||
-                                link.children.some((sub) => currentPath === sub.href);
+                                normalizePath(currentPath) === normalizePath(link.url) ||
+                                link.children.some(
+                                    (sub) => normalizePath(currentPath) === normalizePath(sub.url)
+                                );
 
                             return (
                                 <>
-                                    <div className="relative group" key={link.id || link.slug}>
-                                        <div className="px-2 py-2 flex items-center">
+                                    <div className="relative group">
+                                        <div key={link.id} className="px-2 py-2 flex items-center" >
                                             <a
                                                 href={link.url}
                                                 className={`text-[13px] font-[600] whitespace-nowrap ${isActive
@@ -76,9 +60,9 @@ const navLinks =  res.json();
 
                                         <div className="absolute z-10 left-0 hidden group-hover:block bg-white border rounded shadow-lg w-[180px]">
                                             {link.children.map((sub, subIdx) => {
-                                                const isSubActive = currentPath === sub.href;
+                                                const isSubActive = currentPath === sub.url;
                                                 return (
-                                                    <div key={sub.id || sub.slug || sub.url}>
+                                                    <div key={sub.id} className={`${sub.id}`}>
                                                         <a
                                                             href={sub.url}
                                                             className={`block px-4 p-4 text-[12px] font-[600] ${isSubActive
@@ -113,10 +97,10 @@ const navLinks =  res.json();
                 {/* Mobile Nav Toggle */}
                 <div className="lg:hidden p-4 z-50 relative">
                     <button onClick={() => {
-    console.log("Opening mobile menu");
-    alert('ok')
-    setMenuOpen(true);
-}}>
+                        console.log("Opening mobile menu");
+                        alert('ok')
+                        setMenuOpen(true);
+                    }}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="border p-2 text-black"
@@ -156,7 +140,7 @@ const navLinks =  res.json();
 
                             <ul className="mt-12 space-y-4">
                                 {navLinks.map((item, index) => (
-                                    <li key={item.id || item.slug || item.url}>
+                                    <li key={item.id }>
                                         <button
                                             onClick={() =>
                                                 setActiveMenu(activeMenu === index ? null : index)
@@ -186,9 +170,9 @@ const navLinks =  res.json();
                                         {activeMenu === index && (
                                             <ul className="pl-6 mt-2 space-y-2 text-sm text-gray-700 shadow py-2">
                                                 {item.subLinks.map((sub, subIdx) => (
-                                                    <li key={sub.id || sub.slug || sub.url}>
+                                                    <li key={sub.id }>
                                                         <a
-                                                            href={sub.href}
+                                                            href={sub.url}
                                                             className="block hover:text-[#2d89bf]"
                                                         >
                                                             {sub.name}

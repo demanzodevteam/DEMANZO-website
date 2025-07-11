@@ -366,7 +366,7 @@ const { title = "Demanzo", description = "" } = Astro.props;
 
           <div class="">
             <!-- <NavLinks /> -->
-            <HeaderMenus navLinks={navLinks} currentPath={currentPath} />
+            <HeaderMenus navLinks={navLinks} currentPath={currentPath} client:load/>
           </div>
         </div>
 
