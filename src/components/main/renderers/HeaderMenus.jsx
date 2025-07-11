@@ -99,9 +99,7 @@ const HeaderMenus = ({ navLinks, currentPath }) => {
                     <button
   onClick={() => {
     setMenuOpen(true);
-    setTimeout(() => {
-      alert("ok");
-    }, 0);
+    
   }}
 >
 
