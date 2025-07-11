@@ -25,9 +25,9 @@ const HeaderMenus = ({ navLinks, currentPath }) => {
                                 );
 
                             return (
-                                <>
-                                    <div className="relative group">
-                                        <div key={link.id} className="px-2 py-2 flex items-center" >
+                                
+                                    <div key={link.id} className="relative group">
+                                        <div className="px-2 py-2 flex items-center" >
                                             <a
                                                 href={link.url}
                                                 className={`text-[13px] font-[600] whitespace-nowrap ${isActive
@@ -62,7 +62,7 @@ const HeaderMenus = ({ navLinks, currentPath }) => {
                                             {link.children.map((sub, subIdx) => {
                                                 const isSubActive = currentPath === sub.url;
                                                 return (
-                                                    <div key={sub.id} className={`${sub.id}`}>
+                                                    <div key={sub.id || subIdx} className={`${sub.id}`}>
                                                         <a
                                                             href={sub.url}
                                                             className={`block px-4 p-4 text-[12px] font-[600] ${isSubActive
@@ -79,7 +79,7 @@ const HeaderMenus = ({ navLinks, currentPath }) => {
                                         </div>
                                     </div>
 
-                                </>
+                               
 
                             );
                         })}
