@@ -8,4 +8,6 @@ const res = await fetch(`${API_URL}blocks/${slug}`);
 const pageData = await res.json();
 ---
 
+<!-- Section 5 -->
+
 <SalesContactSection  SectionData={pageData[4]} client:load/>

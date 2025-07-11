@@ -8,6 +8,8 @@ const res = await fetch(API_URL + 'category/5');
 const category = await res.json();
 ---
     
+<!-- ------------------ Section 4 ------------------ -->
+
 <div class="mb-16">
     <Caurosel category={category} client:load/>
 </div>
