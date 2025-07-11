@@ -13,9 +13,14 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "../../../styles.css";
 
 export default function Caurosel({ category }) {
-       useEffect(() => {
-      AOS.init();
-    }, []);
+       const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    AOS.init();
+    setHasMounted(true); // only render client-side
+  }, []);
+
+  if (!hasMounted) return null;
   return (
     <>
       <p className="text-[30px] lg:text-[40px] font-[600] text-[#191d27] text-center pb-6" data-aos="fade-up" data-aos-duration="2000" >
@@ -48,7 +53,7 @@ export default function Caurosel({ category }) {
         >
 
           {[...category.posts, ...category.posts].map((testimonial, index) => (
-            <SwiperSlide key={index} style={{ boxShadow: "0 0 12px rgba(0, 0, 0, 0.15)" }}
+            <SwiperSlide key={`${testimonial.title}-${index}`} style={{ boxShadow: "0 0 12px rgba(0, 0, 0, 0.15)" }}
             >
               <div className="p-8">
                 <p className="text-[16px] font-[500] text-[#616670]">
