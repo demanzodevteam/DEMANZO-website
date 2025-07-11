@@ -1,15 +1,14 @@
 ---
 import { API_URL } from "../../../../config/urls";
 import { MEDIA_URL } from "../../../../config/urls";
+import RecentBlogSection from "../../../common/RecentBlogSection";
 
 
 const res = await fetch(API_URL + "blocks/204");
 const data = await res.json();
 
-const pageData = data[1];
+const pageData = data[12];
 const list = pageData?.list_items[0];
 ---
 
-<div class="mx-auto">
-
-</div>
+<RecentBlogSection pageData={pageData} client:load/>

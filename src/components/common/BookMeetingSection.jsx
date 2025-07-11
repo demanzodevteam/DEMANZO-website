@@ -8,7 +8,7 @@ export default function BookMeetingSection({ pageData }) {
       className="flex items-center justify-center px-[15px] py-[80px] bg-cover bg-center"
       style={{ backgroundImage: `url('${BackGroundImg.src}')` }}
     >
-      <div className="mx-[280px] mb-[20px]">
+      <div className="mx-auto lg:mx-[280px] mb-[20px]">
         <h1 className="pb-[25px] text-[40px] font-[600] relative z-10 text-white text-center leading-12">
           {pageData.headings[0]}
         </h1>
@@ -37,12 +37,12 @@ export default function BookMeetingSection({ pageData }) {
           <p className="text-[#FFFFFF] text-[30px] font-medium mb-10 text-center">
             {pageData.paragraphs[1]}
           </p>
-          <ul className="flex flex-row items-center justify-center gap-5">
+          <ul className="flex flex-col md:flex-row items-center justify-center gap-5 mb-5">
             {pageData?.list_items &&
               pageData?.list_items[0]?.map((data, index) => (
-                <li key={index} className="flex flex-row justify-center">
+                <li key={index} className="flex flex-row justify-center items-center gap-2">
                   <div
-                    className="w-14 h-14"
+                    className=""
                     dangerouslySetInnerHTML={{ __html: data.svg }}
                   />
                   <p className="text-[#FFFFFF] font-semibold ">{data?.heading}</p>
