@@ -1,0 +1,16 @@
+---
+import InsightHighlightBlock from "../../../common/InsightHighlightBlock";
+import { API_URL } from "../../../../config/urls";
+const res = await fetch(API_URL + 'blocks/976');
+const data = await res.json();
+
+const pageData = data[1];
+const background = 'bg-[#FFFFFF]'
+const combinedData={...pageData,background}
+
+---
+
+<!-- Second Section -->
+
+<InsightHighlightBlock pageData={combinedData} />
+

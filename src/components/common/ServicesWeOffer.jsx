@@ -14,6 +14,11 @@ const ServicesWeOffer = ({ SectionData, colVal }) => {
       >
         <div className="inline-block relative mx-auto lg:mx-0 ">
           <div className="relative inline-block">
+            {SectionData?.title && (
+              <h1 className="text-[#FF5F55] font-semibold text-[18px] lg:text-[20px] my-3">
+                {SectionData.title}
+              </h1>
+            )}
             <h1 className="text-[45px] md:text-[48px] lg:text-[45px] font-semibold relative z-10 leading-tight text-center lg:text-center">
               {SectionData.headings[0]}{" "}
             </h1>

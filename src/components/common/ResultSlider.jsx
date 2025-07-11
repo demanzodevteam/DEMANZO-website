@@ -8,6 +8,8 @@ const ResultSlider = () => {
   const images = [
     "https://demanzo.com/wp-content/uploads/2023/07/Digital-Marketing-Case-Study-and-Portfolio-Demanzo4.png",
     "https://demanzo.com/wp-content/uploads/2023/07/Digital-Marketing-Case-Study-and-Portfolio-Demanzo4.png",
+    "https://demanzo.com/wp-content/uploads/2023/07/Digital-Marketing-Case-Study-and-Portfolio-Demanzo4.png",
+    "https://demanzo.com/wp-content/uploads/2023/07/Digital-Marketing-Case-Study-and-Portfolio-Demanzo4.png",
   ];
 
   return (
@@ -23,7 +25,7 @@ const ResultSlider = () => {
         modules={[Pagination]}
         pagination={{ clickable: true }}
         spaceBetween={30}
-        slidesPerView={1}
+        slidesPerView={2}
         loop={true}
       >
         {images.map((imgSrc, index) => (
