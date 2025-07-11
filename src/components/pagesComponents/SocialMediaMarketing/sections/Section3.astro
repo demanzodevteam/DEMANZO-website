@@ -1,0 +1,48 @@
+---
+import { API_URL } from '../../../../config/urls';
+import WhyYouNeedSection from '../../../common/WhatMattersForItCompanies';
+
+
+const res = await fetch(API_URL + 'blocks/933');
+const SectionData = await res.json();
+const colVal = [
+  { value: 1 },
+  { value: 2 },
+  { value: 4 }
+];
+const background = '#FFF5F4'
+---
+
+<!-------- Third Section ------->
+<WhyYouNeedSection SectionData={SectionData[2]} colVal={colVal} background={background} client:load/>
+
+
+
+
+
+<!-- ---
+import { API_URL } from '../../../../config/urls';
+import DetailedListing from '../../../common/DetailedListing.jsx';
+
+const res = await fetch(API_URL + 'blocks/933');
+const pageData = await res.json();
+
+const background = 'bg-[#FFFFF]';
+const colVal = [
+  { value: 1 },
+  { value: 4 },
+  { value: 3 }
+];
+const combinedData = {
+    ...pageData[2],
+    background,colVal
+  };
+--- -->
+<!------ Sixth Section ------>
+
+<!-- <SixthSection slug={sectionTitle} bgClass="bg-[#FEF2F2]" colVal='4' /> -->
+<!-- <Sixthsection cards={cards as any} bgClass="bg-[#FEF2F2]" colVal='4'  client:load /> -->
+<!-- 
+<DetailedListing pageData={combinedData} client:visible /> -->
+
+  

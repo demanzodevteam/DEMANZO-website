@@ -30,6 +30,7 @@ const config = {
     require('@tailwindcss/typography'),
     heroui()
   ],
+  
 };
 
 export default config;

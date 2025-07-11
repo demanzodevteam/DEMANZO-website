@@ -54,6 +54,10 @@ const WhyYouNeedSection = ({ SectionData, colVal ,background }) => {
               className="w-14 h-14"
               dangerouslySetInnerHTML={{ __html: card.svg }}
             />
+
+            {card.heading && (
+              <h2 className="font-bold text-[20px] pl-2 text-left">{card.heading}</h2>
+            )}
             <p
               className="text-gray-600 font-medium"
               dangerouslySetInnerHTML={{ __html: card.para }}
