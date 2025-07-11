@@ -4,9 +4,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { useState, useEffect } from "react";
-import { API_URL } from "../../config/urls";
-import axios from "axios";
+import { useEffect } from "react";
+
 
 export default function FaqAccordion({ category }) {
   useEffect(()=>{

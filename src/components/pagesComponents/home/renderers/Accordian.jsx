@@ -7,9 +7,6 @@ import {
 import { useEffect, useState } from 'react';
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { API_URL } from "../../../../config/urls";
-import axios from "axios";
-
 
 export default function FaqAccordion({category}) {
 

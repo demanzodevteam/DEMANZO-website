@@ -8,9 +8,6 @@ import "swiper/css/pagination";
 import "../../../styles.css";
 import { Pagination } from 'swiper/modules';
 import rb1 from '../../../../assets/rb1.webp'
-import { useState, useEffect } from "react";
-import { API_URL } from "../../../../config/urls";
-import axios from "axios";
 
 
 export default function BlogCourocel({category}) {

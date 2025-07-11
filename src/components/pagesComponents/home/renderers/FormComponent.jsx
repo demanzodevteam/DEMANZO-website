@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { API_URL, FORM_URL } from "../../../../config/urls";
-import axios from "axios";
+import {  FORM_URL } from "../../../../config/urls";
+
 
 // Hook to detect client-side mount
 function useHasMounted() {
