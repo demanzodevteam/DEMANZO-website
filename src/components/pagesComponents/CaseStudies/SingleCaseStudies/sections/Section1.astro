@@ -1,12 +1,11 @@
 ---
-import { API_URL } from "../../../../../config/urls";
-import HeroSection from "../../../../common/HeroSection";
+import HeadingBanner from '../../../../common/HeadingBanner';
+import { API_URL } from '../../../../../config/urls';
 
-const res = await fetch(API_URL + 'blocks/201');
-const pageData = await res.json();
+const res = await fetch(API_URL + 'blocks/87');
+const json = await res.json();
+const SectionData = json[0];
 ---
+<!-- ------------------section 1 ------------------ -->
 
-
-<!-- ------------------ Section 1 ------------------ -->
-
-<HeroSection pageData={pageData[0]} />
+<HeadingBanner pageData={SectionData} client:load/>
