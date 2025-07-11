@@ -1,8 +1,15 @@
-import React,{useEffect} from "react";
+import React,{useEffect,useState} from "react";
 import { MEDIA_URL } from "../../config/urls";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const BusinessSection = ({ SectionData ,Background}) => {
-  
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    AOS.init({ once: true });
+  }, []);
   return (
     <section className="bg-gradient-to-b  px-4 md:px-10 lg:px-20 py-16 space-y-4 text-center">
       <div className="mt-14">
@@ -41,11 +48,10 @@ const BusinessSection = ({ SectionData ,Background}) => {
           <div className="grid lg:grid-cols-1 gap-6 lg:px-10">
             {SectionData?.list_items[0]?.map((list, index) => (
               <div
-                key={index}
-                className="flex flex-col items-start justify-center p-3 bg-[#F8FDFF] rounded-lg shadow-md "
-                data-aos="flip-down"
-              
-              >
+    key={index}
+    className="flex flex-col items-start justify-center p-3 bg-[#F8FDFF] rounded-lg shadow-md"
+    {...(mounted ? { "data-aos": "flip-down" } : {})}
+  >
                 <div className="flex flex-row items-center justify-center px-0">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

@@ -1,12 +1,15 @@
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 
 export default function FeatureSteps({ pageData, background }) {
-  useEffect(() => {
-    AOS.init();
-  });
+ const [mounted, setMounted] = useState(false);
+ 
+   useEffect(() => {
+     setMounted(true);
+     AOS.init({ once: true });
+   }, []);
 
   return (
     <section
@@ -39,7 +42,11 @@ export default function FeatureSteps({ pageData, background }) {
 
       <div className="grid md:grid-cols-2 gap-4">
         {pageData?.card_details?.map((card_details, index) => (
-          <div key={index} className="lg:p-4" data-aos="fade-up">
+          <div
+  key={index}
+  className="lg:p-4"
+  {...(mounted ? { 'data-aos': 'fade-up' } : {})}
+>
             <div className="flex md:gap-3">
               <div
                 className="p-4"

@@ -1,57 +1,45 @@
 'use client';
 
-
 import { motion, AnimatePresence } from "framer-motion";
-// import { API_URL, BASE_URL } from "../../../../config/urls";
-// import axios from "axios";
 import { useEffect, useState } from 'react';
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-const GrowthAnimation = ({category}) => {
-      useEffect(() => {
-  AOS.init();
-}, []);
-const columns = 3;
+const GrowthAnimation = ({ category }) => {
+  const [mounted, setMounted] = useState(false);
+  const columns = 3;
 
-  // const [category, setCategory] = useState({
-  //   name: '',
-  //   slug: '',
-  //   description: '',
-  //   button: '',
-  //   posts: [],
-  //   image: '',
-  // });
+  useEffect(() => {
+    setMounted(true);
+    AOS.init({ once: true });
+  }, []);
 
   const getLastRowPosts = (posts, columns = 3) => {
-  const remainder = posts.length % columns;
-  if (remainder === 0) return [];
-  return posts.slice(-remainder);
-};
+    const remainder = posts.length % columns;
+    if (remainder === 0) return [];
+    return posts.slice(-remainder);
+  };
 
-const getNonLastRowPosts = (posts, columns = 3) => {
-  const remainder = posts.length % columns;
-  if (remainder === 0) return posts;
-  return posts.slice(0, posts.length - remainder);
-};
-const nonLastRowPosts = getNonLastRowPosts(category.posts, columns);
-const lastRowPosts = getLastRowPosts(category.posts, columns);
-  // useEffect(() => {
-  //   axios.get(API_URL + 'category/3')
-  //     .then((response) => {
-  //       setCategory(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Failed to fetch category:', error);
-  //     });
-  // }, []);
+  const getNonLastRowPosts = (posts, columns = 3) => {
+    const remainder = posts.length % columns;
+    if (remainder === 0) return posts;
+    return posts.slice(0, posts.length - remainder);
+  };
+
+  const nonLastRowPosts = getNonLastRowPosts(category.posts, columns);
+  const lastRowPosts = getLastRowPosts(category.posts, columns);
 
   return (
     <>
-      <p className="text-[30px] md:text-[35px] lg:text-[50px] font-[600] text-center text-[#191d27]"
-     data-aos="fade-up" data-aos-duration="2000" >{category.name}</p>
-      <svg width="100%" height="18" viewBox="0 0 246 18" fill="none" xmlns="http://www.w3.org/2000/svg" >
-        <path  d="M3 15C61.0465 4.16687 163.744 -2.79729 243 9.58344" stroke="url(#paint0_linear_1_401)" strokeWidth="6" strokeLinecap="round" />
+      <p
+        className="text-[30px] md:text-[35px] lg:text-[50px] font-[600] text-center text-[#191d27]"
+        {...(mounted ? { "data-aos": "fade-up", "data-aos-duration": "2000" } : {})}
+      >
+        {category.name}
+      </p>
+
+      <svg width="100%" height="18" viewBox="0 0 246 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 15C61.0465 4.16687 163.744 -2.79729 243 9.58344" stroke="url(#paint0_linear_1_401)" strokeWidth="6" strokeLinecap="round" />
         <defs>
           <linearGradient id="paint0_linear_1_401" x1="3" y1="15" x2="257.174" y2="2.13431" gradientUnits="userSpaceOnUse">
             <stop offset="100%" stopColor="#7D80E6" />
@@ -59,93 +47,81 @@ const lastRowPosts = getLastRowPosts(category.posts, columns);
           </linearGradient>
         </defs>
       </svg>
-      <p className="text-[20px] font-[600] text-center text-[#ff5f55] py-8" 
-     data-aos="fade-up" data-aos-duration="2000">{category.description}</p>
 
-     <div className="px-4 md:px-16 space-y-8">
-  {/* Full rows */}
-  <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-    {nonLastRowPosts.map((post, index) => (
-      <ParticleCard key={index} post={post} />
-    ))}
-  </div>
+      <p
+        className="text-[20px] font-[600] text-center text-[#ff5f55] py-8"
+        {...(mounted ? { "data-aos": "fade-up", "data-aos-duration": "2000" } : {})}
+      >
+        {category.description}
+      </p>
 
-  {/* Centered last row */}
-  {lastRowPosts.length > 0 && (
-    <div className="flex justify-center gap-8 flex-wrap">
-      {lastRowPosts.map((post, index) => (
-        <div key={`last-${index}`} className="w-full max-w-[400px]">
-          <ParticleCard post={post} />
+      <div className="px-4 md:px-16 space-y-8">
+        {/* Full rows */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {nonLastRowPosts.map((post, index) => (
+            <ParticleCard key={index} post={post} />
+          ))}
         </div>
-      ))}
-    </div>
-  )}
-</div>
 
+        {/* Centered last row */}
+        {lastRowPosts.length > 0 && (
+          <div className="flex justify-center gap-8 flex-wrap">
+            {lastRowPosts.map((post, index) => (
+              <div key={`last-${index}`} className="w-full max-w-[400px]">
+                <ParticleCard post={post} />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </>
   );
 };
 
 // Reusable ParticleCard Component
 const ParticleCard = ({ post }) => {
+  const [hasMounted, setHasMounted] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [particles, setParticles] = useState([]);
   const [origin, setOrigin] = useState({ x: 0, y: 0 });
 
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
   const gradientColors = [
-    "#7D80E6",
-    "#9286EB",
-    "#A98CF0",
-    "#C192F5",
-    "#D998FA",
-    "#F19EFF",
-    "#CE7474",
-    "#E98585"
+    "#7D80E6", "#9286EB", "#A98CF0", "#C192F5",
+    "#D998FA", "#F19EFF", "#CE7474", "#E98585"
   ];
 
   const Particle = ({ x, y, color }) => (
     <motion.span
-      initial={typeof window === 'undefined' ? false :{ opacity: 1, x: 0, y: 0, scale: 1 }}
+      initial={{ opacity: 1, x: 0, y: 0, scale: 1 }}
       animate={{ x, y, opacity: 0, scale: 0.5 }}
-      exit={{ opacity: 0 }}
       transition={{ duration: 0.8 }}
       className="absolute w-2 h-2 rounded-full pointer-events-none"
-      style={{
-        top: origin.y,
-        left: origin.x,
-        backgroundColor: color,
-      }}
+      style={{ top: origin.y, left: origin.x, backgroundColor: color }}
     />
   );
 
-//   const triggerParticles = (e) => {
-//     const rect = e.currentTarget.getBoundingClientRect();
-//     const relX = e.clientX - rect.left;
-//     const relY = e.clientY - rect.top;
-//     setOrigin({ x: relX, y: relY });
-
-//     const burst = Array.from({ length: 12 }).map((_, i) => ({
-//       x: Math.random() * 120 - 60,
-//       y: Math.random() * 120 - 60,
-//       color: gradientColors[i % gradientColors.length],
-//     }));
-
-//     setParticles(burst);
-//     setHovered(true);
-//     setTimeout(() => setHovered(false), 700);
-//   };
+  const motionProps = hasMounted
+    ? {
+        initial: { opacity: 0, y: 200 },
+        whileInView: { opacity: 1, y: 0 },
+        whileHover: {
+          scale: 1.03,
+          y: -5,
+          boxShadow: "0 0 30px rgba(125, 128, 230, 0.5)"
+        },
+        transition: { duration: 0.4 },
+        viewport: { once: true }
+      }
+    : {};
 
   return (
     <motion.div
-    //   onMouseEnter={triggerParticles}
-    //   onMouseMove={triggerParticles}
-      initial={typeof window === 'undefined' ? false :{ opacity: 0, y: 200 }}
-      whileInView={{ opacity: 1, y: 0 }}
-    //   whileHover={{ scale: 1.03, y: -5 }}
-    //   transition={{ duration: 0.5 }}
-    whileHover={{scale: 1.03, y: -5, boxShadow: "0 0 30px rgba(125, 128, 230, 0.5)" }}
-  transition={{ duration: 0.4 }}
-      className="relative rounded-xl shadow-2xl p-6 bg-white overflow-hidden "
+      {...motionProps}
+      className="relative rounded-xl shadow-2xl p-6 bg-white overflow-hidden"
     >
       <AnimatePresence>
         {hovered &&
