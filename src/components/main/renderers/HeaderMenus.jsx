@@ -96,11 +96,15 @@ const HeaderMenus = ({ navLinks, currentPath }) => {
 
                 {/* Mobile Nav Toggle */}
                 <div className="lg:hidden p-4 z-50 relative">
-                    <button onClick={() => {
-                        console.log("Opening mobile menu");
-                        alert('ok')
-                        setMenuOpen(true);
-                    }}>
+                    <button
+  onClick={() => {
+    setMenuOpen(true);
+    setTimeout(() => {
+      alert("ok");
+    }, 0);
+  }}
+>
+
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="border p-2 text-black"
@@ -150,7 +154,7 @@ const HeaderMenus = ({ navLinks, currentPath }) => {
                                                 : "text-gray-700 hover:text-[#2d89bf]"
                                                 }`}
                                         >
-                                            {item.name.toUpperCase()}
+                                            {item.label.toUpperCase()}
                                             <svg
                                                 className={`w-4 h-4 transform transition-transform duration-200 ${activeMenu === index ? "rotate-180 text-[#2d89bf]" : ""
                                                     }`}
@@ -169,13 +173,13 @@ const HeaderMenus = ({ navLinks, currentPath }) => {
 
                                         {activeMenu === index && (
                                             <ul className="pl-6 mt-2 space-y-2 text-sm text-gray-700 shadow py-2">
-                                                {item.subLinks.map((sub, subIdx) => (
+                                                {item.children.map((sub, subIdx) => (
                                                     <li key={sub.id }>
                                                         <a
                                                             href={sub.url}
                                                             className="block hover:text-[#2d89bf]"
                                                         >
-                                                            {sub.name}
+                                                            {sub.label}
                                                         </a>
                                                     </li>
                                                 ))}
