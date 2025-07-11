@@ -5,9 +5,6 @@ import BuildMyGrowthEngineSection from "../../../../components/common/BuildGrowt
 const res = await fetch(API_URL + 'blocks/202');
 const pageData = await res.json();
 ---
-<!-- console.log(pageData,'pagedata') -->
 
-<!-- First Section -->
-<!-- <HeroSection pageData={pageData[0]} bgImg={false}/> -->
- <BuildMyGrowthEngineSection pageData={pageData} bgImg={false} client:load/>
+ <BuildMyGrowthEngineSection pageData={pageData}  client:load/>
 
