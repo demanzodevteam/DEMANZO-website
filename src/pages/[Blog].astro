@@ -2,11 +2,11 @@
 import { ArticleFooter } from "../components/common/ArticleFooter";
 import { ArticlesHeader } from "../components/common/ArticlesHeader";
 import WpContentParser from "../components/common/WpContentParser";
-import { BLOG_URL } from "../config/urls";
+import { ARTICLE_URLS } from "../config/urls";
 import HomeLayout from "../layouts/HomeLayout.astro";
 
 export async function getStaticPaths() {
-  const res = await fetch(BLOG_URL + "per_page=100");
+  const res = await fetch(ARTICLE_URLS + "posts?per_page=100");
   const posts = await res.json();
 
   const paths = posts.map((post: { slug: string }) => ({
@@ -19,12 +19,12 @@ export async function getStaticPaths() {
 const { Blog: slug } = Astro.params;
 
 // Fetch current post
-const postRes = await fetch(BLOG_URL + `slug=${slug}`);
+const postRes = await fetch(ARTICLE_URLS + `posts?slug=${slug}`);
 const postData = await postRes.json();
 const post = postData[0];
 
 // ✅ Fetch all posts to find previous/next
-const allRes = await fetch(BLOG_URL + "per_page=100");
+const allRes = await fetch(ARTICLE_URLS + "posts?per_page=100");
 const posts = await allRes.json();
 ---
 

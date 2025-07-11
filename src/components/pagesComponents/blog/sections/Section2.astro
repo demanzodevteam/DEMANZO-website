@@ -1,10 +1,9 @@
 ---
-import { API_URL } from '../../../../config/urls';
+import { BLOGS } from "../../../../config/urls";
 import BlogCards from "../../../common/BlogCards";
-import { BLOG_URL } from '../../../../config/urls';
 
 // export async function getStaticPaths() {
-  const res = await fetch('https://demanzo.com/wp-json/custom/v1/post_details');
+  const res = await fetch(BLOGS);
   const blogs = await res.json();
 const blogArray = Object.values(blogs);
 

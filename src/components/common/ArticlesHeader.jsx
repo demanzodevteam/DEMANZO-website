@@ -2,10 +2,6 @@ import React, { useEffect } from "react";
 
 export const ArticlesHeader = ({ SectionData }) => {
 
-    useEffect(() => {
-        console.log(SectionData);
-    });
-
     return (
         <>
             <section className="container mx-auto px-4 sm:px-6 lg:px-8 my-auto">

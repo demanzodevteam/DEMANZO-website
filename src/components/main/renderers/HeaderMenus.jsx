@@ -24,8 +24,8 @@ const HeaderMenus = ({ navLinks, currentPath }) => {
                                     <a
                                         href={link.url}
                                         className={`text-[13px] font-[600] whitespace-nowrap ${isActive
-                                                ? "bg-[linear-gradient(#2d89bf)] text-white px-2 py-1 rounded-2xl"
-                                                : "text-gray-700 hover:text-[#2d89bf]"
+                                            ? "bg-[linear-gradient(#2d89bf)] text-white px-2 py-1 rounded-2xl"
+                                            : "text-gray-700 hover:text-[#2d89bf]"
                                             }`}
                                     >
                                         {link.label.toUpperCase()}
@@ -33,8 +33,8 @@ const HeaderMenus = ({ navLinks, currentPath }) => {
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         className={`inline ml-1 ${isActive
-                                                ? "text-[#2d89bf]"
-                                                : "text-gray-700 hover:text-[#2d89bf]"
+                                            ? "text-[#2d89bf]"
+                                            : "text-gray-700 hover:text-[#2d89bf]"
                                             }`}
                                         width="24"
                                         height="24"
@@ -60,8 +60,8 @@ const HeaderMenus = ({ navLinks, currentPath }) => {
                                                 <a
                                                     href={sub.url}
                                                     className={`block px-4 p-4 text-[12px] font-[600] ${isSubActive
-                                                            ? "text-[#2d89bf]"
-                                                            : "text-gray-700 hover:text-[#2d89bf]"
+                                                        ? "text-[#2d89bf]"
+                                                        : "text-gray-700 hover:text-[#2d89bf]"
                                                         }`}
                                                 >
                                                     {sub.label.toUpperCase()}
@@ -152,15 +152,15 @@ const HeaderMenus = ({ navLinks, currentPath }) => {
                                                 setActiveMenu(activeMenu === index ? null : index)
                                             }
                                             className={`w-full text-left flex justify-between items-center text-[13px] font-[600] px-3 py-2 rounded-md transition-colors duration-200 ${isActive
-                                                    ? "bg-[linear-gradient(to_right,_#ff8c00,_#f12500)] text-white px-2 py-1 rounded"
-                                                    : "text-gray-700 hover:text-[#2d89bf]"
+                                                 ? "bg-[linear-gradient(#2d89bf)] text-white px-2 py-1 rounded-2xl"
+                                            : "text-gray-700 hover:text-[#2d89bf]"
                                                 }`}
                                         >
                                             {item.label.toUpperCase()}
                                             <svg
                                                 className={`w-4 h-4 transform transition-transform duration-200 ${activeMenu === index
-                                                        ? "bg-[linear-gradient(to_right,_#ff8c00,_#f12500)] text-white px-2 py-1 rounded"
-                                                        : ""
+                                                    ? "text-[#2d89bf]"
+                                                    : ""
                                                     }`}
                                                 fill="none"
                                                 stroke="black"
@@ -178,8 +178,8 @@ const HeaderMenus = ({ navLinks, currentPath }) => {
                                         {/* Animated Submenu */}
                                         <div
                                             className={`overflow-hidden transition-all duration-300 ease-in-out ${activeMenu === index
-                                                    ? "max-h-96 opacity-100 mt-2"
-                                                    : "max-h-0 opacity-0"
+                                                ? "max-h-96 opacity-100 mt-2"
+                                                : "max-h-0 opacity-0"
                                                 }`}
                                         >
                                             <ul className="pl-6 space-y-2 text-sm text-gray-700 shadow py-2">
@@ -192,8 +192,8 @@ const HeaderMenus = ({ navLinks, currentPath }) => {
                                                             <a
                                                                 href={sub.url}
                                                                 className={`block transition-colors duration-200 ${isSubActive
-                                                                        ? "bg-[linear-gradient(#2d89bf)] text-white px-2 py-1 rounded"
-                                                                        : "hover:text-[#2d89bf]"
+                                                                    ? "text-[#2d89bf]"
+                                                        : "text-gray-700 hover:text-[#2d89bf]"
                                                                     }`}
                                                             >
                                                                 {sub.label}

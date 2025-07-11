@@ -1,9 +1,9 @@
 // src/components/SecondSection.jsx
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-const WhyYouNeedSection = ({ SectionData, colVal ,background }) => {
+const WhyYouNeedSection = ({ SectionData, colVal, background }) => {
    const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -48,11 +48,13 @@ const WhyYouNeedSection = ({ SectionData, colVal ,background }) => {
       >
         {SectionData?.list_items[0]?.map((card, index) => (
           <div
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            key={index}
-            className="bg-white shadow-md rounded-xl p-6 flex flex-col items-center space-y-4 hover:shadow-lg transition"
-          >
+              key={index}
+              className="bg-white shadow-md rounded-xl p-6 flex flex-col items-center space-y-4 hover:shadow-lg transition"
+              {...(mounted && {
+                "data-aos": "fade-up",
+                "data-aos-duration": "1000",
+              })}
+            >
             <div
               className="w-14 h-14"
               dangerouslySetInnerHTML={{ __html: card.svg }}
