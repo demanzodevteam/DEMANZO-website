@@ -141,51 +141,62 @@ const HeaderMenus = ({ navLinks, currentPath }) => {
                             </button>
 
                             <ul className="mt-12 space-y-4">
-                                {navLinks.map((item, index) => (
-                                    <li key={item.id }>
-                                        <button
-                                            onClick={() =>
-                                                setActiveMenu(activeMenu === index ? null : index)
-                                            }
-                                            className={`w-full text-left flex justify-between items-center text-[13px] font-[600] px-3 py-2 rounded-md transition-colors duration-200 ${activeMenu === index
-                                                ? "text-[#2d89bf]"
-                                                : "text-gray-700 hover:text-[#2d89bf]"
-                                                }`}
-                                        >
-                                            {item.label.toUpperCase()}
-                                            <svg
-                                                className={`w-4 h-4 transform transition-transform duration-200 ${activeMenu === index ? "rotate-180 text-[#2d89bf]" : ""
-                                                    }`}
-                                                fill="none"
-                                                stroke="black"
-                                                viewBox="0 0 24 24"
-                                            >
-                                                <path
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    strokeWidth="2"
-                                                    d="M19 9l-7 7-7-7"
-                                                ></path>
-                                            </svg>
-                                        </button>
+  {navLinks.map((item, index) => {
+    const normalizePath = (path) => path?.replace(/^\/|\/$/g, '');
+    const isActive =
+      normalizePath(currentPath) === normalizePath(item.url) ||
+      item.children?.some((sub) => normalizePath(currentPath) === normalizePath(sub.url));
 
-                                        {activeMenu === index && (
-                                            <ul className="pl-6 mt-2 space-y-2 text-sm text-gray-700 shadow py-2">
-                                                {item.children.map((sub, subIdx) => (
-                                                    <li key={sub.id }>
-                                                        <a
-                                                            href={sub.url}
-                                                            className="block hover:text-[#2d89bf]"
-                                                        >
-                                                            {sub.label}
-                                                        </a>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        )}
-                                    </li>
-                                ))}
-                            </ul>
+    return (
+      <li key={item.id}>
+        <button
+          onClick={() => setActiveMenu(activeMenu === index ? null : index)}
+          className={`w-full text-left flex justify-between items-center text-[13px] font-[600] px-3 py-2 rounded-md transition-colors duration-200 ${
+            isActive ? "text-[#2d89bf]" : "text-gray-700 hover:text-[#2d89bf]"
+          }`}
+        >
+          {item.label.toUpperCase()}
+          <svg
+            className={`w-4 h-4 transform transition-transform duration-200 ${
+              activeMenu === index ? "rotate-180 text-[#2d89bf]" : ""
+            }`}
+            fill="none"
+            stroke="black"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M19 9l-7 7-7-7"
+            ></path>
+          </svg>
+        </button>
+
+        {activeMenu === index && (
+          <ul className="pl-6 mt-2 space-y-2 text-sm text-gray-700 shadow py-2">
+            {item.children.map((sub) => {
+              const isSubActive = normalizePath(currentPath) === normalizePath(sub.url);
+              return (
+                <li key={sub.id}>
+                  <a
+                    href={sub.url}
+                    className={`block hover:text-[#2d89bf] ${
+                      isSubActive ? "text-[#2d89bf] font-[600]" : ""
+                    }`}
+                  >
+                    {sub.label}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </li>
+    );
+  })}
+</ul>
+
                         </div>
                     </>
                 )}
