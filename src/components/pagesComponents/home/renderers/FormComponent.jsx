@@ -3,7 +3,18 @@ import { useState, useEffect } from "react";
 import { API_URL, FORM_URL } from "../../../../config/urls";
 import axios from "axios";
 
-export default function ContactForm({category}) {
+// Hook to detect client-side mount
+function useHasMounted() {
+  const [hasMounted, setHasMounted] = useState(false);
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+  return hasMounted;
+}
+
+export default function ContactForm({ category }) {
+  const hasMounted = useHasMounted();
+
   const [form, setForm] = useState({
     "your-name": "",
     "your-email": "",
@@ -39,20 +50,15 @@ export default function ContactForm({category}) {
     if (Object.keys(newErrors).length > 0) return;
 
     const formData = new FormData();
-    formData.append("your-name", form["your-name"]);
-    formData.append("your-email", form["your-email"]);
-    formData.append("your-number", form["your-number"]);
-    formData.append("your-url", form["your-url"]);
-    formData.append("your-message", form["your-message"]);
+    Object.entries(form).forEach(([key, val]) =>
+      formData.append(key, val)
+    );
 
     try {
-      const res = await fetch(
-        FORM_URL + '101/feedback',
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+      const res = await fetch(FORM_URL + "101/feedback", {
+        method: "POST",
+        body: formData,
+      });
 
       const data = await res.json();
 
@@ -74,7 +80,7 @@ export default function ContactForm({category}) {
         alert("Submission failed: " + data.message);
       }
     } catch (error) {
-      alert(" Network error. Please try again.");
+      alert("Network error. Please try again.");
       console.error(error);
     }
   };
@@ -86,15 +92,6 @@ export default function ContactForm({category}) {
     },
   };
 
-  // const [category, setCategory] = useState({
-  //   name: '',
-  //   slug: '',
-  //   description: '',
-  //   button: '',
-  //   posts: [],
-  //   image: '',
-  // });
-
   const formFields = [
     { name: "your-name", label: "Your Name", type: "text" },
     { name: "your-email", label: "Your Email", type: "email" },
@@ -102,19 +99,7 @@ export default function ContactForm({category}) {
     { name: "your-url", label: "Your Website", type: "text" },
   ];
 
-  // useEffect(() => {
-  //   axios.get(API_URL + 'category/14')
-  //     .then((response) => {
-  //       setCategory(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Failed to fetch category:', error);
-  //     });
-  // }, []);
-  
-
   const renderInput = (name, type, label) => (
-    
     <motion.div
       variants={inputVariants}
       animate={errors[name] ? "shake" : ""}
@@ -126,8 +111,9 @@ export default function ContactForm({category}) {
         value={form[name]}
         onChange={handleChange}
         placeholder=" "
-        className={`peer w-full border px-4 py-4 text-[#050607] text-[16px] font-[400] ${errors[name] ? "border-red-500" : "border-[#e7e7e7]"
-          } focus:border-black focus:outline-none rounded-md`}
+        className={`peer w-full border px-4 py-4 text-[#050607] text-[16px] font-[400] ${
+          errors[name] ? "border-red-500" : "border-[#e7e7e7]"
+        } focus:border-black focus:outline-none rounded-md`}
       />
       <label className="absolute text-[#050607] text-[14px] font-[400] left-4 top-4 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-[16px] peer-placeholder-shown:text-gray-500 peer-focus:top-1 peer-focus:text-[12px] peer-focus:text-black">
         {label}
@@ -138,16 +124,19 @@ export default function ContactForm({category}) {
   return (
     <>
       <motion.div
-        initial={typeof window === 'undefined' ? false :{ opacity: 0, x: -200 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1 }}
-        className=""
+        {...(hasMounted
+          ? {
+              initial: { opacity: 0, x: -200 },
+              whileInView: { opacity: 1, x: 0 },
+              transition: { duration: 1 },
+            }
+          : {})}
       >
         <p className="text-[30px] md:text-[40px] font-[600] text-[#e05c24] pb-4">
           {category.name}
         </p>
         {category.posts?.map((post) =>
-          post.list_items?.map((listGroup, groupIndex) => (
+          post.list_items?.map((listGroup, groupIndex) =>
             listGroup.map((item, itemIndex) => (
               <div key={`${groupIndex}-${itemIndex}`} className="flex gap-2 items-start py-3">
                 <div className="text-[#61ce70] text-xl pt-1">✔️</div>
@@ -156,17 +145,22 @@ export default function ContactForm({category}) {
                 </p>
               </div>
             ))
-          ))
+          )
         )}
 
         <p className="text-[16px] lg:text-[18px] font-[400] text-[#616670] py-3 pl-6">
           🎯 {category.description}
         </p>
       </motion.div>
+
       <motion.div
-        initial={typeof window === 'undefined' ? false :{ opacity: 0, y: 300 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+        {...(hasMounted
+          ? {
+              initial: { opacity: 0, y: 300 },
+              whileInView: { opacity: 1, y: 0 },
+              transition: { duration: 1 },
+            }
+          : {})}
         className="rounded-3xl bg-white shadow px-6 lg:px-12 py-8 relative"
       >
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -191,8 +185,9 @@ export default function ContactForm({category}) {
               value={form["your-message"]}
               onChange={handleChange}
               placeholder=""
-              className={`peer w-full border px-4 py-4 text-[#050607] text-[16px] font-[400] resize-none ${errors["your-message"] ? "border-red-500" : "border-[#e7e7e7]"
-                } focus:border-black focus:outline-none rounded-md`}
+              className={`peer w-full border px-4 py-4 text-[#050607] text-[16px] font-[400] resize-none ${
+                errors["your-message"] ? "border-red-500" : "border-[#e7e7e7]"
+              } focus:border-black focus:outline-none rounded-md`}
             />
             <label className="absolute text-[#050607] text-[14px] font-[400] left-4 top-4 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-[16px] peer-placeholder-shown:text-gray-500 peer-focus:top-1 peer-focus:text-[12px] peer-focus:text-black">
               Message
@@ -213,9 +208,9 @@ export default function ContactForm({category}) {
           </motion.button>
 
           <AnimatePresence>
-            {submitted && (
+            {submitted && hasMounted && (
               <motion.div
-                initial={typeof window === 'undefined' ? false :  { opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 className="text-green-600 font-medium text-center"
@@ -227,6 +222,5 @@ export default function ContactForm({category}) {
         </form>
       </motion.div>
     </>
-
   );
 }
