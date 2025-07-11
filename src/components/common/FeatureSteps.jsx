@@ -8,7 +8,7 @@ export default function FeatureSteps({ pageData, background }) {
  
    useEffect(() => {
      setMounted(true);
-     AOS.init({ once: true });
+     AOS.init();
    }, []);
 
   return (
