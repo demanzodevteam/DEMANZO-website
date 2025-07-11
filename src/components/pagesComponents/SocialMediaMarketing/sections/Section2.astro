@@ -1,6 +1,7 @@
 ---
 import { API_URL } from "../../../../config/urls";
 import SplitHeadingSection from "../../../common/SplitHeadingSection";
+import WhyYouNeedReport from "../../../common/WhyYouNeedReport";
 
 const res = await fetch(API_URL + 'blocks/933');
 const data = await res.json();
@@ -10,5 +11,6 @@ const background = 'bg-[#FFFFFF]'
 const combinedData={...pageData,background}
 ---
 <!-- Third Section -->
-<SplitHeadingSection pageData={combinedData} />
+<!-- <SplitHeadingSection pageData={combinedData} /> -->
+<WhyYouNeedReport pageData={combinedData} />
 
