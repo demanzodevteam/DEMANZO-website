@@ -375,7 +375,7 @@ function parse_navigation_block_data($data) {
                 $item_id = uniqid('menu_', true);
                 $menu[] = [
                     'id' => $item_id,
-                    'label' => strip_tags($block['attrs']['label'] ?? ''),
+                    'label' => html_entity_decode(strip_tags($block['attrs']['label'] ?? '')),
                     'url' => $block['attrs']['url'] ?? '',
                 ];
             }
@@ -601,7 +601,7 @@ $block['card_details'] = $card_details;
 }
 
 // Api to fectch blog post listing 
-add_action('rest_api_init', function () {
+ add_action('rest_api_init', function () {
     register_rest_route('custom/v1', '/post_details', [
         'methods' => 'GET',
         'callback' => function () {

@@ -9,7 +9,7 @@ const WhyYouNeedSection = ({ SectionData, colVal, background }) => {
   useEffect(() => {
     setMounted(true);
     AOS.init({ once: true });
-  }, []);
+  }, [mounted]);
 
   return (
     <section
