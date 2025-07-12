@@ -1,14 +1,17 @@
 // src/components/FeatureSection.jsx
 import { CircleCheckBig } from "lucide-react";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 
 const FeatureSection = ({ pageData }) => {
-  useEffect(()=>{
-    AOS.init();
-  })
+   const [mounted, setMounted] = useState(false);
+  
+    useEffect(() => {
+      setMounted(true);
+      AOS.init({ once: true });
+    }, []);
 
   return (
     <section
@@ -43,7 +46,7 @@ const FeatureSection = ({ pageData }) => {
           <div
             key={index}
             className="flex flex-col items-start justify-center p-6 bg-white rounded-lg shadow-md space-y-4"
-            data-aos="zoom-in-down"
+             {...(mounted ? { "data-aos": "zoom-in-down", "data-aos-duration": "2000" } : {})}
           >
             <div className="flex flex-row items-center justify-center px-3 space-x-2">
               <div className="text-[#447EFC]">
