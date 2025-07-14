@@ -37,7 +37,7 @@ const SalesContactSection = ({ SectionData }) => {
         </div>
 
         {/* Right Side - Form */}
-        <div className=" rounded-2xl shadow-lg p-6 lg:p-10 w-full">
+        <div className=" rounded-2xl p-6 lg:p-10 w-full">
                   <RequestDemoForm/>
         </div>
       </div>
