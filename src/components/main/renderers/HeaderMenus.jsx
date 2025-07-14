@@ -188,12 +188,12 @@ const HeaderMenus = ({ navLinks, currentPath }) => {
                                                         normalizePath(currentPath) ===
                                                         normalizePath(sub.url);
                                                     return (
-                                                        <li key={sub.id}>
+                                                        <li key={sub.id} className="">
                                                             <a
                                                                 href={sub.url}
                                                                 className={`block transition-colors duration-200 ${isSubActive
-                                                                    ? "text-[#2d89bf]"
-                                                        : "text-gray-700 hover:text-[#2d89bf]"
+                                                                    ? "text-[#2d89bf] bg-[#a6cfe78e] p-0.5 rounded-2xl"
+                                                        : "text-gray-700 hover:text-[#2d89bf] p-0.5"
                                                                     }`}
                                                             >
                                                                 {sub.label}

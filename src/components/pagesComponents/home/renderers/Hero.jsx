@@ -29,7 +29,7 @@ export default function HeroSection({pageData}) {
     return (
         <>
             <div className="flex flex-col justify-center gap-4 py-8 lg:py-16">
-                <p className="text-[30px] md:text-[40px] font-[600] text-[#191d27]" data-aos="zoom-in-up">{pageData.title}</p>
+                <p className="!text-[30px] md:text-[40px] font-[600] text-[#191d27]" data-aos="zoom-in-up">{pageData.title}</p>
                 <p className="text-[16px] font-[500] text-[#616670]">{pageData.content}</p>
                 {/* <a href={pageData.link} className="bg-[#2d89bf] text-white rounded-full px-6 py-4 md:mt-6 text-[15px] font-[500] w-fit">{pageData.button}</a> */}
                 <a

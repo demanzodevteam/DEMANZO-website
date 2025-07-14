@@ -1,17 +1,29 @@
 ---
-import { API_URL } from '../../../../config/urls';
+import { API_URL, BLOGS } from '../../../../config/urls';
+import RecentBlogs from '../../../common/RecentBlogs';
 import BlogCaurocel from '../renderers/BlogCourocel';
 
 
 
-const res = await fetch(API_URL + 'category/8');
-const category = await res.json();
+// const res = await fetch(API_URL + 'category/8');
+// const category = await res.json();
+
+
+// export async function getStaticPaths() {
+  const res = await fetch(BLOGS);
+  const blogs = await res.json();
+const blogArray = Object.values(blogs);
+
+const button = false;
+
+const combinedData = { ...blogArray, button };
 ---
 
 
 <!---------------------- section 9 ----------------------------- -->
 
 <div class="bg-gradient-to-b from-[#fff8eb] to-[#ffffff]">
-    <BlogCaurocel category={category}  client:load/>
+    <!-- <BlogCaurocel category={category}  client:load/> -->
+    <RecentBlogs BlogData={combinedData} client:load/>
 </div>
 

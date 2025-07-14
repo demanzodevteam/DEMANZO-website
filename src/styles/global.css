@@ -168,3 +168,23 @@ body {
 h2[id], h3[id] {
   scroll-margin-top: 40vh; /* pushes heading toward center */
 }
+/* global.css */
+/* Default: Mobile-first (xs) */
+.custom-swiper .swiper-wrapper {
+  height: 50vh !important;
+}
+
+/* md: ≥768px */
+@media (min-width: 768px) {
+  .custom-swiper .swiper-wrapper {
+    height: 30vh !important;
+  }
+}
+
+/* lg: ≥1024px */
+@media (min-width: 1024px) {
+  .custom-swiper .swiper-wrapper {
+    height: 70vh !important;
+  }
+}
+
