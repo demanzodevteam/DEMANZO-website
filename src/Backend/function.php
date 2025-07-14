@@ -359,30 +359,31 @@ function parse_navigation_block_data($data) {
 }
 
     function extract_menu_from_blocks($blocks) {
-        $menu = [];
+    $menu = [];
 
-        foreach ($blocks as $block) {
-            if ($block['blockName'] === 'core/navigation-submenu') {
-                $item_id = uniqid('menu_', true);
-                $submenu = [
-                    'id' => $item_id,
-                    'label' => $block['attrs']['label'] ?? '',
-                    'url' => $block['attrs']['url'] ?? '',
-                    'children' => extract_menu_from_blocks($block['innerBlocks']),
-                ];
-                $menu[] = $submenu;
-            } elseif ($block['blockName'] === 'core/navigation-link') {
-                $item_id = uniqid('menu_', true);
-                $menu[] = [
-                    'id' => $item_id,
-                    'label' => html_entity_decode(strip_tags($block['attrs']['label'] ?? '')),
-                    'url' => $block['attrs']['url'] ?? '',
-                ];
-            }
+    foreach ($blocks as $block) {
+        if ($block['blockName'] === 'core/navigation-submenu') {
+            $item_id = uniqid('menu_', true);
+            $submenu = [
+                'id' => $item_id,
+                'label' => html_entity_decode(strip_tags($block['attrs']['label'] ?? '')),
+                'url' => $block['attrs']['url'] ?? '',
+                'children' => extract_menu_from_blocks($block['innerBlocks']),
+            ];
+            $menu[] = $submenu;
+        } elseif ($block['blockName'] === 'core/navigation-link') {
+            $item_id = uniqid('menu_', true);
+            $menu[] = [
+                'id' => $item_id,
+                'label' => html_entity_decode(strip_tags($block['attrs']['label'] ?? '')),
+                'url' => $block['attrs']['url'] ?? '',
+            ];
         }
-
-        return $menu;
     }
+
+    return $menu;
+}
+
 
 
 //to get whole page data in blocks
