@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import {  FORM_URL } from "../../../../config/urls";
+import { FORM_URL } from "../../../../config/urls";
 
 
 // Hook to detect client-side mount
@@ -53,6 +53,18 @@ export default function ContactForm({ category }) {
     Object.entries(form).forEach(([key, val]) =>
       formData.append(key, val)
     );
+
+    // ✅ Add CF7 hidden fields required for REST
+    formData.append("_wpcf7", "101"); // <-- numeric form ID
+    formData.append("_wpcf7_version", "5.9.4");
+    formData.append("_wpcf7_locale", "en_US");
+    formData.append("_wpcf7_unit_tag", "wpcf7-f101-p12-o1"); // <-- must match page
+    formData.append("_wpcf7_container_post", "12"); // <-- ID of page with form
+
+    Object.entries(form).forEach(([key, val]) =>
+      formData.append(key, val)
+    );
+
 
     try {
       const res = await fetch(FORM_URL + "101/feedback", {
@@ -111,9 +123,8 @@ export default function ContactForm({ category }) {
         value={form[name]}
         onChange={handleChange}
         placeholder=" "
-        className={`peer w-full border px-4 py-4 text-[#050607] text-[16px] font-[400] ${
-          errors[name] ? "border-red-500" : "border-[#e7e7e7]"
-        } focus:border-black focus:outline-none rounded-md`}
+        className={`peer w-full border px-4 py-4 text-[#050607] text-[16px] font-[400] ${errors[name] ? "border-red-500" : "border-[#e7e7e7]"
+          } focus:border-black focus:outline-none rounded-md`}
       />
       <label className="absolute text-[#050607] text-[14px] font-[400] left-4 top-4 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-[16px] peer-placeholder-shown:text-gray-500 peer-focus:top-1 peer-focus:text-[12px] peer-focus:text-black">
         {label}
@@ -126,10 +137,10 @@ export default function ContactForm({ category }) {
       <motion.div
         {...(hasMounted
           ? {
-              initial: { opacity: 0, x: -200 },
-              whileInView: { opacity: 1, x: 0 },
-              transition: { duration: 1 },
-            }
+            initial: { opacity: 0, x: -200 },
+            whileInView: { opacity: 1, x: 0 },
+            transition: { duration: 1 },
+          }
           : {})}
       >
         <p className="text-[30px] md:text-[40px] font-[600] text-[#e05c24] pb-4">
@@ -156,10 +167,10 @@ export default function ContactForm({ category }) {
       <motion.div
         {...(hasMounted
           ? {
-              initial: { opacity: 0, y: 300 },
-              whileInView: { opacity: 1, y: 0 },
-              transition: { duration: 1 },
-            }
+            initial: { opacity: 0, y: 300 },
+            whileInView: { opacity: 1, y: 0 },
+            transition: { duration: 1 },
+          }
           : {})}
         className="rounded-3xl bg-white shadow px-6 lg:px-12 py-8 relative"
       >
@@ -185,13 +196,13 @@ export default function ContactForm({ category }) {
               value={form["your-message"]}
               onChange={handleChange}
               placeholder=""
-              className={`peer w-full border px-4 py-4 text-[#050607] text-[16px] font-[400] resize-none ${
-                errors["your-message"] ? "border-red-500" : "border-[#e7e7e7]"
-              } focus:border-black focus:outline-none rounded-md`}
+              className={`peer w-full border px-4 py-4 text-[#050607] text-[16px] font-[400] resize-none ${errors["your-message"] ? "border-red-500" : "border-[#e7e7e7]"
+                } focus:border-black focus:outline-none rounded-md`}
             />
             <label className="absolute text-[#050607] text-[14px] font-[400] left-4 top-4 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-[16px] peer-placeholder-shown:text-gray-500 peer-focus:top-1 peer-focus:text-[12px] peer-focus:text-black">
               Message
             </label>
+
           </motion.div>
 
           <motion.button
