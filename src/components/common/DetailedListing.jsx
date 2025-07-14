@@ -36,7 +36,7 @@ const DetailedListing = ({ pageData }) => {
       </div>
 
       <div
-        className={`grid grid-cols-1 lg:grid-cols-${pageData?.colVal[1]?.value} md:grid-cols-${pageData?.colVal[0]?.value} gap-8 lg:px-30 mt-10`}
+        className={`grid grid-cols-1 md:grid-cols-${pageData?.colVal[0]?.value} lg:grid-cols-${pageData?.colVal[1]?.value}  gap-8 lg:px-30 mt-10`}
       >
         {pageData?.card_details?.map((card, index) => (
           <div

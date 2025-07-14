@@ -24,20 +24,18 @@ export default function WhyYouNeedReport({pageData}) {
             />
           </div>
 
-          <div className="w-full lg:w-1/2 p-4 md:mx-2 order-1 lg:order-2 text-center lg:text-left">
+          <div className="w-full lg:w-1/2 p-4 md:mx-2 order-1 lg:order-2 text-left">
             <h2 className="mb-8 text-5xl font-semibold">
               <span>{pageData.headings?.[0]}</span>
             </h2>
+
             <ul className="space-y-4">
               {pageData?.list_items?.[0].map((item, index) => (
-                <li
-                  key={index}
-                  className="flex items-start justify-center lg:justify-start"
-                >
+                <li key={index} className="flex items-start">
                   <div className="border-2 border-dotted text-red-500 border-red-500 rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0 p-1.5">
                     {index + 1}
                   </div>
-                  <p className="text-lg text-[#616670] mb-3 text-left">
+                  <p className="text-lg text-[#616670] mb-3">
                     <strong>{item?.heading}</strong> {item?.para}
                   </p>
                 </li>
