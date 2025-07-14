@@ -8,8 +8,8 @@ export default function InsightHighlightBlock({ pageData }) {
       className={`flex flex-col lg:flex-row items-center justify-center p-4 md:p-6 lg:p-8 my-10 gap-6 ${pageData.background}`}
     >
       {/* Left Column */}
-      <div className="w-full md:w-full flex justify-center">
-        <div className="w-full max-w-[95%] sm:max-w-lg md:max-w-xl bg-white shadow-md rounded-lg p-6">
+      <div className="w-full flex justify-center lg:justify-start">
+        <div className="w-full max-w-full md:max-w-full lg:max-w-xl bg-white shadow-md rounded-lg p-6">
           <p className="text-[#7D7D7D] text-base md:text-[16px] leading-relaxed">
             {pageData.paragraphs}
           </p>
@@ -17,7 +17,7 @@ export default function InsightHighlightBlock({ pageData }) {
       </div>
 
       {/* Right Column */}
-      <div className="w-full md:w-full p-4 md:p-4 flex flex-col gap-6 items-center md:items-center lg:items-start text-center md:text-center lg:text-left">
+      <div className="w-full p-4 md:p-4 flex flex-col gap-6 items-center md:items-start lg:items-start text-center md:text-left lg:text-left">
         <h1 className="text-[#FF5F55] font-semibold text-[18px] lg:text-[20px]">
           {pageData.title}
         </h1>

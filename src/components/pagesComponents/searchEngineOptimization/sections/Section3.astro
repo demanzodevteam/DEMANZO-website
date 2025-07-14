@@ -1,5 +1,11 @@
 ---
 import ResultsSlider from "../../../common/ResultSlider";
+import { API_URL } from '../../../../config/urls';
+import ServicesWeOffer from '../../../common/ServicesWeOffer';
+
+
+const res = await fetch(API_URL + 'blocks/976');
+const SectionData = await res.json();
 ---
 
-<ResultsSlider client:load/>
+<ResultsSlider client:load pageData={SectionData[2]}/>
