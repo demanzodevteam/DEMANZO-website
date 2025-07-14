@@ -13,7 +13,7 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "../../../styles.css";
 
 export default function Caurosel({ category }) {
-       const [hasMounted, setHasMounted] = useState(false);
+  const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
     AOS.init();
@@ -27,7 +27,11 @@ export default function Caurosel({ category }) {
         {category.name}
       </p>
 
-      <div className="w-full px-4 sm:px-6 md:px-8" data-aos="fade-up" data-aos-duration="2000" >
+      <div
+        className="w-full px-4 sm:px-6 md:px-8 overflow-visible relative z-10 pb-10"
+        data-aos="fade-up"
+        data-aos-duration="2000"
+      >
         <Swiper
           loop={true}
           loopAdditionalSlides={1} // Helps Swiper loop even if # of slides = view
@@ -39,7 +43,7 @@ export default function Caurosel({ category }) {
           }}
           breakpoints={{
             0: {
-              slidesPerView: 1.1,
+              slidesPerView: 1,
             },
             640: {
               slidesPerView: 2,
@@ -53,9 +57,16 @@ export default function Caurosel({ category }) {
         >
 
           {[...category.posts, ...category.posts].map((testimonial, index) => (
-            <SwiperSlide key={`${testimonial.title}-${index}`} style={{ boxShadow: "0 0 12px rgba(0, 0, 0, 0.15)" }}
+            <SwiperSlide
+              key={`${testimonial.title}-${index}`}
+              className="bg-white rounded-xl shadow-xl overflow-visible mt-4" // ✅ Ensure overflow is visible
+              style={{
+                boxShadow: "0 8px 24px rgba(0, 0, 0, 0.12)", // Better visible shadow
+                background: "#fff", // Needed to see the card clearly
+                borderRadius: "12px",
+              }}
             >
-              <div className="p-8">
+              <div className="p-8 bg-white rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.08)] transition-all duration-300 hover:shadow-[0_10px_40px_rgba(0,0,0,0.15)]">
                 <p className="text-[16px] font-[500] text-[#616670]">
                   {testimonial.content}
                 </p>
