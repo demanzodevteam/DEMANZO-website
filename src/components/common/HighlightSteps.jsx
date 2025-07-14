@@ -17,14 +17,16 @@ const HighlightSteps = ({ SectionData }) => {
           <h1 className="text-[45px] text-[#000000] md:text-[48px] lg:text-[45px] font-semibold relative z-10 leading-tight text-center lg:text-center">
             {SectionData.headings[0]}
           </h1>
-          <p className=" text-[#616670] font-medium max-w-5xl mx-auto text-[16px] leading-relaxed">
-            {SectionData.paragraphs[0]}
-          </p>
+          {SectionData?.paragraphs?.[0] && (
+            <p className="text-[#616670] font-medium max-w-5xl mx-auto text-[16px] leading-relaxed">
+              {SectionData.paragraphs[0]}
+            </p>
+          )}
         </div>
       </div>
       {/* First 6 cards in 2 rows of 3 cards */}
       <div
-        className={`grid grid-cols-1 md:grid-cols-${SectionData.colVal[2].value} lg:grid-cols-${SectionData.colVal[2].value} gap-6 lg:px-30 mt-10`}
+        className={`grid grid-cols-1 md:grid-cols-${SectionData.colVal[2].value} lg:grid-cols-${SectionData.colVal[2].value} gap-6 lg:px-30 `}
       >
         {SectionData?.list_items[0]?.slice(0, 6).map((card, index) => (
           <div

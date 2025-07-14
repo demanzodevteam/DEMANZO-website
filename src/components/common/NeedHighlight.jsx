@@ -22,7 +22,7 @@ const NeedHighlight = ({ SectionData }) => {
       }
 
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:px-30 mt-10 items-stretch">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 lg:px-30 mt-10 items-stretch">
         {SectionData?.list_items[0]?.map((card, index) => {
           const isOdd = index % 2 === 0;
           return (
