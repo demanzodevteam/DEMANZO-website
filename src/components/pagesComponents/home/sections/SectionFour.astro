@@ -1,5 +1,6 @@
 ---
 import { API_URL } from "../../../../config/urls";
+import TrustCaurocelHome from "../renderers/TrustCaurocel";
 import TrustCaurocel from "../renderers/TrustCaurocel";
 
 const res = await fetch(API_URL + 'category/4');
@@ -11,7 +12,7 @@ const category = await res.json();
 
 <div class="py-6 lg:py-12 px-4">
    
-    <TrustCaurocel category={category} client:load/>
+    <TrustCaurocelHome category={category} client:load/>
 </div>
 
 <style>
