@@ -618,11 +618,6 @@ export default function GrowthEngineForm({ category }) {
     />,
   ];
 
-  console.log(form, "formdata");
-  console.log(errors, "errors");
-  console.log(category, "category");
-  console.log(category?.list_items, "list_itemsnew");
-
   return (
     <div className="w-full flex flex-col items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0">
       <div className="w-full p-8 space-y-8 bg-white rounded-[16px] shadow">
