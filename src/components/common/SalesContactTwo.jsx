@@ -9,7 +9,7 @@ const SalesContactSection = ({ SectionData }) => {
       className="flex items-center justify-center px-4 py-16 bg-cover bg-center"
       style={{ backgroundImage: `url(${BackGroundImg.src})` }}
     >
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.6fr] gap-10 max-w-7xl w-full overflow-hidden p-8 lg:p-14">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_0.6fr] gap-10 max-w-7xl w-full overflow-hidden p-8 lg:p-14">
         {/* Left Side */}
         <div className="flex flex-col items-center justify-center text-center gap-6 px-4">
           <img

@@ -1,13 +1,12 @@
 // src/components/SecondSection.jsx
 import React, { useEffect } from "react";
-import AOS from 'aos'
+import AOS from "aos";
 import "aos/dist/aos.css";
 
-
 const HighlightSteps = ({ SectionData }) => {
-  useEffect(()=>{
+  useEffect(() => {
     AOS.init();
-  })
+  });
 
   return (
     <section
@@ -33,7 +32,11 @@ const HighlightSteps = ({ SectionData }) => {
             className="flex justify-center"
             data-aos="zoom-in-up"
           >
-            <div className="bg-white max-w-[330px] w-full shadow-lg rounded-xl p-6 py-10 flex flex-col sm:flex-row sm:items-start sm:space-x-4 items-center text-center sm:text-left gap-2 hover:shadow-xl transition">
+            <div
+              className="bg-white max-w-[330px] w-full shadow-lg rounded-xl p-6 py-10 
+                flex flex-col lg:flex-row lg:items-start lg:space-x-4 
+                 items-center text-center lg:text-left gap-2 hover:shadow-xl transition"
+            >
               {/* SVG */}
               <div
                 className="w-14 h-14 flex-shrink-0"
@@ -62,7 +65,12 @@ const HighlightSteps = ({ SectionData }) => {
           data-aos="zoom-in-up"
         >
           <div className="lg:col-start-2 flex justify-center">
-            <div className="bg-white max-w-[330px] w-full shadow-lg rounded-xl p-6 py-10 flex flex-col sm:flex-row sm:items-start sm:space-x-4 items-center text-center sm:text-left gap-2 hover:shadow-xl transition">
+            <div
+              className="bg-white max-w-[330px] w-full shadow-lg rounded-xl p-6 py-10 
+                flex flex-col lg:flex-row lg:items-start lg:space-x-4 
+                 items-center text-center lg:text-left gap-2 hover:shadow-xl transition"
+            >
+              {" "}
               {/* SVG */}
               <div
                 className="w-14 h-14 flex-shrink-0"

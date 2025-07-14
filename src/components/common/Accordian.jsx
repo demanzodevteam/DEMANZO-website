@@ -14,7 +14,7 @@ export default function FaqAccordion({ category }) {
   })
   return (
     <>
-      <section className={`bg-${category.background} py-10 px-20`}>
+      <section className={`bg-${category.background} py-10 mx-4 md:px-10`}>
         <p className="`mb-5 text-2xl lg:text-4xl font-semibold text-center leading-tight text-[#191d27]">
           {category.headings}
         </p>
@@ -31,7 +31,7 @@ export default function FaqAccordion({ category }) {
         <Accordion
           type="single"
           collapsible
-          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-${category.colVal[0]?.value} gap-4 px-4 md:px-10 pt-6 lg:max-w-7xl mx-auto mt-10 mb-20`}
+          className={`grid grid-cols-1 md:grid-cols-1 lg:grid-cols-${category.colVal[0]?.value} gap-4 px- md:px-10 pt-6 lg:max-w-7xl mx-auto mt-10 mb-20`}
           defaultValue="item-0"
         >
           {category.card_details?.map((faq, index) => (

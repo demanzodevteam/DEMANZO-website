@@ -39,14 +39,19 @@ export default function FeatureSteps({ pageData, background }) {
           </div>
         </div>
       </div>
+      {pageData?.headings?.[1] && (
+        <p className="text-[16px] text-[#616670] font-semibold max-w-4xl mx-auto text-center">
+          {pageData.headings[1]}
+        </p>
+      )}
 
       <div className="grid md:grid-cols-2 gap-4">
         {pageData?.card_details?.map((card_details, index) => (
           <div
-  key={index}
-  className="lg:p-4"
-  {...(mounted ? { 'data-aos': 'fade-up' } : {})}
->
+            key={index}
+            className="lg:p-4"
+            {...(mounted ? { "data-aos": "fade-up" } : {})}
+          >
             <div className="flex md:gap-3">
               <div
                 className="p-4"
