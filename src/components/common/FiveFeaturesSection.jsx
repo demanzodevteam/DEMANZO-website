@@ -39,7 +39,7 @@ const FiveFeatureSection = ({ pageData }) => {
 
       {/* First Row: 3 Cards */}
       {/* First Row: 3 Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {pageData.card_details.slice(0, 3).map((card, index) => (
           <div
             data-aos-duration="1000"
@@ -60,7 +60,7 @@ const FiveFeatureSection = ({ pageData }) => {
       </div>
 
       {/* Second Row: Cards 4 & 5 each taking 1/2 width */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {pageData.card_details.slice(3, 5).map((card, index) => (
           <div
             data-aos-duration="1000"

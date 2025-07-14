@@ -36,7 +36,7 @@ const DetailedListing = ({ pageData }) => {
       </div>
 
       <div
-        className={`grid grid-cols-1 lg:grid-cols-${pageData?.colVal[1]?.value} gap-8 lg:px-30 mt-10`}
+        className={`grid grid-cols-1 lg:grid-cols-${pageData?.colVal[1]?.value} md:grid-cols-${pageData?.colVal[0]?.value} gap-8 lg:px-30 mt-10`}
       >
         {pageData?.card_details?.map((card, index) => (
           <div
@@ -57,9 +57,7 @@ const DetailedListing = ({ pageData }) => {
               className="text-gray-600 font-medium text-left"
               dangerouslySetInnerHTML={{ __html: card.para[0] }}
             />
-            <ul
-              className={`text-left text-gray-600 font-medium `}
-            >
+            <ul className={`text-left text-gray-600 font-medium `}>
               {card?.list.map((listItem, index) => (
                 <li key={index} className="flex items-start gap-2">
                   <span className="text-[#616670] text-[14px] text-lg leading-[1.5]">

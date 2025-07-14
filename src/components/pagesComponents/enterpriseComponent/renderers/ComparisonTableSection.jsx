@@ -8,11 +8,11 @@ const ComparisonTableSection = ({
   footerText,
 }) => {
   return (
-    <section className=" bg-gradient-to-b from-[#FEFFFF] to-[#FEF2F2] px-4 md:px-10 lg:px-[var(--demanzo-section-spacing)] py-[var(--demanzo-section-spacing)] text-center my-20">
-      <div className="inline-block relative mx-auto lg:mx-0 mb-10 px-10">
+    <section className="bg-gradient-to-b from-[#FEFFFF] to-[#FEF2F2] px-4 md:px-6 lg:px-[var(--demanzo-section-spacing)] py-[var(--demanzo-section-spacing)] text-center my-20">
+      <div className="inline-block relative mx-auto lg:mx-0 mb-10 px-4">
         <div className="relative inline-block">
           {title && (
-            <h1 className="text-[45px] md:text-[48px] lg:text-[45px] font-semibold relative z-10 leading-tight text-center">
+            <h1 className="text-[28px] sm:text-[36px] md:text-[42px] font-semibold leading-tight">
               {title}
             </h1>
           )}
@@ -32,47 +32,50 @@ const ComparisonTableSection = ({
             />
           </svg>
           {subtitle && (
-            <h1 className="text-[45px] md:text-[48px] lg:text-[45px] font-semibold relative z-10 leading-tight text-center">
+            <h2 className="text-[20px] sm:text-[24px] md:text-[28px] font-medium mt-4">
               {subtitle}
-            </h1>
+            </h2>
           )}
         </div>
       </div>
 
-      <div className="px-4 md:px-20 lg:px-40 py-12 mx-auto">
-        <div className="overflow-x-auto">
-          <table className="min-w-full table-auto border border-gray-300 text-left text-base text-gray-700">
-            <thead className="bg-gray-100 text-gray-900 uppercase">
-              <tr>
-                {tableHeadings.map((heading, idx) => (
-                  <th key={idx} className="border border-gray-300 px-6 py-4">
-                    {heading}
-                  </th>
+      <div className="w-full px-2 sm:px-4 md:px-8 lg:px-20 py-6">
+        <table className="w-full table-fixed border border-gray-300 text-left text-sm sm:text-base text-gray-700">
+          <thead className="bg-gray-100 text-gray-900 uppercase">
+            <tr>
+              {tableHeadings.map((heading, idx) => (
+                <th
+                  key={idx}
+                  className="border border-gray-300 px-2 sm:px-4 py-2 text-xs sm:text-sm"
+                >
+                  {heading}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {tableData.map((row, i) => (
+              <tr key={i} className="hover:bg-gray-50">
+                {row.map((cell, j) => (
+                  <td
+                    key={j}
+                    className={`border border-gray-300 px-2 sm:px-4 py-2 text-[13px] sm:text-sm ${
+                      j === 0 ? "font-medium" : ""
+                    }`}
+                  >
+                    {cell}
+                  </td>
                 ))}
               </tr>
-            </thead>
-            <tbody>
-              {tableData.map((row, i) => (
-                <tr key={i} className="hover:bg-gray-50">
-                  {row.map((cell, j) => (
-                    <td
-                      key={j}
-                      className={`border border-gray-300 px-6 py-4 ${
-                        j === 0 ? "font-medium" : ""
-                      }`}
-                    >
-                      {cell}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+            ))}
+          </tbody>
+        </table>
 
-          {footerText && (
-            <h1 className="mt-8 text-[30px] font-semibold">{footerText}</h1>
-          )}
-        </div>
+        {footerText && (
+          <h3 className="mt-8 text-[22px] sm:text-[26px] font-semibold">
+            {footerText}
+          </h3>
+        )}
       </div>
     </section>
   );

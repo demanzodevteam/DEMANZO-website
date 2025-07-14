@@ -51,15 +51,12 @@ export default function HeroSection({ pageData }) {
         <div class="flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0">
           {pageData?.bgImg ? (
             <>
-              <div class="relative w-full md:w-full max-w-none md:px-6">
-                <div class="absolute inset-0 h-[300px] bg-gray-100 transform translate-x-10 -translate-y-12 rounded-[30px] shadow-lg"></div>
-                <div class="relative z-10 flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0">
-                  <img
-                    src={MEDIA_URL + pageData.images?.[0]?.src}
-                    alt={pageData.images?.[0]?.alt}
-                    class="w-full md:w-full lg:w-[500px] rounded-[30px]"
-                  />
-                </div>
+              <div class="w-full md:px-6">
+                <img
+                  src={MEDIA_URL + pageData.images?.[0]?.src}
+                  alt={pageData.images?.[0]?.alt}
+                  class="w-full md:w-full lg:w-[500px] transition-transform duration-400 hover:-translate-y-4 rounded-sm"
+                />
               </div>
             </>
           ) : (

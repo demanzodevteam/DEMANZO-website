@@ -44,24 +44,26 @@ const WhyYouNeedSection = ({ SectionData, colVal, background }) => {
         {SectionData.paragraphs[0]}
       </p>
       <div
-        className={`grid grid-cols-1 lg:grid-cols-${colVal[2].value} gap-8 lg:px-30 mt-10`}
+        className={`grid grid-cols-1 md:grid-cols-${colVal[1].value} lg:grid-cols-${colVal[2].value} gap-8 lg:px-30 mt-10`}
       >
         {SectionData?.list_items[0]?.map((card, index) => (
           <div
-              key={index}
-              className="bg-white shadow-md rounded-xl p-6 flex flex-col items-center space-y-4 hover:shadow-lg transition"
-              {...(mounted && {
-                "data-aos": "fade-up",
-                "data-aos-duration": "1000",
-              })}
-            >
+            key={index}
+            className="bg-white shadow-md rounded-xl p-6 flex flex-col items-center space-y-4 hover:shadow-lg transition"
+            {...(mounted && {
+              "data-aos": "fade-up",
+              "data-aos-duration": "1000",
+            })}
+          >
             <div
               className="w-14 h-14"
               dangerouslySetInnerHTML={{ __html: card.svg }}
             />
 
             {card.heading && (
-              <h2 className="font-bold text-[20px] pl-2 text-left">{card.heading}</h2>
+              <h2 className="font-bold text-[20px] pl-2 text-left">
+                {card.heading}
+              </h2>
             )}
             <p
               className="text-gray-600 font-medium"
@@ -73,7 +75,7 @@ const WhyYouNeedSection = ({ SectionData, colVal, background }) => {
       </div>
 
       <p className="mt-12 text-gray-600 font-medium max-w-7xl mx-auto text-[16px] leading-relaxed">
-        {SectionData.paragraphs[5]}
+        {SectionData.paragraphs[1]}
       </p>
     </section>
   );
