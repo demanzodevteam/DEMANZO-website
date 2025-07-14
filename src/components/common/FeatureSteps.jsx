@@ -40,7 +40,7 @@ export default function FeatureSteps({ pageData, background }) {
         </div>
       </div>
       {pageData?.headings?.[1] && (
-        <p className="text-[16px] text-[#616670] font-semibold max-w-4xl mx-auto text-center">
+        <p className="text-[16px] text-[#616670] font-se max-w-4xl mx-auto text-center">
           {pageData.headings[1]}
         </p>
       )}
