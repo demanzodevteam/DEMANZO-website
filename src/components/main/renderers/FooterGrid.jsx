@@ -19,7 +19,7 @@ export default function FooterGrid({ category }) {
 							{subMenu.label === "info@demanzo.com" && (
 								<div className="flex gap-4">
 									<a
-										href=""
+										href="https://www.facebook.com/demanzomarketing"
 										className="w-8 h-8 border flex items-center justify-center text-[#2d89bf] border-[#2d89bf] rounded-full border-dashed"
 									>
 										<svg
@@ -33,7 +33,7 @@ export default function FooterGrid({ category }) {
 										></path></svg>
 									</a>
 									<a
-										href=""
+										href="https://x.com/demanzo_info"
 										className="w-8 h-8 border flex items-center justify-center text-[#2d89bf] border-[#2d89bf] rounded-full border-dashed"
 									>
 										<svg
@@ -47,7 +47,7 @@ export default function FooterGrid({ category }) {
 										></path></svg>
 									</a>
 									<a
-										href=""
+										href="https://www.instagram.com/demanzo.digital/"
 										className="w-8 h-8 border flex items-center justify-center text-[#2d89bf] border-[#2d89bf] rounded-full border-dashed"
 									>
 										<svg
@@ -69,7 +69,7 @@ export default function FooterGrid({ category }) {
 										></path></g></svg>
 									</a>
 									<a
-										href=""
+										href="https://www.linkedin.com/company/demanzo"
 										className="w-8 h-8 border flex items-center justify-center text-[#2d89bf] border-[#2d89bf] rounded-full border-dashed"
 									>
 										<svg
