@@ -73,10 +73,10 @@ export default function BlogCards({ BlogData, maxCards = 3 }) {
               <span className="inline-block text-xs font-semibold text-white uppercase px-3 py-1 rounded-full bg-[linear-gradient(to_right,_#ff8c00,_#f12500)]">
                 {card?.category}
               </span>
-              <h3 className="text-lg font-semibold mt-2 text-gray-800">
+              <h3 className="text-lg font-semibold mt-2 text-gray-800 line-clamp-2">
                 {card.title}
               </h3>
-              <p className="text-sm text-gray-600 mt-1">
+              <p className="text-sm text-gray-600 mt-1 line-clamp-2">
                 {card.description || ""}
               </p>
               <a
