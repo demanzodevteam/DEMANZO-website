@@ -7,12 +7,10 @@ export default function BuildGrowthEngineSection({ pageData }) {
       // style={{ backgroundImage: bgImg ? "none" : `url('${curveImg.src}')` }}
     >
       <div className="flex flex-col justify-center items-center gap-4 py-8 px-4 lg:px-15 lg:py-10">
-        <h1 className="text-[#FF5F55] font-semibold text-[18px] lg:text-[20px] ">
-          {pageData[0].title}
-        </h1>
+        <h1 className="demanzo-title ">{pageData[0].title}</h1>
 
         <div className="inline-block relative mx-auto lg:mx-0 ">
-          <h1 className="text-[45px] md:text-[48px] lg:text-[50px] font-semibold relative z-10">
+          <h1 className="demanzo-h1 relative z-10">
             {pageData[0].headings[0]}
           </h1>
           <svg
@@ -32,17 +30,13 @@ export default function BuildGrowthEngineSection({ pageData }) {
           </svg>
         </div>
         {pageData[0]?.paragraphs?.map((para, index) => (
-          <p
-            key={index}
-            className="text-[16px] font-[500] text-[#616670] leading-6"
-          >
+          <p key={index} className="demanzo-bold-p">
             {para}
           </p>
         ))}
       </div>
 
-        <GrowthEngineForm category={pageData[1]} />
-      
+      <GrowthEngineForm category={pageData[1]} />
     </div>
   );
 }

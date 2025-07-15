@@ -14,13 +14,13 @@ const ContentIntroSection = ({ SectionData }) => {
     >
       <div className="inline-block relative mx-auto lg:mx-0 mb-10 py-10">
         <div className="relative inline-block">
-          <h1 className="text-[45px] md:text-[48px] lg:text-[40px] font-semibold relative z-10 leading-tight text-center lg:text-center">
+          <h1 className="demanzo-h1 relative z-10 leading-tight text-center lg:text-center">
             {SectionData.headings[0]}{" "}
           </h1>
-          <h1 className="text-[45px] md:text-[48px] lg:text-[40px] font-semibold relative z-10 leading-tight text-center lg:text-center">
+          <h1 className="demanzo-h1 relative z-10 leading-tight text-center lg:text-center">
             {SectionData.headings[1]}{" "}
           </h1>
-          <p className="mt-12 text-gray-600 font-medium max-w-4xl mx-auto text-[16px] leading-relaxed">
+          <p className="demanzo-bold-p !mt-12 max-w-4xl mx-auto leading-relaxed">
             {SectionData.paragraphs[0]}
           </p>
         </div>

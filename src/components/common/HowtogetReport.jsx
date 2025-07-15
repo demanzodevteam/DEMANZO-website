@@ -1,31 +1,31 @@
 export default function HowtogetReport({ pageData, colVal }) {
     // console.log(pageData, 'pagedata')
     return (
-        <>
-            <div className="flex flex-col items-center justify-center p-8">
-                <h1 className="mb-8 text-4xl font-bold text-center text-[#54595F]">
-                    How to Get Your Free Report?
-                </h1>
-                <div className={`grid grid-cols-1 lg:grid-cols-${colVal[2].value} gap-8 lg:px-30 mt-10`}>
-                    {pageData?.list_items[0]?.map((card, index) => (
-                        <div
-                            key={index}
-                            className="flex flex-col md:flex-row bg-white md:gap-4 shadow-md rounded-xl px-8 py-8 md:py-10  items-center space-y-4 transition"
-                        >
-                            <div
-                                className="w-14 h-14"
-                                dangerouslySetInnerHTML={{ __html: card.svg }}
-                            />
-                            <p
-                                className="text-gray-600 font-medium"
-                                dangerouslySetInnerHTML={{ __html: card.para }}
-                            />
-                            {/* <hr className="w-full border-gray-200 mt-4" /> */}
-                        </div>
-                    ))}
-                </div>
+      <>
+        <div className="flex flex-col items-center justify-center p-8">
+          <h1 className="demanzo-h1">How to Get Your Free Report?</h1>
+          <div
+            className={`grid grid-cols-1 lg:grid-cols-${colVal[2].value} gap-8 lg:px-30 mt-10`}
+          >
+            {pageData?.list_items[0]?.map((card, index) => (
+              <div
+                key={index}
+                className="flex flex-col md:flex-row bg-white md:gap-4 shadow-md rounded-xl px-8 py-8 md:py-10  items-center space-y-4 transition"
+              >
+                <div
+                  className="w-14 h-14"
+                  dangerouslySetInnerHTML={{ __html: card.svg }}
+                />
+                <p
+                  className="demanzo-bold-p"
+                  dangerouslySetInnerHTML={{ __html: card.para }}
+                />
+                {/* <hr className="w-full border-gray-200 mt-4" /> */}
+              </div>
+            ))}
+          </div>
 
-                {/* <div className="flex flex-wrap justify-center w-full max-w-4xl gap-4">
+          {/* <div className="flex flex-wrap justify-center w-full max-w-4xl gap-4">
                     <div className="flex flex-col items-center w-full p-4 m-2 bg-white rounded-lg shadow-md md:w-1/4">
                         <div className="p-3 mb-4 bg-red-100 rounded-full">
                             <svg
@@ -91,13 +91,11 @@ export default function HowtogetReport({ pageData, colVal }) {
                         </p>
                     </div>
                 </div> */}
-                <p className="mt-8 font-medium text-center text-gray-500">
-                    <span>{pageData?.paragraphs[0]}</span>
-                    <span>
-                        - {pageData?.paragraphs[1]}!
-                    </span>
-                </p>
-            </div>
-        </>
-    )
+          <p className="demanzo-p mt-8 text-center ">
+            <span>{pageData?.paragraphs[0]}</span>
+            <span>- {pageData?.paragraphs[1]}!</span>
+          </p>
+        </div>
+      </>
+    );
 }

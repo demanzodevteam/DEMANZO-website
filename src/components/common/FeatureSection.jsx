@@ -19,7 +19,7 @@ const FeatureSection = ({ pageData }) => {
     >
       <div className="inline-block relative mx-auto lg:mx-0 mb-20">
         <div className="relative inline-block">
-          <h1 className="text-[45px] md:text-[48px] lg:text-[45px] font-semibold relative z-10 leading-tight text-center lg:text-left">
+          <h1 className="demanzo-h1 leading-tight text-center lg:text-left">
             {pageData.title}
           </h1>
           {/* SVG below heading */}
@@ -52,11 +52,11 @@ const FeatureSection = ({ pageData }) => {
               <div className="text-[#447EFC]">
                 <CircleCheckBig />
               </div>
-              <h2 className="text-[20px] font-semibold mb-2">
+              <h2 className="demanzo-h2 mb-2">
                 {card_details.heading}
               </h2>
             </div>
-            <p className="text-start text-[#616670] px-4">
+            <p className="demanzo-p text-start px-4">
               {card_details.para}
             </p>
             <hr className="border-t border-[#E0E0E0] w-full mb-6" />

@@ -15,7 +15,7 @@ const BusinessSection = ({ SectionData, Background }) => {
       <div className="mt-14">
         <div className="inline-block relative mx-auto lg:mx-0 mb-20">
           <div className="relative inline-block my-0">
-            <h1 className="text-[45px] md:text-[48px] lg:text-[45px] font-semibold relative z-10 leading-tight text-center lg:text-center">
+            <h1 className="demanzo-h1 relative z-10 leading-tight text-center lg:text-center">
               {SectionData.headings[0]}{" "}
             </h1>
             <svg
@@ -52,7 +52,7 @@ const BusinessSection = ({ SectionData, Background }) => {
                 className="flex flex-col items-start justify-center p-3 bg-[#F8FDFF] rounded-lg shadow-md"
                 {...(mounted ? { "data-aos": "flip-down" } : {})}
               >
-                <div className="flex flex-row items-center justify-center px-0">
+                <div className="flex flex-row items-center justify-center px-0 mb-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="text-[#447EFC]"
@@ -68,11 +68,11 @@ const BusinessSection = ({ SectionData, Background }) => {
                     <path d="M21.801 10A10 10 0 1 1 17 3.335" />
                     <path d="m9 11 3 3L22 4" />
                   </svg>
-                  <h2 className="text-[20px] font-semibold mb-2">
+                  <h2 className="demanzo-h2 ">
                     {list.heading}
                   </h2>
                 </div>
-                <p className="text-start text-[#616670] px-4 mt-3 font-semibold">
+                <p className="demanzo-bold-p text-start px-4 mt-3">
                   {list.para}
                 </p>
                 {/* <hr className="border-t border-[#E0E0E0] w-full mb-6 mt-3" /> */}

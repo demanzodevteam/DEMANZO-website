@@ -5,9 +5,9 @@ export default function CaseStudyCard({ category }) {
   return (
     <>
       {category?.name !== "" && (
-        <h2 className="text-center text-[30px] lg:text-[40px] font-[600] text-[#191d27] pt-10">
+        <h1 className="demanzo-h1 text-center pt-10">
           {category.name}
-        </h2>
+        </h1>
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 lg:px-8 py-10">

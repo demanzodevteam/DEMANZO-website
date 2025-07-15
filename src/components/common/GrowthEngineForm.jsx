@@ -154,7 +154,7 @@ const Step1 = ({ form, category, errors, handleChange }) => (
         className="w-6 h-6"
         dangerouslySetInnerHTML={{ __html: category?.list_items[0]?.[0]?.svg }}
       />
-      <h2 className="text-2xl font-semibold leading-9">
+      <h2 className="demanzo-h2 leading-9">
         {category?.headings[0]}
       </h2>
     </div>
@@ -174,9 +174,7 @@ const Step2 = ({ form, category, errors, handleChange }) => (
         className="w-6 h-6"
         dangerouslySetInnerHTML={{ __html: category?.list_items[0]?.[1]?.svg }}
       />
-      <h2 className="text-2xl font-bold text-center">
-        {category?.headings[1]}
-      </h2>
+      <h2 className="demanzo-h2 text-center">{category?.headings[1]}</h2>
     </div>
     <ProgressBar step={2} />
     <div className="mt-8 space-y-6">
@@ -186,7 +184,12 @@ const Step2 = ({ form, category, errors, handleChange }) => (
         form,
         errors,
         handleChange,
-        ["Sass / IT Services", "CyberSecurity", "Enterprise Software", "MSP / Other"],
+        [
+          "Sass / IT Services",
+          "CyberSecurity",
+          "Enterprise Software",
+          "MSP / Other",
+        ],
         "Choose the closest match"
       )}
       {renderSelect(
@@ -218,19 +221,29 @@ const Step3 = ({ form, category, errors, handleChange }) => (
         className="w-6 h-6"
         dangerouslySetInnerHTML={{ __html: category?.list_items[0]?.[2]?.svg }}
       />
-      <h2 className="text-2xl font-bold text-center">
-        {category?.headings[2]}
-      </h2>
+      <h2 className="demanzo-h2 text-center">{category?.headings[2]}</h2>
     </div>
     <ProgressBar step={3} />
     <div className="mt-8 space-y-6">
       <div className="space-y-2">
         {[
-          { id: "not-enough-conversions", label: "Generating leads but not enough conversions" },
+          {
+            id: "not-enough-conversions",
+            label: "Generating leads but not enough conversions",
+          },
           { id: "seo-content", label: "SEO or content isn't driving pipeline" },
-          { id: "sql-conversions", label: "We need to accelerate MQL to SQL conversions" },
-          { id: "marketing-direction", label: "Our marketing lacks leadership and direction" },
-          { id: "email-list-building", label: "We need better email list building and nurturing" },
+          {
+            id: "sql-conversions",
+            label: "We need to accelerate MQL to SQL conversions",
+          },
+          {
+            id: "marketing-direction",
+            label: "Our marketing lacks leadership and direction",
+          },
+          {
+            id: "email-list-building",
+            label: "We need better email list building and nurturing",
+          },
           { id: "full-audit", label: "Not sure - need a full audit" },
           { id: "other", label: "Other" },
         ].map((challenge) => (
@@ -244,13 +257,18 @@ const Step3 = ({ form, category, errors, handleChange }) => (
               checked={form["growth-challenges"].includes(challenge.id)}
               value={challenge.id}
             />
-            <label htmlFor={challenge.id} className="ml-2 block text-sm text-gray-900">
+            <label
+              htmlFor={challenge.id}
+              className="ml-2 block text-sm text-gray-900"
+            >
               {challenge.label}
             </label>
           </div>
         ))}
         {errors["growth-challenges"] && (
-          <p className="text-red-500 text-sm mt-2">{errors["growth-challenges"]}</p>
+          <p className="text-red-500 text-sm mt-2">
+            {errors["growth-challenges"]}
+          </p>
         )}
       </div>
     </div>
@@ -265,9 +283,7 @@ const Step4 = ({ form, category, errors, handleChange }) => (
         className="w-6 h-6"
         dangerouslySetInnerHTML={{ __html: category?.list_items[0]?.[3]?.svg }}
       />
-      <h2 className="text-2xl font-bold text-center">
-        {category?.headings[3]}
-      </h2>
+      <h2 className="demanzo-h2 text-center">{category?.headings[3]}</h2>
     </div>
     <ProgressBar step={4} />
     <div className="mt-8 space-y-6">
@@ -286,7 +302,12 @@ const Step4 = ({ form, category, errors, handleChange }) => (
         form,
         errors,
         handleChange,
-        ["No team yet", "1-2 marketers", "Full team, but no leadership", "Freelancers"],
+        [
+          "No team yet",
+          "1-2 marketers",
+          "Full team, but no leadership",
+          "Freelancers",
+        ],
         "Who is handling your market today?"
       )}
     </div>
@@ -313,11 +334,11 @@ const Step5 = ({ form, category, errors, handleChange }) => {
       <div className="flex flex-row items-center gap-2">
         <div
           className="w-6 h-6"
-          dangerouslySetInnerHTML={{ __html: category?.list_items[0]?.[4]?.svg }}
+          dangerouslySetInnerHTML={{
+            __html: category?.list_items[0]?.[4]?.svg,
+          }}
         />
-        <h2 className="text-2xl font-bold text-center">
-          {category?.headings[4]}
-        </h2>
+        <h2 className="demanzo-h2 text-center">{category?.headings[4]}</h2>
       </div>
       <ProgressBar step={5} />
       <div className="mt-8 space-y-6">

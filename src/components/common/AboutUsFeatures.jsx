@@ -11,9 +11,7 @@ export default function AboutUsFeatures({ pageData }) {
       //   }}
     >
       <div className="col-span-2 px-4 lg:px-15">
-        <p class="text-[20px] font-[500] text-[#616670] leading-9">
-          {pageData?.paragraphs[0]}
-        </p>
+        <p class="demanzo-bold-p leading-9">{pageData?.paragraphs[0]}</p>
       </div>
       <div class=" col-span-2 lg:col-span-1 flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0 ">
         <img
@@ -24,21 +22,15 @@ export default function AboutUsFeatures({ pageData }) {
       </div>
 
       <div class="flex flex-col justify-center gap-4 py-8 lg:py-10">
-        <p class="text-[20px] font-[500] text-[#616670] mb-[40px]">
+        <p class="demanzo-bold-p  !text-[20px] mb-[40px]">
           {pageData?.paragraphs[1]}
         </p>
 
         <div class="inline-block relative mx-auto lg:mx-0 ">
-          <h1 class="text-2xl md:text-[48px] lg:text-[50px] font-semibold relative z-10">
-            {pageData.headings[0]}
-          </h1>
+          <h1 class="demanzo-h1">{pageData.headings[0]}</h1>
         </div>
-        <p class="text-[16px] font-[500] text-[#616670] leading-6">
-          {pageData?.paragraphs[2]}
-        </p>
-        <p class="text-[16px] font-[500] text-[#616670] leading-6">
-          {pageData?.paragraphs[3]}
-        </p>
+        <p class="demanzo-bold-p leading-6">{pageData?.paragraphs[2]}</p>
+        <p class="demanzo-bold-p leading-6">{pageData?.paragraphs[3]}</p>
       </div>
 
       <div
@@ -55,11 +47,11 @@ export default function AboutUsFeatures({ pageData }) {
             />
             <div className="flex flex-col gap-3">
               <h1
-                className="text-[25px] font-bold text-center md:text-left leading-8"
+                className="demanzo-h2 leading-8"
                 dangerouslySetInnerHTML={{ __html: card.heading }}
               />
               <p
-                className="text-gray-600 text-center md:text-left font-medium"
+                className="demanzo-bold-p text-center md:text-left "
                 dangerouslySetInnerHTML={{ __html: card.para }}
               />
             </div>

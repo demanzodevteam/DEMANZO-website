@@ -17,7 +17,7 @@ export default function FeatureSteps({ pageData, background }) {
     >
       <div className="w-full flex justify-center mb-10">
         <div className="relative inline-block text-center">
-          <h1 className="text-[45px] md:text-[48px] lg:text-[45px] font-semibold relative z-10 leading-tight">
+          <h1 className="demanzo-h1 leading-tight">
             {pageData.headings[0]}
           </h1>
 
@@ -40,7 +40,7 @@ export default function FeatureSteps({ pageData, background }) {
         </div>
       </div>
       {pageData?.headings?.[1] && (
-        <p className="text-[16px] text-[#616670] font-se max-w-4xl mx-auto text-center">
+        <p className="demanzo-bold-p max-w-4xl mx-auto text-center">
           {pageData.headings[1]}
         </p>
       )}
@@ -59,13 +59,13 @@ export default function FeatureSteps({ pageData, background }) {
               ></div>
 
               <div className="p-3 text-start space-y-6">
-                <h1 className="text-[20px] font-bold">
+                <h1 className="demanzo-h2">
                   {card_details.heading}
                 </h1>
                 {card_details.para?.map((pt, i) => (
                   <p
                     key={i}
-                    className="text-[16px] font-semibold text-[#616670]"
+                    className="demanzo-bold-p"
                   >
                     {pt}
                   </p>

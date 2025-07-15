@@ -13,14 +13,10 @@ export default function HeroSection({ pageData }) {
         }}
       >
         <div className="flex flex-col justify-center gap-4 py-8 px-4 lg:px-15 lg:py-10 text-center md:text-left">
-          <h1 className="text-[#FF5F55] font-semibold text-[18px] lg:text-[20px]">
-            {pageData.title}
-          </h1>
+          <h1 className="demanzo-title">{pageData.title}</h1>
 
           <div className="inline-block relative mx-auto lg:mx-0">
-            <h1 className="text-[45px] md:text-[48px] lg:text-[50px] font-semibold relative z-10">
-              {pageData.headings[0]}
-            </h1>
+            <h1 className="demanzo-h1">{pageData.headings[0]}</h1>
             <svg
               className="absolute left-1/2 -translate-x-1/2 lg:left-30 lg:translate-x-0 bottom-20 z-0"
               width="270"
@@ -41,7 +37,7 @@ export default function HeroSection({ pageData }) {
           {pageData?.paragraphs?.map((para, index) => (
             <p
               key={index}
-              className="text-[16px] font-[500] text-[#616670] leading-6"
+              className="demanzo-bold-p"
             >
               {para}
             </p>
@@ -119,7 +115,7 @@ export default function HeroSection({ pageData }) {
                     d="M8 12l3 3 5-5"
                   />
                 </svg>
-                <span className="text-[15px] text-[#54595f]">{item.para}</span>
+                <span className="demanzo-bold-p">{item.para}</span>
               </div>
             ))}
           </div>

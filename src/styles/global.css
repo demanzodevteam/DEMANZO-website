@@ -196,15 +196,15 @@ h2[id], h3[id] {
 
 /* variAbles\ */
 .demanzo-title{
-@apply text-[#000000] font-semibold text-[18px] lg:text-[20px];
+@apply text-[#FF5F55] font-semibold text-[18px] lg:text-[20px];
 }
 
 .demanzo-h1 {
-  @apply !text-[30px] md:text-[40px] font-[600] text-[#191d27];
+  @apply text-[30px] md:text-[40px] lg:text-[45px]  font-[700] text-[#191d27] relative z-10;
 }
 
 .demanzo-p{
-  @apply mt-12 text-gray-600 font-medium max-w-7xl mx-auto text-[16px] leading-relaxed;
+  @apply  text-gray-600 font-medium max-w-7xl mx-auto text-[16px] leading-relaxed;
 }
 
 .demanzo-bold-p{
@@ -238,7 +238,7 @@ h2[id], h3[id] {
               hover:scale-105 hover:shadow-[0_0_20px_#f5a31c];
 }
 .demanzo-form-button{
-  @apply w-full lg:w-[300px] bg-[#0e71b9] text-white rounded-full px-6 py-4 text-[15px] font-[500] shadow-md hover:bg-[#0e71b9] focus:outline-none;
+  @apply w-full lg:w-[300px] bg-[#0e71b9] text-white rounded-full px-6 py-4 text-[15px] font-[500] shadow-md hover:bg-[#0e71b9] focus:outline-none self-center;
 }
 
 .demanzo-rounded-pill{

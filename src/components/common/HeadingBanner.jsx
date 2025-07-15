@@ -6,7 +6,7 @@ const HeadingBanner = ({ pageData }) => {
   return (
     <div className="bg-[#e6f8ff] px-[15px] py-[90px] relative">
       <div className="relative mx-auto lg:mx-0 text-center flex items-center justify-center">
-        <h1 className="text-[45px] md:text-[50px] font-semibold relative z-10">
+        <h1 className="demanzo-h1">
           {pageData?.headings[0]}<br></br>
           {pageData?.headings[1]}
         </h1>

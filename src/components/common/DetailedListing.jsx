@@ -14,7 +14,7 @@ const DetailedListing = ({ pageData }) => {
     >
       <div className="inline-block relative mx-auto lg:mx-0 mb-10">
         <div className="relative inline-block">
-          <h1 className="text-[45px] md:text-[48px] lg:text-[45px] font-semibold relative z-10 leading-tight text-center lg:text-center">
+          <h1 className="demanzo-h1 leading-tight text-center lg:text-center">
             {pageData.headings[0]}{" "}
           </h1>
           <svg
@@ -50,14 +50,12 @@ const DetailedListing = ({ pageData }) => {
                 dangerouslySetInnerHTML={{ __html: card.svg }}
               />
             )}
-            <h2 className="text-black-600 font-bold text-[22px] text-left">
-              {card?.heading}
-            </h2>
+            <h2 className="demanzo-h2 text-left">{card?.heading}</h2>
             <p
-              className="text-gray-600 font-medium text-left"
+              className="demanzo-bold-p text-left"
               dangerouslySetInnerHTML={{ __html: card.para[0] }}
             />
-            <ul className={`text-left text-gray-600 font-medium `}>
+            <ul className={`text-left demanzo-bold-p `}>
               {card?.list.map((listItem, index) => (
                 <li key={index} className="flex items-start gap-2">
                   <span className="text-[#616670] text-[14px] text-lg leading-[1.5]">
@@ -69,7 +67,7 @@ const DetailedListing = ({ pageData }) => {
             </ul>
 
             <p
-              className="text-gray-600 font-medium text-left"
+              className="demanzo-bold-p text-left"
               dangerouslySetInnerHTML={{ __html: card.para[1] }}
             />
             {/* <hr className="w-full border-gray-200 mt-4" /> */}

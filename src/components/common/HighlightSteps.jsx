@@ -14,11 +14,11 @@ const HighlightSteps = ({ SectionData }) => {
     >
       <div className="inline-block relative mx-auto lg:mx-0 mb-10">
         <div className="relative inline-block space-y-6">
-          <h1 className="text-[45px] text-[#000000] md:text-[48px] lg:text-[45px] font-semibold relative z-10 leading-tight text-center lg:text-center">
+          <h1 className="demanzo-h1 leading-tight text-center lg:text-center">
             {SectionData.headings[0]}
           </h1>
           {SectionData?.paragraphs?.[0] && (
-            <p className="text-[#616670] font-medium max-w-5xl mx-auto text-[16px] leading-relaxed">
+            <p className="demanzo-bold-p mx-auto text-[16px] leading-relaxed">
               {SectionData.paragraphs[0]}
             </p>
           )}
@@ -47,11 +47,11 @@ const HighlightSteps = ({ SectionData }) => {
               {/* Text */}
               <div>
                 <h1
-                  className="text-[#191D27] font-semibold text-[18px] mb-4"
+                  className="demanzo-h2 mb-4"
                   dangerouslySetInnerHTML={{ __html: card.heading }}
                 />
                 <p
-                  className="text-[#616670] font-medium text-[16px]"
+                  className="demanzo-bold-p"
                   dangerouslySetInnerHTML={{ __html: card.para }}
                 />
               </div>
@@ -83,13 +83,13 @@ const HighlightSteps = ({ SectionData }) => {
               {/* Text */}
               <div>
                 <h1
-                  className="text-[#191D27] font-semibold text-[18px] mb-4"
+                  className="demanzo-h2 mb-4"
                   dangerouslySetInnerHTML={{
                     __html: SectionData.list_items[0][6]?.heading,
                   }}
                 />
                 <p
-                  className="text-[#616670] font-medium text-[16px]"
+                  className="demanzo-bold-p"
                   dangerouslySetInnerHTML={{
                     __html: SectionData.list_items[0][6]?.para,
                   }}
@@ -100,7 +100,7 @@ const HighlightSteps = ({ SectionData }) => {
         </div>
       )}
 
-      <p className="mt-12 text-[#616670] font-medium max-w-7xl mx-auto text-[16px] leading-relaxed">
+      <p className="demanzo-p mt-12 max-w-7xl mx-auto text-[16px] leading-relaxed">
         {SectionData.paragraphs[1]}
       </p>
     </section>
