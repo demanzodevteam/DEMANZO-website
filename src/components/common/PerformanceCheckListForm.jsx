@@ -125,7 +125,7 @@ export default function PerformanceChecklistForm() {
       className="rounded-3xl bg-white shadow px-6 lg:px-12 py-8 relative"
     >
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6">
           {renderInput("text-517", "text", "Your Name")}
           {renderInput("email-875", "email", "Email")}
         </div>
@@ -139,7 +139,7 @@ export default function PerformanceChecklistForm() {
             }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300 }}
-            className="w-full lg:w-[300px] bg-[#0e71b9] text-white rounded-full px-6 py-4 text-[15px] font-[500] shadow-md hover:bg-[#0e71b9] focus:outline-none"
+            className="w-full lg:w-[200px] bg-[#0e71b9] text-white rounded-full px-6 py-4 text-[15px] font-[500] shadow-md hover:bg-[#0e71b9] focus:outline-none"
           >
             Download Now
           </motion.button>
