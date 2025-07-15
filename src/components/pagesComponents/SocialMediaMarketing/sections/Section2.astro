@@ -8,7 +8,8 @@ const data = await res.json();
 
 const pageData = data[1];
 const background = 'bg-[#FFFFFF]'
-const combinedData={...pageData,background}
+const customImageClass= '!w-[350px]'
+const combinedData={...pageData,background,customImageClass}
 ---
 <!-- Third Section -->
 <!-- <SplitHeadingSection pageData={combinedData} /> -->

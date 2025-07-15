@@ -20,7 +20,7 @@ export default function WhyYouNeedReport({pageData}) {
                   : "https://demanzo.com/wp-content/uploads/2022/09/meeting-2.webp"
               }
               alt="People discussing"
-              className="w-full h-auto rounded-lg transition duration-300 hover:-translate-y-4"
+              className={`w-full h-auto rounded-lg transition duration-300 hover:-translate-y-4 ${pageData.customImageClass}`}
             />
           </div>
 
