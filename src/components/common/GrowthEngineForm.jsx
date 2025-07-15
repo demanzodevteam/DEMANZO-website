@@ -360,7 +360,7 @@ const Step5 = ({ form, category, errors, handleChange }) => {
           monthlyMarketBudgetOptions,
           "Rough idea of the investment range you're planning?"
         )}
-        <div>
+        {/* <div>
           <label className="block font-medium text-[#000000] mb-2">
             Captcha
           </label>
@@ -373,7 +373,7 @@ const Step5 = ({ form, category, errors, handleChange }) => {
             className="w-full p-2 h-12.5 mt-1 border hover:border-black focus:border-black focus:outline-none rounded-md"
             placeholder="Enter Captcha"
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );
