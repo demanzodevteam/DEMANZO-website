@@ -1,72 +1,4 @@
-
-
-
-    <nav>
-        <div class="menu">
-            <p class="website_name">Demanzo</p>
-            <div class="menu_links">
-
-            </div>
-            <div class="menu_icon">
-                <span class="icon"></span>
-            </div>
-        </div>
-    </nav>
-
-    <section class="wrapper">
-
-        <div class="container">
-
-            <div id="scene" class="scene" data-hover-only="false">
-
-
-                <div class="circle" data-depth="1.2"></div>
-
-                <div class="one" data-depth="0.9">
-                    <div class="content">
-                        <span class="piece"></span>
-                        <span class="piece"></span>
-                        <span class="piece"></span>
-                    </div>
-                </div>
-
-                <div class="two" data-depth="0.60">
-                    <div class="content">
-                        <span class="piece"></span>
-                        <span class="piece"></span>
-                        <span class="piece"></span>
-                    </div>
-                </div>
-
-                <!-- <div class="three" data-depth="0.40">
-                    <div class="content">
-                        <span class="piece"></span>
-                        <span class="piece"></span>
-                        <span class="piece"></span>
-                    </div>
-                </div> -->
-
-                <p class="p404" data-depth="0.50">
-                    <!-- <color="#ed1b24"> -->
-                    404
-                </p>
-                <p class="p404" data-depth="0.10">404</p>
-
-            </div>
-
-            <div class="text">
-                <article>
-                    <p>Demanzo is a B2B digital marketing agency offering SaaS digital marketing and digital marketing for IT companies to increase leads and online visibility.</p>
-                    <a href='/'><button>Return TO Home</button></a>
-                </article>
-            </div>
-
-        </div>
-    </section>
-
-
-<style>
-    @import url("https://fonts.googleapis.com/css?family=Barlow+Condensed:300,400,500,600,700,800,900|Barlow:300,400,500,600,700,800,900&display=swap");
+ @import url("https://fonts.googleapis.com/css?family=Barlow+Condensed:300,400,500,600,700,800,900|Barlow:300,400,500,600,700,800,900&display=swap");
 
     .about {
         position: fixed;
@@ -786,9 +718,3 @@
         animation-name: pieceLeft;
         animation-delay: 4.5s;
     }
-</style>
-<!-- <script is:client="load">
-    // Parallax Code
-    var scene = document.getElementById('scene');
-    var parallax = new Parallax(scene);
-</script> -->

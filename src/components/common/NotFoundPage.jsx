@@ -1,35 +1,71 @@
-import { motion } from 'framer-motion';
-import React from 'react';
+import { useEffect } from 'react';
+import Parallax from 'parallax-js';
+import '../../styles/Parallax404.css'; // Create this CSS file or include Tailwind classes accordingly
 
 export default function NotFoundPage() {
+  useEffect(() => {
+    const scene = document.getElementById('scene');
+    if (scene) {
+      new Parallax(scene);
+    }
+  }, []);
+
   return (
-    
-<section class="text-center">
-<div class="min-h-screen flex flex-col items-center justify-center bg-white px-4 text-center">
-  <h1 class="text-6xl font-extrabold text-gray-800 mb-4">404</h1>
+    <div>
+      <nav>
+        <div className="menu">
+          <p className="website_name">Demanzo</p>
+          <div className="menu_links"></div>
+          <div className="menu_icon">
+            <span className="icon"></span>
+          </div>
+        </div>
+      </nav>
 
-  <div class="w-full max-w-md mb-6">
-    <img
-      src="https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif"
-      alt="Lost Caveman"
-      class="w-full h-auto object-contain"
-    />
-  </div>
+      <section className="wrapper">
+        <div className="container">
+          <div id="scene" className="scene" data-hover-only="false">
+            <div className="circle" data-depth="1.2"></div>
 
-  <h2 class="text-2xl font-semibold text-gray-800 mb-2">
-    Look like you're lost
-  </h2>
-  <p class="text-sm text-gray-600 mb-6">
-    The page you are looking for is not available!
-  </p>
+            <div className="one" data-depth="0.9">
+              <div className="content">
+                <span className="piece"></span>
+                <span className="piece"></span>
+                <span className="piece"></span>
+              </div>
+            </div>
 
-  <a
-    href="/"
-    class="inline-block px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
-  >
-    Go to Home
-  </a>
-</div>
-</section>
+            <div className="two" data-depth="0.60">
+              <div className="content">
+                <span className="piece"></span>
+                <span className="piece"></span>
+                <span className="piece"></span>
+              </div>
+            </div>
+
+            <div className="three" data-depth="0.40">
+              <div className="content">
+                <span className="piece"></span>
+                <span className="piece"></span>
+                <span className="piece"></span>
+              </div>
+            </div>
+
+            <p className="p404" data-depth="0.50" style={{ color: '#ed1b24' }}>404</p>
+            <p className="p404" data-depth="0.10">404</p>
+          </div>
+
+          <div className="text">
+            <article>
+              <p>
+                Demanzo is a B2B digital marketing agency offering SaaS digital marketing and digital
+                marketing for IT companies to increase leads and online visibility.
+              </p>
+              <a href="/"><button>Return TO Home</button></a>
+            </article>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
