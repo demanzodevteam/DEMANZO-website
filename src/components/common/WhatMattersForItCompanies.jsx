@@ -13,12 +13,9 @@ const WhyYouNeedSection = ({ SectionData, colVal, background }) => {
 
   return (
     <section
-      className={`demanzo-container px-4 md:px-10 lg:px-[var(--demanzo-section-spacing)] py-[var(--demanzo-section-spacing)] text-center ${background}`}
+      className={` px-4 md:px-10 lg:px-[var(--demanzo-section-spacing)] py-[var(--demanzo-section-spacing)] text-center ${background}`}
     >
-      <div className="demanzo-max-screen-width">
-        <div>
-
-{SectionData?.title && (
+      {SectionData?.title && (
         <h1 className="text-[#FF5F55] font-semibold text-[18px] lg:text-[20px] my-3">
           {SectionData.title}
         </h1>
@@ -85,9 +82,6 @@ const WhyYouNeedSection = ({ SectionData, colVal, background }) => {
       <p className="mt-12 text-gray-600 font-medium max-w-7xl mx-auto text-[16px] leading-relaxed">
         {SectionData.paragraphs[1]}
       </p>
-        </div>
-      </div>
-      
     </section>
   );
 };
