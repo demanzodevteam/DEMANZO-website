@@ -504,6 +504,13 @@ const handleNext = (currentStep, setStep) => {
         }
       });
 
+    formData.append("_wpcf7", "1081"); // replace with your CF7 form ID
+    formData.append("_wpcf7_version", "5.9.4");
+    formData.append("_wpcf7_locale", "en_US");
+    formData.append("_wpcf7_unit_tag", "wpcf7-f1081-p12-o1"); // check form source
+    formData.append("_wpcf7_container_post", "12"); // the post/page ID where form is rendered
+
+
       try {
         const res = await fetch(FORM_URL + "799/feedback", {
           method: "POST",
