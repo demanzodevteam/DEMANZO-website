@@ -24,30 +24,42 @@ const ProgressBar = ({ step }) => {
   );
 };
 
-// Reusable Button Component
-const NavigationButtons = ({ step, setStep, totalSteps, handleSubmit }) => (
-  <div
-    className={`flex ${step === 1 ? "justify-end" : "justify-between"} mt-8`}
-  >
-    <button
-      onClick={() => setStep(step - 1)}
-      hidden={step === 1}
-      className="px-11 py-4 text-white bg-[#2d89bf] rounded-[50px] disabled:bg-gray-400"
-    >
-      Previous
-    </button>
-    <button
-      onClick={step === totalSteps ? handleSubmit : () => setStep(step + 1)}
+// Navigation Buttons Component
+const NavigationButtons = ({ step, setStep, totalSteps, handleSubmit, handleNext }) => (
+  <div className={`flex ${step === 1 ? "justify-end" : "justify-between"} mt-8`}>
+    {step !== 1 && (
+      <motion.button
+        onClick={() => setStep(step - 1)}
+        whileHover={{
+          scale: 1.05,
+          boxShadow: "0px 0px 16px rgba(0, 123, 255, 0.6)",
+        }}
+        whileTap={{ scale: 0.95 }}
+        transition={{ type: "spring", stiffness: 300 }}
+        className="text-white bg-[#2d89bf] rounded-[50px] disabled:bg-gray-400 px-11 py-3"
+      >
+        Previous
+      </motion.button>
+    )}
+    <motion.button
+      onClick={step === totalSteps ? handleSubmit : () => handleNext(step, setStep)}
+      whileHover={{
+        scale: 1.05,
+        boxShadow: "0px 0px 16px rgba(0, 123, 255, 0.6)",
+      }}
+      whileTap={{ scale: 0.95 }}
+      transition={{ type: "spring", stiffness: 300 }}
       className={`${
-        step === totalSteps ? "px-3 py-4" : "px-11 py-4"
-      }  text-white bg-[#2d89bf] rounded-[50px] disabled:bg-gray-400`}
+        step === totalSteps ? "px-3 py-3" : "px-11 py-3"
+      } text-white bg-[#2d89bf] rounded-[50px] disabled:bg-gray-400`}
     >
       {step === totalSteps ? "🚀 Submit My Growth Plan" : "Next"}
-    </button>
+    </motion.button>
   </div>
 );
 
-const renderInput = (name, type, label) => (
+// Input Rendering Function
+const renderInput = (name, type, label, form, errors, handleChange) => (
   <motion.div
     variants={inputVariants}
     animate={errors[name] ? "shake" : ""}
@@ -62,12 +74,77 @@ const renderInput = (name, type, label) => (
       className={`peer w-full border px-4 py-4 text-[#050607] text-[16px] font-[400] ${
         errors[name] ? "border-red-500" : "border-[#e7e7e7]"
       } focus:border-black focus:outline-none rounded-md`}
+      autoComplete="off"
     />
-    <label className="absolute text-[#050607] text-[14px] font-[400] left-4 top-4 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-[16px] peer-placeholder-shown:text-gray-500 peer-focus:top-1 peer-focus:text-[12px] peer-focus:text-black">
+    <label className="absolute text-[#050607] text-[14px] font-[400] left-4 top-4 transition-all
+      peer-placeholder-shown:top-4 peer-placeholder-shown:text-[16px] peer-placeholder-shown:text-gray-500
+      peer-focus:-top-2 peer-focus:text-[12px] peer-focus:text-black peer-focus:bg-white peer-focus:px-2
+      peer-not-placeholder-shown:-top-2 peer-not-placeholder-shown:text-[12px] peer-not-placeholder-shown:text-black peer-not-placeholder-shown:bg-white peer-not-placeholder-shown:px-2">
       {label}
     </label>
   </motion.div>
 );
+
+// Select Rendering Function
+const renderSelect = (name, label, form, errors, handleChange, options, placeholder) => (
+  <motion.div variants={inputVariants} animate={errors[name] ? "shake" : ""} className="relative">
+    <select
+      id={name}
+      name={name}
+      value={form[name]}
+      onChange={handleChange}
+      className={`peer w-full border px-4 py-4 text-[#050607] text-[16px] font-[400] ${
+        errors[name] ? "border-red-500" : "border-[#e7e7e7]"
+      } focus:border-black focus:outline-none rounded-md`}
+    >
+      <option value="" disabled>{placeholder}</option>
+      {options.map((option, index) => (
+        <option key={index}>{option}</option>
+      ))}
+    </select>
+    <label className="absolute text-[#050607] text-[14px] font-[400] left-4 top-4 transition-all
+      peer-placeholder-shown:top-4 peer-placeholder-shown:text-[16px] peer-placeholder-shown:text-gray-500
+      peer-focus:-top-2 peer-focus:text-[12px] peer-focus:text-black peer-focus:bg-white peer-focus:px-2
+      peer-not-placeholder-shown:-top-2 peer-not-placeholder-shown:text-[12px] peer-not-placeholder-shown:text-black peer-not-placeholder-shown:bg-white peer-not-placeholder-shown:px-2">
+      {label}
+    </label>
+  </motion.div>
+);
+
+// Textarea Rendering Function
+const renderTextarea = (name, label, form, errors, handleChange, placeholder, helperText) => (
+  <motion.div
+    variants={inputVariants}
+    animate={errors[name] ? "shake" : ""}
+    className="relative"
+  >
+    <textarea
+      id={name}
+      name={name}
+      value={form[name]}
+      onChange={handleChange}
+      placeholder=" "
+      className={`peer w-full p-2 h-24 mt-1 border px-4 py-4 text-[#050607] text-[16px] font-[400] hover:border-black focus:border-black focus:outline-none ${
+        errors[name] ? "border-red-500" : "border-[#e7e7e7]"
+      } rounded-md`}
+    />
+    <label className="absolute text-[#050607] text-[14px] font-[400] left-4 top-4 transition-all
+      peer-placeholder-shown:top-4 peer-placeholder-shown:text-[16px] peer-placeholder-shown:text-gray-500
+      peer-focus:-top-2 peer-focus:text-[12px] peer-focus:text-black peer-focus:bg-white peer-focus:px-2
+      peer-not-placeholder-shown:-top-2 peer-not-placeholder-shown:text-[12px] peer-not-placeholder-shown:text-black peer-not-placeholder-shown:bg-white peer-not-placeholder-shown:px-2">
+      {label}
+    </label>
+    {helperText && <p className="text-[#777777] text-[13px]">{helperText}</p>}
+  </motion.div>
+);
+
+// Animation Variants
+const inputVariants = {
+  shake: {
+    x: [0, -10, 10, -10, 10, 0],
+    transition: { duration: 0.4 },
+  },
+};
 
 // Step Components
 const Step1 = ({ form, category, errors, handleChange }) => (
@@ -82,78 +159,10 @@ const Step1 = ({ form, category, errors, handleChange }) => (
       </h2>
     </div>
     <div className="mt-8 space-y-6">
-      <div>
-        <label
-          htmlFor="your-name"
-          className="block font-medium text-[#000000] mb-2"
-        >
-          Full Name
-        </label>
-        <input
-          type="text"
-          id="your-name"
-          name="your-name"
-          value={form["your-name"]}
-          onChange={handleChange}
-          placeholder="What should we call you?"
-          className="w-full p-2 h-12.5 mt-1 border hover:border-black focus:border-black focus:outline-none"
-          autoComplete="off"
-        />
-      </div>
-      <div>
-        <label
-          htmlFor="your-email"
-          className="block font-medium text-[#000000] mb-2"
-        >
-          Work Email
-        </label>
-        <input
-          type="email"
-          id="your-email"
-          name="your-email"
-          value={form["your-email"]}
-          onChange={handleChange}
-          placeholder="Where can we reach you?"
-          className="w-full p-2 h-12.5 mt-1 border hover:border-black focus:border-black focus:outline-none"
-          autoComplete="off"
-        />
-      </div>
-      <div>
-        <label
-          htmlFor="company-name"
-          className="block font-medium text-[#000000] mb-2"
-        >
-          Company Name
-        </label>
-        <input
-          type="text"
-          id="company-name"
-          name="company-name"
-          value={form["company-name"]}
-          onChange={handleChange}
-          placeholder="Who are we building this for?"
-          className="w-full p-2 h-12.5 mt-1 border hover:border-black focus:border-black focus:outline-none"
-          autoComplete="off"
-        />
-      </div>
-      <div>
-        <label
-          htmlFor="your-url"
-          className="block font-medium text-[#000000] mb-2"
-        >
-          Website URL
-        </label>
-        <input
-          type="url"
-          id="your-url"
-          name="your-url"
-          value={form["your-url"]}
-          onChange={handleChange}
-          placeholder="Share your site link if you have one."
-          className="w-full p-2 h-12.5 mt-1 border hover:border-black focus:border-black focus:outline-none"
-          autoComplete="off"
-        />
-      </div>
+      {renderInput("your-name", "text", "Full Name", form, errors, handleChange)}
+      {renderInput("your-email", "email", "Work Email", form, errors, handleChange)}
+      {renderInput("company-name", "text", "Company Name", form, errors, handleChange)}
+      {renderInput("your-url", "url", "Website URL", form, errors, handleChange)}
     </div>
   </div>
 );
@@ -171,83 +180,33 @@ const Step2 = ({ form, category, errors, handleChange }) => (
     </div>
     <ProgressBar step={2} />
     <div className="mt-8 space-y-6">
-      <div>
-        <label
-          htmlFor="industry"
-          className="block font-medium text-[#000000] mb-2"
-        >
-          Industry
-        </label>
-        <motion.select
-          id="industry"
-          name="industry"
-          value={form.industry}
-          onChange={handleChange}
-          className={`w-full p-2 h-12.5 mt-1 border hover:border-black focus:border-black focus:outline-none ${
-            errors.industry ? "border-red-500" : ""
-          }`}
-          initial={false}
-          animate={errors.industry ? { x: [-10, 10, -10, 10, 0] } : {}}
-        >
-          <option>Choose the closest match</option>
-          <option>Sass / IT Services</option>
-          <option>CyberSecurity</option>
-          <option>Enterprise Software</option>
-          <option>MSP / Other</option>
-        </motion.select>
-      </div>
-      <div>
-        <label
-          htmlFor="companySize"
-          className="block font-medium text-[#000000] mb-2"
-        >
-          Company Size
-        </label>
-        <motion.select
-          id="companySize"
-          name="companySize"
-          value={form.companySize}
-          onChange={handleChange}
-          className={`w-full p-2 h-12.5 mt-1 border hover:border-black focus:border-black focus:outline-none ${
-            errors.companySize ? "border-red-500" : ""
-          }`}
-          initial={false}
-          animate={errors.companySize ? { x: [-10, 10, -10, 10, 0] } : {}}
-        >
-          <option>How big is your team?</option>
-          <option>1-10</option>
-          <option>11-50</option>
-          <option>51-200</option>
-          <option>201-500</option>
-          <option>500+</option>
-        </motion.select>
-      </div>
-      <div>
-        <label
-          htmlFor="primaryMarket"
-          className="block font-medium text-[#000000] mb-2"
-        >
-          Primary Market
-        </label>
-        <motion.select
-          id="primaryMarket"
-          name="primaryMarket"
-          value={form.primaryMarket}
-          onChange={handleChange}
-          className={`w-full p-2 h-12.5 mt-1 border hover:border-black focus:border-black focus:outline-none ${
-            errors.primaryMarket ? "border-red-500" : ""
-          }`}
-          initial={false}
-          animate={errors.primaryMarket ? { x: [-10, 10, -10, 10, 0] } : {}}
-        >
-          <option>Where are most of your clients based?</option>
-          <option>India</option>
-          <option>USA</option>
-          <option>UK</option>
-          <option>Europe</option>
-          <option>Global</option>
-        </motion.select>
-      </div>
+      {renderSelect(
+        "industry",
+        "Industry",
+        form,
+        errors,
+        handleChange,
+        ["Sass / IT Services", "CyberSecurity", "Enterprise Software", "MSP / Other"],
+        "Choose the closest match"
+      )}
+      {renderSelect(
+        "companySize",
+        "Company Size",
+        form,
+        errors,
+        handleChange,
+        ["1-10", "11-50", "51-200", "201-500", "500+"],
+        "How big is your team?"
+      )}
+      {renderSelect(
+        "primaryMarket",
+        "Primary Market",
+        form,
+        errors,
+        handleChange,
+        ["India", "USA", "UK", "Europe", "Global"],
+        "Where are most of your clients based?"
+      )}
     </div>
   </div>
 );
@@ -262,28 +221,16 @@ const Step3 = ({ form, category, errors, handleChange }) => (
       <h2 className="text-2xl font-bold text-center">
         {category?.headings[2]}
       </h2>
-    </div>{" "}
+    </div>
     <ProgressBar step={3} />
     <div className="mt-8 space-y-6">
       <div className="space-y-2">
         {[
-          {
-            id: "not-enough-conversions",
-            label: "Generating leads but not enough conversions",
-          },
+          { id: "not-enough-conversions", label: "Generating leads but not enough conversions" },
           { id: "seo-content", label: "SEO or content isn't driving pipeline" },
-          {
-            id: "sql-conversions",
-            label: "We need to accelerate MQL to SQL conversions",
-          },
-          {
-            id: "marketing-direction",
-            label: "Our marketing lacks leadership and direction",
-          },
-          {
-            id: "email-list-building",
-            label: "We need better email list building and nurturing",
-          },
+          { id: "sql-conversions", label: "We need to accelerate MQL to SQL conversions" },
+          { id: "marketing-direction", label: "Our marketing lacks leadership and direction" },
+          { id: "email-list-building", label: "We need better email list building and nurturing" },
           { id: "full-audit", label: "Not sure - need a full audit" },
           { id: "other", label: "Other" },
         ].map((challenge) => (
@@ -294,20 +241,22 @@ const Step3 = ({ form, category, errors, handleChange }) => (
               type="checkbox"
               className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
               onChange={handleChange}
+              checked={form["growth-challenges"].includes(challenge.id)}
               value={challenge.id}
             />
-            <label
-              htmlFor={challenge.id}
-              className="ml-2 block text-sm text-gray-900"
-            >
+            <label htmlFor={challenge.id} className="ml-2 block text-sm text-gray-900">
               {challenge.label}
             </label>
           </div>
         ))}
+        {errors["growth-challenges"] && (
+          <p className="text-red-500 text-sm mt-2">{errors["growth-challenges"]}</p>
+        )}
       </div>
     </div>
   </div>
 );
+
 
 const Step4 = ({ form, category, errors, handleChange }) => (
   <div>
@@ -319,148 +268,95 @@ const Step4 = ({ form, category, errors, handleChange }) => (
       <h2 className="text-2xl font-bold text-center">
         {category?.headings[3]}
       </h2>
-    </div>{" "}
+    </div>
     <ProgressBar step={4} />
     <div className="mt-8 space-y-6">
-      <div>
-        <label
-          htmlFor="primaryGoal"
-          className="block font-medium text-[#000000] mb-2"
-        >
-          Primary Goal
-        </label>
-        <motion.textarea
-          id="primaryGoal"
-          name="primaryGoal"
-          value={form.primaryGoal}
-          onChange={handleChange}
-          placeholder="Tell us in a sentence or two what success looks like for you?"
-          className={`relative w-full p-2 h-12.5 mt-1 border hover:border-black focus:border-black focus:outline-none ${
-            errors.primaryGoal ? "border-red-500" : ""
-          }`}
-          initial={false}
-          animate={errors.primaryGoal ? { x: [-10, 10, -10, 10, 0] } : {}}
-        />
-        <div>
-          <p className="text-[#777777] text-[13px] ">
-            (E.g., Increase SQLs by 50%, Rank top 3 for X keywords, Reduce CAC
-            by 30%)
-          </p>
-        </div>
-      </div>
-      <div>
-        <label
-          htmlFor="marketingTeam"
-          className="block font-medium text-[#000000] mb-2"
-        >
-          Current Marketing Team
-        </label>
-        <motion.select
-          id="marketingTeam"
-          name="marketingTeam"
-          value={form.marketingTeam}
-          onChange={handleChange}
-          className={`w-full p-2 h-12.5 mt-1 border hover:border-black focus:border-black focus:outline-none ${
-            errors.marketingTeam ? "border-red-500" : ""
-          }`}
-          initial={false}
-          animate={errors.marketingTeam ? { x: [-10, 10, -10, 10, 0] } : {}}
-        >
-          <option>Who is handling your market today?</option>
-          <option>No team yet</option>
-          <option>1-2 marketers</option>
-          <option>Full team, but no leadership</option>
-          <option>Freelancers</option>
-        </motion.select>
-      </div>
+      {renderTextarea(
+        "primaryGoal",
+        "Primary Goal",
+        form,
+        errors,
+        handleChange,
+        "Tell us in a sentence or two what success looks like for you?",
+        "(E.g., Increase SQLs by 50%, Rank top 3 for X keywords, Reduce CAC by 30%)"
+      )}
+      {renderSelect(
+        "marketingTeam",
+        "Current Marketing Team",
+        form,
+        errors,
+        handleChange,
+        ["No team yet", "1-2 marketers", "Full team, but no leadership", "Freelancers"],
+        "Who is handling your market today?"
+      )}
     </div>
   </div>
 );
 
-const Step5 = ({ form, category, errors, handleChange }) => (
-  <div>
-    <div className="flex flex-row items-center gap-2">
-      <div
-        className="w-6 h-6"
-        dangerouslySetInnerHTML={{ __html: category?.list_items[0]?.[4]?.svg }}
-      />
-      <h2 className="text-2xl font-bold text-center">
-        {category?.headings[4]}
-      </h2>
-    </div>
-    <ProgressBar step={5} />
-    <div className="mt-8 space-y-6">
-      <div>
-        <label
-          htmlFor="preferredStartTime"
-          className="block font-medium text-[#000000] mb-2"
-        >
-          Preferred Start Time
-        </label>
-        <motion.select
-          id="preferredStartTime"
-          name="preferredStartTime"
-          value={form.preferredStartTime}
-          onChange={handleChange}
-          className={`w-full p-2 h-12.5 mt-1 border hover:border-black focus:border-black focus:outline-none ${
-            errors.preferredStartTime ? "border-red-500" : ""
-          }`}
-          initial={false}
-          animate={
-            errors.preferredStartTime ? { x: [-10, 10, -10, 10, 0] } : {}
-          }
-        >
-          <option value="" disabled>
-            How soon are you ready to go?
-          </option>
-          <option>Within 1 month</option>
-          <option>1-3 months</option>
-          <option>3-6 months</option>
-          <option>More than 6 months</option>
-        </motion.select>
-      </div>
-      <div>
-        <label
-          htmlFor="monthlyMarketBudget"
-          className="block font-medium text-[#000000] mb-2"
-        >
-          Estimated Monthly Marketing Budget
-        </label>
-        <motion.select
-          id="monthlyMarketBudget"
-          name="monthlyMarketBudget"
-          value={form.monthlyMarketBudget}
-          onChange={handleChange}
-          className={`w-full p-2 h-12.5 mt-1 border hover:border-black focus:border-black focus:outline-none ${
-            errors.monthlyMarketBudget ? "border-red-500" : ""
-          }`}
-          initial={false}
-          animate={
-            errors.monthlyMarketBudget ? { x: [-10, 10, -10, 10, 0] } : {}
-          }
-        >
-          <option value="" disabled>
-            Rough idea of the investment range you're planning?
-          </option>
-          <option>$2000</option>
-          <option>$2000-$5000</option>
-          <option>$5000-$10000</option>
-          <option>$10000+</option>
-        </motion.select>
-        <img src="" alt="captcha" />
-        <input
-          type="text"
-          id="captcha"
-          name="captcha"
-          value={form["captcha"]}
-          onChange={handleChange}
-          className="w-full p-2 h-12.5 mt-1 border hover:border-black focus:border-black focus:outline-none"
-          autoComplete="off"
+const Step5 = ({ form, category, errors, handleChange }) => {
+  const preferredStartTimeOptions = [
+    "Within 1 month",
+    "1-3 months",
+    "3-6 months",
+    "More than 6 months"
+  ];
+
+  const monthlyMarketBudgetOptions = [
+    "$2000",
+    "$2000-$5000",
+    "$5000-$10000",
+    "$10000+"
+  ];
+
+  return (
+    <div>
+      <div className="flex flex-row items-center gap-2">
+        <div
+          className="w-6 h-6"
+          dangerouslySetInnerHTML={{ __html: category?.list_items[0]?.[4]?.svg }}
         />
+        <h2 className="text-2xl font-bold text-center">
+          {category?.headings[4]}
+        </h2>
+      </div>
+      <ProgressBar step={5} />
+      <div className="mt-8 space-y-6">
+        {renderSelect(
+          "preferredStartTime",
+          "Preferred Start Time",
+          form,
+          errors,
+          handleChange,
+          preferredStartTimeOptions,
+          "How soon are you ready to go?"
+        )}
+        {renderSelect(
+          "monthlyMarketBudget",
+          "Estimated Monthly Marketing Budget",
+          form,
+          errors,
+          handleChange,
+          monthlyMarketBudgetOptions,
+          "Rough idea of the investment range you're planning?"
+        )}
+        <div>
+          <label className="block font-medium text-[#000000] mb-2">
+            Captcha
+          </label>
+          <input
+            type="text"
+            id="captcha"
+            name="captcha"
+            value={form.captcha}
+            onChange={handleChange}
+            className="w-full p-2 h-12.5 mt-1 border hover:border-black focus:border-black focus:outline-none rounded-md"
+            placeholder="Enter Captcha"
+          />
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default function GrowthEngineForm({ category }) {
   const [form, setForm] = useState({
@@ -486,20 +382,14 @@ export default function GrowthEngineForm({ category }) {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-
     if (type === "checkbox") {
-      // Handle checkbox changes
       setForm((prevForm) => {
         const updatedChallenges = checked
           ? [...prevForm["growth-challenges"], value]
-          : prevForm["growth-challenges"].filter(
-              (challenge) => challenge !== value
-            );
-
+          : prevForm["growth-challenges"].filter((challenge) => challenge !== value);
         return { ...prevForm, ["growth-challenges"]: updatedChallenges };
       });
     } else {
-      // Handle other input changes
       setForm({ ...form, [name]: value });
     }
     if (value.trim() !== "") {
@@ -507,115 +397,136 @@ export default function GrowthEngineForm({ category }) {
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const validateStep = (currentStep) => {
+  const newErrors = {};
+  let isValid = true;
 
-    // Validate form fields
-    const newErrors = {};
-    Object.keys(form).forEach((field) => {
-      if (Array.isArray(form[field])) {
-        // Check if array fields like "growth-challenges" are empty
-        if (form[field].length === 0) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const urlRegex = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+
+  switch (currentStep) {
+    case 1:
+      ["your-name", "company-name"].forEach((field) => {
+        if (!form[field] || form[field].trim() === "") {
           newErrors[field] = true;
+          isValid = false;
         }
-      } else if (!form[field] || form[field].trim() === "") {
-        // Check if other fields are empty
-        newErrors[field] = true;
-      }
-    });
-
-    setErrors(newErrors);
-
-    // If there are errors, stop the submission
-    if (Object.keys(newErrors).length > 0) {
-      return;
-    }
-
-    // Prepare form data
-    const formData = new FormData();
-    Object.keys(form).forEach((key) => {
-      if (Array.isArray(form[key])) {
-        // Append each item in the array to the FormData
-        form[key].forEach((item) => {
-          formData.append(key, item);
-        });
-      } else {
-        // Append other fields normally
-        formData.append(key, form[key]);
-      }
-    });
-
-    try {
-      const res = await fetch(FORM_URL + "799/feedback", {
-        method: "POST",
-        body: formData,
       });
 
-      const data = await res.json();
-
-      if (data.status === "mail_sent") {
-        const audio = new Audio("/notification.mp3");
-        audio.play();
-        setSubmitted(true);
-
-        // Reset form fields
-        setForm({
-          "your-name": "",
-          "your-email": "",
-          "company-name": "",
-          "your-url": "",
-          industry: "",
-          companySize: "",
-          primaryMarket: "",
-          "growth-challenges": [],
-          primaryGoal: "",
-          marketingTeam: "",
-          preferredStartTime: "",
-          monthlyMarketBudget: "",
-          captcha: "",
-        });
-
-        setTimeout(() => setSubmitted(false), 2000);
-      } else {
-        alert("Submission failed: " + data.message);
+      if (!form["your-email"] || !emailRegex.test(form["your-email"])) {
+        newErrors["your-email"] = true;
+        isValid = false;
       }
-    } catch (error) {
-      alert("Network error. Please try again.");
-      console.error(error);
+
+      if (!form["your-url"] || !urlRegex.test(form["your-url"])) {
+        newErrors["your-url"] = true;
+        isValid = false;
+      }
+
+      break;
+    case 2:
+      ["industry", "companySize", "primaryMarket"].forEach((field) => {
+        if (!form[field] || form[field].trim() === "") {
+          newErrors[field] = true;
+          isValid = false;
+        }
+      });
+      break;
+    case 3:
+      if (form["growth-challenges"].length === 0) {
+        newErrors["growth-challenges"] = "Please fill out this field";
+        isValid = false;
+      }
+      break;
+    case 4:
+      ["primaryGoal", "marketingTeam"].forEach((field) => {
+        if (!form[field] || form[field].trim() === "") {
+          newErrors[field] = true;
+          isValid = false;
+        }
+      });
+      break;
+    case 5:
+      ["preferredStartTime", "monthlyMarketBudget"].forEach((field) => {
+        if (!form[field] || form[field].trim() === "") {
+          newErrors[field] = true;
+          isValid = false;
+        }
+      });
+      break;
+    default:
+      break;
+  }
+
+  setErrors(newErrors);
+  return isValid;
+};
+
+
+const handleNext = (currentStep, setStep) => {
+    if (validateStep(currentStep)) {
+      setStep(currentStep + 1);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (validateStep(step)) {
+      const formData = new FormData();
+      Object.keys(form).forEach((key) => {
+        if (Array.isArray(form[key])) {
+          form[key].forEach((item) => {
+            formData.append(key, item);
+          });
+        } else {
+          formData.append(key, form[key]);
+        }
+      });
+
+      try {
+        const res = await fetch(FORM_URL + "799/feedback", {
+          method: "POST",
+          body: formData,
+        });
+        
+// https://demanzo.com/wp-json/contact-form-7/v1/contact-forms/52239/feedback
+        const data = await res.json();
+        if (data.status === "mail_sent") {
+          const audio = new Audio("/notification.mp3");
+          audio.play();
+          setSubmitted(true);
+          setForm({
+            "your-name": "",
+            "your-email": "",
+            "company-name": "",
+            "your-url": "",
+            industry: "",
+            companySize: "",
+            primaryMarket: "",
+            "growth-challenges": [],
+            primaryGoal: "",
+            marketingTeam: "",
+            preferredStartTime: "",
+            monthlyMarketBudget: "",
+            captcha: "",
+          });
+          setTimeout(() => setSubmitted(false), 2000);
+        } else {
+          alert("Submission failed: " + data.message);
+        }
+      } catch (error) {
+        alert("Network error. Please try again.");
+        console.error(error);
+      }
     }
   };
 
   const steps = [
-    <Step1
-      form={form}
-      category={category}
-      errors={errors}
-      handleChange={handleChange}
-    />,
-    <Step2
-      form={form}
-      category={category}
-      errors={errors}
-      handleChange={handleChange}
-    />,
-    <Step3
-      form={form}
-      category={category}
-      errors={errors}
-      handleChange={handleChange}
-    />,
-    <Step4
-      form={form}
-      category={category}
-      errors={errors}
-      handleChange={handleChange}
-    />,
-    <Step5
-      form={form}
-      category={category}
-      errors={errors}
-      handleChange={handleChange}
-    />,
+    <Step1 form={form} category={category} errors={errors} handleChange={handleChange} />,
+    <Step2 form={form} category={category} errors={errors} handleChange={handleChange} />,
+    <Step3 form={form} category={category} errors={errors} handleChange={handleChange} />,
+    <Step4 form={form} category={category} errors={errors} handleChange={handleChange} />,
+    <Step5 form={form} category={category} errors={errors} handleChange={handleChange} />,
   ];
 
   return (
@@ -627,6 +538,7 @@ export default function GrowthEngineForm({ category }) {
           setStep={setStep}
           totalSteps={totalSteps}
           handleSubmit={handleSubmit}
+          handleNext={handleNext}
         />
         <AnimatePresence>
           {submitted && (
