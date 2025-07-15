@@ -1,13 +1,11 @@
 ---
+import HeroAnimation from "../renderers/HeroAnimation";
+import HeroSection from "../renderers/Hero";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { API_URL } from "../../../../config/urls";
 
-import HeroAnimation from '../renderers/HeroAnimation';
-import HeroSection from '../renderers/Hero';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { API_URL } from '../../../../config/urls';
-
-
-const res = await fetch(API_URL + 'home-hero');
+const res = await fetch(API_URL + "home-hero");
 const pageData = await res.json();
 // const currentPath = Astro.url.pathname;
 
@@ -25,8 +23,9 @@ const pageData = await res.json();
 ---
 
 <!-- ---------------------- section 1 ------------------- -->
-
-<div class="bg-[#e6f8ff] grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] px-2 lg:px-14">
-    <HeroSection pageData={pageData} client:load/>
-    <HeroAnimation client:load />
+<div class="demanzo-container bg-[#e6f8ff]">
+    <div class="demanzo-grid demanzo-max-screen-width">
+        <HeroSection pageData={pageData} client:load />
+        <HeroAnimation client:load />
+    </div>
 </div>

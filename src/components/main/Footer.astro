@@ -3,30 +3,32 @@ import logo from "../../assets/logo.png";
 import FooterGrid from "./renderers/FooterGrid";
 import { NAV_URLS } from "../../config/urls";
 
-const res = await fetch(NAV_URLS + '108');
+const res = await fetch(NAV_URLS + "108");
 const category = await res.json();
 ---
 
 <footer
-	class="px-8 pt-12 pb-3 bg-[url('../assets/Footer-Bg-1-1.webp')] bg-fill bg-center w-full"
+	class="px-8 pt-12 pb-3 bg-[url('../assets/Footer-Bg-1-1.webp')] bg-no-repeat bg-cover bg-fill bg-center w-full"
 >
-	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 pb-8">
-		<div>
-			<img src={logo.src} alt="" class="w-56" />
-			<p class="text-[16px] font-[500] text-[#616670] py-6 md:pr-8">
-				We are a startup with high aspirations to provide out of the box
-				solutions for demand generation for businesses. We want to make
-				the demand generation process as simple as it gets.
+	<div class="demanzo-container-auto">
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 pb-8">
+			<div>
+				<img src={logo.src} alt="" class="w-56" />
+				<p class="text-[16px] font-[500] text-[#616670] py-6 md:pr-8">
+					We are a startup with high aspirations to provide out of the
+					box solutions for demand generation for businesses. We want
+					to make the demand generation process as simple as it gets.
+				</p>
+			</div>
+			<FooterGrid category={category} />
+		</div>
+		<hr />
+		<div class="text-center pt-8">
+			<p class="text-[16px] font-[500] text-[#616670]">
+				Copyright © {new Date().getFullYear()}
+				<span class="text-[#2d89bf]">Demanzo dev</span> | All Rights Reserved
 			</p>
 		</div>
-		<FooterGrid category={category} />
-	</div>
-	<hr />
-	<div class="text-center pt-8">
-		<p class="text-[16px] font-[500] text-[#616670]">
-			Copyright © {new Date().getFullYear()}
-			<span class="text-[#2d89bf]">Demanzo dev</span> | All Rights Reserved
-		</p>
 	</div>
 </footer>
 

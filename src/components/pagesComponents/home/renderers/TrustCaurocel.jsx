@@ -19,6 +19,9 @@ export default function TrustCaurocelHome({ category }) {
 
   return (
     <>
+    <div>
+      
+    </div>
       {!category?.heading &&
         category?.description.split(/\r?\n/).map((line, index) => (
           <p

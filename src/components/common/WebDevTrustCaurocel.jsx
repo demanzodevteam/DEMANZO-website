@@ -10,7 +10,7 @@ const category = await res.json();
 
 export default function TrustCaurocel() {
   return (
-    <div className="px-8 py-8 md:px-4 lg:px-6">
+ <div className="demanzo-container-auto px-4 md:px-6 py-8">
       <Swiper
         modules={[Autoplay, FreeMode]} // ✅ Include FreeMode
         loop={true}
@@ -51,5 +51,6 @@ export default function TrustCaurocel() {
         ))}
       </Swiper>
     </div>
+   
   );
 }

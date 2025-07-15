@@ -11,8 +11,10 @@ const data = await res.json();
 
 <!-- ------------section 2 -------------------- -->
  
-<div class="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] px-4 lg:px-14 gap-4">
-    <WhyChooseDemanzo data={data}/>
+<div class="demanzo-container ">
+    <div class="demanzo-grid demanzo-max-screen-width">
+ <WhyChooseDemanzo data={data}/>
         <HeroTwoAnnimation image={data.image} alt={data.alt} client:visible/>
+    </div>
 </div>
 

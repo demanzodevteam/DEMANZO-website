@@ -22,6 +22,7 @@ export default function BlogCards({ BlogData, maxCards = 3 }) {
 
   if (loading) {
     return (
+     
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
         {skeletonArray.map((_, idx) => (
           <div
@@ -40,7 +41,8 @@ export default function BlogCards({ BlogData, maxCards = 3 }) {
   }
 
   return (
-    <div className="p-6">
+     <div className="demanzo-container-auto">
+<div className="p-6">
       <Swiper
         modules={[Navigation, Pagination]}
         spaceBetween={24}
@@ -90,5 +92,7 @@ export default function BlogCards({ BlogData, maxCards = 3 }) {
         ))}
       </Swiper>
     </div>
+      </div>
+    
   );
 }

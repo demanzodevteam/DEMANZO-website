@@ -267,7 +267,11 @@ h2[id], h3[id] {
 
 
 .demanzo-container{
-  @apply !flex !justify-center items-center;
+  @apply !flex !justify-center items-center ;
+}
+
+.demanzo-container-auto{
+  @apply mx-auto w-full max-w-[1400px];
 }
 
 .demanzo-grid{
