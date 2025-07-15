@@ -1,24 +1,26 @@
-// src/components/FeatureSection.jsx
+// src/components/FiveFeatureSection.jsx
 import { CircleCheckBig } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 
 const FiveFeatureSection = ({ pageData }) => {
-    useEffect(() => {
-      AOS.init();
-    });
+  // Initialize AOS once on mount
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
 
   return (
     <section
-      className={`bg-[${pageData.background}]  px-4 md:px-10 lg:px-20 py-16 space-y-4 text-center`}
+      style={{ backgroundColor: pageData.background }}
+      className="px-4 md:px-10 lg:px-20 py-16 space-y-4 text-center"
     >
+      {/* Title and SVG underline */}
       <div className="inline-block relative mx-auto lg:mx-0 mb-20">
         <div className="relative inline-block">
           <h1 className="text-[45px] md:text-[48px] lg:text-[45px] font-semibold relative z-10 leading-tight text-center lg:text-left">
             {pageData.title}
           </h1>
-          {/* SVG below heading */}
           <svg
             className="absolute left-1/2 -translate-x-1/2 bottom-[-10px] lg:left-[180px] lg:translate-x-0 z-0"
             width="270"
@@ -37,14 +39,12 @@ const FiveFeatureSection = ({ pageData }) => {
         </div>
       </div>
 
-      {/* First Row: 3 Cards */}
-      {/* First Row: 3 Cards */}
+      {/* First row: 3 cards */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {pageData.card_details.slice(0, 3).map((card, index) => (
           <div
-            data-aos-duration="1000"
-            data-aos="fade-up"
             key={index}
+            data-aos="fade-up"
             className="p-6 bg-white rounded-lg shadow-md text-left space-y-4 min-h-[200px]"
           >
             <div className="flex items-center space-x-2">
@@ -54,18 +54,16 @@ const FiveFeatureSection = ({ pageData }) => {
               <h2 className="text-lg font-semibold">{card.heading}</h2>
             </div>
             <p className="text-[#616670]">{card.para}</p>
-            {/* <hr className="border-t border-gray-200" /> */}
           </div>
         ))}
       </div>
 
-      {/* Second Row: Cards 4 & 5 each taking 1/2 width */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {/* Second row: 2 cards */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
         {pageData.card_details.slice(3, 5).map((card, index) => (
           <div
-            data-aos-duration="1000"
-            data-aos="fade-up"
             key={index}
+            data-aos="fade-up"
             className="p-6 bg-white rounded-lg shadow-md text-left space-y-4 min-h-[200px]"
           >
             <div className="flex items-center space-x-2">
@@ -75,7 +73,6 @@ const FiveFeatureSection = ({ pageData }) => {
               <h2 className="text-lg font-semibold">{card.heading}</h2>
             </div>
             <p className="text-[#616670]">{card.para}</p>
-            {/* <hr className="border-t border-gray-200" /> */}
           </div>
         ))}
       </div>
