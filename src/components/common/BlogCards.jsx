@@ -47,9 +47,7 @@ export default function BlogCards({ BlogData }) {
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               />
-              <span className="inline-block text-xs font-semibold text-white uppercase px-3 py-1 rounded-full bg-[linear-gradient(to_right,_#ff8c00,_#f12500)]">
-                {card?.category}
-              </span>
+              <span className="demanzo-rounded-pill">{card?.category}</span>
               <h3 className="demanzo-h3">{card.title}</h3>
               <p className="demanzo-p">{card.description || ""}</p>
               <a href={card.link} className="demanzo-read-more">

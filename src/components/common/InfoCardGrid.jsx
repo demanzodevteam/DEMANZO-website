@@ -14,7 +14,7 @@ const InfoCardGrid = ({ pageData }) => {
     >
       <div className="inline-block relative mx-auto lg:mx-0 mb-10">
         <div className="relative inline-block">
-          <h1 className="text-[45px] md:text-[48px] lg:text-[45px] font-semibold relative z-10 leading-tight text-center lg:text-center">
+          <h1 className="demanzo-h1 leading-tight text-center lg:text-center">
             {pageData.headings[0]}{" "}
           </h1>
         </div>
@@ -33,24 +33,13 @@ const InfoCardGrid = ({ pageData }) => {
               dangerouslySetInnerHTML={{ __html: card.svg }}
             />
             <div className="w-full text-center lg:text-left">
-              <h2 className="text-black font-bold text-[20px] text-center lg:text-left">
+              <h2 className="demanzo-h2 text-center lg:text-left">
                 {card?.heading}
               </h2>
             </div>
             <p
-              className="text-gray-600 font-medium text-[16px] text-center lg:text-left"
+              className="demanzo-bold-p text-center lg:text-left"
               dangerouslySetInnerHTML={{ __html: card.para[0] }}
-            />
-            <ul className="text-left text-gray-600 font-medium">
-              {card?.list.map((listItem, idx) => (
-                <li key={idx} className="list-disc">
-                  {listItem}
-                </li>
-              ))}
-            </ul>
-            <p
-              className="text-gray-600 font-medium text-center lg:text-left"
-              dangerouslySetInnerHTML={{ __html: card.para[1] }}
             />
           </div>
         ))}
@@ -71,27 +60,14 @@ const InfoCardGrid = ({ pageData }) => {
                 }}
               />
               <div className="w-full text-center lg:text-left">
-                <h2 className="text-black font-bold text-[20px] text-center lg:text-left">
+                <h2 className="demanzo-h2 text-center lg:text-left">
                   {pageData.card_details[3]?.heading}
                 </h2>
               </div>
               <p
-                className="text-gray-600 font-medium text-[16px] text-center lg:text-left"
+                className="demanzo-bold-p text-center lg:text-left"
                 dangerouslySetInnerHTML={{
                   __html: pageData.card_details[3]?.para[0],
-                }}
-              />
-              <ul className="text-left text-gray-600 font-medium">
-                {pageData.card_details[3]?.list.map((listItem, idx) => (
-                  <li key={idx} className="list-disc">
-                    {listItem}
-                  </li>
-                ))}
-              </ul>
-              <p
-                className="text-gray-600 font-medium text-center lg:text-left"
-                dangerouslySetInnerHTML={{
-                  __html: pageData.card_details[3]?.para[1],
                 }}
               />
             </div>

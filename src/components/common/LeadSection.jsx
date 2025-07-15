@@ -15,30 +15,22 @@ export default function LeadSection({ pageData }) {
         className={`grid grid-cols-1 lg:grid-cols-[1fr_0.6fr] px-2 gap-2 lg:px-14 lg:py-10 bg-no-repeat bg-bottom bg-cover min-h-[80vh] ${pageData.background}`}
       >
         <div className="flex flex-col justify-center gap-2 py-8 px-4 lg:px-15 lg:py-10">
-          <h1 className="text-[#FF5F55] font-semibold text-[18px] lg:text-[18px]">
-            {pageData.title}
-          </h1>
+          <h1 className="demanzo-title">{pageData.title}</h1>
 
           <div className="inline-block relative mx-auto lg:mx-0">
-            <h1 className="text-[45px] md:text-[48px] lg:text-[44px] font-semibold relative z-10">
-              {pageData.headings[0]}
-            </h1>
+            <h1 className="demanzo-h1">{pageData.headings[0]}</h1>
           </div>
 
           {pageData?.card_details?.map((para, index) => (
             <div key={index} className="mb-1">
-              <h3 className="text-[16px] font-bold text-[#616670] mb-2">
-                {para.heading}
-              </h3>
-              <p className="text-[16px] font-[500] text-[#616670] leading-6">
-                {para.para[0]}
-              </p>
+              <h3 className="demanzo-bold-p mb-2">{para.heading}</h3>
+              <p className="demanzo-bold-p leading-6">{para.para[0]}</p>
             </div>
           ))}
 
           {pageData?.card_details?.[1]?.list?.map((item, index) => (
             <div key={index} className="mb-1">
-              <div className="flex items-start gap-2 text-[16px] font-[500] text-[#616670] leading-6">
+              <div className="flex items-start demanzo-bold-p">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -57,9 +49,7 @@ export default function LeadSection({ pageData }) {
 
           {pageData?.card_details?.map((para, index) => (
             <div key={index} className="mb-1">
-              <p className="text-[16px] font-[500] text-[#616670] leading-6">
-                {para.para[1]}
-              </p>
+              <p className="demanzo-bold-p">{para.para[1]}</p>
             </div>
           ))}
         </div>

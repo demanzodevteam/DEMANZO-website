@@ -41,58 +41,50 @@ export default function BlogCards({ BlogData, maxCards = 3 }) {
   }
 
   return (
-     <div className="demanzo-container-auto">
-<div className="p-6">
-      <Swiper
-        modules={[Navigation, Pagination]}
-        spaceBetween={24}
-        slidesPerView={1}
-        breakpoints={{
-          640: { slidesPerView: 1 },
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
-        }}
-        navigation
-        pagination={{ clickable: true }}
-        className="custom-swiper"
-      >
-        {cards.map((card, idx) => (
-          <SwiperSlide key={idx} className="">
-            <motion.div
-              initial={{ opacity: 0, y: 100 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: idx * 0.02 }}
-              viewport={{ once: true, amount: 0.3 }}
-              className="bg-white shadow-lg rounded-2xl p-5 hover:shadow-xl transition overflow-hidden"
-            >
-              <motion.img
-                src={card?.image}
-                alt={card?.alt || ""}
-                className="rounded-lg mb-4 w-full h-48 object-cover"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              />
-              <span className="inline-block text-xs font-semibold text-white uppercase px-3 py-1 rounded-full bg-[linear-gradient(to_right,_#ff8c00,_#f12500)]">
-                {card?.category}
-              </span>
-              <h3 className="text-lg font-semibold mt-2 text-gray-800 line-clamp-2">
-                {card.title}
-              </h3>
-              <p className="text-sm text-gray-600 mt-1 line-clamp-2">
-                {card.description || ""}
-              </p>
-              <a
-                href={card.link}
-                className="mt-4 inline-block text-blue-500 font-medium hover:underline text-sm"
+    <div className="demanzo-container-auto">
+      <div className="p-6">
+        <Swiper
+          modules={[Navigation, Pagination]}
+          spaceBetween={24}
+          slidesPerView={1}
+          breakpoints={{
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+          navigation
+          pagination={{ clickable: true }}
+          className="custom-swiper"
+        >
+          {cards.map((card, idx) => (
+            <SwiperSlide key={idx} className="">
+              <motion.div
+                initial={{ opacity: 0, y: 100 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: idx * 0.02 }}
+                viewport={{ once: true, amount: 0.3 }}
+                className="bg-white shadow-lg rounded-2xl p-5 hover:shadow-xl transition overflow-hidden"
               >
-                Learn more →
-              </a>
-            </motion.div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div>
+                <motion.img
+                  src={card?.image}
+                  alt={card?.alt || ""}
+                  className="rounded-lg mb-4 w-full h-48 object-cover"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                />
+                <span className="demanzo-rounded-pill">{card?.category}</span>
+                <h3 className="demanzo-h2 mt-2 line-clamp-2">{card.title}</h3>
+                <p className="demanzo-bold-p mt-1 line-clamp-2">
+                  {card.description || ""}
+                </p>
+                <a href={card.link} className="demanzo-read-more">
+                  Learn more →
+                </a>
+              </motion.div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
-    
+    </div>
   );
 }

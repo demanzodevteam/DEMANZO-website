@@ -5,7 +5,7 @@ import { MEDIA_URL } from '../../config/urls';
 export default function WhyYouNeedReport({pageData}) {
     return (
       <div>
-        <h2 className="text-[24px] md:text-[32px] lg:text-[40px] font-semibold leading-tight text-center text-transparent bg-clip-text bg-gradient-to-r from-black to-red-500 text-4xl">
+        <h2 className="demanzo-h1 text-center !text-transparent !bg-clip-text !bg-gradient-to-r !from-black to-red-500 text-4xl">
           {pageData.title}
         </h2>
 
@@ -25,7 +25,7 @@ export default function WhyYouNeedReport({pageData}) {
           </div>
 
           <div className="w-full lg:w-1/2 p-4 md:mx-2 order-1 lg:order-2 text-left">
-            <h2 className="mb-8 text-5xl font-semibold">
+            <h2 className="mb-8 demanzo-h2">
               <span>{pageData.headings?.[0]}</span>
             </h2>
 
@@ -35,7 +35,7 @@ export default function WhyYouNeedReport({pageData}) {
                   <div className="border-2 border-dotted text-red-500 border-red-500 rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0 p-1.5">
                     {index + 1}
                   </div>
-                  <p className="text-lg text-[#616670] mb-3">
+                  <p className="demanzo-p mb-3">
                     <strong>{item?.heading}</strong> {item?.para}
                   </p>
                 </li>

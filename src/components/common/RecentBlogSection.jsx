@@ -13,7 +13,7 @@ const Card = ({ imageSrc, altText, title }) => {
           />
         )}
         <div className="text-white text-center p-4">
-          <h2 className="text-2xl font-bold mb-2">{title}</h2>
+          <h2 className="demanzo-h2 mb-2">{title}</h2>
         </div>
       </div>
     </div>
@@ -24,7 +24,7 @@ export default function RecentBlogSection({ pageData }) {
   return (
     <div className="p-4">
       <div className="max-w-6xl mx-auto">
-        <h1 className="p-2.5 text-3xl leading-14 text-[#191d27] font-semibold text-center">
+        <h1 className="demanzo-h1 p-2.5 text-center">
           {pageData?.title}
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-7">

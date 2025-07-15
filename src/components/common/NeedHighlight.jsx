@@ -7,7 +7,7 @@ const NeedHighlight = ({ SectionData }) => {
     <section className="px-4 md:px-10 lg:px-[var(--demanzo-section-spacing)] py-[var(--demanzo-section-spacing)] text-center bg-[#F8FDFF]">
       <div className="inline-block relative mx-auto lg:mx-0 mb-10">
         <div className="relative inline-block">
-          <h1 className="text-[45px] md:text-[48px] lg:text-[45px] font-semibold relative z-10 leading-tight text-center lg:text-center">
+          <h1 className="demanzo-h1 leading-tight text-center lg:text-center">
             {SectionData?.headings?.[0]}
           </h1>
         </div>
@@ -15,7 +15,7 @@ const NeedHighlight = ({ SectionData }) => {
 
       {
         SectionData?.paragraphs[0] != '' && (
-          <p className="mt-12 text-gray-600 font-medium max-w-7xl mx-auto text-[16px] leading-relaxed">
+          <p className="demanzo-bold-p mt-12  mx-auto  leading-relaxed">
             {SectionData?.paragraphs[0]}
           </p>
         )
