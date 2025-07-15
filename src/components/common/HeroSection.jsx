@@ -12,17 +12,13 @@ export default function HeroSection({ pageData }) {
           backgroundImage: pageData?.bgImg ? "none" : `url('${curveImg.src}')`,
         }}
       >
-<<<<<<< HEAD
         <div className="demanzo-grid demanzo-max-screen-width">
           <div className="flex flex-col justify-center gap-4 py-8 px-4 lg:px-15 lg:py-10 text-center md:text-left">
-            <h1 className="text-[#FF5F55] font-semibold text-[18px] lg:text-[20px]">
-              {pageData.title}
-            </h1>
+                      <h1 className="demanzo-title">{pageData.title}</h1>
 
             <div className="inline-block relative mx-auto lg:mx-0">
-              <h1 className="text-[45px] md:text-[48px] lg:text-[50px] font-semibold relative z-10">
-                {pageData.headings[0]}
-              </h1>
+                          <h1 className="demanzo-h1">{pageData.headings[0]}</h1>
+
               <svg
                 className="absolute left-1/2 -translate-x-1/2 lg:left-30 lg:translate-x-0 bottom-20 z-0"
                 width="270"
@@ -30,70 +26,7 @@ export default function HeroSection({ pageData }) {
                 viewBox="0 0 270 20"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-=======
-        <div className="flex flex-col justify-center gap-4 py-8 px-4 lg:px-15 lg:py-10 text-center md:text-left">
-          <h1 className="demanzo-title">{pageData.title}</h1>
 
-          <div className="inline-block relative mx-auto lg:mx-0">
-            <h1 className="demanzo-h1">{pageData.headings[0]}</h1>
-            <svg
-              className="absolute left-1/2 -translate-x-1/2 lg:left-30 lg:translate-x-0 bottom-20 z-0"
-              width="270"
-              height="20"
-              viewBox="0 0 270 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M5 15C80 5 190 0 265 12"
-                stroke="#FF5F55"
-                stroke-width="6"
-                stroke-linecap="round"
-              />
-            </svg>
-          </div>
-
-          {pageData?.paragraphs?.map((para, index) => (
-            <p
-              key={index}
-              className="demanzo-bold-p"
-            >
-              {para}
-            </p>
-          ))}
-        </div>
-
-        <div className="flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0">
-          {pageData?.bgImg ? (
-            <>
-              <div className="w-full md:px-6">
-                <img
-                  src={MEDIA_URL + pageData.images?.[0]?.src}
-                  alt={pageData.images?.[0]?.alt}
-                  className="w-full md:w-full lg:w-[500px] transition-transform duration-400 hover:-translate-y-4 rounded-sm"
-                />
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="w-full md:px-6">
-                <img
-                  src={MEDIA_URL + pageData.images?.[0]?.src}
-                  alt={pageData.images?.[0]?.alt}
-                  className="w-full md:w-full lg:w-[500px] transition-transform duration-400 hover:-translate-y-4 rounded-sm"
-                />
-              </div>
-            </>
-          )}
-        </div>
-
-        <div className="lg:col-span-2 w-full flex flex-row justify-center gap-4 px-15">
-          <div className="w-1/2 flex flex-col gap-4">
-            {pageData?.list_items[0]?.slice(0, 3).map((item, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-start gap-10"
->>>>>>> 8b891e9e3634f79820e38b86d51177b281ccbae8
               >
                 <path
                   d="M5 15C80 5 190 0 265 12"
@@ -107,7 +40,7 @@ export default function HeroSection({ pageData }) {
             {pageData?.paragraphs?.map((para, index) => (
               <p
                 key={index}
-                className="text-[16px] font-[500] text-[#616670] leading-6"
+                className="demanzo-bold-p"
               >
                 {para}
               </p>
@@ -123,7 +56,6 @@ export default function HeroSection({ pageData }) {
                     alt={pageData.images?.[0]?.alt}
                     className="w-full md:w-full lg:w-[500px] transition-transform duration-400 hover:-translate-y-4 rounded-sm"
                   />
-<<<<<<< HEAD
                 </div>
               </>
             ) : (
@@ -186,16 +118,11 @@ export default function HeroSection({ pageData }) {
                       d="M8 12l3 3 5-5"
                     />
                   </svg>
-                  <span className="text-[15px] text-[#54595f]">{item.para}</span>
+                  <span className="demanzo-bold-pdemanzo-bold-p">{item.para}</span>
                 </div>
               ))}
             </div>
-=======
-                </svg>
-                <span className="demanzo-bold-p">{item.para}</span>
-              </div>
-            ))}
->>>>>>> 8b891e9e3634f79820e38b86d51177b281ccbae8
+
           </div>
         </div>
 
