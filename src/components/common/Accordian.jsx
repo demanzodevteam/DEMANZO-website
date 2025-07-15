@@ -36,13 +36,11 @@ export default function FaqAccordion({ category }) {
         >
           {category.card_details?.map((faq, index) => (
             <AccordionItem value={`item-${index}`}>
-              <AccordionTrigger className="text-[16px] font-[600] px-3 py-3 rounded-sm">
+              <AccordionTrigger className="demanzo-accordian-heading">
                 {faq.heading}
               </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
-                <p className="text-[16px] font-[500] text-[#616670] px-6 py-4">
-                  {faq.para}
-                </p>
+                <p className="demanzo-accordian-content">{faq.para}</p>
               </AccordionContent>
             </AccordionItem>
           ))}

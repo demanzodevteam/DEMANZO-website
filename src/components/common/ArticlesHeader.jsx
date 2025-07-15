@@ -13,7 +13,7 @@ export const ArticlesHeader = ({ SectionData }) => {
                 <div class="px-4 py-10 relative">
 
                     <div class="relative mx-auto text-left flex items-center w-full">
-                        <h1 class="text-[45px] md:text-[50px] font-semibold relative z-10 break-words whitespace-normal w-full">
+                        <h1 class="demanzo-h1 break-words whitespace-normal w-full">
                             {SectionData?.title?.rendered}
                         </h1>
                     </div>
@@ -46,7 +46,7 @@ export const ArticlesHeader = ({ SectionData }) => {
                                     month: "long",
                                     day: "numeric",
                                 })}</span>
-                                <p class="text-sm text-gray-600">Published</p>
+                                <p class="demanzo-p">Published</p>
                             </div>
                         </div>
 
@@ -58,7 +58,7 @@ export const ArticlesHeader = ({ SectionData }) => {
                                 <path d="M9.50204 9.50157H5.52539V10.4983H10.4988V2.91577H9.50204V9.50157Z" fill="#7347FC"></path>
                             </svg>
                             <div>
-                                <p class="text-sm text-gray-600">Reading</p>
+                                <p class="demanzo-p">Reading</p>
                             </div>
                         </div>
 

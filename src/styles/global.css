@@ -281,3 +281,11 @@ h2[id], h3[id] {
 .demanzo-max-screen-width{
   @apply w-[1400px] max-w-full ;
 }
+
+.demanzo-accordian-heading{
+  @apply text-[16px] font-[600] px-3 py-3 rounded-sm
+}
+
+.demanzo-accordian-content{
+  @apply text-[16px] font-[500] text-[#616670] px-6 py-4
+}

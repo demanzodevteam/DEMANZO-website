@@ -67,7 +67,7 @@ const AnimatedCounterSection = ({ pageData }) => {
                 >
                   0
                 </div>
-                <h5 className="mt-2 font-semibold text-[20px] text-white tracking-wide">
+                <h5 className="demanzo-h2 text-white tracking-wide">
                   {item?.para}
                 </h5>
               </div>
