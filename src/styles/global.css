@@ -264,15 +264,3 @@ h2[id], h3[id] {
 .demanzo-form-heading{
 @apply text-3xl lg:text-4xl font-bold text-[#ffffff];
 }
-
-.demanzo-container{
-  @apply !flex !justify-center items-center;
-}
-
-.demanzo-grid{
-  @apply grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] px-2 gap-2 lg:px-14 lg:py-10 bg-no-repeat bg-bottom bg-cover min-h-[80vh];
-}
-
-.demanzo-max-screen-width{
-  @apply w-[1400px] max-w-full ;
-}
