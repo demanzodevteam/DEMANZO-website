@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import BackGroundImg from "../../assets/Background-SEO-Traffic.jpg";
 import rocketImg from "../../assets/rocket.png";
 import skyImg from "../../assets/sky2.png";
-import SalesForm from "./SalesForm"; // Adjust path as needed
+import PerformanceChecklistForm from "./PerformanceCheckListForm";
 
 const SalesContactTwo = ({ SectionData }) => {
   return (
@@ -47,7 +47,7 @@ const SalesContactTwo = ({ SectionData }) => {
           transition={{ duration: 1 }}
           className="bg-white rounded-2xl shadow-lg p-6 lg:p-10"
         >
-          <SalesForm />
+          <PerformanceChecklistForm />
         </motion.div>
       </div>
     </div>

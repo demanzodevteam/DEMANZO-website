@@ -1,8 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { FORM_URL } from "../../config/urls";
+import { FORM_URL } from "../../config/urls"; // Make sure this is your correct CF7 API endpoint
 
-// Hook to detect client-side mount
 function useHasMounted() {
   const [hasMounted, setHasMounted] = useState(false);
   useEffect(() => {
@@ -11,12 +10,12 @@ function useHasMounted() {
   return hasMounted;
 }
 
-export default function SalesForm() {
+export default function PerformanceChecklistForm() {
   const hasMounted = useHasMounted();
 
   const [form, setForm] = useState({
-    "text-517": "", // Name
-    "email-875": "", // Email
+    "text-517": "", // "Your Name"
+    "email-875": "", // "Email"
   });
 
   const [errors, setErrors] = useState({});
@@ -25,7 +24,6 @@ export default function SalesForm() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
-
     if (value.trim() !== "") {
       setErrors((prev) => ({ ...prev, [name]: false }));
     }
@@ -45,19 +43,19 @@ export default function SalesForm() {
     if (Object.keys(newErrors).length > 0) return;
 
     const formData = new FormData();
-    Object.entries(form).forEach(([key, val]) =>
-      formData.append(key, val)
-    );
+    Object.entries(form).forEach(([key, val]) => {
+      formData.append(key, val);
+    });
 
-    // Required CF7 hidden fields — must match actual form source
-    formData.append("_wpcf7", "1081"); // replace with your CF7 form ID
+    // ✅ Update these values based on your real form rendered HTML
+    formData.append("_wpcf7", "1083"); // Your CF7 Form ID
     formData.append("_wpcf7_version", "5.9.4");
     formData.append("_wpcf7_locale", "en_US");
-    formData.append("_wpcf7_unit_tag", "wpcf7-f1081-p12-o1"); // check form source
-    formData.append("_wpcf7_container_post", "12"); // the post/page ID where form is rendered
+    formData.append("_wpcf7_unit_tag", "wpcf7-f1083-p12-o1"); // ⚠️ Must match frontend
+    formData.append("_wpcf7_container_post", "12"); // ⚠️ Must match post/page ID where form is rendered
 
     try {
-      const res = await fetch(FORM_URL + "1081/feedback", {
+      const res = await fetch(`${FORM_URL}1083/feedback`, {
         method: "POST",
         body: formData,
       });
@@ -70,13 +68,13 @@ export default function SalesForm() {
 
         setSubmitted(true);
         setForm({ "text-517": "", "email-875": "" });
-        setTimeout(() => setSubmitted(false), 2000);
+        setTimeout(() => setSubmitted(false), 3000);
       } else {
         alert("Submission failed: " + data.message);
       }
-    } catch (error) {
+    } catch (err) {
       alert("Network error. Please try again.");
-      console.error(error);
+      console.error(err);
     }
   };
 
