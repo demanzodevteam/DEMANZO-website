@@ -56,7 +56,7 @@ const ResultSlider = ({ pageData }) => {
             ))}
           </Swiper>
         ) : (
-          <p className="text-center text-gray-500">No results to show.</p>
+          <p className="demanzo-bold-p text-center">No results to show.</p>
         )}
       </section>
 

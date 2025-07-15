@@ -15,11 +15,9 @@ const ServicesWeOffer = ({ SectionData, colVal }) => {
         <div className="inline-block relative mx-auto lg:mx-0 ">
           <div className="relative inline-block">
             {SectionData?.title && (
-              <h1 className="text-[#FF5F55] font-semibold text-[18px] lg:text-[20px] my-3">
-                {SectionData.title}
-              </h1>
+              <h1 className="demanzo-title my-3">{SectionData.title}</h1>
             )}
-            <h1 className="text-[45px] md:text-[48px] lg:text-[45px] font-semibold relative z-10 leading-tight text-center lg:text-center">
+            <h1 className="demanzo-h1 text-center lg:text-center">
               {SectionData.headings[0]}{" "}
             </h1>
             <svg
@@ -37,12 +35,12 @@ const ServicesWeOffer = ({ SectionData, colVal }) => {
                 strokeLinecap="round"
               />
             </svg>
-            <h1 className="text-[45px] md:text-[48px] lg:text-[45px] font-semibold relative z-10 leading-tight text-center lg:text-center">
+            <h1 className="demanzo-h1 text-center lg:text-center">
               {SectionData.heading}{" "}
             </h1>
           </div>
         </div>
-        <p className="mt-12 text-gray-600 font-medium max-w-7xl mx-auto text-[16px] leading-relaxed">
+        <p className="demanzo-p mt-12 max-w-7xl mx-auto text-[16px]">
           {SectionData.paragraphs[0]}
         </p>
         <div
@@ -59,11 +57,11 @@ const ServicesWeOffer = ({ SectionData, colVal }) => {
                   className="w-14 h-14"
                   dangerouslySetInnerHTML={{ __html: card.svg }}
                 />
-                <h2 className="font-bold text-[20px] pl-2 ">{card.heading}</h2>
+                <h2 className="demanzo-h2 pl-2 ">{card.heading}</h2>
               </div>
 
               <p
-                className="text-gray-600 font-medium text-left"
+                className="demanzo-p text-left"
                 dangerouslySetInnerHTML={{ __html: card.para }}
               />
               <hr className="w-full border-gray-200 mt-4" />
@@ -71,7 +69,7 @@ const ServicesWeOffer = ({ SectionData, colVal }) => {
           ))}
         </div>
 
-        <p className="mt-12 text-gray-600 font-medium max-w-7xl mx-auto text-[16px] leading-relaxed">
+        <p className="demanzo-bold-p *:mt-12 max-w-7xl mx-auto ">
           {SectionData.paragraphs[5]}
         </p>
       </section>
