@@ -18,20 +18,20 @@ export default function InsightHighlightBlock({ pageData }) {
 
       {/* Right Column */}
       <div className="w-full p-4 md:p-4 flex flex-col gap-6 items-center md:items-start lg:items-start text-center md:text-left lg:text-left">
-        <h1 className="demanzo-title ">{pageData.title}</h1>
+        <h2 className="demanzo-title ">{pageData.title}</h2>
         <h2 className="demanzo-h1">
           <span>{pageData.headings?.[0]}</span>
         </h2>
-        <h1 className="demanzo-title ">{pageData.headings?.[1]}</h1>
+        <h2 className="demanzo-title ">{pageData.headings?.[1]}</h2>
         <ul className="space-y-4">
           {pageData?.list_items?.[0]?.map((item, index) => (
             <li key={index} className="flex items-start justify-start">
               <div className="border-2 border-dotted text-red-500 border-red-500 rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0 p-1.5">
                 {index + 1}
               </div>
-              <p className="demanzo-h2 text-left">
+              <h6 className="demanzo-h2 text-left">
                 <strong>{item?.heading}</strong> {item?.para}
-              </p>
+              </h6>
             </li>
           ))}
         </ul>

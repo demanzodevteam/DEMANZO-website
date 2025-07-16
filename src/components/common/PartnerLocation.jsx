@@ -20,9 +20,9 @@ export default function PartnerLocation({ pageData }) {
 
   return (
     <div className="py-25 mx-auto">
-      <h1 className="demanzo-h1 text-center ">
+      <h2 className="demanzo-h1 text-center ">
         {pageData?.headings[0]}
-      </h1>
+      </h2>
       <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto mt-8">
         <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-6">
           {locations.map((loc, index) => (

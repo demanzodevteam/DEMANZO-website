@@ -25,10 +25,10 @@ export default function SplitHeadingSection({ pageData }) {
         </div>
 
         <div class="flex flex-col justify-center gap-4 py-8 px-4 lg:px-15 lg:py-10">
-          <h1 class="demanzo-title">{pageData.title}</h1>
+          <h2 class="demanzo-title">{pageData.title}</h2>
 
           <div class="inline-block relative mx-auto lg:mx-0 ">
-            <h1 class="demanzo-h1">{pageData.headings[0]}</h1>
+            <h2 class="demanzo-h1">{pageData.headings[0]}</h2>
           </div>
           {pageData?.paragraphs?.map((para, index) => (
             <p key={index} class="demanzo-bold-p">

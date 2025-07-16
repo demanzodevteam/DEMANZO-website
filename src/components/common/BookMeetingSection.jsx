@@ -9,9 +9,9 @@ export default function BookMeetingSection({ pageData }) {
       style={{ backgroundImage: `url('${BackGroundImg.src}')` }}
     >
       <div className="mx-auto lg:mx-[280px] mb-[20px]">
-        <h1 className="demanzo-h1 pb-[25px] !text-white text-center leading-12">
+        <h2 className="demanzo-h1 pb-[25px] !text-white text-center leading-12">
           {pageData.headings[0]}
-        </h1>
+        </h2>
         <div className="relative text-center flex items-center justify-center">
           <h1 className="demanzo-h1 pb-[25px] !text-white leading-12">
             {pageData.headings[1]}

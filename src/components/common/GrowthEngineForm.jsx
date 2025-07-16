@@ -154,9 +154,9 @@ const Step1 = ({ form, category, errors, handleChange }) => (
         className="w-6 h-6"
         dangerouslySetInnerHTML={{ __html: category?.list_items[0]?.[0]?.svg }}
       />
-      <h2 className="demanzo-h2 leading-9">
+      <h4 className="demanzo-h2 leading-9">
         {category?.headings[0]}
-      </h2>
+      </h4>
     </div>
     <div className="mt-8 space-y-6">
       {renderInput("your-name", "text", "Full Name", form, errors, handleChange)}

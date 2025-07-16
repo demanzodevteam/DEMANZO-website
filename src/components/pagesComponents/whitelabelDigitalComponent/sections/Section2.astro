@@ -11,7 +11,7 @@ const list = pageData?.list_items[0];
 ---
 
 <div class="pt-[70px] px-[15px] pb-[100px]">
-    <h1 class="pb-[16px] text-[35px] md:text-[40px] font-[600] text-[#191d27] text-center">{pageData.headings[0]}</h1>
+    <h2 class="pb-[16px] text-[35px] md:text-[40px] font-[600] text-[#191d27] text-center">{pageData.headings[0]}</h2>
     <div class="mb-[20px] text-center">
         <p class="text-[16px] font-[500] text-[#616670] mb-[20px]">{pageData.paragraphs[0]}</p>
         <p class="text-[16px] font-[500] text-[#616670] mb-[20px]">{pageData.paragraphs[1]}</p>
@@ -34,7 +34,7 @@ const list = pageData?.list_items[0];
                         alt={pageData.images?.[0]?.alt}
                         class="w-[25px] h-[25px] object-cover"
                     />
-                    <p class="text-[16px] text-[#7d7d7d] font-[600] pl-[16px]">{item.para}</p>
+                    <h6 class="text-[16px] text-[#7d7d7d] font-[600] pl-[16px]">{item.para}</h6>
                 </div>
             ))
         }

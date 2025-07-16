@@ -21,7 +21,7 @@ export default function SeoFeatureSection({ pageData }) {
                   dangerouslySetInnerHTML={{ __html: data?.svg }}
                 />
                 <div className="flex flex-col">
-                  <h3 className="demanzo-h2 mb-5">{data?.heading}</h3>
+                  <h5 className="demanzo-h2 mb-5">{data?.heading}</h5>
                   <p className="demanzo-p">{data?.para}</p>
                 </div>
               </div>

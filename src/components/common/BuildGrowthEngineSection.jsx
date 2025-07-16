@@ -7,7 +7,7 @@ export default function BuildGrowthEngineSection({ pageData }) {
       // style={{ backgroundImage: bgImg ? "none" : `url('${curveImg.src}')` }}
     >
       <div className="flex flex-col justify-center items-center gap-4 py-8 px-4 lg:px-15 lg:py-10">
-        <h1 className="demanzo-title ">{pageData[0].title}</h1>
+        <h2 className="demanzo-title ">{pageData[0].title}</h2>
 
         <div className="inline-block relative mx-auto lg:mx-0 ">
           <h1 className="demanzo-h1 relative z-10">

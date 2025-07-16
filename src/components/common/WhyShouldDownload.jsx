@@ -4,10 +4,10 @@ export default function WhyShouldDownload({ pageData }) {
       <>
         <div className="mx-8 my-10 sm:mx-[60px] sm:my-[100px]">
           <div className="flex flex-col items-center justify-center p-8 rounded-xl bg-pink-50 px-[40px]">
-            <h1 className="demanzo-h1 text-center">
+            <h2 className="demanzo-h1 text-center">
               {/* Who Should Download? */}
               {pageData?.headings[0]}
-            </h1>
+            </h2>
 
             <div className="w-full flex flex-col md:flex-row justify-center gap-4">
               <div className="md:w-1/2 flex flex-col gap-4">

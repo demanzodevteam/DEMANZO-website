@@ -1,14 +1,16 @@
 ---
-import { API_URL } from "../../../../config/urls";
-import Caurosel from "../../home/renderers/Caurosel"
+import { API_URL } from '../../../../config/urls';
+import CaseStudyCard from '../../../common/CaseStudyCard';
 
-const res = await fetch(API_URL + 'category/5');
+
+const res = await fetch(API_URL + 'category/7');
 const category = await res.json();
 ---
 
 
-<!------- Section 5 --------->
- 
-<div class="mb-16">
-    <Caurosel category={category} client:load />
-</div>
+<!-- ------------------section 10 --------------------- -->
+
+
+<section class="py-20 px-4 lg:px-8 bg-gradient-to-b from-[#f8f8f8] to-white">
+ <CaseStudyCard category={category} />
+</section>

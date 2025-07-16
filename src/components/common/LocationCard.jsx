@@ -10,7 +10,7 @@ const LocationCard = ({ mapSrc, title, line1, line2 }) => {
         title={title}
         className="rounded-md"
       ></iframe>
-      <h2 className="demanzo-h2 mt-2">{title}</h2>
+      <h5 className="demanzo-h2 mt-2">{title}</h5>
       <p className="demanzo-bold-p whitespace-pre-line">{line1}</p>
       {line2 && <p className="demanzo-bold-p whitespace-pre-line">{line2}</p>}
     </div>

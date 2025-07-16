@@ -27,7 +27,7 @@ export default function AboutUsFeatures({ pageData }) {
         </p>
 
         <div class="inline-block relative mx-auto lg:mx-0 ">
-          <h1 class="demanzo-h1">{pageData.headings[0]}</h1>
+          <h2 class="demanzo-h1">{pageData.headings[0]}</h2>
         </div>
         <p class="demanzo-bold-p leading-6">{pageData?.paragraphs[2]}</p>
         <p class="demanzo-bold-p leading-6">{pageData?.paragraphs[3]}</p>
@@ -46,7 +46,7 @@ export default function AboutUsFeatures({ pageData }) {
               dangerouslySetInnerHTML={{ __html: card.svg }}
             />
             <div className="flex flex-col gap-3">
-              <h1
+              <h5
                 className="demanzo-h2 leading-8"
                 dangerouslySetInnerHTML={{ __html: card.heading }}
               />

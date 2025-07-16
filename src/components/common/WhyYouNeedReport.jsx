@@ -33,7 +33,7 @@ export default function WhyYouNeedReport({pageData}) {
               {pageData?.list_items?.[0].map((item, index) => (
                 <li key={index} className="flex items-start">
                   <div className="border-2 border-dotted text-red-500 border-red-500 rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0 p-1.5">
-                    {index + 1}
+                    <h2>{index+1}</h2>
                   </div>
                   <p className="demanzo-p mb-3">
                     <strong>{item?.heading}</strong> {item?.para}

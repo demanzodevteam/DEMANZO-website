@@ -24,9 +24,9 @@ export default function RecentBlogSection({ pageData }) {
   return (
     <div className="p-4">
       <div className="max-w-6xl mx-auto">
-        <h1 className="demanzo-h1 p-2.5 text-center">
+        <h2 className="demanzo-h1 p-2.5 text-center">
           {pageData?.title}
-        </h1>
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
           {pageData.headings.map((heading, index) => (
             <Card

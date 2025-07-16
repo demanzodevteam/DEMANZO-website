@@ -7,9 +7,9 @@ const NeedHighlight = ({ SectionData }) => {
     <section className="px-4 md:px-10 lg:px-[var(--demanzo-section-spacing)] py-[var(--demanzo-section-spacing)] text-center bg-[#F8FDFF]">
       <div className="inline-block relative mx-auto lg:mx-0 mb-10">
         <div className="relative inline-block">
-          <h1 className="demanzo-h1 leading-tight text-center lg:text-center">
+          <h2 className="demanzo-h1 leading-tight text-center lg:text-center">
             {SectionData?.headings?.[0]}
-          </h1>
+          </h2>
         </div>
       </div>
 

@@ -3,7 +3,7 @@ export default function HowtogetReport({ pageData, colVal }) {
     return (
       <>
         <div className="flex flex-col items-center justify-center p-8">
-          <h1 className="demanzo-h1">How to Get Your Free Report?</h1>
+          <p className="demanzo-h1">How to Get Your Free Report?</p>
           <div
             className={`grid grid-cols-1 lg:grid-cols-${colVal[2].value} gap-8 lg:px-30 mt-10`}
           >

@@ -1,13 +1,14 @@
 ---
 import { API_URL } from "../../../../config/urls";
-import SalesContactSection from "../../../common/SalesContactSection";
+import Caurosel from "../../home/renderers/Caurosel"
 
-
-const res = await fetch(API_URL + 'blocks/976');
-const pageData = await res.json();
+const res = await fetch(API_URL + 'category/5');
+const category = await res.json();
 ---
 
-<!------- Section 6 --------->
 
-
-<SalesContactSection  SectionData={pageData[4]} client:only="react"/>
+<!------- Section 5 --------->
+ 
+<div class="mb-16">
+    <Caurosel category={category} client:load />
+</div>

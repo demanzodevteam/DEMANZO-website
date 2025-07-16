@@ -19,14 +19,6 @@ const ContactHeroAnimation = ({ image, alt }) => {
       }}
       className="relative w-[280px] h-[240px] md:w-[500px] md:h-[380px] lg:pt-16 md:ml-20 lg:ml-0 group origin-center"
     >
-      {/* Background Layer */}
-      <motion.div
-        className="absolute inset-0 bg-[#f7f7f7] rounded-3xl z-0"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
-      />
-
       {/* Foreground Image */}
       <motion.img
         src={image}

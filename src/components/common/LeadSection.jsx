@@ -25,7 +25,7 @@ export default function LeadSection({ pageData }) {
           {pageData?.card_details?.map((para, index) => (
             <div key={index} className="mb-1">
               {para.heading && (
-                <h3 className="demanzo-bold-p mb-2">{para.heading}</h3>
+                <p className="demanzo-bold-p mb-2">{para.heading}</p>
               )}
               <p className="demanzo-bold-p leading-6">{para.para[0]}</p>
             </div>
