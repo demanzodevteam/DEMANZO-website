@@ -9,7 +9,7 @@ const DetailedListing = ({ pageData }) => {
   useEffect(() => {
     setIsClient(true); // Ensures component renders only on client
     AOS.init({ once: false }); // optional config
-  }, []);
+  }, [isClient]);
 
   if (!isClient) return null; // Avoid hydration mismatch
 

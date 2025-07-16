@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import BackGroundImg from "../../assets/Background-SEO-Traffic.jpg";
 import rocketImg from "../../assets/rocket.png";
@@ -5,6 +6,14 @@ import skyImg from "../../assets/sky2.png";
 import PerformanceChecklistForm from "./PerformanceCheckListForm";
 
 const SalesContactTwo = ({ SectionData }) => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) return null; // Avoid hydration mismatch
+
   return (
     <div
       className="flex items-center justify-center px-4 py-16 bg-cover bg-center"
@@ -16,6 +25,7 @@ const SalesContactTwo = ({ SectionData }) => {
           initial={{ opacity: 0, x: -100 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
+          viewport={{ once: true }}
           className="flex flex-col items-center justify-center text-center gap-6 px-4"
         >
           <img
@@ -43,6 +53,7 @@ const SalesContactTwo = ({ SectionData }) => {
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
+          viewport={{ once: true }}
           className="bg-white rounded-2xl shadow-lg p-6 lg:p-10"
         >
           <PerformanceChecklistForm />
