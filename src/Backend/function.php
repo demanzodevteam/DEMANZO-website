@@ -297,7 +297,7 @@ function format_category_recursive($term) {
                 'title' => get_the_title($post),
                 'slug'    => $post->post_name, 
                 'link'  => get_permalink($post),
-                'content' => get_the_excerpt($post),
+                'content' => html_entity_decode(get_the_excerpt($post)),
                 'summaries' => (function() use ($post) {
     $content = apply_filters('the_content', $post->post_content);
     

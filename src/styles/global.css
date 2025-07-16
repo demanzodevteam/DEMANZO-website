@@ -275,11 +275,11 @@ h3[id] {
 
 
 .demanzo-container{
-  @apply !flex !justify-center items-center py-[50px];
+  @apply !flex !justify-center items-center mx-auto px-10 py-[50px];
 }
 
 .demanzo-container-auto {
-  @apply mx-auto w-full max-w-[1400px];
+  @apply mx-auto w-full max-w-[1400px] py-5;
 }
 
 .demanzo-grid {

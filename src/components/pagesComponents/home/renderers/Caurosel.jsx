@@ -59,7 +59,7 @@ export default function Caurosel({ category }) {
             {[...category.posts, ...category.posts].map((testimonial, index) => (
               <SwiperSlide
                 key={`${testimonial.title}-${index}`}
-                className="bg-white rounded-xl shadow-xl overflow-visible mt-4" // ✅ Ensure overflow is visible
+                className="bg-white rounded-xl shadow-xl overflow-visible my-4" // ✅ Ensure overflow is visible
                 style={{
                   boxShadow: "0 8px 24px rgba(0, 0, 0, 0.12)", // Better visible shadow
                   background: "#fff", // Needed to see the card clearly

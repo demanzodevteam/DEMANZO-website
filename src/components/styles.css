@@ -131,5 +131,5 @@
   transform: rotateY(180deg);
 }
 .card-3d-wrapper {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 20px 8px 20px rgba(0, 0, 0, 0.15);
 }
