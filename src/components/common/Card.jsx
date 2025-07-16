@@ -12,7 +12,7 @@ export default function CardComp({ blogDetails }) {
             </p>
           </div>
 
-          <h4 className="font-bold text-large line-clamp-2">{blogDetails.title}</h4>
+          <h4 className="demanzo-h4 line-clamp-2">{blogDetails.title}</h4>
         </CardHeader>
         <CardBody className="overflow-visible py-2 pb-8s">
           <Image

@@ -29,7 +29,7 @@ export const ArticlesHeader = ({ SectionData }) => {
                             />
                             <div>
                                 <span class="font-semibold text-gray-900">Jude Festus</span>
-                                <p class="text-sm text-gray-600">Author</p>
+                                <p class="demanzo-p">Author</p>
                             </div>
                         </div>
                         <div class="flex items-center space-x-4">

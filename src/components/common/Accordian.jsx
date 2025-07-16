@@ -15,7 +15,7 @@ export default function FaqAccordion({ category }) {
   return (
     <>
       <section className={`bg-${category.background} py-10 mx-4 md:px-10`}>
-        <p className="`mb-5 text-2xl lg:text-4xl font-semibold text-center leading-tight text-[#191d27]">
+        <p className="demanzo-h1 mb-5 text-center">
           {category.headings}
         </p>
         {/* {category.headings.split(/\r?\n/).map((line, index) => (
