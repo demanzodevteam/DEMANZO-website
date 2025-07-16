@@ -1,12 +1,17 @@
 // src/components/SecondSection.jsx
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 const DetailedListing = ({ pageData }) => {
-  useEffect(()=>{
-    AOS.init();    
-  })
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true); // Ensures component renders only on client
+    AOS.init({ once: false }); // optional config
+  }, []);
+
+  if (!isClient) return null; // Avoid hydration mismatch
 
   return (
     <section
@@ -55,9 +60,9 @@ const DetailedListing = ({ pageData }) => {
               className="demanzo-bold-p text-left"
               dangerouslySetInnerHTML={{ __html: card.para[0] }}
             />
-            <ul className={`text-left demanzo-bold-p `}>
-              {card?.list.map((listItem, index) => (
-                <li key={index} className="flex items-start gap-2">
+            <ul className="text-left demanzo-bold-p">
+              {card?.list.map((listItem, idx) => (
+                <li key={idx} className="flex items-start gap-2">
                   <span className="text-[#616670] text-[14px] text-lg leading-[1.5]">
                     ➤
                   </span>
@@ -65,12 +70,10 @@ const DetailedListing = ({ pageData }) => {
                 </li>
               ))}
             </ul>
-
             <p
               className="demanzo-bold-p text-left"
               dangerouslySetInnerHTML={{ __html: card.para[1] }}
             />
-            {/* <hr className="w-full border-gray-200 mt-4" /> */}
           </div>
         ))}
       </div>
