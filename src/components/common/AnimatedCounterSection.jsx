@@ -67,9 +67,9 @@ const AnimatedCounterSection = ({ pageData }) => {
                 >
                   0
                 </div>
-                <h5 className="demanzo-h2 text-white tracking-wide">
+                <h2 className="demanzo-h2 text-white tracking-wide">
                   {item?.para}
-                </h5>
+                </h2>
               </div>
             </div>
           ))}

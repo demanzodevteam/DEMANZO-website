@@ -8,16 +8,10 @@ import { useEffect } from "react";
 
 
 export default function FaqAccordion({ category }) {
-  useEffect(()=>{
-    console.log(category);
-    
-  })
   return (
     <>
       <section className={`bg-${category.background} py-10 mx-4 md:px-10`}>
-        <p className="demanzo-h1 mb-5 text-center">
-          {category.headings}
-        </p>
+        <p className="demanzo-h1 mb-5 text-center">{category.headings}</p>
         {/* {category.headings.split(/\r?\n/).map((line, index) => (
         <p
           key={index}
@@ -35,7 +29,7 @@ export default function FaqAccordion({ category }) {
           defaultValue="item-0"
         >
           {category.card_details?.map((faq, index) => (
-            <AccordionItem value={`item-${index}`}>
+            <AccordionItem key={index} value={`item-${index}`}>
               <AccordionTrigger className="demanzo-accordian-heading">
                 {faq.heading}
               </AccordionTrigger>
