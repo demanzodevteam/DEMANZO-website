@@ -177,7 +177,8 @@ function get_custom_page_data_by_slug($data) {
     }
 
     $title   = get_the_title($page->ID);
-    $content = apply_filters('the_content', $page->post_content);
+    remove_filter('the_content', 'wp_trim_excerpt', 10); // just in case
+$content = apply_filters('the_content', $page->post_content);
     $excerpt = get_the_excerpt($page->ID);
 
     // Extract first <a> button label and href

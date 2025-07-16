@@ -1,20 +1,17 @@
 ---
-
 // import HeroTwoAnnimation from '../../HeroTwoAnnimation';
 import { API_URL } from "../../../../config/urls";
 import HeroTwoAnnimation from "../renderers/HeroTwoAnnimation";
 import WhyChooseDemanzo from "../renderers/whyChooseDemanzo";
 
-const res = await fetch(API_URL + 'why-it-companies-choose-demanzo');
+const res = await fetch(API_URL + "why-it-companies-choose-demanzo");
 const data = await res.json();
 ---
 
 <!-- ------------section 2 -------------------- -->
- 
-<div class="demanzo-container ">
-    <div class="demanzo-grid demanzo-max-screen-width">
- <WhyChooseDemanzo data={data}/>
-        <HeroTwoAnnimation image={data.image} alt={data.alt} client:visible/>
+<div class="demanzo-container-auto">
+    <div class="demanzo-grid mb-[50vh] demanzo-max-screen-width">
+        <WhyChooseDemanzo data={data} />
+        <HeroTwoAnnimation image={data.image} alt={data.alt} client:visible />
     </div>
 </div>
-
