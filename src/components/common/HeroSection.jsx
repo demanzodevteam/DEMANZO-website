@@ -7,17 +7,17 @@ export default function HeroSection({ pageData }) {
   return (
     <>
       <div
-        className="demanzo-container"
+        class="demanzo-container lg:py-10 bg-no-repeat bg-bottom bg-cover "
         style={{
           backgroundImage: pageData?.bgImg ? "none" : `url('${curveImg.src}')`,
         }}
       >
         <div className="demanzo-grid demanzo-max-screen-width">
           <div className="flex flex-col justify-center gap-4 py-8 px-4 lg:px-15 lg:py-10 text-center md:text-left">
-                      <h2 className="demanzo-title">{pageData.title}</h2>
+            <h2 className="demanzo-title">{pageData.title}</h2>
 
             <div className="inline-block relative mx-auto lg:mx-0">
-                          <h1 className="demanzo-h1">{pageData.headings[0]}</h1>
+              <h1 className="demanzo-h1">{pageData.headings[0]}</h1>
 
               <svg
                 className="absolute left-1/2 -translate-x-1/2 lg:left-30 lg:translate-x-0 bottom-20 z-0"
@@ -26,7 +26,6 @@ export default function HeroSection({ pageData }) {
                 viewBox="0 0 270 20"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-
               >
                 <path
                   d="M5 15C80 5 190 0 265 12"
@@ -38,10 +37,7 @@ export default function HeroSection({ pageData }) {
             </div>
 
             {pageData?.paragraphs?.map((para, index) => (
-              <p
-                key={index}
-                className="demanzo-bold-p"
-              >
+              <p key={index} className="demanzo-bold-p">
                 {para}
               </p>
             ))}
@@ -93,7 +89,9 @@ export default function HeroSection({ pageData }) {
                       d="M8 12l3 3 5-5"
                     />
                   </svg>
-                  <span className="text-[15px] text-[#54595f]">{item.para}</span>
+                  <span className="text-[15px] text-[#54595f]">
+                    {item.para}
+                  </span>
                 </div>
               ))}
             </div>
@@ -118,14 +116,14 @@ export default function HeroSection({ pageData }) {
                       d="M8 12l3 3 5-5"
                     />
                   </svg>
-                  <span className="demanzo-bold-pdemanzo-bold-p">{item.para}</span>
+                  <span className="demanzo-bold-pdemanzo-bold-p">
+                    {item.para}
+                  </span>
                 </div>
               ))}
             </div>
-
           </div>
         </div>
-
       </div>
     </>
   );
