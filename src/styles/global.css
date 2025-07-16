@@ -300,3 +300,14 @@ h3[id] {
 .demanzo-article-footer-h{
   @apply font-semibold text-gray-800 group-hover:text-black line-clamp-2
 }
+
+
+
+.custom-swiper-slide {
+  text-align: center !important;
+  font-size: 18px !important;
+  background: #fff0 !important;
+  display: flex !important; /* You must use flex for justify/align to work */
+  justify-content: center !important;
+  align-items: center !important;
+}
