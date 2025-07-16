@@ -7,4 +7,4 @@ const res = await fetch(API_URL + 'blocks/314');
 const pageData = await res.json();
 ---
 
-<SalesContactSection  SectionData={pageData[6]} client:load/>                                                                                                                                                                                                               
+<SalesContactSection  SectionData={pageData[6]} client:only="react"/>                                                                                                                                                                                                               

@@ -15,7 +15,7 @@ const ListCard = ({
         {Icon && <Icon />}
       </div>
       <div>
-        <span className="font-semibold text-[18px] block">{title}</span>
+        <span className="demanzo-bold-p block">{title}</span>
         <p className="font-medium" style={{ color: valueColor }}>
           {value}
         </p>
