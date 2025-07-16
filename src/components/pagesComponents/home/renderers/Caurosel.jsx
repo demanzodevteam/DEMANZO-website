@@ -23,9 +23,9 @@ export default function Caurosel({ category }) {
   if (!hasMounted) return null;
   return (
     <>
-      <p className="text-[30px] lg:text-[40px] font-[600] text-[#191d27] text-center pb-6" data-aos="fade-up" data-aos-duration="2000" >
+      <h2 className="text-[30px] lg:text-[40px] font-[600] text-[#191d27] text-center pb-6" data-aos="fade-up" data-aos-duration="2000" >
         {category.name}
-      </p>
+      </h2>
       <div className="demanzo-container">
         <div
           className="demanzo-container-auto px-4 sm:px-6 md:px-8 overflow-visible relative z-10 pb-10"
@@ -88,9 +88,9 @@ export default function Caurosel({ category }) {
                       </svg>
                     ))}
                   </div>
-                  <p className="text-[20px] font-[600] text-center text-[#30353b]">
+                  <h6 className="text-[20px] font-[600] text-center text-[#30353b]">
                     {testimonial.title}
-                  </p>
+                  </h6>
                 </div>
               </SwiperSlide>
             ))}

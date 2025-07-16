@@ -16,13 +16,13 @@ const WhyYouNeedSection = ({ SectionData, colVal, background }) => {
       {/* <div className=""> */}
       <div className="demanzo-max-screen-width">
         {SectionData?.title && (
-          <h1 className="demanzo-title my-3">{SectionData.title}</h1>
+          <h2 className="demanzo-title my-3">{SectionData.title}</h2>
         )}
         <div className="inline-block relative mx-auto lg:mx-0 mb-10">
           <div className="relative inline-block">
-            <h1 className="demanzo-h1 text-center lg:text-center">
+            <h2 className="demanzo-h1 text-center lg:text-center">
               {SectionData.headings[0]}{" "}
-            </h1>
+            </h2>
             <svg
               className="absolute left-1/2 -translate-x-1/2 bottom-[-10px] lg:left-[140px] lg:translate-x-0 z-0"
               width="270"
@@ -38,9 +38,9 @@ const WhyYouNeedSection = ({ SectionData, colVal, background }) => {
                 strokeLinecap="round"
               />
             </svg>
-            <h1 className="demanzo-h1 text-center lg:text-center">
+            <h2 className="demanzo-h1 text-center lg:text-center">
               {SectionData.headings[1]}{" "}
-            </h1>
+            </h2>
           </div>
         </div>
         <p className="demanzo-p  max-w-7xl mx-auto text-[16px]">
@@ -64,7 +64,7 @@ const WhyYouNeedSection = ({ SectionData, colVal, background }) => {
               />
 
               {card.heading && (
-                <h2 className="demanzo-h2 text-left">{card.heading}</h2>
+                <h5 className="demanzo-h2 text-left">{card.heading}</h5>
               )}
               <p
                 className="demanzo-bold-p"

@@ -14,9 +14,9 @@ const InfoCardGrid = ({ pageData }) => {
     >
       <div className="inline-block relative mx-auto lg:mx-0 mb-10">
         <div className="relative inline-block">
-          <h1 className="demanzo-h1 leading-tight text-center lg:text-center">
+          <h2 className="demanzo-h1 leading-tight text-center lg:text-center">
             {pageData.headings[0]}{" "}
-          </h1>
+          </h2>
         </div>
       </div>
 
@@ -33,9 +33,9 @@ const InfoCardGrid = ({ pageData }) => {
               dangerouslySetInnerHTML={{ __html: card.svg }}
             />
             <div className="w-full text-center lg:text-left">
-              <h2 className="demanzo-h2 text-center lg:text-left">
+              <h5 className="demanzo-h2 text-center lg:text-left">
                 {card?.heading}
-              </h2>
+              </h5>
             </div>
             <p
               className="demanzo-bold-p text-center lg:text-left"
@@ -60,9 +60,9 @@ const InfoCardGrid = ({ pageData }) => {
                 }}
               />
               <div className="w-full text-center lg:text-left">
-                <h2 className="demanzo-h2 text-center lg:text-left">
+                <h5 className="demanzo-h2 text-center lg:text-left">
                   {pageData.card_details[3]?.heading}
-                </h2>
+                </h5>
               </div>
               <p
                 className="demanzo-bold-p text-center lg:text-left"

@@ -14,7 +14,7 @@ export default function HeroSection({ pageData }) {
       >
         <div className="demanzo-grid demanzo-max-screen-width">
           <div className="flex flex-col justify-center gap-4 py-8 px-4 lg:px-15 lg:py-10 text-center md:text-left">
-                      <h1 className="demanzo-title">{pageData.title}</h1>
+                      <h2 className="demanzo-title">{pageData.title}</h2>
 
             <div className="inline-block relative mx-auto lg:mx-0">
                           <h1 className="demanzo-h1">{pageData.headings[0]}</h1>

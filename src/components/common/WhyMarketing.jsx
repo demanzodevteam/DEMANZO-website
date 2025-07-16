@@ -5,7 +5,7 @@ export default function WhyMarketing({ pageData }) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] px-2 gap-2 lg:px-14 lg:py-10 bg-no-repeat bg-bottom bg-cover min-h-[80vh]">
       <div className="flex flex-col justify-center gap-4 py-8 px-4 lg:px-15 lg:py-10">
-        <h1 className="demanzo-title">{pageData.title}</h1>
+        <h2 className="demanzo-title">{pageData.title}</h2>
 
         <div className="inline-block relative mx-auto lg:mx-0">
           <h1 className="demanzo-h1">{pageData.headings[0]}</h1>

@@ -18,9 +18,9 @@ const FiveFeatureSection = ({ pageData }) => {
       {/* Title and SVG underline */}
       <div className="inline-block relative mx-auto lg:mx-0 mb-20">
         <div className="relative inline-block">
-          <h1 className="demanzo-h1 leading-tight text-center lg:text-left">
+          <h2 className="demanzo-h1 leading-tight text-center lg:text-left">
             {pageData.title}
-          </h1>
+          </h2>
           <svg
             className="absolute left-1/2 -translate-x-1/2 bottom-[-10px] lg:left-[180px] lg:translate-x-0 z-0"
             width="270"
@@ -51,7 +51,7 @@ const FiveFeatureSection = ({ pageData }) => {
               <div className="text-[#447EFC]">
                 <CircleCheckBig />
               </div>
-              <h2 className="demanzo-h2">{card.heading}</h2>
+              <h5 className="demanzo-h2">{card.heading}</h5>
             </div>
             <p className="demanzo-p">{card.para}</p>
           </div>
@@ -70,7 +70,7 @@ const FiveFeatureSection = ({ pageData }) => {
               <div className="text-[#447EFC]">
                 <CircleCheckBig />
               </div>
-              <h2 className="demanzo-h2">{card.heading}</h2>
+              <h5 className="demanzo-h2">{card.heading}</h5>
             </div>
             <p className="demanzo-p">{card.para}</p>
           </div>
