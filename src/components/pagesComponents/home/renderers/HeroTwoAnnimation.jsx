@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const HeroTwoAnnimation = ({ image, alt }) => {
   return (
-    <div className="relative md:ml-20 lg:ml-0 group hover:-translate-y-4 transition-all duration-500">
+    <div className="relative lg:pt-16 md:ml-20 lg:ml-0 group hover:-translate-y-4 transition-all duration-500">
       {/* Background Box Animation */}
       <motion.div
   animate={{ y: [0, -200, 0, 200, 0] }} 
@@ -12,7 +12,7 @@ const HeroTwoAnnimation = ({ image, alt }) => {
     repeatType: "loop",
     ease: "easeInOut"
   }}
-  className="bg-[#f7f7f7] w-[340px] lg:w-[380px] h-[240px] md:w-[500px] md:h-[380px] rounded-4xl absolute z-0 left-10 lg:left-16 hover:-translate-y-1.5 transition-all duration-500"
+  className="bg-[#f7f7f7] w-[340px] lg:w-[380px] h-[240px] md:w-[500px] md:h-[380px] rounded-4xl absolute z-0 left-10 lg:left-16 hover:-translate-y-3.5 transition-all duration-500"
 />
 
       {/* Foreground Image Animation with Zoom on Hover */}
@@ -34,7 +34,7 @@ const HeroTwoAnnimation = ({ image, alt }) => {
     repeatType: "loop",
     ease: "easeInOut"
   }}
-  className="w-[360px] h-[240px] md:w-[500px] md:h-[380px] rounded-4xl absolute z-10 transform transition-transform duration-500 hover:-translate-y-1.5"
+  className="w-[360px] h-[240px] md:w-[500px] md:h-[380px] rounded-4xl absolute z-10 top-10 lg:top-28 transform transition-transform duration-500 hover:-translate-y-3.5"
 />
 
     </div>
