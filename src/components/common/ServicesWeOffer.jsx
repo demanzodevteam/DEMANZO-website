@@ -15,11 +15,11 @@ const ServicesWeOffer = ({ SectionData, colVal }) => {
         <div className="inline-block relative mx-auto lg:mx-0 ">
           <div className="relative inline-block">
             {SectionData?.title && (
-              <h1 className="demanzo-title my-3">{SectionData.title}</h1>
+              <h2 className="demanzo-title my-3">{SectionData.title}</h2>
             )}
-            <h1 className="demanzo-h1 text-center lg:text-center">
+            <h2 className="demanzo-h1 text-center lg:text-center">
               {SectionData.headings[0]}{" "}
-            </h1>
+            </h2>
             <svg
               className="absolute left-1/2 -translate-x-1/2 bottom-[-10px] lg:left-[140px] lg:translate-x-0 z-0"
               width="270"
@@ -35,9 +35,9 @@ const ServicesWeOffer = ({ SectionData, colVal }) => {
                 strokeLinecap="round"
               />
             </svg>
-            <h1 className="demanzo-h1 text-center lg:text-center">
+            <h2 className="demanzo-h1 text-center lg:text-center">
               {SectionData.heading}{" "}
-            </h1>
+            </h2>
           </div>
         </div>
         <p className="demanzo-p mt-12 max-w-7xl mx-auto text-[16px]">
@@ -57,7 +57,7 @@ const ServicesWeOffer = ({ SectionData, colVal }) => {
                   className="w-14 h-14"
                   dangerouslySetInnerHTML={{ __html: card.svg }}
                 />
-                <h2 className="demanzo-h2 pl-2 ">{card.heading}</h2>
+                <h5 className="demanzo-h2 pl-2 ">{card.heading}</h5>
               </div>
 
               <p

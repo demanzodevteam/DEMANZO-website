@@ -16,28 +16,28 @@ export default function FeatureSteps({ pageData, background }) {
       className={`bg-gradient-to-b ${background} px-4 md:px-10 lg:px-20 py-16 space-y-4 text-center`}
     >
       <div className="w-full flex justify-center mb-10">
-        <div className="relative inline-block text-center">
-          <h1 className="demanzo-h1 leading-tight">
-            {pageData.headings[0]}
-          </h1>
+        {pageData.headings[0] && (
+          <div className="relative inline-block text-center">
+            <h2 className="demanzo-h1 leading-tight">{pageData.headings[0]}</h2>
 
-          <div className="absolute left-1/2 -translate-x-1/2 bottom-[-10px] z-0">
-            <svg
-              width="270"
-              height="20"
-              viewBox="0 0 270 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M5 15C80 5 190 0 265 12"
-                stroke="#7D80E6"
-                strokeWidth="6"
-                strokeLinecap="round"
-              />
-            </svg>
+            <div className="absolute left-1/2 -translate-x-1/2 bottom-[-10px] z-0">
+              <svg
+                width="270"
+                height="20"
+                viewBox="0 0 270 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5 15C80 5 190 0 265 12"
+                  stroke="#7D80E6"
+                  strokeWidth="6"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </div>
           </div>
-        </div>
+        )}
       </div>
       {pageData?.headings?.[1] && (
         <p className="demanzo-bold-p max-w-4xl mx-auto text-center">
@@ -59,14 +59,9 @@ export default function FeatureSteps({ pageData, background }) {
               ></div>
 
               <div className="p-3 text-start space-y-6">
-                <h1 className="demanzo-h2">
-                  {card_details.heading}
-                </h1>
+                <h5 className="demanzo-h2">{card_details.heading}</h5>
                 {card_details.para?.map((pt, i) => (
-                  <p
-                    key={i}
-                    className="demanzo-bold-p"
-                  >
+                  <p key={i} className="demanzo-bold-p">
                     {pt}
                   </p>
                 ))}

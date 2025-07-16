@@ -16,9 +16,9 @@ const HighlightSteps = ({ SectionData }) => {
     >
       <div className="inline-block relative mx-auto lg:mx-0 mb-10">
         <div className="relative inline-block space-y-6">
-          <h1 className="demanzo-h1 leading-tight text-center lg:text-center">
+          <h2 className="demanzo-h1 leading-tight text-center lg:text-center">
             {SectionData.headings[0]}
-          </h1>
+          </h2>
           {SectionData?.paragraphs?.[0] && (
             <p className="demanzo-bold-p mx-auto text-[16px] leading-relaxed">
               {SectionData.paragraphs[0]}
@@ -49,7 +49,7 @@ const HighlightSteps = ({ SectionData }) => {
               />
               {/* Text */}
               <div>
-                <h1
+                <h5
                   className="demanzo-h2 mb-4"
                   dangerouslySetInnerHTML={{ __html: card.heading }}
                 />
@@ -84,7 +84,7 @@ const HighlightSteps = ({ SectionData }) => {
               />
               {/* Text */}
               <div>
-                <h1
+                <h5
                   className="demanzo-h2 mb-4"
                   dangerouslySetInnerHTML={{
                     __html: SectionData.list_items[0][6]?.heading,

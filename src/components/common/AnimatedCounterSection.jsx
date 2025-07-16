@@ -60,16 +60,16 @@ const AnimatedCounterSection = ({ pageData }) => {
               className="w-full bg-[#1f2f4b] p-5 hover:bg-transparent border border-blue-400 rounded-md text-center text-white"
             >
               <div className="text-center">
-                <div
+                <h3
                   ref={(el) => (counterRefs.current[index] = el)}
                   className="text-[65px] font-bold text-[#ff5f55]"
                   data-target={item?.heading}
                 >
                   0
-                </div>
-                <h2 className="demanzo-h2 text-white tracking-wide">
+                </h3>
+                <h5 className="demanzo-h2 text-white tracking-wide">
                   {item?.para}
-                </h2>
+                </h5>
               </div>
             </div>
           ))}

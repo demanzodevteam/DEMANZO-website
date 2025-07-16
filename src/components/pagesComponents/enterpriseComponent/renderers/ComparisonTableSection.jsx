@@ -2,7 +2,6 @@ import React from "react";
 
 const ComparisonTableSection = ({
   title,
-  subtitle,
   tableHeadings,
   tableData,
   footerText,
@@ -12,9 +11,9 @@ const ComparisonTableSection = ({
       <div className="inline-block relative mx-auto lg:mx-0 mb-10 px-4">
         <div className="relative inline-block">
           {title && (
-            <h1 className="text-[28px] sm:text-[36px] md:text-[42px] font-semibold leading-tight">
+            <h2 className="text-[28px] sm:text-[36px] md:text-[42px] font-semibold leading-tight">
               {title}
-            </h1>
+            </h2>
           )}
           <svg
             className="absolute left-1/2 -translate-x-1/2 bottom-[-10px] lg:left-[140px] lg:translate-x-0 z-0"
@@ -31,11 +30,6 @@ const ComparisonTableSection = ({
               strokeLinecap="round"
             />
           </svg>
-          {subtitle && (
-            <h2 className="text-[20px] sm:text-[24px] md:text-[28px] font-medium mt-4">
-              {subtitle}
-            </h2>
-          )}
         </div>
       </div>
 
@@ -72,9 +66,9 @@ const ComparisonTableSection = ({
         </table>
 
         {footerText && (
-          <h3 className="mt-8 text-[22px] sm:text-[26px] font-semibold">
+          <h2 className="mt-8 text-[22px] sm:text-[26px] font-semibold">
             {footerText}
-          </h3>
+          </h2>
         )}
       </div>
     </section>

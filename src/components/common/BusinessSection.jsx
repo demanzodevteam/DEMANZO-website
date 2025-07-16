@@ -15,9 +15,9 @@ const BusinessSection = ({ SectionData, Background }) => {
       <div className="mt-14">
         <div className="inline-block relative mx-auto lg:mx-0 mb-20">
           <div className="relative inline-block my-0">
-            <h1 className="demanzo-h1 relative z-10 leading-tight text-center lg:text-center">
+            <h2 className="demanzo-h1 relative z-10 leading-tight text-center lg:text-center">
               {SectionData.headings[0]}{" "}
-            </h1>
+            </h2>
             <svg
               className="absolute left-1/2 -translate-x-1/2 bottom-[-10px] lg:left-[140px] lg:translate-x-0 z-0"
               width="270"
@@ -68,9 +68,9 @@ const BusinessSection = ({ SectionData, Background }) => {
                     <path d="M21.801 10A10 10 0 1 1 17 3.335" />
                     <path d="m9 11 3 3L22 4" />
                   </svg>
-                  <h2 className="demanzo-h2 ">
+                  <h5 className="demanzo-h2 ">
                     {list.heading}
-                  </h2>
+                  </h5>
                 </div>
                 <p className="demanzo-bold-p text-start px-4 mt-3">
                   {list.para}

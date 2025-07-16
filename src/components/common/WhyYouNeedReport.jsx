@@ -25,7 +25,7 @@ export default function WhyYouNeedReport({pageData}) {
           </div>
 
           <div className="w-full lg:w-1/2 p-4 md:mx-2 order-1 lg:order-2 text-left">
-            <h2 className="mb-8 demanzo-h2">
+            <h2 className="mb-8 demanzo-h1">
               <span>{pageData.headings?.[0]}</span>
             </h2>
 
