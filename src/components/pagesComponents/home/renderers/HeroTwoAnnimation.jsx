@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 
 const HeroTwoAnnimation = ({ image, alt }) => {
   return (
-    <div className="relative lg:pt-16 md:ml-20 lg:ml-0 group hover:-translate-y-4 transition-all duration-500">
+    <div className="relative lg:pt-16 md:ml-20 lg:ml-0 group hover:-translate-y-4 transition-all duration-500 h-[30vh]">
       {/* Background Box Animation */}
       <motion.div
-  animate={{ y: [0, -200, 0, 200, 0] }} 
+  animate={{ y: [0, -100, 0, 100, 0] }} 
   transition={{ 
     duration: 3,
     repeat: Infinity,
@@ -27,7 +27,7 @@ const HeroTwoAnnimation = ({ image, alt }) => {
       <motion.img
   src={image}
   alt={alt}
-  animate={{ y: [0, -200, 0, 200, 0] }} // More float range
+  animate={{ y: [0, -100, 0, 100, 0] }} // More float range
   transition={{ 
     duration: 3, // Faster loop (lower = faster)
     repeat: Infinity,
