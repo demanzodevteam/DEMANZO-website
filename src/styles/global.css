@@ -275,7 +275,7 @@ h3[id] {
 
 
 .demanzo-container{
-  @apply !flex !justify-center items-center mx-auto px-10 py-[50px];
+  @apply !flex !justify-center items-center mx-auto px-10 ;
 }
 
 .demanzo-container-auto {
