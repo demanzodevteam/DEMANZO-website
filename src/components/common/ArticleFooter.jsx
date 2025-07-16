@@ -28,7 +28,7 @@ export const ArticleFooter = ({ posts, currentSlug }) => {
               {posts[0].class_list
                 ?.filter((cls) => cls.startsWith("tag-"))
                 .map((tag, index) => (
-                  <span key={index} className="demanzo-rounded-pill">
+                  <span key={index} className="demanzo-rounded-pill bg-[linear-gradient(to_right,_#ff8c00,_#f12500)]">
                     {tag.replace("tag-", "")}
                   </span>
                 ))}

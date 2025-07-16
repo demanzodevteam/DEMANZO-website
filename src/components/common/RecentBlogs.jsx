@@ -72,7 +72,7 @@ export default function BlogCards({ BlogData, maxCards = 3 }) {
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 />
-                <span className="demanzo-rounded-pill">{card?.category}</span>
+                <span className="demanzo-rounded-pill bg-[linear-gradient(to_right,_#ff8c00,_#f12500)]">{card?.category}</span>
                 <h3 className="demanzo-h2 mt-2 line-clamp-2">{card.title}</h3>
                 <p className="demanzo-bold-p mt-1 line-clamp-2">
                   {card.description || ""}
