@@ -56,12 +56,13 @@ const NeedHighlight = ({ SectionData }) => {
         <div className="mt-12 flex justify-center pb-20">
           {SectionData?.paragraphs[1] &&
             SectionData.paragraphs[1].trim() !== "" && (
-              <button
+              <a
+                href="#contact-form"
                 type="submit"
                 className="w-full lg:w-auto text-white bg-[#0A6AAD] px-6 py-3 rounded-full mt-8"
               >
                 {SectionData.paragraphs[1]}
-              </button>
+              </a>
             )}
         </div>
       </div>
