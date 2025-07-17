@@ -1,7 +1,6 @@
 import { MEDIA_URL } from "../../config/urls";
 
 export default function SeoFeatureSection({ pageData }) {
-    // console.log(pageData, 'pageDAta');
 
     return (
       <section className=" bg-gradient-to-b to-[#FEF2F2]">

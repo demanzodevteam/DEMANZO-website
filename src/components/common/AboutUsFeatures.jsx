@@ -1,14 +1,9 @@
-import React from "react";
-import curveImg from "../../assets/Curve-main-bg.webp";
 import { MEDIA_URL } from "../../config/urls";
 
 export default function AboutUsFeatures({ pageData }) {
   return (
     <div
-      class="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] px-2 gap-2 lg:px-14 lg:py-10 bg-no-repeat bg-bottom bg-cover min-h-[80vh]"
-      //   style={{
-      //     backgroundImage: `url('${MEDIA_URL + pageData.images?.[0]?.src}')`,
-      //   }}
+      class="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] px-2 gap-2 lg:px-14 lg:py-10 bg-no-repeat bg-bottom bg-cover min-h-[80vh] bg-gradient-to-t from-[#fef1ee] "
     >
       <div className="col-span-2 px-4 lg:px-15">
         <p class="demanzo-bold-p leading-9">{pageData?.paragraphs[0]}</p>
