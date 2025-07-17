@@ -2,7 +2,7 @@ export default function WhyShouldDownload({ pageData }) {
     // console.log(pageData?.list_items, 'pagedata')
     return (
       <>
-        <div className="demanzo-container-auto mx-8 my-10 sm:mx-[60px] sm:my-[100px]">
+        <div className="demanzo-container-auto mx-8 my-10 sm:mx-[60px] sm:my-[100px] px-10">
           <div className="flex flex-col items-center justify-center p-8 rounded-xl bg-pink-50 px-[40px]">
             <h2 className="demanzo-h1 text-center">
               {/* Who Should Download? */}

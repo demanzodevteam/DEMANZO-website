@@ -5,7 +5,7 @@ export default function BuildGrowthEngineSection({ pageData }) {
     <section className="bg-[#E6F8FF]">
       <div className="demanzo-container-auto">
         <div
-          className="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] px-4 gap-2 py-25  "
+          className="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] px-4 gap-2 lg:py-25  "
           // style={{ backgroundImage: bgImg ? "none" : `url('${curveImg.src}')` }}
         >
           <div className="flex flex-col justify-center items-center gap-4 py-8 px-4 lg:px-15 lg:py-10">

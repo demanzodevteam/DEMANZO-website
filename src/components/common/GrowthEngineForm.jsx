@@ -360,20 +360,6 @@ const Step5 = ({ form, category, errors, handleChange }) => {
           monthlyMarketBudgetOptions,
           "Rough idea of the investment range you're planning?"
         )}
-        {/* <div>
-          <label className="block font-medium text-[#000000] mb-2">
-            Captcha
-          </label>
-          <input
-            type="text"
-            id="captcha"
-            name="captcha"
-            value={form.captcha}
-            onChange={handleChange}
-            className="w-full p-2 h-12.5 mt-1 border hover:border-black focus:border-black focus:outline-none rounded-md"
-            placeholder="Enter Captcha"
-          />
-        </div> */}
       </div>
     </div>
   );
@@ -504,7 +490,7 @@ const handleNext = (currentStep, setStep) => {
         }
       });
 
-    formData.append("_wpcf7", "1081"); // replace with your CF7 form ID
+    formData.append("_wpcf7", "799"); // replace with your CF7 form ID
     formData.append("_wpcf7_version", "5.9.4");
     formData.append("_wpcf7_locale", "en_US");
     formData.append("_wpcf7_unit_tag", "wpcf7-f1081-p12-o1"); // check form source
@@ -517,7 +503,6 @@ const handleNext = (currentStep, setStep) => {
           body: formData,
         });
         
-// https://demanzo.com/wp-json/contact-form-7/v1/contact-forms/52239/feedback
         const data = await res.json();
         if (data.status === "mail_sent") {
           const audio = new Audio("/notification.mp3");
@@ -539,6 +524,7 @@ const handleNext = (currentStep, setStep) => {
             captcha: "",
           });
           setTimeout(() => setSubmitted(false), 2000);
+          setStep(1)
         } else {
           alert("Submission failed: " + data.message);
         }

@@ -6,11 +6,7 @@ import ResourceHeader from "../../../common/ResourceHeader";
 const res = await fetch(API_URL + 'blocks/200');
 const pageData = await res.json();
 ---
-<!-- console.log(pageData,'pagedata') -->
 
-<!-- First Section -->
-<!-- <HeroPiplineSection pageData={pageData} client:load /> -->
-<!-- <HeroSection pageData={pageData[0]} /> -->
 <ResourceHeader pageData={pageData[0]} />
 
 
