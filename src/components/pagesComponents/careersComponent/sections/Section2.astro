@@ -7,7 +7,7 @@ const data = await res.json();
 const pageData = data[1];
 ---
 
-<div class="demanzo-container-auto flex items-center justify-center px-[15px] py-[80px] lg:px-[60px] text-center">
+<div class="demanzo-container-auto flex items-center justify-center px-[15px] !py-[50px] lg:px-[60px] text-center">
     <h2 class="text-[#191d27] text-[30px] md:text-[40px] font-[600]">
         {pageData.headings[0]}
         <a href={pageData.paragraphs[0]} class="text-[#61ce70]">{pageData.headings[1]}</a>
