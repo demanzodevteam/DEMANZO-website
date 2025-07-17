@@ -7,13 +7,13 @@ export default function CaseStudyCard({ category }) {
 
       <div className="demanzo-container-auto">
         {category?.name !== "" && (
-          <h2 className="demanzo-h1 text-center pt-10">
+          <h2 className="demanzo-h1 text-center ">
 
             {category.name}
           </h2>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 lg:px-8 py-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 lg:px-8 ">
           {category.posts?.map((caseStudy, index) => (
             <a
               key={index}

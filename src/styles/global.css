@@ -294,7 +294,7 @@ h3[id] {
   @apply text-[16px] font-[600] px-3 py-3 rounded-sm;
 }
 .demanzo-section{
-  @apply px-4 md:px-10 lg:px-20 py-16 space-y-4;
+  @apply py-16 space-y-4;
 }
 .demanzo-accordian-content {
   @apply text-[16px] font-[500] text-[#616670] px-6 py-4

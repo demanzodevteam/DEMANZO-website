@@ -23,6 +23,12 @@ export default function BlogCards({ BlogData }) {
 
   return (
     <div className="demanzo-container-auto">
+      {BlogData?.name !== "" && (
+          <h2 className="demanzo-h1 text-center ">
+
+            {BlogData.name}
+          </h2>
+        )}
       {loading
         ? skeletonArray.map((_, idx) => (
           <div
