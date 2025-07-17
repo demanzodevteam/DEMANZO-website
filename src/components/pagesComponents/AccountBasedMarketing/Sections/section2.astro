@@ -1,0 +1,20 @@
+---
+import { API_URL } from '../../../../config/urls';
+import WhyYouNeedSection from '../../../common/WhatMattersForItCompanies';
+
+
+const res = await fetch(API_URL + 'blocks/280');
+const SectionData = await res.json();
+const colVal = [
+  { value: 1 },
+  { value: 3 },
+  { value: 3 }
+];
+const background = '#000000'
+---
+
+<!-------- Second Section ------->
+<WhyYouNeedSection SectionData={SectionData[1]} colVal={colVal} background={background} client:load/>
+
+
+
