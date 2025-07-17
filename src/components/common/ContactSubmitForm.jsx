@@ -161,7 +161,7 @@ export default function ContactSubmitForm() {
         <div className="grid grid-cols-1 gap-6">
           {renderInput("text-517", "text", "Your Name")}
           {renderInput("email-875", "email", "Email")}
-          {renderTextarea("textarea-12", "Message")}
+          {renderTextarea("textarea-785", "Message")}
         </div>
 
         <div className="text-center">
