@@ -1,5 +1,3 @@
-import React from 'react'
-import { motion } from "framer-motion";
 import { MEDIA_URL } from '../../config/urls';
 
 export default function WhyYouNeedReport({pageData}) {

@@ -1,18 +1,8 @@
-import React from 'react'
-import CaptchaImg from '../../assets/Captcha.png'
 import BackGroundImg from "../../assets/Background-SEO-Traffic.jpg";
 import rocketImg from "../../assets/rocket.png";
 import skyImg from "../../assets/sky2.png";
-import { motion } from "framer-motion";
 import DownloadReportForm from './DownloadReportForm'
 export default function DownloadReport({ pageData }) {
-    //  const [isClient, setIsClient] = useState(false);
-    
-    //   useEffect(() => {
-    //     setIsClient(true);
-    //   }, []);
-    
-    //   if (!isClient) return null; // Avoid hydration mismatch
     
     return (
         <div
