@@ -313,3 +313,27 @@ h3[id] {
   justify-content: center !important;
   align-items: center !important;
 }
+
+
+/* chatbot */
+
+.chat-bot-launcher-button {
+  background-color: transparent !important;
+  background-image: url("https://demanzo.com/wp-content/uploads/2022/09/cropped-demanzo-logo.png") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  padding: 0;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.avatar {
+              background-color: #2b2b2b00 !important;
+  background-image: url("https://demanzo.com/wp-content/uploads/2022/09/cropped-demanzo-logo.png") !important;
+              background-size: 29px;
+            }
+          
