@@ -1,8 +1,8 @@
-// src/components/HeroLogger.tsx
 import curveImg from "../../assets/Curve-main-bg.webp";
 import { MEDIA_URL } from "../../config/urls";
 
 export default function HeroSection({ pageData }) {
+ 
 
   return (
     <>
@@ -87,7 +87,7 @@ export default function HeroSection({ pageData }) {
 </svg>
                   </div>
                   <span className="text-[15px] text-[#54595f]">
-                    {item.para}
+                    <strong>{item.heading}</strong> - {item.para}
                   </span>
                 </div>
               ))}
@@ -111,7 +111,7 @@ export default function HeroSection({ pageData }) {
 </svg>
                   </div>
                   <span className="demanzo-bold-pdemanzo-bold-p text-[#54595f]">
-                    {item.para}
+                    <strong>{item.heading}</strong> - {item.para}
                   </span>
                 </div>
               ))}

@@ -5,9 +5,5 @@ import DownloadReport from "../../../common/DownloadReport";
 const res = await fetch(API_URL + 'blocks/200');
 const pageData = await res.json();
 ---
-<!-- console.log(pageData,'pagedata') -->
-
-<!-- First Section -->
-<!-- <HeroPiplineSection pageData={pageData} client:load /> -->
 <DownloadReport pageData={pageData[5]}  client:only="react"/>
 

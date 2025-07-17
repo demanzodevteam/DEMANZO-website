@@ -1,7 +1,6 @@
 ---
 import { API_URL } from "../../../../config/urls";
 import HowtogetReport from "../../../common/HowtogetReport";
-import WhyShouldDownload from "../../../common/WhyShouldDownload";
 
 const res = await fetch(API_URL + 'blocks/200');
 const pageData = await res.json();
@@ -11,9 +10,6 @@ const colVal = [
   { value: 3 }
 ];
 ---
-<!-- console.log(pageData,'pagedata') -->
 
-<!-- First Section -->
-<!-- <HeroPiplineSection pageData={pageData} client:load /> -->
 <HowtogetReport pageData={pageData[4]} colVal={colVal} />
 
