@@ -283,8 +283,7 @@ h3[id] {
 }
 
 .demanzo-grid {
-  @apply grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] px-2 gap-2 lg:px-14 lg:py-10 bg-no-repeat bg-bottom bg-cover;
-  
+  @apply grid grid-cols-1 lg:grid-cols-[1fr_0.8fr]  gap-2 bg-no-repeat bg-bottom bg-cover;
 }
 
 .demanzo-max-screen-width {
@@ -294,7 +293,9 @@ h3[id] {
 .demanzo-accordian-heading {
   @apply text-[16px] font-[600] px-3 py-3 rounded-sm
 }
-
+.demanzo-section{
+  @apply
+}
 .demanzo-accordian-content {
   @apply text-[16px] font-[500] text-[#616670] px-6 py-4
 }

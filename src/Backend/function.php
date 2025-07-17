@@ -183,7 +183,10 @@ $content = apply_filters('the_content', $page->post_content);
 
     // Extract first <a> button label and href
     preg_match('/<a[^>]+href=["\']([^"\']+)["\'][^>]*>(.*?)<\/a>/', $content, $button_match);
-    $link   = isset($button_match[1]) ? esc_url_raw($button_match[1]) : '';
+   $link = isset($button_match[1]) 
+    ? preg_replace('#^https?://#', '/', esc_url_raw($button_match[1]))
+    : '';
+
     $button = isset($button_match[2]) ? strip_tags($button_match[2]) : '';
 
     // Extract first <img> URL

@@ -10,10 +10,15 @@ const data = await res.json();
 
 <!-- ------------section 2 -------------------- -->
 
-
-<div class="demanzo-container-auto">
-    <div class="demanzo-grid demanzo-max-screen-width min-h-[50vh] md:min-h-[90vh] lg:min-h-[50vh] lg:h-[583px] md:h-[45vh]" >
+<div class="demanzo-container py-15">
+    <div class="demanzo-grid demanzo-max-screen-width">
         <WhyChooseDemanzo data={data} />
         <HeroTwoAnnimation image={data.image} alt={data.alt} client:visible />
     </div>
 </div>
+<!-- <div class="demanzo-container-auto">
+    <div class="demanzo-grid demanzo-max-screen-width min-h-[50vh] md:min-h-[90vh] lg:min-h-[50vh] lg:h-[583px] md:h-[45vh]" >
+        <WhyChooseDemanzo data={data} />
+        <HeroTwoAnnimation image={data.image} alt={data.alt} client:visible />
+    </div>
+</div> -->
