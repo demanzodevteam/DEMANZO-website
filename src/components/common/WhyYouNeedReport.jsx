@@ -4,7 +4,7 @@ import { MEDIA_URL } from '../../config/urls';
 
 export default function WhyYouNeedReport({pageData}) {
     return (
-      <div>
+      <div className='demanzo-container-auto'>
         <h2 className="demanzo-h1 text-center !text-transparent !bg-clip-text !bg-gradient-to-r !from-black to-red-500 text-4xl">
           {pageData.title}
         </h2>

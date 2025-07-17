@@ -9,71 +9,71 @@ const InfoCardGrid = ({ pageData }) => {
   });
 
   return (
-    <section
-      className={`${pageData.background} px-4 md:px-10 lg:px-20 text-center py-20`}
-    >
-      <div className="inline-block relative mx-auto lg:mx-0 mb-10">
-        <div className="relative inline-block">
-          <h2 className="demanzo-h1 leading-tight text-center lg:text-center">
-            {pageData.headings[0]}{" "}
-          </h2>
-        </div>
-      </div>
-
-      {/* First row: first 3 cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:px-20 mt-10">
-        {pageData?.card_details?.slice(0, 3).map((card, index) => (
-          <div
-            key={index}
-            className="bg-white shadow-md rounded-xl flex flex-col items-center space-y-4 hover:shadow-lg transition p-6"
-            data-aos="zoom-in-up"
-          >
-            <div
-              className="w-14 h-14"
-              dangerouslySetInnerHTML={{ __html: card.svg }}
-            />
-            <div className="w-full text-center lg:text-left">
-              <h5 className="demanzo-h2 text-center lg:text-left">
-                {card?.heading}
-              </h5>
-            </div>
-            <p
-              className="demanzo-bold-p text-center lg:text-left"
-              dangerouslySetInnerHTML={{ __html: card.para[0] }}
-            />
+    <section className={`${pageData.background} `}>
+      <div className="demanzo-container-auto px-4 md:px-10 lg:px-20 text-center py-20">
+        <div className="inline-block relative mx-auto lg:mx-0 mb-10">
+          <div className="relative inline-block">
+            <h2 className="demanzo-h1 leading-tight text-center lg:text-center">
+              {pageData.headings[0]}{" "}
+            </h2>
           </div>
-        ))}
-      </div>
+        </div>
 
-      {/* Second row: center 4th card */}
-      {pageData?.card_details?.[3] && (
+        {/* First row: first 3 cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:px-20 mt-10">
-          <div className="md:col-start-2">
+          {pageData?.card_details?.slice(0, 3).map((card, index) => (
             <div
+              key={index}
               className="bg-white shadow-md rounded-xl flex flex-col items-center space-y-4 hover:shadow-lg transition p-6"
               data-aos="zoom-in-up"
             >
               <div
                 className="w-14 h-14"
-                dangerouslySetInnerHTML={{
-                  __html: pageData.card_details[3].svg,
-                }}
+                dangerouslySetInnerHTML={{ __html: card.svg }}
               />
               <div className="w-full text-center lg:text-left">
                 <h5 className="demanzo-h2 text-center lg:text-left">
-                  {pageData.card_details[3]?.heading}
+                  {card?.heading}
                 </h5>
               </div>
               <p
                 className="demanzo-bold-p text-center lg:text-left"
-                dangerouslySetInnerHTML={{
-                  __html: pageData.card_details[3]?.para[0],
-                }}
+                dangerouslySetInnerHTML={{ __html: card.para[0] }}
               />
             </div>
-          </div>
+          ))}
         </div>
-      )}
+
+        {/* Second row: center 4th card */}
+        {pageData?.card_details?.[3] && (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:px-20 mt-10">
+            <div className="md:col-start-2">
+              <div
+                className="bg-white shadow-md rounded-xl flex flex-col items-center space-y-4 hover:shadow-lg transition p-6"
+                data-aos="zoom-in-up"
+              >
+                <div
+                  className="w-14 h-14"
+                  dangerouslySetInnerHTML={{
+                    __html: pageData.card_details[3].svg,
+                  }}
+                />
+                <div className="w-full text-center lg:text-left">
+                  <h5 className="demanzo-h2 text-center lg:text-left">
+                    {pageData.card_details[3]?.heading}
+                  </h5>
+                </div>
+                <p
+                  className="demanzo-bold-p text-center lg:text-left"
+                  dangerouslySetInnerHTML={{
+                    __html: pageData.card_details[3]?.para[0],
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
     </section>
   );
 };

@@ -17,7 +17,7 @@ export default function BlogCards({ BlogData }) {
   const skeletonArray = new Array(3).fill(null);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+    <div className="demanzo-container-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
       {loading
         ? skeletonArray.map((_, idx) => (
             <div
@@ -47,7 +47,9 @@ export default function BlogCards({ BlogData }) {
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               />
-              <span className="demanzo-rounded-pill bg-[linear-gradient(to_right,_#ff8c00,_#f12500)]">{card?.category}</span>
+              <span className="demanzo-rounded-pill bg-[linear-gradient(to_right,_#ff8c00,_#f12500)]">
+                {card?.category}
+              </span>
               <h2 className="demanzo-h3">{card.title}</h2>
               <p className="demanzo-p">{card.description || ""}</p>
               <a href={card.link} className="demanzo-read-more">

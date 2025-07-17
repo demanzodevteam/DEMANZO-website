@@ -1,7 +1,7 @@
 export default function HowtogetReport({ pageData, colVal }) {
     // console.log(pageData, 'pagedata')
     return (
-      <>
+      <section className="demanzo-container-auto">
         <div className="flex flex-col items-center justify-center p-8">
           <p className="demanzo-h1">How to Get Your Free Report?</p>
           <div
@@ -96,6 +96,6 @@ export default function HowtogetReport({ pageData, colVal }) {
             <span>- {pageData?.paragraphs[1]}!</span>
           </p>
         </div>
-      </>
+      </section>
     );
 }

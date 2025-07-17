@@ -10,9 +10,9 @@ export default function LeadSection({ pageData }) {
   }, []);
 
   return (
-    <>
+    <section className={`${pageData.background}`}>
       <div
-        className={`grid grid-cols-1 lg:grid-cols-[1fr_0.6fr] px-2 gap-2 lg:px-14 lg:py-10 bg-no-repeat bg-bottom bg-cover min-h-[80vh] ${pageData.background}`}
+        className={`demanzo-container-auto grid grid-cols-1 lg:grid-cols-[1fr_0.6fr] px-2 gap-2 lg:px-14 lg:py-10 bg-no-repeat bg-bottom bg-cover min-h-[80vh] `}
       >
         <div className="flex flex-col justify-center gap-2 py-8 px-4 lg:px-15 lg:py-10">
           {pageData.title && (
@@ -69,6 +69,6 @@ export default function LeadSection({ pageData }) {
           />
         </div>
       </div>
-    </>
+    </section>
   );
 }

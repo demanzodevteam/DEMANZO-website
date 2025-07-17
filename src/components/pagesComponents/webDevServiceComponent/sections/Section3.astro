@@ -8,7 +8,8 @@ const data = await res.json();
 const pageData = data[2];
 ---
 
-<section class='bg-gradient-to-b from-[#fef1ee] to-[#fcf8f9] px-4 md:px-10 lg:px-20 py-16 text-center'>
+<section class='bg-gradient-to-b from-[#fef1ee] to-[#fcf8f9] '>
+  <div class="demanzo-container-auto px-4 md:px-10 lg:px-20 py-16 text-center">
       <div class="inline-block relative mx-auto lg:mx-0 mb-10 pb-[40px]">
         <div class="relative inline-block">
           <h2 class="text-[35px] lg:text-[40px] text-[#191d27] font-semibold relative z-10 leading-tight text-center lg:text-center">
@@ -32,4 +33,6 @@ const pageData = data[2];
         </div>
       </div>
       <GridWithModalSlider client:load />
+  </div>
+      
 </section>

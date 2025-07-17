@@ -6,8 +6,9 @@ const data = await res.json();
 const pageData = data[2];
 const list = pageData?.list_items[0];
 ---
-
-<div class="px-[20px] py-[80px] lg:p-[80px] bg-[#f8fdff]">
+<section class="bg-[#f8fdff]">
+    
+<div class="demanzo-container-auto px-[20px] py-[80px] lg:p-[80px] ">
     <h2 class="mb-[20px] text-[35px] md:text-[45px] font-[600] text-[#191d27] text-center">{pageData.headings[0]}</h2>
     <div class="mt-[30px] grid grid-cols-1 md:grid-cols-3 gap-10">
         {
@@ -30,3 +31,4 @@ const list = pageData?.list_items[0];
         {pageData.paragraphs[0]}
     </a>
 </div>
+</section>

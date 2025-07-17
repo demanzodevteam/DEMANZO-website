@@ -284,6 +284,7 @@ h3[id] {
 
 .demanzo-grid {
   @apply grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] px-2 gap-2 lg:px-14 lg:py-10 bg-no-repeat bg-bottom bg-cover;
+  
 }
 
 .demanzo-max-screen-width {
