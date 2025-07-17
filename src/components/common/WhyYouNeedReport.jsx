@@ -4,13 +4,13 @@ import { MEDIA_URL } from '../../config/urls';
 
 export default function WhyYouNeedReport({pageData}) {
     return (
-      <div className='demanzo-container-auto'>
+      <div className='demanzo-container-auto  bg-gradient-to-b from-[#fcf8f9]'>
         <h2 className="demanzo-h1 text-center !text-transparent !bg-clip-text !bg-gradient-to-r !from-black to-red-500 text-4xl">
           {pageData.title}
         </h2>
 
         <div
-          className={`flex flex-col lg:flex-row items-center justify-center p-4 md:p-8 lg:my-10 gap-10 ${pageData.background}`}
+          className={`flex flex-col lg:flex-row items-center justify-center p-4 md:p-8 lg:my-20 gap-10 ${pageData.background}`}
         >
           <div className="w-full md:w-full lg:w-1/2 p-4 md:mx-2 order-2 lg:order-1 flex justify-center">
             <img
