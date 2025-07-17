@@ -10,7 +10,9 @@ import { useEffect } from "react";
 export default function FaqAccordion({ category }) {
   return (
     <>
-      <section className={`bg-${category.background} py-10 mx-4 md:px-10`}>
+      <section
+        className={`bg-${category.background}  mx-4 md:px-10 demanzo-section`}
+      >
         <h2 className="demanzo-h1 mb-5 text-center">{category.headings}</h2>
         {/* {category.headings.split(/\r?\n/).map((line, index) => (
         <p

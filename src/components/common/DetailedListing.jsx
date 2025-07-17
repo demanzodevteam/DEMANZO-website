@@ -14,8 +14,8 @@ const DetailedListing = ({ pageData }) => {
   if (!isClient) return null; // Avoid hydration mismatch
 
   return (
-    <section className={`${pageData.background}`}>
-      <div className="demanzo-container-auto px-4 md:px-10 lg:px-20 lg:py-10 text-center">
+    <section className={`${pageData.background} demanzo-section`}>
+      <div className="demanzo-container-auto  text-center">
         <div className="inline-block relative mx-auto lg:mx-0 mb-10">
           <div className="relative inline-block">
             <h2 className="demanzo-h1 leading-tight text-center lg:text-center">

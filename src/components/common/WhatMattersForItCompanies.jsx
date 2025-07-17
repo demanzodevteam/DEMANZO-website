@@ -12,7 +12,9 @@ const WhyYouNeedSection = ({ SectionData, colVal, background }) => {
   }, [mounted]);
 
   return (
-    <section className={`demanzo-container text-center ${background} py-10`}>
+    <section
+      className={`demanzo-container text-center ${background} demanzo-section`}
+    >
       {/* <div className=""> */}
       <div className="demanzo-max-screen-width">
         {SectionData?.title && (

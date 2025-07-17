@@ -14,9 +14,9 @@ const FeatureSection = ({ pageData }) => {
     }, []);
 
   return (
-    <div className={`bg-[${pageData.background}]`}>
+    <div className={`bg-[${pageData.background}] demanzo-section`}>
       <section
-        className={`demanzo-container-auto  px-4 md:px-10 lg:px-20 !py-16 space-y-4 text-center`}
+        className={`demanzo-container-auto  px-4 md:px-10 lg:px-20 space-y-4 text-center`}
       >
         <div className="inline-block relative mx-auto lg:mx-0 mb-20">
           <div className="relative inline-block">

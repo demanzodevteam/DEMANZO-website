@@ -7,8 +7,8 @@ const ComparisonTableSection = ({
   footerText,
 }) => {
   return (
-    <section className="bg-gradient-to-b from-[#FEFFFF] to-[#FEF2F2]">
-      <div className="demanzo-container-auto px-4 md:px-6 lg:px-[var(--demanzo-section-spacing)] py-[var(--demanzo-section-spacing)] text-center my-20">
+    <section className="bg-gradient-to-b from-[#FEFFFF] to-[#FEF2F2] ">
+      <div className="demanzo-container-auto demanzo-section px-4 md:px-6 lg:px-[var(--demanzo-section-spacing)] py-[var(--demanzo-section-spacing)] text-center ">
         <div className="inline-block relative mx-auto lg:mx-0 mb-10 px-4">
           <div className="relative inline-block">
             {title && (

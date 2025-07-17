@@ -8,12 +8,12 @@ const BusinessSection = ({ SectionData, Background }) => {
 
   useEffect(() => {
     setMounted(true);
-    AOS.init({ once: true });
+    AOS.init({ once: false });
   }, []);
   return (
-    <div className={`bg-gradient-to-b`}>
-      <section className="demanzo-container-auto my-6  px-4 md:px-10 lg:px-20 py-16 space-y-4 text-center">
-        <div className="mt-14">
+    <div className={`bg-gradient-to-b demanzo-section`}>
+      <section className="demanzo-container-auto  text-center">
+        <div className="">
           <div className="inline-block relative mx-auto lg:mx-0 mb-20">
             <div className="relative inline-block my-0">
               <h2 className="demanzo-h1 relative z-10 leading-tight text-center lg:text-center">
