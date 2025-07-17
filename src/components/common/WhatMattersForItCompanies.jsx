@@ -69,10 +69,10 @@ const WhyYouNeedSection = ({ SectionData, colVal, background }) => {
                 <h5 className="demanzo-h2 text-left">{card.heading}</h5>
               )}
               <p
-                className="demanzo-bold-p"
+                className="demanzo-bold-p mb-4"
                 dangerouslySetInnerHTML={{ __html: card.para }}
               />
-              <hr className="w-full border-gray-200 mt-4" />
+              {/* <hr className="w-full border-gray-200 mt-4" /> */}
             </div>
           ))}
         </div>
