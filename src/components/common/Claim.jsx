@@ -8,9 +8,9 @@ const Claim = ({pageData}) => {
           {pageData.headings[0]} <br></br>
           {pageData.headings[1]} {pageData.headings[2]}
         </h2>
-        <button type="submit" className="demanzo-button sm:w-auto">
+        <a className="demanzo-button sm:w-auto" href="#contact-form">
           {pageData.paragraphs}
-        </button>
+        </a>
       </div>
     </section>
   );
