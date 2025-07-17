@@ -2,13 +2,14 @@
 import { API_URL } from '../../../../config/urls';
 import FeatureSteps from '../../../common/FeatureSteps.jsx';
 
-const res = await fetch(API_URL + 'blocks/314');
+const res = await fetch(API_URL + 'blocks/1141');
 const data = await res.json();
 const background = 'from-white to-white';
 
-const pageData = data[3];
+const pageData = data[2];
 ---
 
-<!-- Fourth Section -->
-
+<!--  Section 3-->
+<div class="demanzo-container">
 <FeatureSteps pageData={pageData} background={background} client:load/>
+</div>
