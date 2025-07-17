@@ -28,24 +28,40 @@ const SalesContactTwo = ({ SectionData }) => {
           viewport={{ once: true }}
           className="flex flex-col items-center justify-center text-center gap-6 px-4"
         >
-          <img
-            src={rocketImg.src}
-            alt="Rocket"
-            className="hover:-translate-y-4 transition-all duration-500"
-          />
+          <motion.img
+  src={rocketImg.src}
+  alt="Rocket"
+  className="w-auto h-auto"
+  animate={{
+    y: [0, -10, 0], // up, then back down
+  }}
+  transition={{
+    duration: 1.5,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+/>
           <h2 className="demanzo-form-heading">{SectionData.headings}</h2>
 
           {SectionData.list_items[0].map((item, index) => (
-            <p key={index} className="demanzo-form-para-text">
+            <p key={index} className="demanzo-form-para-text !text-white">
               {item.para}
             </p>
           ))}
 
-          <img
-            src={skyImg.src}
-            alt="Sky"
-            className="hover:-translate-y-4 transition-all duration-500 mt-6"
-          />
+          <motion.img
+  src={skyImg.src}
+  alt="Sky"
+  className="mt-6 w-auto h-auto"
+  animate={{
+    y: [0, -8, 0], // subtle float
+  }}
+  transition={{
+    duration: 2,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+/>
         </motion.div>
 
         {/* Right Side - Form */}

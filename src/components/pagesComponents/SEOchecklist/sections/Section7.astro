@@ -1,6 +1,7 @@
 ---
 import SalesContactTwo from "../../../common/SalesContactTwo";
 import { API_URL } from '../../../../config/urls';
+import SalesContactSection from "../../../common/SalesContactSection";
 
 
 const res = await fetch(API_URL + 'blocks/592');
@@ -11,5 +12,4 @@ const SectionData = json[6];
 
 
 <!-- ------------------section 7 ------------------ -->
-
 <SalesContactTwo SectionData={SectionData} client:only="react"/>
