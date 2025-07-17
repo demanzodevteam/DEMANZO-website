@@ -7,12 +7,12 @@ export default function HeroSection({ pageData }) {
   return (
     <>
       <div
-        className="demanzo-container lg:py-10 bg-no-repeat bg-bottom bg-cover "
+        className="demanzo-container  lg:py-28 bg-no-repeat bg-bottom bg-cover "
         style={{
           backgroundImage: pageData?.bgImg ? "none" : `url('${curveImg.src}')`,
         }}
       >
-        <div className="demanzo-grid demanzo-max-screen-width">
+        <div className="demanzo-grid demanzo-max-screen-width ">
           <div className="flex flex-col justify-center gap-4 py-8 px-4 lg:px-15 lg:py-10 text-center md:text-left">
             <h2 className="demanzo-title">{pageData.title}</h2>
 
