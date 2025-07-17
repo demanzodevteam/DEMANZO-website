@@ -1,14 +1,10 @@
 ---
 import { API_URL } from "../../../../config/urls";
-import HeroSection from "../../../common/HeroSection";
 import WhyYouNeedReport from "../../../common/WhyYouNeedReport";
 
 const res = await fetch(API_URL + 'blocks/200');
 const pageData = await res.json();
 ---
-<!-- console.log(pageData,'pagedata') -->
 
-<!-- First Section -->
-<!-- <HeroPiplineSection pageData={pageData} client:load /> -->
 <WhyYouNeedReport pageData={pageData[2]} />
 

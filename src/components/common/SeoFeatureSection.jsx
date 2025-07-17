@@ -4,7 +4,7 @@ export default function SeoFeatureSection({ pageData }) {
     // console.log(pageData, 'pageDAta');
 
     return (
-      <section className=" bg-gradient-to-b from-transparent-start to-[#FEF2F2]-end">
+      <section className=" bg-gradient-to-b to-[#FEF2F2]">
         <div className="demanzo-container-auto">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] px-3.5 gap-2 lg:px-3.5 lg:py-25 min-h-[80vh] mx-auto ">
             <div className="w-full flex items-center justify-center">
