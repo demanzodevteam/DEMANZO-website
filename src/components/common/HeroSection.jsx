@@ -7,7 +7,7 @@ export default function HeroSection({ pageData }) {
   return (
     <>
       <div
-        class="demanzo-container lg:py-10 bg-no-repeat bg-bottom bg-cover "
+        className="demanzo-container lg:py-10 bg-no-repeat bg-bottom bg-cover "
         style={{
           backgroundImage: pageData?.bgImg ? "none" : `url('${curveImg.src}')`,
         }}
@@ -30,8 +30,8 @@ export default function HeroSection({ pageData }) {
                 <path
                   d="M5 15C80 5 190 0 265 12"
                   stroke="#FF5F55"
-                  stroke-width="6"
-                  stroke-linecap="round"
+                  strokeWidth="6"
+                  strokeLinecap="round"
                 />
               </svg>
             </div>
