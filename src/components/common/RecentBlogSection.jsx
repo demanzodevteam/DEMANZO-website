@@ -9,7 +9,7 @@ const Card = ({ imageSrc, altText, title }) => {
           <img
             src={imageSrc}
             alt={altText}
-            className="w-full h-56 object-cover"
+            className="w-full h-56 object-cover hover:rotate-3 hover:scale-105 transition-all duration-500"
           />
         )}
         <div className="text-white text-center p-4">
@@ -22,12 +22,12 @@ const Card = ({ imageSrc, altText, title }) => {
 
 export default function RecentBlogSection({ pageData }) {
   return (
-    <div className="p-4">
+    <div className="p-4 !py-[50px]">
       <div className="max-w-6xl mx-auto">
         <h2 className="demanzo-h1 p-2.5 text-center">
           {pageData?.title}
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {pageData.headings.map((heading, index) => (
             <Card
               key={index}
