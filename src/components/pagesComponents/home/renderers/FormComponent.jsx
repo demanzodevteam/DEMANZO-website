@@ -54,7 +54,7 @@ export default function ContactForm({ category }) {
       formData.append(key, val)
     );
 
-    // ✅ Add CF7 hidden fields required for REST
+    // Add CF7 hidden fields required for REST
     formData.append("_wpcf7", "101"); // <-- numeric form ID
     formData.append("_wpcf7_version", "5.9.4");
     formData.append("_wpcf7_locale", "en_US");
