@@ -1,16 +1,17 @@
 // src/components/SecondSection.jsx
 import React, { useEffect } from "react";
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const ServicesWeOffer = ({ SectionData, colVal }) => {
-    useEffect(() => {
-        AOS.init();
-        });
+  useEffect(() => {
+    AOS.init();
+  });
 
-    return (
-      <section
-        className={` px-4 md:px-10 lg:px-[var(--demanzo-section-spacing)] py-[var(--demanzo-section-spacing)] text-center`}
+  return (
+    <section>
+      <div
+        className={`demanzo-container-auto px-4 md:px-10 lg:px-[var(--demanzo-section-spacing)] py-[var(--demanzo-section-spacing)] text-center`}
       >
         <div className="inline-block relative mx-auto lg:mx-0 ">
           <div className="relative inline-block">
@@ -72,9 +73,9 @@ const ServicesWeOffer = ({ SectionData, colVal }) => {
         <p className="demanzo-bold-p *:mt-12 max-w-7xl mx-auto ">
           {SectionData.paragraphs[5]}
         </p>
-      </section>
-    );
+      </div>
+    </section>
+  );
 };
 
 export default ServicesWeOffer;
-
