@@ -22,7 +22,7 @@ const SalesContactSection = ({ SectionData }) => {
           <h2 className="demanzo-form-heading">{SectionData?.headings}</h2>
 
           {SectionData?.list_items[0].map((item, index) => (
-            <p key={index} className="demanzo-form-para-text">
+            <p key={index} className="demanzo-form-para-text !text-white">
               {item.para}
             </p>
           ))}

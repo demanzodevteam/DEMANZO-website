@@ -123,28 +123,38 @@ export default function RequestDemoForm({ category }) {
   const renderInput = (name, type, label, options = []) => {
     if (type === "select") {
       return (
+        <>
+        
+        
         <motion.div
-          variants={inputVariants}
-          animate={errors[name] ? "shake" : ""}
-          className="relative"
-        >
-          <select
-            name={name}
-            value={form[name]}
-            onChange={handleChange}
-            className={`peer w-full border px-4 py-4 text-[#050607] text-[16px] font-[400] ${errors[name] ? "border-red-500" : "border-[#e7e7e7]"
-              } focus:border-black focus:outline-none rounded-md`}
-          >
-            {options.map((opt, idx) => (
-              <option key={idx} value={opt}>
-                {opt}
-              </option>
-            ))}
-          </select>
-          <label className="absolute text-[#050607] text-[14px] font-[400] left-4 top-1 peer-placeholder-shown:text-gray-500 peer-focus:text-black">
-            {label}
-          </label>
-        </motion.div>
+  variants={inputVariants}
+  animate={errors[name] ? "shake" : ""}
+  className="mb-4"
+>
+  <label className="block text-[#747a80] text-[14px] font-[500] mb-2">
+    {label}
+  </label>
+
+  <select
+    name={name}
+    value={form[name]}
+    onChange={handleChange}
+    className={`w-full border px-4 py-3 text-[#747a80] text-[16px] font-[400] rounded-md appearance-none
+      ${errors[name] ? "border-red-500" : "border-[#e7e7e7]"} 
+      focus:border-black focus:outline-none`}
+  >
+    <option value="" disabled hidden>
+      I'm Interested in..
+    </option>
+    {options.map((opt, idx) => (
+      <option key={idx} value={opt}>
+        {opt}
+      </option>
+    ))}
+  </select>
+</motion.div>
+
+        </>
       );
     }
 
