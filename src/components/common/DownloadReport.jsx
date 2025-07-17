@@ -1,9 +1,19 @@
 import React from 'react'
 import CaptchaImg from '../../assets/Captcha.png'
-import BackGroundImg from '../../assets/Background-SEO-Traffic.jpg'
-import rocketImg from '../../assets/rocket.png'
-import skyImg from '../../assets/sky2.png'
+import BackGroundImg from "../../assets/Background-SEO-Traffic.jpg";
+import rocketImg from "../../assets/rocket.png";
+import skyImg from "../../assets/sky2.png";
+import { motion } from "framer-motion";
+import DownloadReportForm from './DownloadReportForm'
 export default function DownloadReport({ pageData }) {
+    //  const [isClient, setIsClient] = useState(false);
+    
+    //   useEffect(() => {
+    //     setIsClient(true);
+    //   }, []);
+    
+    //   if (!isClient) return null; // Avoid hydration mismatch
+    
     return (
         <div
             className="flex items-center justify-center px-4 py-16 bg-cover bg-center"
@@ -20,7 +30,7 @@ export default function DownloadReport({ pageData }) {
                 </div>
 
                 <div className="relative bg-white rounded-2xl shadow-lg p-6 lg:p-10 mb-30">
-                    <form className="space-y-6">
+                    {/* <form className="space-y-6">
                         <div className="grid grid-cols-1 gap-6">
                             <input type="text" placeholder="Your Name" required
                                 className="border border-[#e7e7e7] hover:border-black focus:border-black focus:outline-none px-4 py-3 text-[16px] text-[#050607]" />
@@ -40,8 +50,13 @@ export default function DownloadReport({ pageData }) {
                             </button>
 
                         </div>
-                    </form>
+                    </form> */}
+                    <DownloadReportForm />
                 </div>
             </div>
-        </div>)
+        </div>
+      
+ 
+    
+    )
 }
