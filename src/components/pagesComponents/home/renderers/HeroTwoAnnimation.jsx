@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const HeroTwoAnnimation = ({ image, alt }) => {
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-end">
       {/* Background Box Animation */}
       <motion.div
   animate={{ y: [0, -50, 0, 50, 0] }} 

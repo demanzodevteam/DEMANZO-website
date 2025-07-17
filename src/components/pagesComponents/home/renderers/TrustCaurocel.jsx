@@ -19,9 +19,9 @@ export default function TrustCaurocelHome({ category }) {
 
   return (
     <>
-    <div>
+    <div className="pb-5">
       
-    </div>
+    
       {!category?.heading &&
         category?.description.split(/\r?\n/).map((line, index) => (
           <p
@@ -34,6 +34,7 @@ export default function TrustCaurocelHome({ category }) {
             {line}
           </p>
         ))}
+        </div>
                <TrustCaurocel client:visible />
     </>
   );
