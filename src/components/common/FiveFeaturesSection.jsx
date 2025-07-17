@@ -11,7 +11,10 @@ const FiveFeatureSection = ({ pageData }) => {
   }, []);
 
   return (
-    <section style={{ backgroundColor: pageData.background }}>
+    <section
+      style={{ backgroundColor: pageData.background }}
+      className="demanzo-section"
+    >
       <div className="demanzo-container-auto px-4 md:px-10 lg:px-20 py-16 space-y-4 text-center">
         {/* Title and SVG underline */}
         <div className="inline-block relative mx-auto lg:mx-0 mb-20">

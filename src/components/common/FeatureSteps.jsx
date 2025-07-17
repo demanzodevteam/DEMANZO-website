@@ -43,7 +43,7 @@ export default function FeatureSteps({ pageData, background }) {
           )}
         </div>
         {pageData?.headings?.[1] && (
-          <p className="demanzo-bold-p max-w-4xl mx-auto text-center">
+          <p className="demanzo-bold-p max-w-4xl mx-auto text-center mb-8">
             {pageData.headings[1]}
           </p>
         )}

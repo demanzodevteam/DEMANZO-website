@@ -4,9 +4,9 @@ import { MEDIA_URL } from "../../config/urls";
 
 export default function SplitHeadingSection({ pageData }) {
   return (
-    <>
+    <section className={`${pageData.background} demanzo-section`}>
       <div
-        class={`grid grid-cols-1 lg:grid-cols-[0.8fr_1fr] px-2 gap-4 lg:px-14 lg:py-10 min-h-[80vh] ${pageData.background}`}
+        class={`demanzo-container-auto grid grid-cols-1 lg:grid-cols-[0.8fr_1fr] px-2 gap-4 lg:px-14 lg:py-10  `}
       >
         <div className="flex items-center justify-center px-4 pt-8 pb-12 lg:pt-0 lg:pb-0">
           <div className="relative w-full max-w-[90%] sm:max-w-[550px] md:max-w-[600px] lg:max-w-[650px]">
@@ -37,6 +37,6 @@ export default function SplitHeadingSection({ pageData }) {
           ))}
         </div>
       </div>
-    </>
+    </section>
   );
 }

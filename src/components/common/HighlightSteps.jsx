@@ -12,7 +12,7 @@ const animationProps = {
 const HighlightSteps = ({ SectionData }) => {
   return (
     <section
-      className={`demanzo-container-auto px-4 md:px-10 lg:px-[var(--demanzo-section-spacing)] py-[var(--demanzo-section-spacing)] text-center`}
+      className={`demanzo-section demanzo-container-auto px-4 md:px-10 lg:px-[var(--demanzo-section-spacing)] py-[var(--demanzo-section-spacing)] text-center`}
     >
       <div className="inline-block relative mx-auto lg:mx-0 mb-10">
         <div className="relative inline-block space-y-6">

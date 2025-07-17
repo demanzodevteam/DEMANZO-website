@@ -3,12 +3,11 @@ import { useEffect } from "react";
 import { MEDIA_URL } from "../../../../config/urls";
 
 export default function HeroSection({ pageData }) {
-  // const [pageData, setPageData] = useState({});
 
 
   return (
-    <section className="demanzo-container-auto">
-      <div class="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] px-2 gap-2 lg:px-14 lg:py-10 bg-no-repeat bg-bottom bg-cover min-h-[80vh]">
+    <section className="demanzo-container-auto demanzo-section">
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] px-2 gap-2 lg:px-14  bg-no-repeat bg-bottom bg-cover ">
         <div class="flex flex-col justify-center gap-4 py-8 px-4 lg:px-15 lg:py-10">
           <h2 class="text-[#FF5F55] font-semibold text-[18px] lg:text-[20px]">
             {pageData.title}
@@ -30,15 +29,6 @@ export default function HeroSection({ pageData }) {
             </div>
           ))}
         </div>
-
-        {/* <div class="flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0 ">
-
-          <img
-            src={MEDIA_URL + pageData.images?.[0]?.src}
-            alt={pageData.images?.[0]?.alt}
-            class="w-[500px] md:mx-auto lg:mx-0"
-          />
-        </div> */}
         <div class="relative flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0">
           {/* Back gray card */}
           <div class="absolute w-[450px] h-[600px] bg-gray-100 rounded-3xl top-1 right-1 z-0"></div>

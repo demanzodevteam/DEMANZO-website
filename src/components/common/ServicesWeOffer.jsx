@@ -11,7 +11,7 @@ const ServicesWeOffer = ({ SectionData, colVal }) => {
   return (
     <section>
       <div
-        className={`demanzo-container-auto px-4 md:px-10 lg:px-[var(--demanzo-section-spacing)] py-[var(--demanzo-section-spacing)] text-center`}
+        className={`demanzo-section demanzo-container-auto px-4 md:px-10 lg:px-[var(--demanzo-section-spacing)] py-[var(--demanzo-section-spacing)] text-center`}
       >
         <div className="inline-block relative mx-auto lg:mx-0 ">
           <div className="relative inline-block">

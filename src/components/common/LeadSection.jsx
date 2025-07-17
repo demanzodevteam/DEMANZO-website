@@ -10,11 +10,11 @@ export default function LeadSection({ pageData }) {
   }, []);
 
   return (
-    <section className={`${pageData.background}`}>
+    <section className={`${pageData.background} demanzo-section`}>
       <div
-        className={`demanzo-container-auto grid grid-cols-1 lg:grid-cols-[1fr_0.6fr] px-2 gap-2 lg:px-14 lg:py-10 bg-no-repeat bg-bottom bg-cover min-h-[80vh] `}
+        className={`demanzo-container-auto grid grid-cols-1 lg:grid-cols-[1fr_0.6fr] px-2 gap-2 lg:px-14 bg-no-repeat bg-bottom bg-cover `}
       >
-        <div className="flex flex-col justify-center gap-2 py-8 px-4 lg:px-15 lg:py-10">
+        <div className="flex flex-col justify-center gap-2 py-8 px-4 lg:px-15 ">
           {pageData.title && (
             <h2 className="demanzo-title">{pageData.title}</h2>
           )}
@@ -58,7 +58,7 @@ export default function LeadSection({ pageData }) {
         </div>
 
         <div
-          className="relative flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0"
+          className="relative flex items-center justify-center pt-8 lg:pt-0 lg:pb-0"
           data-aos="fade-up"
         >
           <div className="absolute w-[90%] max-w-[480px] h-[75%] max-h-[350px] bg-gray-100 rounded-3xl top-4 left-12 z-0"></div>

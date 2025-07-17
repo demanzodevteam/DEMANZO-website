@@ -9,7 +9,7 @@ const InfoCardGrid = ({ pageData }) => {
   });
 
   return (
-    <section className={`${pageData.background} `}>
+    <section className={`${pageData.background} demanzo-section`}>
       <div className="demanzo-container-auto px-4 md:px-10 lg:px-20 text-center py-20">
         <div className="inline-block relative mx-auto lg:mx-0 mb-10">
           <div className="relative inline-block">
