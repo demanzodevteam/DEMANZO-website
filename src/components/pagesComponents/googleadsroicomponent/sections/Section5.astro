@@ -1,5 +1,6 @@
 ---
 import { API_URL } from "../../../../config/urls";
+import GoogleRoiCard2 from "../../../common/GoogleRoiCard2";
 
 const res = await fetch(API_URL + 'blocks/199');
 const data = await res.json();
@@ -16,96 +17,14 @@ const pageData = data[4];
     </div>
 
     <div class="flex items-center justify-center md:justify-end">
-      <a href="#contact" class="bg-[#0a6aad] text-white text-[16px] sm:text-[17px] font-medium px-6 py-3 mt-4 md:mt-0 rounded-full transition hover:bg-blue-800">
+      <a href="#contact" class="bg-[#0a6aad] text-white text-[16px] sm:text-[17px] font-medium px-6 py-3 mt-4 md:mt-0 rounded-full">
         {pageData.paragraphs[0]}
       </a>
     </div>
   </div>
 
-  <div class="absolute top-[240px] md:top-[250px] lg:top-[200px] left-1/2 transform -translate-x-1/2 w-[90%] max-w-[320px] sm:max-w-[600px] md:max-w-[700px] lg:max-w-[1000px] bg-white border border-gray-300 p-4 sm:p-6 md:p-8 rounded-xl shadow-lg z-10">
-    <div class="w-full flex justify-center">
-      <form id="roiForm" class="w-full max-w-[800px]">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
-          <div>
-            <label class="block mb-2 text-gray-700">Total Ad Spend ($)</label>
-            <input
-              type="number"
-              id="adSpend"
-              placeholder="Enter Ad Spent"
-              class="p-3 border border-[#ccc] rounded w-full focus:outline-none focus:border-blue-800"
-              required
-            />
-          </div>
-          <div>
-            <label class="block mb-2 text-gray-700">Total Clicks</label>
-            <input
-              type="number"
-              id="totalClicks"
-              placeholder="Enter Total Clicks"
-              class="p-3 border border-[#ccc] rounded w-full focus:outline-none focus:border-blue-800"
-              required
-            />
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
-          <div>
-            <label class="block mb-2 text-gray-700">Conversion Rate (%)</label>
-            <input
-              type="number"
-              id="conversionRate"
-              placeholder="Enter Conversion Rate"
-              class="p-3 border border-[#ccc] rounded w-full focus:outline-none focus:border-blue-800"
-              required
-            />
-          </div>
-          <div>
-            <label class="block mb-2 text-gray-700">Average Revenue per Conversion ($)</label>
-            <input
-              type="number"
-              id="avgRevenue"
-              placeholder="Enter Revenue per Conversion"
-              class="p-3 border border-[#ccc] rounded w-full focus:outline-none focus:border-blue-800"
-              required
-            />
-          </div>
-        </div>
-
-        <button type="submit" class="bg-[#28a745] text-white rounded px-6 py-2 mt-4 hover:bg-green-600 transition-all">
-          Calculate ROI
-        </button>
-
-        <div id="results" class="mt-4 text-[18px] font-bold text-[#616670]"></div>
-      </form>
-    </div>
-  </div>
+  <GoogleRoiCard2 client:only="react"/>
 </div>
 
 
-  <script>
-    const roiForm = document.getElementById("roiForm");
-    if (roiForm) {
-      roiForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const adSpend = parseFloat((document.getElementById("adSpend") as HTMLInputElement)?.value || "0");
-        const totalClicks = parseInt((document.getElementById("totalClicks") as HTMLInputElement)?.value || "0");
-        const conversionRate = parseFloat((document.getElementById("conversionRate") as HTMLInputElement)?.value || "0");
-        const avgRevenue = parseFloat((document.getElementById("avgRevenue") as HTMLInputElement)?.value || "0");
-
-        const conversions = totalClicks * (conversionRate / 100);
-
-        const totalRevenue = conversions * avgRevenue;
-
-        const roi = ((totalRevenue - adSpend) / adSpend) * 100;
-
-        const resultsDiv = document.getElementById("results");
-        if (resultsDiv) {
-          resultsDiv.innerHTML = `
-            <strong>Total Revenue:</strong> $${totalRevenue.toFixed(2)}<br />
-            <strong>ROI:</strong> ${roi.toFixed(2)}%
-          `;
-        }
-      });
-    }
-  </script>
+ 

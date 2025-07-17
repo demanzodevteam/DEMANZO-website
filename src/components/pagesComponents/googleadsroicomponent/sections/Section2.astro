@@ -1,6 +1,6 @@
 ---
 import { API_URL } from "../../../../config/urls";
-import { MEDIA_URL } from "../../../../config/urls";
+import GoogleRoiImage from "../../../common/GoogleRoiImage.jsx"
 const res = await fetch(API_URL + 'blocks/199');
 const data = await res.json();
 
@@ -8,7 +8,7 @@ const pageData = data[1];
 const list = pageData?.list_items[0];
 ---
 
-<div class="demanzo-container-auto grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-5 px-[18px] py-[70px] md:px-[60px] md:py-[100px]">
+<div class="demanzo-container-auto grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-5 px-[18px] !py-[50px] md:px-[60px] md:py-[100px]">
     <div class="mr-[30px]">
         <h2 class="text-[18px] font-[600] text-[#ff5f55] mb-[20px]">{pageData.paragraphs[0]}</h2>
         <h1 class="text-[35px] md:text-[45px] font-[700] md:font-[600] text-[#191d27] mb-[20px]">{pageData.headings[0]}</h1>
@@ -23,13 +23,5 @@ const list = pageData?.list_items[0];
             ))
         }
     </div>
-    <div class="pt-[20px] md:pt-[50px] lg:px-[40px] relative w-fit">
-        <div class="absolute w-[280px] h-[250px]  md:w-[600px] lg:w-[400px] md:h-[400px] lg:h-[450px] bg-[#f4f4f4] rounded-[30px] z-0 bottom-10 left-10 md:bottom-15 md:left-15 lg:bottom-20 lg:left-20"></div>
-
-        <img
-            src={MEDIA_URL + pageData.images?.[0]?.src}
-            alt={pageData.images?.[0]?.alt}
-            class="w-[280px] md:w-[600px] lg:w-[500px] h-[250px] md:h-[400px] lg:h-[450px] object-cover rounded-[30px] relative z-10"
-        />
-    </div>
-</div></div>
+    <GoogleRoiImage SectionData={pageData.images?.[0]} client:only="react"/>
+</div>

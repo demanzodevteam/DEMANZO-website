@@ -1,5 +1,6 @@
 ---
 import { API_URL } from "../../../../config/urls";
+import GoogleRoiCard3 from "../../../common/GoogleRoiCard3";
 
 const res = await fetch(API_URL + 'blocks/199');
 const data = await res.json();
@@ -16,15 +17,6 @@ const list = pageData?.list_items[0];
             </p>
         <div class="flex-grow border-t border-[#e6f8ff]"></div>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-[30px] lg:px-[70px] pb-[60px]">
-        {
-            list?.map((item: any) => (
-                <div class="lg:mr-[20px] pt-[35px] pr-[30px] pb-[30px] pl-[40px] rounded bg-white flex flex-col lg:flex-row gap-3 lg:gap-10 shadow text-center lg:text-left">
-                    <div class="flex items-center justify-center pb-[15px]" set:html={item.svg}></div>
-                    <p class="text-[16px] font-[500] text-[#616670]">{item.heading}</p>
-                </div>
-            ))
-        }
-    </div>
+    <GoogleRoiCard3  SectionData={list} client:only="react"/>
     <p class="text-[16px] font-[500] text-[#616670] mb-[20px] text-center">{pageData.paragraphs[0]}</p>
 </div>

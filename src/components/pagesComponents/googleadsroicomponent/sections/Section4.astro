@@ -1,6 +1,7 @@
 ---
 import { API_URL } from "../../../../config/urls";
 import { MEDIA_URL } from "../../../../config/urls";
+import GoogleRoiImage2 from "../../../common/GoogleRoiImage2";
 
 const res = await fetch(API_URL + 'blocks/199');
 const data = await res.json();
@@ -10,13 +11,7 @@ const list = pageData?.list_items[0];
 ---
 
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-[40px] md:py-[90px]  px-[15px] md:px-[35px]">
-    <div class="lg:mr-[20px] md:mx-auto ">
-        <img
-            src={MEDIA_URL + pageData.images?.[0]?.src}
-            alt={pageData.images?.[0]?.alt}
-            class="w-[500px] object-cover"
-        />
-    </div>
+    <GoogleRoiImage2  SectionData={pageData.images?.[0]} client:only="react"/>
     <div>
         <h2 class="text-[35px] md:text-[45px] font-[600] text-[#191d27] pb-[30px]">{pageData.headings[0]}</h2>
         {

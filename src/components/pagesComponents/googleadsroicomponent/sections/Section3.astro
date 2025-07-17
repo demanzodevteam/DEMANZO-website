@@ -1,32 +1,17 @@
 ---
 import { API_URL } from "../../../../config/urls";
+import GoogleRoiCard1 from "../../../common/GoogleRoiCard1.jsx"
 const res = await fetch(API_URL + 'blocks/199');
 const data = await res.json();
 
 const pageData = data[2];
 const list = pageData?.list_items[0];
 ---
-<section class="bg-[#f8fdff]">
-    
-<div class="demanzo-container-auto px-[20px] py-[80px] lg:p-[80px] ">
-    <h2 class="mb-[20px] text-[35px] md:text-[45px] font-[600] text-[#191d27] text-center">{pageData.headings[0]}</h2>
-    <div class="mt-[30px] grid grid-cols-1 md:grid-cols-3 gap-10">
-        {
-            list?.map((item: any, index: number) =>  {
-            const isEven = (index + 1) % 2 === 0;
 
-            return (
-                <div class={`p-[30px] group rounded-md text-center ${
-                isEven
-                    ? 'bg-[#060a33]'
-                    : 'bg-white hover:bg-[#060a33] transition duration-500'
-                }`}>
-                    <div class="flex items-center justify-center pb-[15px]" set:html={item.svg}></div>
-                    <p class={`mb-[10px] text-[17px] font-[500] group-hover:text-white transition duration-500 ${isEven ? 'text-white' : 'text-black'}`}>{item.heading}</p>
-                </div>
-            );
-        })}
-    </div>
+<div class="demanzo-container-auto px-[20px] !py-[80px] lg:p-[80px] bg-[#f8fdff]">
+    <h2 class="mb-[20px] demanzo-h1 text-[#191d27] text-center">{pageData.headings[0]}</h2>
+    <GoogleRoiCard1  SectionData={list} client:only="react"/>
+
     <a href="#calculator" class="bg-[#0a6aad] text-center mt-[60px] text-white flex items-center justify-center text-[17px] font-[400] w-fit px-6 py-3 mx-auto rounded-full cursor-pointer">
         {pageData.paragraphs[0]}
     </a>
