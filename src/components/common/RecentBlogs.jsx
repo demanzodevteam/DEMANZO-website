@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+// import "swiper/css/navigation";
+// import "swiper/css/pagination";
 
 export default function BlogCards({ BlogData }) {
   const [loading, setLoading] = useState(true);
@@ -45,44 +45,50 @@ export default function BlogCards({ BlogData }) {
         : (
           <>
           <Swiper
-          modules={[Navigation, Pagination]}
-          spaceBetween={24}
-          slidesPerView={1}
-          breakpoints={{
-            640: { slidesPerView: 1 },
-            768: { slidesPerView: 3 },
-            1024: { slidesPerView: 3 },
-          }}
-          navigation
-          pagination={{ clickable: true }}
-          className=""
+           modules={[Navigation]}
+  spaceBetween={24}
+  slidesPerView={1}
+  breakpoints={{
+    640: { slidesPerView: 1 },
+    768: { slidesPerView: 2 },
+    1024: { slidesPerView: 3 },
+    1280: { slidesPerView: 4 },
+  }}
+  navigation
+  pagination={{ clickable: false }}
+  className=""
         >
             {
-
               cards.map((card, idx) => (
-                <SwiperSlide key={idx} className="custom-swiper-slide !h-[36vh]">
+                <SwiperSlide key={idx} className="custom-swiper-slide min-w-[280px] max-w-[300px]">
                   <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 100 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: idx * 0.02 }} // <- This is the stagger
-                    viewport={{ once: true, amount: 0.3 }}
-                    className="bg-white shadow-lg rounded-2xl p-5 hover:shadow-xl transition overflow-hidden"
-                  >
-                    <motion.img
-                      src={card?.image}
-                      alt={card?.alt || ""}
-                      className="rounded-lg mb-4 w-full h-48 object-cover"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    />
-                    <span className="demanzo-rounded-pill bg-[linear-gradient(to_right,_#ff8c00,_#f12500)]">{card?.category}</span>
-                    <h2 className="demanzo-h3 line-clamp-2">{card.title}</h2>
-                    <p className="demanzo-p">{card.description || ""}</p>
-                    <a href={card.link} className="demanzo-read-more">
-                      Learn more →
-                    </a>
-                  </motion.div>
+  key={idx}
+  initial={{ opacity: 0, y: 100 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.4, delay: idx * 0.02 }}
+  viewport={{ once: true, amount: 0.3 }}
+  className="bg-white shadow-lg rounded-2xl p-5 hover:shadow-xl transition overflow-hidden flex flex-col h-full"
+>
+  <motion.img
+    src={card?.image}
+    alt={card?.alt || ""}
+    className="rounded-lg mb-4 w-full aspect-[4/3] object-cover "
+    whileHover={{ scale: 1.05 }}
+    transition={{ type: "spring", stiffness: 300 }}
+  />
+
+  <div className="flex flex-col flex-grow justify-between">
+    <div>
+      <span className="demanzo-rounded-pill bg-[linear-gradient(to_right,_#ff8c00,_#f12500)]">{card?.category}</span>
+      <h2 className="demanzo-h3 line-clamp-2 mt-2">{card.title}</h2>
+      <p className="demanzo-p">{card.description || ""}</p>
+    </div>
+    <a href={card.link} className="demanzo-read-more mt-4">
+      Learn more →
+    </a>
+  </div>
+</motion.div>
+
                 </SwiperSlide>
               ))
 
