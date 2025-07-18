@@ -192,10 +192,10 @@ export default function RequestDemoForm({ category }) {
       <motion.div
         {...(hasMounted
           ? {
-            initial: { opacity: 0, x: -200 },
-            whileInView: { opacity: 1, x: 0 },
-            transition: { duration: 1 },
-          }
+              initial: { opacity: 0, x: -200 },
+              whileInView: { opacity: 1, x: 0 },
+              transition: { duration: 1 },
+            }
           : {})}
       >
         {/* <p className="text-[30px] md:text-[40px] font-[600] text-[#e05c24] pb-4">
@@ -224,10 +224,10 @@ export default function RequestDemoForm({ category }) {
       <motion.div
         {...(hasMounted
           ? {
-            initial: { opacity: 0, y: 300 },
-            whileInView: { opacity: 1, y: 0 },
-            transition: { duration: 1 },
-          }
+              initial: { opacity: 0, y: 300 },
+              whileInView: { opacity: 1, y: 0 },
+              transition: { duration: 1 },
+            }
           : {})}
         className="rounded-3xl bg-white shadow px-6 lg:px-12 py-8 relative"
       >
@@ -239,9 +239,9 @@ export default function RequestDemoForm({ category }) {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {renderInput("your-number", "number", "Number")}
-            {renderInput("your-website", "text", "Website")} {/* ✅ renamed key */}
+            {renderInput("your-website", "text", "Website")}{" "}
+            {/* ✅ renamed key */}
           </div>
-
 
           {renderInput(
             "menu-722",
@@ -249,7 +249,7 @@ export default function RequestDemoForm({ category }) {
             "Reason to Contact",
             formFields.find((f) => f.name === "menu-722").options
           )}
-
+          
           <motion.div
             variants={inputVariants}
             animate={errors["your-message"] ? "shake" : ""}
@@ -260,13 +260,18 @@ export default function RequestDemoForm({ category }) {
               rows="4"
               value={form["your-message"]}
               onChange={handleChange}
-              placeholder=""
-              className={`peer w-full border px-4 py-4 text-[#050607] text-[16px] font-[400] resize-none ${errors["your-message"]
-                ? "border-red-500"
-                : "border-[#e7e7e7]"
-                } focus:border-black focus:outline-none rounded-md`}
+              placeholder=" " // optional
+              className={`peer w-full border px-4 pt-7 pb-4 text-[#050607] text-[16px] font-[400] resize-none ${
+                errors["your-message"] ? "border-red-500" : "border-[#e7e7e7]"
+              } focus:border-black focus:outline-none rounded-md`}
             />
-            <label className="absolute text-[#050607] text-[14px] font-[400] left-4 top-4 transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-[16px] peer-placeholder-shown:text-gray-500 peer-focus:top-1 peer-focus:text-[12px] peer-focus:text-black">
+            <label
+              className={`absolute left-4  transition-all duration-200 ease-in-out text-[14px] font-[400] ${
+                form["your-message"]
+                  ? "top-1 text-[12px] text-black"
+                  : "top-4 text-[16px] text-gray-500"
+              }`}
+            >
               Message
             </label>
           </motion.div>
@@ -285,7 +290,6 @@ export default function RequestDemoForm({ category }) {
               Request Demo
             </motion.button>
           </div>
-
 
           <AnimatePresence>
             {submitted && hasMounted && (

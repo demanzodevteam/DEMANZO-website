@@ -48,7 +48,7 @@ const FeatureSection = ({ pageData }) => {
               key={index}
               className="flex flex-col items-start justify-center p-6 bg-white rounded-lg shadow-md space-y-4"
               {...(mounted
-                ? { "data-aos": "zoom-in-down", "data-aos-duration": "2000" }
+                ? { "data-aos": "zoom-in-down", "data-aos-duration": "500" }
                 : {})}
             >
               <div className="flex flex-row items-center justify-center px-3 space-x-2">
