@@ -38,7 +38,7 @@ export default function CaseStudyCard({ category }) {
           category?.button === "undefined") && (
             <div className="flex justify-center mt-6 md:mt-12">
               <a
-                href={BASE_URL + category.slug}
+                href={'/' + category.slug}
                 className="bg-[#0a6aad] text-white rounded-full px-8 py-3 text-[17px] font-[400] hover:bg-[#085a93] transition-colors duration-300"
               >
                 View All

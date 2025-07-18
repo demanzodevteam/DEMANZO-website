@@ -134,7 +134,7 @@ const ParticleCard = ({ post }) => {
       <p className="text-[19px] font-[600] text-[#191d27]">{post.title}</p>
       <p className="text-[15px] font-[400] text-[#616670] pt-3 pb-8">{post.content}</p>
       <hr className="text-[#ebebeb] pb-4" />
-      <a className="text-[16px] font-[400] text-[#2d89bf]" href={BASE_URL + post.slug}>
+      <a className="text-[16px] font-[400] text-[#2d89bf]" href={'/' + post.slug}>
         Learn More
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" className="inline" viewBox="0 0 24 24">
           <path
