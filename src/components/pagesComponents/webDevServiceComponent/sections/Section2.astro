@@ -30,7 +30,7 @@ const list = pageData?.list_items[0];
               stroke-linecap="round"
             />
           </svg>
-        </div>
+        </div> 
       </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -46,8 +46,8 @@ const list = pageData?.list_items[0];
                 }`}
             >
                     <div class="flex items-center justify-center pb-[15px]" set:html={item?.svg}></div>
-                    <h5 class="text-left text-[20px] font-[600] text-[#191d27] pb-[17px]">{item?.heading}</h5>
-                    <p class="text-left text-[16px] font-[500] text-[#616670] pb-[20px]">{item?.para}</p>
+                    <h5 class="text-left demanzo-h2 text-[#191d27] pb-[17px]">{item?.heading}</h5>
+                    <p class="text-left demanzo-p text-[#616670] pb-[20px]">{item?.para}</p>
             </div>
             );
         })}

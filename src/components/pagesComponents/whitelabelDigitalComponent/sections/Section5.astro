@@ -8,18 +8,18 @@ const pageData = data[4];
 const list = pageData?.list_items[0];
 ---
 
-<div class="demanzo-container-auto !py-[60px] pb-[100px] bg-[#f2f2fd]">
+<div class="demanzo-container-auto !py-[60px] px-[15px] bg-[#f2f2fd]">
     <div class="p-[10px] text-center">
-        <h2 class="pb-[16px] mb-[20px] text-[35px] md:text-[40px] font-[600] text-[#191d27]">{pageData.headings[0]}</h2>
-        <p class="pb-[16px] mb-[20px] text-[16px] font-[500] text-[#616670] md:px-[70px] ld:px-[127px]">{pageData.paragraphs[0]}</p>
+        <h2 class="pb-[16px] mb-[20px] demanzo-h1">{pageData.headings[0]}</h2>
+        <p class="pb-[16px] mb-[20px] demanzo-p md:px-[70px] lg:px-[127px]">{pageData.paragraphs[0]}</p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         {
             list.map((item: any) => (
                 <div class="p-[30px] mx-[10px] md:mx-0 lg:mx-[24px] mt-[16px] rounded bg-white group">
                     <div class="flex items-center justify-center mb-[20px] group-hover:-translate-y-3 transition duration-500" set:html={item?.svg}></div>
-                    <h5 class=" text-center lg:text-lefttext-left text-[20px] font-[600] text-[#191d27] pb-[20px] mb-[20px]">{item?.heading}</h5>
-                    <p class=" text-center lg:text-left text-[16px] font-[500] text-[#616670] mb-[20px]">{item?.para}</p>
+                    <h5 class=" text-center lg:text-left text-[20px] font-[600] text-[#191d27] pb-[10px] mb-[10px]">{item?.heading}</h5>
+                    <p class=" text-center lg:text-left demanzo-p mb-[20px]">{item?.para}</p>
                 </div>
             ))
         }

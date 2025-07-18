@@ -6,15 +6,15 @@ import { MEDIA_URL } from "../../../../config/urls";
 const res = await fetch(API_URL + "blocks/204");
 const data = await res.json();
 
-const pageData = data[0];
+const pageData = data[0]; 
 ---
 
 <!-- Section-1 -->
 <div class="bg-[#e6f8ff] px-[15px] py-[90px] relative text-center">
     <div class="demanzo-container-auto">
-    <h2 class="text-[20px] font-[600] text-[#ff5f55] pb-[16px]">{pageData.title}</h2>
+    <h2 class="demanzo-title pb-[16px]">{pageData.title}</h2>
     <div class="relative mx-auto lg:mx-[100px] mb-[20px] pb-[16px] text-center flex items-center justify-center">
-        <h1 class="text-[45px] md:text-[50px] font-[700] md:font-semibold relative z-10 text-[#191d27] leading-14">
+        <h1 class="demanzo-h1 text-[#191d27] leading-14">
             {pageData.headings[0]}
         </h1>
         <svg
@@ -32,9 +32,9 @@ const pageData = data[0];
         </svg>
     </div>
     <div class="mx-[20px] md:mx-[40px] lg:mx-[130px]">
-        <p class="text-[16px] font-[700] text-[#616670] mb-[20px]">{pageData.paragraphs[0]}</p>
-        <p class="text-[16px] font-[500] text-[#616670] mb-[20px]">{pageData.paragraphs[1]}</p>
-        <p class="text-[16px] font-[500] text-[#616670] mb-[20px]">{pageData.paragraphs[2]}</p>
+        <p class="demanzo-bold-p mb-[20px]">{pageData.paragraphs[0]}</p>
+        <p class="demanzo-p mb-[20px]">{pageData.paragraphs[1]}</p>
+        <p class="demanzo-p mb-[20px]">{pageData.paragraphs[2]}</p>
     </div>
     <img
         src={MEDIA_URL+pageData.images?.[0]?.src}

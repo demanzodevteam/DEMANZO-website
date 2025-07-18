@@ -10,9 +10,9 @@ const list = pageData?.list_items[0];
 
 <div class="demanzo-container-auto !py-[60px] px-[15px] bg-[#f0f0fd] mx-auto">
     <div class="px-[15px] md:px-[30px] lg:px-[140px] text-center">
-        <h2 class="pb-[16px] mb-[20px] text-[35px] md:text-[40px] text-[#050607] font-[600]">{pageData.headings[0]}</h2>
-        <p class="mb-[20px] text-[16px] text-[#616670] font-[500]">{pageData.paragraphs[0]}</p>
-        <p class="mb-[20px] text-[16px] text-[#616670] font-[500]">{pageData.paragraphs[1]}</p>
+        <h2 class="pb-[16px] mb-[20px] demanzo-h1">{pageData.headings[0]}</h2>
+        <p class="mb-[20px] demanzo-p">{pageData.paragraphs[0]}</p>
+        <p class="mb-[20px] demanzo-p">{pageData.paragraphs[1]}</p>
         <h1 class="pb-[16px] text-[30px] text-[#191d27] font-[600]">{pageData.headings[1]}</h1>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 mt-[20px] mx-[10px] lg:mx-[20px] gap-4">
@@ -21,13 +21,13 @@ const list = pageData?.list_items[0];
                 <div class="p-[30px] mx-[10px] lg:mx-[40px] rounded bg-white text-center lg:text-left">
                     <div class="flex items-center justify-center mb-[20px] hover:bg-[#fef2f2] bg-[#2d89bf] rounded-[50%] p-[10px] text-white hover:text-[#2d89bf]" set:html={item?.svg}></div>
                     <h5 class="text-[20px] font-[600] text-[#191d27] pb-[20px] mb-[20px] text-center lg:text-left">{item?.heading}</h5>
-                    <p class="text-[16px] font-[500] text-[#616670] mb-[20px] text-center lg:text-left">{item?.para}</p>
+                    <p class="demanzo-p mb-[20px] text-center lg:text-left">{item?.para}</p>
                 </div>
             ))
         }
     </div>
     <div class="mt-[40px] md:px-[30px] lg:px-[160px] text-center">
-        <p class="text-[16px] font-[500] text-[#616670] mb-[20px]">{pageData.paragraphs[2]}</p>
-        <p class="text-[16px] font-[500] text-[#616670] mb-[20px]">{pageData.paragraphs[3]}</p>
+        <p class="demanzo-p mb-[20px]">{pageData.paragraphs[2]}</p>
+        <p class="demanzo-p mb-[20px]">{pageData.paragraphs[3]}</p>
     </div>
 </div>

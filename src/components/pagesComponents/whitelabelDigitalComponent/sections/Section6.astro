@@ -11,12 +11,12 @@ const list = pageData?.list_items[0];
 <div class="demanzo-container-auto bg-[#fafbff] !py-[60px] px-[15px]">
     <div class="grid grid-cols-1 md:grid-cols-[0.8fr_1.2fr] md:px-[20px] lg:px-[48px]">
         <div class="p-[10px] md:mr-[30px]">
-            <h2 class="text-[35px] md:text-[40px] font-[600] text-[#191d27]">{pageData.headings[0]}</h2>
+            <h2 class="demanzo-h1">{pageData.headings[0]}</h2>
         </div>
         <div class="p-[10px]">
             <div class="mb-[20px]">
-                <p class="mb-[20px] text-[16px] font-[500] text-[#616670]">{pageData.paragraphs[0]}</p>
-                <p class="mb-[20px] text-[16px] font-[500] text-[#616670]">{pageData.paragraphs[1]}</p>
+                <p class="mb-[20px] demanzo-p">{pageData.paragraphs[0]}</p>
+                <p class="mb-[20px] demanzo-p">{pageData.paragraphs[1]}</p>
             </div>
             <div class="mt-[40px]">
                 <a href="#form" class="bg-[#0a6aad] text-center text-white text-[14px] font-[500] w-fit px-9 py-3 mx-auto rounded-full cursor-pointer">
@@ -30,8 +30,8 @@ const list = pageData?.list_items[0];
             list.map((item: any) => (
                 <div class="p-[30px] mx-[10px] md:mx-0  mt-[16px] rounded bg-white group shadow">
                     <div class="flex items-center justify-center mb-[20px] group-hover:-translate-y-3 transition duration-500" set:html={item?.svg}></div>
-                    <h5 class=" text-center lg:text-left text-[20px] font-[600] text-[#191d27] pb-[20px] mb-[20px]">{item?.heading}</h5>
-                    <p class=" text-center lg:text-left text-[16px] font-[500] text-[#616670] mb-[20px]">{item?.para}</p>
+                    <h5 class=" text-center lg:text-left text-[20px] font-[600] text-[#191d27] pb-[10px] mb-[10px]">{item?.heading}</h5>
+                    <p class=" text-center lg:text-left demanzo-p mb-[20px]">{item?.para}</p>
                 </div>
             ))
         }
