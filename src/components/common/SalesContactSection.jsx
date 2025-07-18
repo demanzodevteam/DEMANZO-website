@@ -10,7 +10,7 @@ const SalesContactSection = ({ SectionData ,children }) => {
   return (
     <div
       className="flex items-center justify-center lg:px-4 bg-cover bg-center"
-      style={{ backgroundImage: `url(${BackGroundImg.src})` }}
+      style={{ backgroundImage: `url(${BackGroundImg.src})` }} id="contact"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-7xl w-full overflow-hidden p-8 lg:p-14">
         {/* Left Side */}
