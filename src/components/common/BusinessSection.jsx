@@ -43,7 +43,6 @@ const BusinessSection = ({ SectionData, Background }) => {
                 src={MEDIA_URL + SectionData?.images[0]?.src}
                 alt={SectionData?.images[0]?.alt}
                 className="tansition ease-in-out duration-300 hover:-translate-y-4"
-                {...(mounted ? { "data-aos": "fade-right" } : {})}
               />
             </div>
 
