@@ -11,7 +11,7 @@ function useHasMounted() {
   return hasMounted;
 }
 
-export default function RequestDemoForm({ category }) {
+export default function RequestDemoForm() {
   const hasMounted = useHasMounted();
 
   const [form, setForm] = useState({

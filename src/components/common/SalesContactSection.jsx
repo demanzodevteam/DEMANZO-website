@@ -5,7 +5,7 @@ import RequestDemoForm from './RequestDemoForm';
 import skyImg from '../../assets/sky2.png';
 import { motion } from "framer-motion";
 
-const SalesContactSection = ({ SectionData }) => {
+const SalesContactSection = ({ SectionData ,children }) => {
 
   return (
     <div
@@ -53,7 +53,7 @@ const SalesContactSection = ({ SectionData }) => {
 
         {/* Right Side - Form */}
         <div className=" rounded-2xl p-6 lg:p-10 w-full">
-          <RequestDemoForm />
+          {children}
         </div>
       </div>
     </div>
