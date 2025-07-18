@@ -13,8 +13,8 @@ const WhiteLabelContactSection = ({ SectionData }) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-7xl w-full overflow-hidden p-8 lg:p-14">
         {/* Left Side */}
 
-        <div class="flex flex-col items-center justify-center text-center gap-6 px-4">
-          <h2 class="text-3xl lg:text-4xl font-bold text-[#ffffff]">
+        <div className="flex flex-col items-center justify-center text-center gap-6 px-4">
+          <h2 className="text-3xl lg:text-4xl font-bold text-[#ffffff]">
             {SectionData.headings[0]}
           </h2>
           <motion.img
