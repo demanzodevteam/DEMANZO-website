@@ -1,19 +1,34 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const AnimatedContactImage = ({ image, alt }) => {
+  const [isHovering, setIsHovering] = useState(false);
+
   return (
     <motion.img
       src={image}
       alt={alt}
-      initial={{ opacity: 0, scale: 0.95, y: 50 }}
-      whileInView={{ opacity: 1, scale: 1, y: 0 }}
-      whileHover={{ scale: 1.08 }}
+      animate={
+        isHovering
+          ? { x: [0, -5, 5, -5, 5, 0] } // shake only
+          : { scale: [1, 1.05, 1] } // zoom only
+      }
       transition={{
-        duration: 0.6,
-        ease: [0.25, 0.46, 0.45, 0.94], // smoother spring-like bezier
+        scale: {
+          duration: 2,
+          repeat: Infinity,
+          repeatType: "loop",
+          ease: "easeInOut",
+        },
+        x: {
+          duration: 0.8,
+          repeat: Infinity,
+          repeatType: "loop",
+        },
       }}
-      viewport={{ once: true }}
-      className="w-[320px] h-[260px] md:w-[460px] md:h-[340px] object-cover rounded-xl transition-transform duration-500 ease-in-out"
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+      className="w-[320px] h-[260px] md:w-[460px] md:h-[340px] object-cover "
     />
   );
 };
