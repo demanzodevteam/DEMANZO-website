@@ -11,7 +11,7 @@ function useHasMounted() {
   return hasMounted;
 }
 
-export default function WebDevContactForm({ category }) {
+export default function WebDevContactForm() {
   const hasMounted = useHasMounted();
 
   const [form, setForm] = useState({
