@@ -19,7 +19,7 @@ export default function WebDevContactForm() {
     "your-email": "",
     "your-number": "",
     "your-website": "",
-    "menu-722": "I'm Interested in..",
+    "select-578": "I'm Interested in..",
     "your-message": "",
   });
 
@@ -79,7 +79,7 @@ export default function WebDevContactForm() {
           "your-email": "",
           "your-number": "",
           "your-website": "",
-          "menu-722": "I'm Interested in..",
+          "select-578": "I'm Interested in..",
           "your-message": "",
         });
 
@@ -106,7 +106,7 @@ export default function WebDevContactForm() {
     { name: "your-number", label: "Number", type: "number" },
     { name: "your-website", label: "Website", type: "text" },
     {
-      name: "menu-722",
+      name: "select-578",
       label: "Reason to Contact",
       type: "select",
       options: [
@@ -136,22 +136,20 @@ export default function WebDevContactForm() {
   </label>
 
   <select
-    name={name}
-    value={form[name]}
-    onChange={handleChange}
-    className={`w-full border px-4 py-3 text-[#747a80] text-[16px] font-[400] rounded-md appearance-none
-      ${errors[name] ? "border-red-500" : "border-[#e7e7e7]"} 
-      focus:border-black focus:outline-none`}
-  >
-    <option value="" disabled hidden>
-      I'm Interested in..
+  name={name}
+  value={form[name]}
+  onChange={handleChange}
+  className={`w-full border px-4 py-3 text-[#747a80] text-[16px] font-[400] appearance-none
+    ${errors[name] ? "border-red-500" : "border-[#e7e7e7]"} 
+    focus:border-black focus:outline-none`}
+>
+  {options.map((opt, idx) => (
+    <option key={idx} value={opt} disabled={idx === 0} hidden={idx === 0}>
+      {opt}
     </option>
-    {options.map((opt, idx) => (
-      <option key={idx} value={opt}>
-        {opt}
-      </option>
-    ))}
-  </select>
+  ))}
+</select>
+
 </motion.div>
 
         </>
@@ -198,27 +196,6 @@ export default function WebDevContactForm() {
             }
           : {})}
       >
-        {/* <p className="text-[30px] md:text-[40px] font-[600] text-[#e05c24] pb-4">
-          {category.name}
-        </p> */}
-        {/* {category.posts?.map((post) =>
-          post.list_items?.map((listGroup, groupIndex) =>
-            listGroup.map((item, itemIndex) => (
-              <div
-                key={`${groupIndex}-${itemIndex}`}
-                className="flex gap-2 items-start py-3"
-              >
-                <div className="text-[#61ce70] text-xl pt-1">✔️</div>
-                <p className="text-[18px] font-[700] md:text-[20px] md:font-[600] text-[#191d27]">
-                  {item}
-                </p>
-              </div>
-            ))
-          )
-        )} */}
-        {/* <p className="text-[16px] lg:text-[18px] font-[400] text-[#616670] py-3 pl-6">
-          🎯 {category.description}
-        </p> */}
       </motion.div>
 
       <motion.div
@@ -240,14 +217,13 @@ export default function WebDevContactForm() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {renderInput("your-number", "number", "Number")}
             {renderInput("your-website", "text", "Website")}{" "}
-            {/* ✅ renamed key */}
           </div>
 
           {renderInput(
-            "menu-722",
+            "select-578",
             "select",
             "Reason to Contact",
-            formFields.find((f) => f.name === "menu-722").options
+            formFields.find((f) => f.name === "select-578").options
           )}
           
           <motion.div

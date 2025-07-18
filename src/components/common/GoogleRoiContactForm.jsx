@@ -72,9 +72,9 @@ export default function GoogleRoiContactForm() {
 
         setSubmitted(true);
         setForm({
-          "your-name": "",
-          "your-email": "",
-          "your-message": "",
+            "your-name": "",
+            "your-email": "",
+            "your-message": "",
         });
 
         setTimeout(() => setSubmitted(false), 2000);
@@ -99,7 +99,7 @@ export default function GoogleRoiContactForm() {
     { name: "your-email", label: "Email", type: "email" },
   ];
 
-  const renderInput = (name, type, label) => {
+  const renderInput = (name, type, label, options = []) => {
 
     return (
       <motion.div
@@ -135,10 +135,10 @@ export default function GoogleRoiContactForm() {
       <motion.div
         {...(hasMounted
           ? {
-            initial: { opacity: 0, x: -200 },
-            whileInView: { opacity: 1, x: 0 },
-            transition: { duration: 1 },
-          }
+              initial: { opacity: 0, x: -200 },
+              whileInView: { opacity: 1, x: 0 },
+              transition: { duration: 1 },
+            }
           : {})}
       >
       </motion.div>
@@ -146,22 +146,22 @@ export default function GoogleRoiContactForm() {
       <motion.div
         {...(hasMounted
           ? {
-            initial: { opacity: 0, y: 300 },
-            whileInView: { opacity: 1, y: 0 },
-            transition: { duration: 1 },
-          }
+              initial: { opacity: 0, y: 300 },
+              whileInView: { opacity: 1, y: 0 },
+              transition: { duration: 1 },
+            }
           : {})}
         className="rounded-3xl bg-white shadow px-6 lg:px-12 py-8 relative"
       >
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="">
+          <div>
             {renderInput("your-name", "text", "Name")}{" "}
-            
           </div>
 
-          <div className="">
+          <div>
             {renderInput("your-email", "email", "Email")}{" "}
           </div>
+
 
           <motion.div
             variants={inputVariants}
@@ -173,16 +173,15 @@ export default function GoogleRoiContactForm() {
               rows="4"
               value={form["your-message"]}
               onChange={handleChange}
-              placeholder=""
-              className={`peer w-full border px-4 py-4 text-[#050607] text-[16px] font-[400] resize-none ${errors["your-message"]
-                ? "border-red-500"
-                : "border-[#e7e7e7]"
-                } focus:border-black focus:outline-none`}
+              placeholder=" " // optional
+              className={`peer w-full border px-4 pt-7 pb-4 text-[#050607] text-[16px] font-[400] resize-none ${
+                errors["your-message"] ? "border-red-500" : "border-[#e7e7e7]"
+              } focus:border-black focus:outline-none`}
             />
             <label
               className={`absolute left-4  transition-all duration-200 ease-in-out text-[14px] font-[400] ${
                 form["your-message"]
-                  ? "top-0 text-[12px] text-black"
+                  ? "top-1 text-[12px] text-black"
                   : "top-4 text-[16px] text-gray-500"
               }`}
             >
@@ -199,12 +198,11 @@ export default function GoogleRoiContactForm() {
               }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="w-full lg:w-[300px] bg-[#0e71b9] text-white rounded-full px-6 py-4 text-[15px] font-[500] shadow-md hover:bg-[#0e71b9] focus:outline-none cursor-pointer"
+              className="w-full lg:w-[300px] bg-[#0e71b9] text-white rounded-full px-6 py-4 text-[15px] font-[500] shadow-md hover:bg-[#0e71b9] focus:outline-none"
             >
               Submit
             </motion.button>
           </div>
-
 
           <AnimatePresence>
             {submitted && hasMounted && (
