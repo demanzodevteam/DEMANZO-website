@@ -1,90 +1,129 @@
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import { Navigation, Pagination } from "swiper/modules";
+// src/components/HeroLogger.tsx
+import curveImg from "../../assets/Curve-main-bg.webp";
+import { MEDIA_URL } from "../../config/urls";
 
-export default function BlogCards({ BlogData, maxCards = 3 }) {
-  const [loading, setLoading] = useState(true);
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    if (BlogData && (Array.isArray(BlogData) || Object.keys(BlogData).length > 0)) {
-      const dataArray = Array.isArray(BlogData) ? BlogData : Object.values(BlogData);
-      setCards(dataArray);
-      setLoading(false);
-    }
-  }, [BlogData]);
-
-  const skeletonArray = new Array(maxCards).fill(null);
-
-  if (loading) {
-    return (
-     
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
-        {skeletonArray.map((_, idx) => (
-          <div
-            key={idx}
-            className="bg-white shadow-lg rounded-2xl p-5 animate-pulse"
-          >
-            <div className="h-48 bg-gray-200 rounded-lg mb-4" />
-            <div className="h-4 w-20 bg-gray-300 rounded mb-2" />
-            <div className="h-5 w-full bg-gray-300 rounded mb-2" />
-            <div className="h-4 w-3/4 bg-gray-300 rounded" />
-            <div className="h-4 w-24 bg-gray-200 rounded mt-4" />
-          </div>
-        ))}
-      </div>
-    );
-  }
-
+export default function HeroSection({ pageData }) {
+  
   return (
-    <div className="demanzo-container-auto">
-      <div className="p-6">
-        <Swiper
-          modules={[Navigation, Pagination]}
-          spaceBetween={24}
-          slidesPerView={1}
-          breakpoints={{
-            640: { slidesPerView: 1 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-          }}
-          navigation
-          pagination={{ clickable: true }}
-          className="custom-swiper"
-        >
-          {cards.map((card, idx) => (
-            <SwiperSlide key={idx} className="">
-              <motion.div
-                initial={{ opacity: 0, y: 100 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: idx * 0.02 }}
-                viewport={{ once: true, amount: 0.3 }}
-                className="bg-white shadow-lg rounded-2xl p-5 hover:shadow-xl transition overflow-hidden"
-              >
-                <motion.img
-                  src={card?.image}
-                  alt={card?.alt || ""}
-                  className="rounded-lg mb-4 w-full h-48 object-cover"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                />
-                <span className="demanzo-rounded-pill bg-[linear-gradient(to_right,_#ff8c00,_#f12500)]">{card?.category}</span>
-                <h3 className="demanzo-h2 mt-2 line-clamp-2">{card.title}</h3>
-                <p className="demanzo-bold-p mt-1 line-clamp-2">
-                  {card.description || ""}
-                </p>
-                <a href={card.link} className="demanzo-read-more">
-                  Learn more →
-                </a>
-              </motion.div>
-            </SwiperSlide>
+    <>
+      <div
+        class="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] px-2 gap-2 lg:px-14 lg:py-10 bg-no-repeat bg-bottom bg-cover min-h-[80vh]"
+        style={{ backgroundImage: pageData?.bgImg ? "none" : `url('${curveImg.src}')` }}
+      >
+        <div class="flex flex-col justify-center gap-4 py-8 px-4 lg:px-15 lg:py-10">
+          <h1 class="text-[#FF5F55] font-semibold text-[18px] lg:text-[20px]">
+            {pageData.title}
+          </h1>
+
+          <div class="inline-block relative mx-auto lg:mx-0 ">
+            <h1 class="text-[45px] md:text-[48px] lg:text-[50px] font-semibold relative z-10">
+              {pageData.headings[0]}
+            </h1>
+            <svg
+              class="absolute left-1/2 -translate-x-1/2 lg:left-30 lg:translate-x-0 bottom-20 z-0"
+              width="270"
+              height="20"
+              viewBox="0 0 270 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5 15C80 5 190 0 265 12"
+                stroke="#FF5F55"
+                stroke-width="6"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+          {pageData?.paragraphs?.map((para, index) => (
+            <p
+              key={index}
+              class="text-[16px] font-[500] text-[#616670] leading-6"
+            >
+              {para}
+            </p>
           ))}
-        </Swiper>
+        </div>
+
+        <div class="flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0 ">
+          {pageData?.bgImg ? (
+            <>
+              <div class="relative w-full max-w-md">
+                <div class="absolute inset-0 h-[300px] bg-gray-100 transform translate-x-10 -translate-y-12 rounded-[30px] shadow-lg"></div>
+                <div class="relative z-10 flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0">
+                  <img
+                    src={MEDIA_URL + pageData.images?.[0]?.src}
+                    alt={pageData.images?.[0]?.alt}
+                    class="w-[500px] md:mx-auto lg:mx-0 rounded-[30px] "
+                  />
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              {/* <HeroAnimation image={pageData.image} client:load /> */}
+              <img
+                src={MEDIA_URL + pageData.images?.[0]?.src}
+                alt={pageData.images?.[0]?.alt}
+                class="w-[500px] md:mx-auto lg:mx-0 transition-transform duration-400 hover:-translate-y-4 rounded-sm"
+              />
+            </>
+          )}
+        </div>
+
+        <div className="lg:col-span-2 w-full flex flex-row justify-center gap-4 px-15">
+          <div className="w-1/2 flex flex-col gap-4">
+            {pageData?.list_items[0]?.slice(0, 3).map((item, index) => (
+              <div
+                key={index}
+                className="flex items-center justify-start gap-10"
+              >
+                <svg
+                  className="w-5 h-5 mr-2 text-red-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="12" cy="12" r="10" strokeWidth="2" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M8 12l3 3 5-5"
+                  />
+                </svg>
+                <span className="text-[15px] text-[#54595f]">{item.para}</span>
+              </div>
+            ))}
+          </div>
+          <div className="w-1/2 flex flex-col gap-4">
+            {pageData?.list_items[0]?.slice(3, 6).map((item, index) => (
+              <div
+                key={index}
+                className="flex items-center justify-start gap-10"
+              >
+                <svg
+                  className="w-5 h-5 mr-2 text-red-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="12" cy="12" r="10" strokeWidth="2" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M8 12l3 3 5-5"
+                  />
+                </svg>
+                <span className="text-[15px] text-[#54595f]">{item.para}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
