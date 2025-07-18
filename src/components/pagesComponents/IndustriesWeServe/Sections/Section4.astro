@@ -9,5 +9,5 @@ const pageData = await res.json();
 ---
 
 <SalesContactSection  SectionData={pageData[3]} client:only="react">
-     <RequestDemoForm />
+     <RequestDemoForm client:load/>
 </SalesContactSection>

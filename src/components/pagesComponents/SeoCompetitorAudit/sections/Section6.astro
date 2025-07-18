@@ -13,5 +13,5 @@ const pageData = await res.json();
 
 
 <SalesContactSection  SectionData={pageData[2]} client:only="react">
-          <SEOReportForm />
+          <SEOReportForm client:load/>
 </SalesContactSection>

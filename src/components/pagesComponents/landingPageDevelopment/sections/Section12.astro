@@ -10,5 +10,5 @@ const pageData = await res.json();
 <!-- Eleventh Section -->
 
 <SalesContactSection  SectionData={pageData[7]} client:only="react">
-     <RequestDemoForm />
+     <RequestDemoForm client:load/>
 </SalesContactSection>
