@@ -1,9 +1,15 @@
 ---
 import { API_URL } from "../../../../config/urls";
 import DownloadReport from "../../../common/DownloadReport";
+import DownloadReportForm from "../../../common/DownloadReportForm";
+import GoogleRoiContactForm from "../../../common/GoogleRoiContactForm";
+import SalesContactSection from "../../../common/SalesContactSection";
 
 const res = await fetch(API_URL + 'blocks/200');
 const pageData = await res.json();
 ---
-<DownloadReport pageData={pageData[5]}  client:only="react"/>
+<!-- <DownloadReport pageData={pageData[5]}  client:only="react"/> -->
 
+<SalesContactSection  SectionData={pageData[5]} client:only="react">
+          <DownloadReportForm />
+</SalesContactSection>

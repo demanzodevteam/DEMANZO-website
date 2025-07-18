@@ -11,7 +11,7 @@ function useHasMounted() {
   return hasMounted;
 }
 
-export default function GoogleRoiContactForm({ category }) {
+export default function GoogleRoiContactForm() {
   const hasMounted = useHasMounted();
 
   const [form, setForm] = useState({

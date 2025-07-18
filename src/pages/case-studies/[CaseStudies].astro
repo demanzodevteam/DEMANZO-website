@@ -27,9 +27,11 @@ const post = postData[0];
 // Fetch all posts to find previous/next
 const allRes = await fetch(ARTICLE_URLS + "case-studies");
 const posts = await allRes.json();
+const title = "";
+const description = "";
 ---
 
-<HomeLayout>
+<HomeLayout title={title} description={description}>
   <!-- <ArticlesHeader SectionData={post} />
   <WpContentParser content={post.content.rendered} client:load />
   <ArticleFooter posts={posts} currentSlug={slug} /> -->

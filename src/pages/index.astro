@@ -1,12 +1,11 @@
 ---
-// import Welcome from '../components/Welcome.astro';
 import HomeLayout from '../layouts/HomeLayout.astro';
 import HomeComponent from '../components/pagesComponents/home/HomeComponent.astro';
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+
+const title = "B2B & SaaS Digital Marketing Agency For IT Companies - Demanzo";
+const description = "Demanzo is a B2B digital marketing agency offering SaaS digital marketing and digital marketing for IT companies to increase leads and online visibility.";
 ---
 
-<HomeLayout>
-	
-	<HomeComponent />
+<HomeLayout title={title} description={description}>
+  <HomeComponent />
 </HomeLayout>

@@ -2,10 +2,10 @@
 // import Welcome from '../components/Welcome.astro';
 import HomeLayout from '../layouts/HomeLayout.astro';
 import SocialMedia from '../components/pagesComponents/SocialMediaMarketing/SocialMedia.astro';
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const title = "Social Media Marketing Services for Startups, Small Business | Demanzo";
+const description = "Demanzo helps startup, small businesses to tap the potential of the social media and work towards having a two way communication between you and your prospects.";
 ---
 
-<HomeLayout>
+<HomeLayout title={title} description={description}>
 	<SocialMedia />
 </HomeLayout>

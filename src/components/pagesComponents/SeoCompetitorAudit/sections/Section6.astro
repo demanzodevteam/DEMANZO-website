@@ -1,12 +1,17 @@
 ---
 import { API_URL } from "../../../../config/urls";
 import GetSeoReport from "../../../common/GetSeoReport";
+import SalesContactSection from "../../../common/SalesContactSection";
+import SEOReportForm from "../../../common/SEOReportForm";
 
 const res = await fetch(API_URL + 'blocks/201');
 const pageData = await res.json();
 ---
 <!-- ------------------section 2 ------------------ -->
 
- <GetSeoReport pageData={pageData[2]} client:only="react" />
+ <!-- <GetSeoReport pageData={pageData[2]} client:only="react" /> -->
 
 
+<SalesContactSection  SectionData={pageData[2]} client:only="react">
+          <SEOReportForm />
+</SalesContactSection>
