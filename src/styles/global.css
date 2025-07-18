@@ -323,6 +323,7 @@ h3[id] {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-size: 47px !important;
   width: 60px;
   height: 60px;
   border-radius: 50%;
