@@ -1,10 +1,10 @@
 ---
 import { API_URL } from "../../../../config/urls";
-import SalesContactSection from "../../../common/SalesContactSection";
+import WebDevContactSection from "../../../common/WebDevContactSection";
 
 
 const res = await fetch(API_URL + 'blocks/188');
 const pageData = await res.json();
 ---
 
-<SalesContactSection  SectionData={pageData[5]} client:only="react"/>
+<WebDevContactSection  SectionData={pageData[5]} client:only="react"/>

@@ -11,12 +11,18 @@ function useHasMounted() {
   return hasMounted;
 }
 
-export default function GoogleRoiContactForm({ category }) {
+export default function WhiteLabelContactForm({ category }) {
   const hasMounted = useHasMounted();
 
   const [form, setForm] = useState({
     "your-name": "",
     "your-email": "",
+    "your-number": "",
+    "your-country": "",
+    "select-626": "Company Type",
+    "select-808": "Team Size",
+    "select-239": "Total Clients",
+    "select-8": "Where you need help?",
     "your-message": "",
   });
 
@@ -51,15 +57,15 @@ export default function GoogleRoiContactForm({ category }) {
       formData.append(key, val)
     );
 
-    // CF7 hidden fields (for ID 1177)
-    formData.append("_wpcf7", "1177");
+    // CF7 hidden fields (for ID 1175)
+    formData.append("_wpcf7", "1175");
     formData.append("_wpcf7_version", "5.9.4");
     formData.append("_wpcf7_locale", "en_US");
     formData.append("_wpcf7_unit_tag", "wpcf7-f1031-p12-o1");
     formData.append("_wpcf7_container_post", "12");
 
     try {
-      const res = await fetch(FORM_URL + "1177/feedback", {
+      const res = await fetch(FORM_URL + "1175/feedback", {
         method: "POST",
         body: formData,
       });
@@ -72,9 +78,15 @@ export default function GoogleRoiContactForm({ category }) {
 
         setSubmitted(true);
         setForm({
-          "your-name": "",
-          "your-email": "",
-          "your-message": "",
+            "your-name": "",
+            "your-email": "",
+            "your-number": "",
+            "your-country": "",
+            "select-626": "Company Type",
+            "select-808": "Team Size",
+            "select-239": "Total Clients",
+            "select-8": "Where you need help?",
+            "your-message": "",
         });
 
         setTimeout(() => setSubmitted(false), 2000);
@@ -97,9 +109,80 @@ export default function GoogleRoiContactForm({ category }) {
   const formFields = [
     { name: "your-name", label: "Name", type: "text" },
     { name: "your-email", label: "Email", type: "email" },
+    { name: "your-number", label: "Number", type: "number" },
+    { name: "your-country", label: "Country", type: "text" },
+    {
+      name: "select-626",
+      type: "select",
+      options: [
+        "Company Type",
+        "Freelancer",
+        "Agency"
+      ],
+    },
+    {
+      name: "select-808",
+      type: "select",
+      options: [
+        "Team Size",
+        "1",
+        "2-5",
+        "6-10",
+        ">10"
+      ],
+    },
+    {
+      name: "select-239",
+      type: "select",
+      options: [
+        "Total Clients",
+        "Just Starting",
+        "1-5",
+        "6-10",
+        ">10"
+      ],
+    },
+    {
+      name: "select-8",
+      type: "select",
+      options: [
+        "Where you need help?",
+        "SEO",
+        "PPC"
+      ],
+    },
   ];
 
-  const renderInput = (name, type, label) => {
+  const renderInput = (name, type, label, options = []) => {
+    if (type === "select") {
+      return (
+        <>
+            <motion.div
+                variants={inputVariants}
+                animate={errors[name] ? "shake" : ""}
+                className="mb-4"
+                >
+                <select
+                    name={name}
+                    value={form[name]}
+                    onChange={handleChange}
+                    className={`w-full border px-4 py-3 text-[#747a80] text-[16px] font-[400] rounded-md appearance-none
+                    ${errors[name] ? "border-red-500" : "border-[#e7e7e7]"} 
+                    focus:border-black focus:outline-none`}
+                >
+                    <option value="" disabled hidden>
+                        {options[0]}
+                    </option>
+                    {options.map((opt, idx) => (
+                    <option key={idx} value={opt}>
+                        {opt}
+                    </option>
+                    ))}
+                </select>
+            </motion.div>
+        </>
+      );
+    }
 
     return (
       <motion.div
@@ -115,7 +198,7 @@ export default function GoogleRoiContactForm({ category }) {
           required
           placeholder=" "
           className={`peer w-full border px-4 pt-6 pb-2 text-[#050607] text-[16px] font-[400] ${errors[name] ? "border-red-500" : "border-[#e7e7e7]"
-            } focus:border-black focus:outline-none`}
+            } focus:border-black focus:outline-none rounded-md`}
         />
         <label
           className="absolute left-4 top-4 text-[#050607] text-[14px] font-[400] transition-all duration-200 ease-in-out
@@ -135,10 +218,10 @@ export default function GoogleRoiContactForm({ category }) {
       <motion.div
         {...(hasMounted
           ? {
-            initial: { opacity: 0, x: -200 },
-            whileInView: { opacity: 1, x: 0 },
-            transition: { duration: 1 },
-          }
+              initial: { opacity: 0, x: -200 },
+              whileInView: { opacity: 1, x: 0 },
+              transition: { duration: 1 },
+            }
           : {})}
       >
       </motion.div>
@@ -146,21 +229,50 @@ export default function GoogleRoiContactForm({ category }) {
       <motion.div
         {...(hasMounted
           ? {
-            initial: { opacity: 0, y: 300 },
-            whileInView: { opacity: 1, y: 0 },
-            transition: { duration: 1 },
-          }
+              initial: { opacity: 0, y: 300 },
+              whileInView: { opacity: 1, y: 0 },
+              transition: { duration: 1 },
+            }
           : {})}
         className="rounded-3xl bg-white shadow px-6 lg:px-12 py-8 relative"
       >
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="">
-            {renderInput("your-name", "text", "Name")}{" "}
-            
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {renderInput("your-name", "text", "Full Name")}
+            {renderInput("your-email", "email", "Email Address")}
           </div>
 
-          <div className="">
-            {renderInput("your-email", "email", "Email")}{" "}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {renderInput("your-number", "number", "Phone Number")}
+            {renderInput("your-country", "text", "Country")}{" "}
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {renderInput(
+            "select-626",
+            "select",
+            formFields.find((f) => f.name === "select-626").options
+          )}
+          {renderInput(
+            "select-808",
+            "select",
+            formFields.find((f) => f.name === "select-808").options
+          )}
+          {" "}
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {renderInput(
+            "select-239",
+            "select",
+            formFields.find((f) => f.name === "select-239").options
+          )}
+          {renderInput(
+            "select-8",
+            "select",
+            formFields.find((f) => f.name === "select-8").options
+          )}
+          {" "}
           </div>
 
           <motion.div
@@ -173,16 +285,15 @@ export default function GoogleRoiContactForm({ category }) {
               rows="4"
               value={form["your-message"]}
               onChange={handleChange}
-              placeholder=""
-              className={`peer w-full border px-4 py-4 text-[#050607] text-[16px] font-[400] resize-none ${errors["your-message"]
-                ? "border-red-500"
-                : "border-[#e7e7e7]"
-                } focus:border-black focus:outline-none`}
+              placeholder=" " // optional
+              className={`peer w-full border px-4 pt-7 pb-4 text-[#050607] text-[16px] font-[400] resize-none ${
+                errors["your-message"] ? "border-red-500" : "border-[#e7e7e7]"
+              } focus:border-black focus:outline-none rounded-md`}
             />
             <label
               className={`absolute left-4  transition-all duration-200 ease-in-out text-[14px] font-[400] ${
                 form["your-message"]
-                  ? "top-0 text-[12px] text-black"
+                  ? "top-1 text-[12px] text-black"
                   : "top-4 text-[16px] text-gray-500"
               }`}
             >
@@ -199,12 +310,11 @@ export default function GoogleRoiContactForm({ category }) {
               }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="w-full lg:w-[300px] bg-[#0e71b9] text-white rounded-full px-6 py-4 text-[15px] font-[500] shadow-md hover:bg-[#0e71b9] focus:outline-none cursor-pointer"
+              className="w-full lg:w-[300px] bg-[#0e71b9] text-white rounded-full px-6 py-4 text-[15px] font-[500] shadow-md hover:bg-[#0e71b9] focus:outline-none"
             >
-              Submit
+              Request Demo
             </motion.button>
           </div>
-
 
           <AnimatePresence>
             {submitted && hasMounted && (

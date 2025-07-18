@@ -11,12 +11,15 @@ function useHasMounted() {
   return hasMounted;
 }
 
-export default function GoogleRoiContactForm({ category }) {
+export default function WebDevContactForm({ category }) {
   const hasMounted = useHasMounted();
 
   const [form, setForm] = useState({
     "your-name": "",
     "your-email": "",
+    "your-number": "",
+    "your-website": "",
+    "menu-722": "I'm Interested in..",
     "your-message": "",
   });
 
@@ -51,15 +54,15 @@ export default function GoogleRoiContactForm({ category }) {
       formData.append(key, val)
     );
 
-    // CF7 hidden fields (for ID 1177)
-    formData.append("_wpcf7", "1177");
+    // CF7 hidden fields (for ID 1176)
+    formData.append("_wpcf7", "1176");
     formData.append("_wpcf7_version", "5.9.4");
     formData.append("_wpcf7_locale", "en_US");
     formData.append("_wpcf7_unit_tag", "wpcf7-f1031-p12-o1");
     formData.append("_wpcf7_container_post", "12");
 
     try {
-      const res = await fetch(FORM_URL + "1177/feedback", {
+      const res = await fetch(FORM_URL + "1176/feedback", {
         method: "POST",
         body: formData,
       });
@@ -74,6 +77,9 @@ export default function GoogleRoiContactForm({ category }) {
         setForm({
           "your-name": "",
           "your-email": "",
+          "your-number": "",
+          "your-website": "",
+          "menu-722": "I'm Interested in..",
           "your-message": "",
         });
 
@@ -97,9 +103,60 @@ export default function GoogleRoiContactForm({ category }) {
   const formFields = [
     { name: "your-name", label: "Name", type: "text" },
     { name: "your-email", label: "Email", type: "email" },
+    { name: "your-number", label: "Number", type: "number" },
+    { name: "your-website", label: "Website", type: "text" },
+    {
+      name: "menu-722",
+      label: "Reason to Contact",
+      type: "select",
+      options: [
+        "I'm Interested in..",
+        "Digital Marketing",
+        "Social Media Management",
+        "Website Development",
+        "Graphic Design",
+        "Whitelabel Digital Marketing",
+      ],
+    },
   ];
 
-  const renderInput = (name, type, label) => {
+  const renderInput = (name, type, label, options = []) => {
+    if (type === "select") {
+      return (
+        <>
+        
+        
+        <motion.div
+  variants={inputVariants}
+  animate={errors[name] ? "shake" : ""}
+  className="mb-4"
+>
+  <label className="block text-[#747a80] text-[14px] font-[500] mb-2">
+    {label}
+  </label>
+
+  <select
+    name={name}
+    value={form[name]}
+    onChange={handleChange}
+    className={`w-full border px-4 py-3 text-[#747a80] text-[16px] font-[400] rounded-md appearance-none
+      ${errors[name] ? "border-red-500" : "border-[#e7e7e7]"} 
+      focus:border-black focus:outline-none`}
+  >
+    <option value="" disabled hidden>
+      I'm Interested in..
+    </option>
+    {options.map((opt, idx) => (
+      <option key={idx} value={opt}>
+        {opt}
+      </option>
+    ))}
+  </select>
+</motion.div>
+
+        </>
+      );
+    }
 
     return (
       <motion.div
@@ -115,7 +172,7 @@ export default function GoogleRoiContactForm({ category }) {
           required
           placeholder=" "
           className={`peer w-full border px-4 pt-6 pb-2 text-[#050607] text-[16px] font-[400] ${errors[name] ? "border-red-500" : "border-[#e7e7e7]"
-            } focus:border-black focus:outline-none`}
+            } focus:border-black focus:outline-none rounded-md`}
         />
         <label
           className="absolute left-4 top-4 text-[#050607] text-[14px] font-[400] transition-all duration-200 ease-in-out
@@ -135,34 +192,64 @@ export default function GoogleRoiContactForm({ category }) {
       <motion.div
         {...(hasMounted
           ? {
-            initial: { opacity: 0, x: -200 },
-            whileInView: { opacity: 1, x: 0 },
-            transition: { duration: 1 },
-          }
+              initial: { opacity: 0, x: -200 },
+              whileInView: { opacity: 1, x: 0 },
+              transition: { duration: 1 },
+            }
           : {})}
       >
+        {/* <p className="text-[30px] md:text-[40px] font-[600] text-[#e05c24] pb-4">
+          {category.name}
+        </p> */}
+        {/* {category.posts?.map((post) =>
+          post.list_items?.map((listGroup, groupIndex) =>
+            listGroup.map((item, itemIndex) => (
+              <div
+                key={`${groupIndex}-${itemIndex}`}
+                className="flex gap-2 items-start py-3"
+              >
+                <div className="text-[#61ce70] text-xl pt-1">✔️</div>
+                <p className="text-[18px] font-[700] md:text-[20px] md:font-[600] text-[#191d27]">
+                  {item}
+                </p>
+              </div>
+            ))
+          )
+        )} */}
+        {/* <p className="text-[16px] lg:text-[18px] font-[400] text-[#616670] py-3 pl-6">
+          🎯 {category.description}
+        </p> */}
       </motion.div>
 
       <motion.div
         {...(hasMounted
           ? {
-            initial: { opacity: 0, y: 300 },
-            whileInView: { opacity: 1, y: 0 },
-            transition: { duration: 1 },
-          }
+              initial: { opacity: 0, y: 300 },
+              whileInView: { opacity: 1, y: 0 },
+              transition: { duration: 1 },
+            }
           : {})}
         className="rounded-3xl bg-white shadow px-6 lg:px-12 py-8 relative"
       >
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="">
-            {renderInput("your-name", "text", "Name")}{" "}
-            
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {renderInput("your-name", "text", "Name")}
+            {renderInput("your-email", "email", "Email")}
           </div>
 
-          <div className="">
-            {renderInput("your-email", "email", "Email")}{" "}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {renderInput("your-number", "number", "Number")}
+            {renderInput("your-website", "text", "Website")}{" "}
+            {/* ✅ renamed key */}
           </div>
 
+          {renderInput(
+            "menu-722",
+            "select",
+            "Reason to Contact",
+            formFields.find((f) => f.name === "menu-722").options
+          )}
+          
           <motion.div
             variants={inputVariants}
             animate={errors["your-message"] ? "shake" : ""}
@@ -173,16 +260,15 @@ export default function GoogleRoiContactForm({ category }) {
               rows="4"
               value={form["your-message"]}
               onChange={handleChange}
-              placeholder=""
-              className={`peer w-full border px-4 py-4 text-[#050607] text-[16px] font-[400] resize-none ${errors["your-message"]
-                ? "border-red-500"
-                : "border-[#e7e7e7]"
-                } focus:border-black focus:outline-none`}
+              placeholder=" " // optional
+              className={`peer w-full border px-4 pt-7 pb-4 text-[#050607] text-[16px] font-[400] resize-none ${
+                errors["your-message"] ? "border-red-500" : "border-[#e7e7e7]"
+              } focus:border-black focus:outline-none rounded-md`}
             />
             <label
               className={`absolute left-4  transition-all duration-200 ease-in-out text-[14px] font-[400] ${
                 form["your-message"]
-                  ? "top-0 text-[12px] text-black"
+                  ? "top-1 text-[12px] text-black"
                   : "top-4 text-[16px] text-gray-500"
               }`}
             >
@@ -199,12 +285,11 @@ export default function GoogleRoiContactForm({ category }) {
               }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="w-full lg:w-[300px] bg-[#0e71b9] text-white rounded-full px-6 py-4 text-[15px] font-[500] shadow-md hover:bg-[#0e71b9] focus:outline-none cursor-pointer"
+              className="w-full lg:w-[300px] bg-[#0e71b9] text-white rounded-full px-6 py-4 text-[15px] font-[500] shadow-md hover:bg-[#0e71b9] focus:outline-none"
             >
-              Submit
+              Request Demo
             </motion.button>
           </div>
-
 
           <AnimatePresence>
             {submitted && hasMounted && (
