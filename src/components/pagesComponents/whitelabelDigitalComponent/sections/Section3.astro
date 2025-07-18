@@ -19,7 +19,7 @@ const list = pageData?.list_items[0];
         {
             list.map((item: any) => (
                 <div class="p-[30px] mx-[10px] lg:mx-[40px] rounded bg-white text-center lg:text-left">
-                    <div class="flex items-center justify-center mb-[20px] hover:bg-[#fef2f2] bg-[#2d89bf] rounded-[50%] p-[10px] text-white hover:text-[#2d89bf]" set:html={item?.svg}></div>
+                    <div class="flex items-center justify-center mb-[20px] hover:bg-[#fef2f2] bg-[#2d89bf] rounded-[50%] p-[10px] text-white hover:text-[#2d89bf] transition duration-500" set:html={item?.svg}></div>
                     <h5 class="text-[20px] font-[600] text-[#191d27] pb-[20px] mb-[20px] text-center lg:text-left">{item?.heading}</h5>
                     <p class="demanzo-p mb-[20px] text-center lg:text-left">{item?.para}</p>
                 </div>

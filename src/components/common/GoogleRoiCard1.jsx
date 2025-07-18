@@ -14,8 +14,8 @@ const GoogleRoiCard1 = ({SectionData}) => {
             return (
                 <div key={index} class={`p-[30px] group rounded-md text-center ${
                 isEven
-                    ? 'bg-[#060a33]'
-                    : 'bg-white hover:bg-[#060a33] transition duration-500'
+                    ? 'bg-[#060a33] text-[#2d89bf] hover:text-white transition duration-500'
+                    : 'bg-white hover:bg-[#060a33] transition duration-500  text-[#2d89bf] hover:text-white'
                 }`}>
                     <div class="flex items-center justify-center pb-[15px]" dangerouslySetInnerHTML={{ __html: item.svg }}></div>
                     <p class={`mb-[10px] text-[17px] font-[500] group-hover:text-white transition duration-500 ${isEven ? 'text-white' : 'text-black'}`}>{item.heading}</p>
