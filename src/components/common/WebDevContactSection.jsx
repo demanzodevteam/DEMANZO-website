@@ -3,9 +3,9 @@ import BackGroundImg from '../../assets/Background-SEO-Traffic.jpg';
 import rocketImg from '../../assets/rocket.png';
 import skyImg from '../../assets/sky2.png';
 import { motion } from "framer-motion";
-import GoogleRoiContactForm from './GoogleRoiContactForm';
+import WebDevContactForm from './WebDevContactForm';
 
-const GoogleRoiContactSection = ({ SectionData }) => {
+const WebDevContactSection = ({ SectionData }) => {
 
   return (
     <div
@@ -53,11 +53,11 @@ const GoogleRoiContactSection = ({ SectionData }) => {
 
         {/* Right Side - Form */}
         <div className=" rounded-2xl p-6 lg:p-10 w-full">
-          <GoogleRoiContactForm />
+          <WebDevContactForm />
         </div>
       </div>
     </div>
   );
 };
 
-export default GoogleRoiContactSection;
+export default WebDevContactSection;
