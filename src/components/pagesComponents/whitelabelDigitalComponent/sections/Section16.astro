@@ -1,10 +1,10 @@
 ---
 import { API_URL } from "../../../../config/urls";
-import WebDevContactSection from "../../../common/WebDevContactSection";
+import WhiteLabelContactSection from "../../../common/WhiteLabelContactSection";
 
 
 const res = await fetch(API_URL + 'blocks/204');
 const pageData = await res.json();
 ---
 
-<WebDevContactSection  SectionData={pageData[13]} client:only="react"/>
+<WhiteLabelContactSection  SectionData={pageData[13]} client:only="react"/>

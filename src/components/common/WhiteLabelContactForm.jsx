@@ -113,6 +113,7 @@ export default function WhiteLabelContactForm({ category }) {
     { name: "your-country", label: "Country", type: "text" },
     {
       name: "select-626",
+      label: "",
       type: "select",
       options: [
         "Company Type",
@@ -122,6 +123,7 @@ export default function WhiteLabelContactForm({ category }) {
     },
     {
       name: "select-808",
+      label: "",
       type: "select",
       options: [
         "Team Size",
@@ -133,6 +135,7 @@ export default function WhiteLabelContactForm({ category }) {
     },
     {
       name: "select-239",
+      label: "",
       type: "select",
       options: [
         "Total Clients",
@@ -144,6 +147,7 @@ export default function WhiteLabelContactForm({ category }) {
     },
     {
       name: "select-8",
+      label: "",
       type: "select",
       options: [
         "Where you need help?",
@@ -154,35 +158,37 @@ export default function WhiteLabelContactForm({ category }) {
   ];
 
   const renderInput = (name, type, label, options = []) => {
-    if (type === "select") {
-      return (
-        <>
+
+        if (type === "select") {
+          return (
+            <>
+            
+            
             <motion.div
-                variants={inputVariants}
-                animate={errors[name] ? "shake" : ""}
-                className="mb-4"
-                >
-                <select
-                    name={name}
-                    value={form[name]}
-                    onChange={handleChange}
-                    className={`w-full border px-4 py-3 text-[#747a80] text-[16px] font-[400] rounded-md appearance-none
-                    ${errors[name] ? "border-red-500" : "border-[#e7e7e7]"} 
-                    focus:border-black focus:outline-none`}
-                >
-                    <option value="" disabled hidden>
-                        {options[0]}
-                    </option>
-                    {options.map((opt, idx) => (
-                    <option key={idx} value={opt}>
-                        {opt}
-                    </option>
-                    ))}
-                </select>
-            </motion.div>
-        </>
-      );
-    }
+      variants={inputVariants}
+      animate={errors[name] ? "shake" : ""}
+      className="mb-4"
+    >
+      <select
+  name={name}
+  value={form[name]}
+  onChange={handleChange}
+  className={`w-full border px-4 py-3 text-[#747a80] text-[16px] font-[400] appearance-none
+    ${errors[name] ? "border-red-500" : "border-[#e7e7e7]"} 
+    focus:border-black focus:outline-none`}
+>
+  {options.map((opt, idx) => (
+    <option key={idx} value={opt} disabled={idx === 0} hidden={idx === 0}>
+      {opt}
+    </option>
+  ))}
+</select>
+
+    </motion.div>
+    
+            </>
+          );
+        }
 
     return (
       <motion.div
@@ -198,7 +204,7 @@ export default function WhiteLabelContactForm({ category }) {
           required
           placeholder=" "
           className={`peer w-full border px-4 pt-6 pb-2 text-[#050607] text-[16px] font-[400] ${errors[name] ? "border-red-500" : "border-[#e7e7e7]"
-            } focus:border-black focus:outline-none rounded-md`}
+            } focus:border-black focus:outline-none`}
         />
         <label
           className="absolute left-4 top-4 text-[#050607] text-[14px] font-[400] transition-all duration-200 ease-in-out
@@ -251,11 +257,13 @@ export default function WhiteLabelContactForm({ category }) {
             {renderInput(
             "select-626",
             "select",
+            "",
             formFields.find((f) => f.name === "select-626").options
           )}
           {renderInput(
             "select-808",
             "select",
+            "",
             formFields.find((f) => f.name === "select-808").options
           )}
           {" "}
@@ -265,11 +273,13 @@ export default function WhiteLabelContactForm({ category }) {
             {renderInput(
             "select-239",
             "select",
+            "",
             formFields.find((f) => f.name === "select-239").options
           )}
           {renderInput(
             "select-8",
             "select",
+            "",
             formFields.find((f) => f.name === "select-8").options
           )}
           {" "}
@@ -288,7 +298,7 @@ export default function WhiteLabelContactForm({ category }) {
               placeholder=" " // optional
               className={`peer w-full border px-4 pt-7 pb-4 text-[#050607] text-[16px] font-[400] resize-none ${
                 errors["your-message"] ? "border-red-500" : "border-[#e7e7e7]"
-              } focus:border-black focus:outline-none rounded-md`}
+              } focus:border-black focus:outline-none`}
             />
             <label
               className={`absolute left-4  transition-all duration-200 ease-in-out text-[14px] font-[400] ${
