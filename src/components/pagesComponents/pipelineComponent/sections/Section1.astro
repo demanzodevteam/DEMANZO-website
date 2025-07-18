@@ -6,6 +6,7 @@ const res = await fetch(API_URL + 'blocks/280');
 const data = await res.json();
 
 const pageData = data[0];
+
 ---
 <!-- First Section -->
 <HeroSection pageData={pageData} client:load/>

@@ -38,9 +38,11 @@ const blogArray = Object.values(blogs);
 const button = false;
 
 const combinedData = { ...blogArray, button };
+const title = "";
+const description = "";
 ---
 
-<HomeLayout>
+<HomeLayout title={title} description={description}>
   <ArticlesHeader SectionData={post} />
   <WpContentParser content={post.content.rendered} client:load />
   <ArticleFooter posts={posts} currentSlug={slug} />
