@@ -3,35 +3,81 @@ import logo from "../../assets/logo.png";
 import FooterGrid from "./renderers/FooterGrid";
 import { NAV_URLS } from "../../config/urls";
 
+// Fetch category data
 const res = await fetch(NAV_URLS + "108");
 const category = await res.json();
 ---
 
 <footer
-	class="px-8 pt-12 pb-3 bg-[url('../assets/Footer-Bg-1-1.webp')] bg-no-repeat bg-cover bg-fill bg-center w-full"
+  class="px-8 pt-12 pb-3 bg-[url('../assets/Footer-Bg-1-1.webp')] bg-no-repeat bg-cover bg-fill bg-center w-full"
 >
-	<div class="demanzo-container-auto">
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 pb-8">
-			<div>
-				<img src={logo.src} alt="" class="w-56" />
-				<p class="text-[16px] font-[500] text-[#616670] py-6 md:pr-8">
-					We are a startup with high aspirations to provide out of the
-					box solutions for demand generation for businesses. We want
-					to make the demand generation process as simple as it gets.
-				</p>
-			</div>
-			<FooterGrid category={category} />
-		</div>
-		<hr />
-		<div class="text-center pt-8">
-			<p class="text-[16px] font-[500] text-[#616670]">
-				Copyright © {new Date().getFullYear()}
-				<span class="text-[#2d89bf]">Demanzo dev</span> | All Rights Reserved
-			</p>
-		</div>
-	</div>
+  <div class="demanzo-container-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 pb-8">
+      <div>
+        <img src={logo.src} alt="Demanzo Logo" class="w-56" />
+        <p class="text-[16px] font-[500] text-[#616670] py-6 md:pr-8">
+          We are a startup with high aspirations to provide out-of-the-box solutions
+          for demand generation for businesses. We want to make the demand generation
+          process as simple as it gets.
+        </p>
+      </div>
+      <FooterGrid category={category} />
+    </div>
+    <hr />
+    <div class="text-center pt-8">
+      <p class="text-[16px] font-[500] text-[#616670]">
+        Copyright © {new Date().getFullYear()}
+        <span class="text-[#2d89bf]"> Demanzo dev</span> | All Rights Reserved
+      </p>
+    </div>
+  </div>
 </footer>
 
-<script is:inline>(function(w, d) { w.CollectId = "5aba71250f3194c6f4a32871"; var h = d.head || d.getElementsByTagName("head")[0]; var s = d.createElement("script"); s.setAttribute("type", "text/javascript"); s.async=true; s.setAttribute("src", "https://collectcdn.com/launcher.js"); h.appendChild(s); })(window, document);</script>
-<!-- <script src="../../assets/scripts/alpine.js"
-></script> -->
+<!-- ✅ Fixed Button Stack on Bottom Right -->
+<div class="fixed right-6 flex flex-col items-end gap-4 z-50 bottom-6">
+  <!-- 🟠 Scroll to Top Button -->
+  <button
+    id="scrollToTopBtn"
+    aria-label="Scroll to top"
+    class="bg-[linear-gradient(to_bottom,_#ff8c00,_#f12500)] text-white text-xl p-3 rounded-full shadow-xl transition-all duration-300 hover:scale-110 animate-bounce pointer-events-none opacity-0.9"
+  >
+    <span class="text-xl font-bold">↑</span>
+  </button>
+
+  <!-- 💬 Chatbot Placeholder (Replace with your actual bot widget or iframe) -->
+  <div id="chatbot" class="w-16 h-16">
+    
+  </div>
+</div>
+
+<!-- 💡 Smooth Scroll + Show/Hide Control -->
+<script is:inline>
+  const scrollBtn = document.getElementById('scrollToTopBtn');
+
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      scrollBtn.classList.add('opacity-90', 'pointer-events-auto');
+      scrollBtn.classList.remove('opacity-0', 'pointer-events-none');
+    } else {
+      scrollBtn.classList.remove('opacity-90', 'pointer-events-auto');
+      scrollBtn.classList.add('opacity-0', 'pointer-events-none');
+    }
+  });
+</script>
+
+<!-- 📊 Optional external collector -->
+<script is:inline>
+  (function(w, d) {
+    w.CollectId = "5aba71250f3194c6f4a32871";
+    var h = d.head || d.getElementsByTagName("head")[0];
+    var s = d.createElement("script");
+    s.setAttribute("type", "text/javascript");
+    s.async = true;
+    s.setAttribute("src", "https://collectcdn.com/launcher.js");
+    h.appendChild(s);
+  })(window, document);
+</script>
