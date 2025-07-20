@@ -9,6 +9,7 @@ import HeaderMenus from "../components/main/renderers/HeaderMenus";
 import { NAV_URLS } from "../config/urls";
 import PageProgressBar from "../components/common/pageProgressBar";
 import Breadcrumb from "../components/common/BreadCrumb";
+import ToasterProvider from "../components/common/ToasterProvider";
 
 const res = await fetch(NAV_URLS + "128");
 const navLinks = await res.json();
@@ -249,7 +250,7 @@ const {
             />
           </div>
         </div>
-
+        <ToasterProvider client:load />
         <slot />
         <!-- <Breadcrumb pathname={pathname} client:visible /> -->
 

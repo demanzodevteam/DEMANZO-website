@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { FORM_URL } from "../../config/urls";
+import { toast } from 'react-toastify';
 
 // Hook to detect client-side mount
 function useHasMounted() {
@@ -78,10 +79,10 @@ export default function GoogleRoiContactForm() {
 
         setTimeout(() => setSubmitted(false), 2000);
       } else {
-        alert("Submission failed: " + data.message);
+        toast.error("Submission failed: " + data.message);
       }
     } catch (error) {
-      alert("Network error. Please try again.");
+      toast.error("Network error. Please try again.");
       console.error(error);
     } finally {
       setLoading(false);
