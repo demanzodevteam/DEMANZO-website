@@ -28,6 +28,7 @@ export default function WhiteLabelContactForm({ category }) {
 
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,6 +41,7 @@ export default function WhiteLabelContactForm({ category }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     const newErrors = {};
     Object.keys(form).forEach((field) => {
@@ -94,6 +96,8 @@ export default function WhiteLabelContactForm({ category }) {
     } catch (error) {
       alert("Network error. Please try again.");
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -310,9 +314,19 @@ export default function WhiteLabelContactForm({ category }) {
               }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="w-full lg:w-[300px] cursor-pointer bg-[#0e71b9] text-white rounded-full px-6 py-4 text-[15px] font-[500] shadow-md hover:bg-[#0e71b9] focus:outline-none"
+              disabled={loading}
+              className={`w-full lg:w-[300px] cursor-pointer bg-[#0e71b9] text-white rounded-full px-6 py-4 text-[15px] font-[500] shadow-md focus:outline-none ${
+                loading ? "opacity-60 cursor-not-allowed" : "hover:bg-[#0e71b9]"
+              }`}
             >
-              Request Demo
+              {loading ? (
+                <div className="flex items-center justify-center gap-2">
+                  <span className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                  Submitting...
+                </div>
+              ) : (
+                "Request Demo"
+              )}
             </motion.button>
           </div>
 
@@ -324,7 +338,7 @@ export default function WhiteLabelContactForm({ category }) {
                 exit={{ opacity: 0 }}
                 className="text-green-600 font-medium text-center"
               >
-                ✅ Submitted successfully!
+                Thank you for your message. It has been sent.
               </motion.div>
             )}
           </AnimatePresence>

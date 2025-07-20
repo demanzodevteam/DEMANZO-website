@@ -22,6 +22,7 @@ export default function GoogleRoiContactForm() {
 
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,7 +35,7 @@ export default function GoogleRoiContactForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     const newErrors = {};
     Object.keys(form).forEach((field) => {
       if (!form[field] || form[field].trim() === "") {
@@ -82,6 +83,8 @@ export default function GoogleRoiContactForm() {
     } catch (error) {
       alert("Network error. Please try again.");
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -188,7 +191,7 @@ export default function GoogleRoiContactForm() {
           </motion.div>
 
           <div className="text-center">
-            <motion.button
+            {/* <motion.button
               type="submit"
               whileHover={{
                 scale: 1.05,
@@ -199,6 +202,28 @@ export default function GoogleRoiContactForm() {
               className="w-full lg:w-[300px] cursor-pointer bg-[#0e71b9] text-white rounded-full px-6 py-4 text-[15px] font-[500] shadow-md hover:bg-[#0e71b9] focus:outline-none"
             >
               Submit
+            </motion.button> */}
+            <motion.button
+              type="submit"
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0px 0px 16px rgba(0, 123, 255, 0.6)",
+              }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              disabled={loading}
+              className={`w-full lg:w-[300px] cursor-pointer bg-[#0e71b9] text-white rounded-full px-6 py-4 text-[15px] font-[500] shadow-md focus:outline-none ${
+                loading ? "opacity-60 cursor-not-allowed" : "hover:bg-[#0e71b9]"
+              }`}
+            >
+              {loading ? (
+                <div className="flex items-center justify-center gap-2">
+                  <span className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                  Submitting...
+                </div>
+              ) : (
+                "Submit"
+              )}
             </motion.button>
           </div>
 
@@ -210,7 +235,7 @@ export default function GoogleRoiContactForm() {
                 exit={{ opacity: 0 }}
                 className="text-green-600 font-medium text-center"
               >
-                ✅ Submitted successfully!
+                Thank you for your message. It has been sent.
               </motion.div>
             )}
           </AnimatePresence>
