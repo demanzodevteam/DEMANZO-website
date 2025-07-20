@@ -53,9 +53,7 @@ export default function WhiteLabelContactForm({ category }) {
     if (Object.keys(newErrors).length > 0) return;
 
     const formData = new FormData();
-    Object.entries(form).forEach(([key, val]) =>
-      formData.append(key, val)
-    );
+    Object.entries(form).forEach(([key, val]) => formData.append(key, val));
 
     // CF7 hidden fields (for ID 1175)
     formData.append("_wpcf7", "1175");
@@ -78,15 +76,15 @@ export default function WhiteLabelContactForm({ category }) {
 
         setSubmitted(true);
         setForm({
-            "your-name": "",
-            "your-email": "",
-            "your-number": "",
-            "your-country": "",
-            "select-626": "Company Type",
-            "select-808": "Team Size",
-            "select-239": "Total Clients",
-            "select-8": "Where you need help?",
-            "your-message": "",
+          "your-name": "",
+          "your-email": "",
+          "your-number": "",
+          "your-country": "",
+          "select-626": "Company Type",
+          "select-808": "Team Size",
+          "select-239": "Total Clients",
+          "select-8": "Where you need help?",
+          "your-message": "",
         });
 
         setTimeout(() => setSubmitted(false), 2000);
@@ -115,85 +113,74 @@ export default function WhiteLabelContactForm({ category }) {
       name: "select-626",
       label: "",
       type: "select",
-      options: [
-        "Company Type",
-        "Freelancer",
-        "Agency"
-      ],
+      options: ["Company Type", "Freelancer", "Agency"],
     },
     {
       name: "select-808",
       label: "",
       type: "select",
-      options: [
-        "Team Size",
-        "1",
-        "2-5",
-        "6-10",
-        ">10"
-      ],
+      options: ["Team Size", "1", "2-5", "6-10", ">10"],
     },
     {
       name: "select-239",
       label: "",
       type: "select",
-      options: [
-        "Total Clients",
-        "Just Starting",
-        "1-5",
-        "6-10",
-        ">10"
-      ],
+      options: ["Total Clients", "Just Starting", "1-5", "6-10", ">10"],
     },
     {
       name: "select-8",
       label: "",
       type: "select",
-      options: [
-        "Where you need help?",
-        "SEO",
-        "PPC"
-      ],
+      options: ["Where you need help?", "SEO", "PPC"],
     },
   ];
 
   const renderInput = (name, type, label, options = []) => {
+    if (type === "select") {
+      return (
+        <>
+          <motion.div
+            variants={inputVariants}
+            animate={errors[name] ? "shake" : undefined}
+            className="mb-4"
+          >
+            <label className="block text-[#747a80] text-[14px] font-[500] mb-2">
+              {label}
+            </label>
 
-        if (type === "select") {
-          return (
-            <>
-            
-            
-            <motion.div
-      variants={inputVariants}
-      animate={errors[name] ? "shake" : ""}
-      className="mb-4"
-    >
-      <select
-  name={name}
-  value={form[name]}
-  onChange={handleChange}
-  className={`w-full border px-4 py-3 text-[#747a80] text-[16px] font-[400] appearance-none
-    ${errors[name] ? "border-red-500" : "border-[#e7e7e7]"} 
-    focus:border-black focus:outline-none`}
->
-  {options.map((opt, idx) => (
-    <option key={idx} value={opt} disabled={idx === 0} hidden={idx === 0}>
-      {opt}
-    </option>
-  ))}
-</select>
-
-    </motion.div>
-    
-            </>
-          );
-        }
+            <select
+              name={name}
+              value={form[name]}
+              onChange={handleChange}
+              className={`w-full border px-1 py-3 text-[16px] font-[400] cursor-pointer
+      ${
+        form[name] && form[name] !== options[0]
+          ? "text-black"
+          : "text-[#747a80]"
+      }
+      ${errors[name] ? "border-red-500" : "border-[#e7e7e7]"}
+      focus:border-black focus:outline-none`}
+            >
+              {options.map((opt, idx) => (
+                <option
+                  key={idx}
+                  value={opt}
+                  disabled={idx === 0}
+                  hidden={idx === 0}
+                >
+                  {opt}
+                </option>
+              ))}
+            </select>
+          </motion.div>
+        </>
+      );
+    }
 
     return (
       <motion.div
         variants={inputVariants}
-        animate={errors[name] ? "shake" : ""}
+        animate={errors[name] ? "shake" : undefined}
         className="relative"
       >
         <input
@@ -203,19 +190,23 @@ export default function WhiteLabelContactForm({ category }) {
           onChange={handleChange}
           required
           placeholder=" "
-          className={`peer w-full border px-4 pt-6 pb-2 text-[#050607] text-[16px] font-[400] ${errors[name] ? "border-red-500" : "border-[#e7e7e7]"
-            } focus:border-black focus:outline-none`}
+          autoComplete="off"
+          className={`peer w-full border px-4 pt-6 pb-2 text-[#050607] text-[16px] font-[400] ${
+            errors[name] ? "border-red-500" : "border-[#e7e7e7]"
+          } focus:border-black focus:outline-none`}
         />
         <label
-          className="absolute left-4 top-4 text-[#050607] text-[14px] font-[400] transition-all duration-200 ease-in-out
-      peer-placeholder-shown:top-4 peer-placeholder-shown:text-[16px] peer-placeholder-shown:text-gray-500
-      peer-focus:top-1 peer-focus:text-[12px] peer-focus:text-black
-      peer-valid:top-1 peer-valid:text-[12px] peer-valid:text-black"
+          className={`absolute left-4 font-[400] text-[#050607] transition-all duration-200 ease-in-out
+      ${
+        form[name]
+          ? "top-1 text-[12px] text-black"
+          : "top-4 text-[16px] text-gray-500"
+      }
+      peer-focus:top-1 peer-focus:text-[12px] peer-focus:text-black`}
         >
           {label}
         </label>
       </motion.div>
-
     );
   };
 
@@ -229,9 +220,7 @@ export default function WhiteLabelContactForm({ category }) {
               transition: { duration: 1 },
             }
           : {})}
-      >
-      </motion.div>
-
+      ></motion.div>
       <motion.div
         {...(hasMounted
           ? {
@@ -240,9 +229,9 @@ export default function WhiteLabelContactForm({ category }) {
               transition: { duration: 1 },
             }
           : {})}
-        className="rounded-3xl bg-white shadow px-6 lg:px-12 py-8 relative"
+        className="rounded-3xl bg-white shadow px-6 lg:px-8 py-8 relative"
       >
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-5">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {renderInput("your-name", "text", "Full Name")}
             {renderInput("your-email", "email", "Email Address")}
@@ -250,62 +239,63 @@ export default function WhiteLabelContactForm({ category }) {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {renderInput("your-number", "number", "Phone Number")}
-            {renderInput("your-country", "text", "Country")}{" "}
+            {renderInput("your-country", "text", "Country")}
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {renderInput(
-            "select-626",
-            "select",
-            "",
-            formFields.find((f) => f.name === "select-626").options
-          )}
-          {renderInput(
-            "select-808",
-            "select",
-            "",
-            formFields.find((f) => f.name === "select-808").options
-          )}
-          {" "}
+              "select-626",
+              "select",
+              "",
+              formFields.find((f) => f.name === "select-626")?.options || []
+            )}
+            {renderInput(
+              "select-808",
+              "select",
+              "",
+              formFields.find((f) => f.name === "select-808")?.options || []
+            )}
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {renderInput(
-            "select-239",
-            "select",
-            "",
-            formFields.find((f) => f.name === "select-239").options
-          )}
-          {renderInput(
-            "select-8",
-            "select",
-            "",
-            formFields.find((f) => f.name === "select-8").options
-          )}
-          {" "}
+              "select-239",
+              "select",
+              "",
+              formFields.find((f) => f.name === "select-239")?.options || []
+            )}
+            {renderInput(
+              "select-8",
+              "select",
+              "",
+              formFields.find((f) => f.name === "select-8")?.options || []
+            )}
           </div>
 
           <motion.div
             variants={inputVariants}
-            animate={errors["your-message"] ? "shake" : ""}
+            animate={errors["your-message"] ? "shake" : undefined}
             className="relative"
           >
             <textarea
               name="your-message"
-              rows="4"
+              rows={4}
               value={form["your-message"]}
               onChange={handleChange}
-              placeholder=" " // optional
-              className={`peer w-full border px-4 pt-7 pb-4 text-[#050607] text-[16px] font-[400] resize-none ${
-                errors["your-message"] ? "border-red-500" : "border-[#e7e7e7]"
-              } focus:border-black focus:outline-none`}
+              placeholder=" "
+              className={`peer w-full border px-4 pt-7 pb-4 text-[#050607] text-[16px] font-[400] resize-none
+      ${errors["your-message"] ? "border-red-500" : "border-[#e7e7e7]"}
+      focus:border-black focus:outline-none transition-colors duration-200`}
             />
+
             <label
-              className={`absolute left-4  transition-all duration-200 ease-in-out text-[14px] font-[400] ${
-                form["your-message"]
-                  ? "top-1 text-[12px] text-black"
-                  : "top-4 text-[16px] text-gray-500"
-              }`}
+              className={`absolute left-4 transition-all duration-200 ease-in-out text-[14px] font-[400] pointer-events-none
+      ${
+        form["your-message"]
+          ? "top-1 text-[12px] text-black"
+          : "top-4 text-[16px] text-gray-500"
+      } 
+      peer-focus:top-1 peer-focus:text-[12px] peer-focus:text-black`}
             >
               Message
             </label>
@@ -320,7 +310,7 @@ export default function WhiteLabelContactForm({ category }) {
               }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="w-full lg:w-[300px] bg-[#0e71b9] text-white rounded-full px-6 py-4 text-[15px] font-[500] shadow-md hover:bg-[#0e71b9] focus:outline-none"
+              className="w-full lg:w-[300px] cursor-pointer bg-[#0e71b9] text-white rounded-full px-6 py-4 text-[15px] font-[500] shadow-md hover:bg-[#0e71b9] focus:outline-none"
             >
               Request Demo
             </motion.button>

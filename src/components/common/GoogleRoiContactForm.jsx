@@ -47,9 +47,7 @@ export default function GoogleRoiContactForm() {
     if (Object.keys(newErrors).length > 0) return;
 
     const formData = new FormData();
-    Object.entries(form).forEach(([key, val]) =>
-      formData.append(key, val)
-    );
+    Object.entries(form).forEach(([key, val]) => formData.append(key, val));
 
     // CF7 hidden fields (for ID 1177)
     formData.append("_wpcf7", "1177");
@@ -72,9 +70,9 @@ export default function GoogleRoiContactForm() {
 
         setSubmitted(true);
         setForm({
-            "your-name": "",
-            "your-email": "",
-            "your-message": "",
+          "your-name": "",
+          "your-email": "",
+          "your-message": "",
         });
 
         setTimeout(() => setSubmitted(false), 2000);
@@ -100,11 +98,10 @@ export default function GoogleRoiContactForm() {
   ];
 
   const renderInput = (name, type, label, options = []) => {
-
     return (
       <motion.div
         variants={inputVariants}
-        animate={errors[name] ? "shake" : ""}
+        animate={errors[name] ? "shake" : undefined}
         className="relative"
       >
         <input
@@ -114,19 +111,23 @@ export default function GoogleRoiContactForm() {
           onChange={handleChange}
           required
           placeholder=" "
-          className={`peer w-full border px-4 pt-6 pb-2 text-[#050607] text-[16px] font-[400] ${errors[name] ? "border-red-500" : "border-[#e7e7e7]"
-            } focus:border-black focus:outline-none`}
+          autoComplete="off"
+          className={`peer w-full border px-4 pt-6 pb-2 text-[#050607] text-[16px] font-[400] ${
+            errors[name] ? "border-red-500" : "border-[#e7e7e7]"
+          } focus:border-black focus:outline-none`}
         />
         <label
-          className="absolute left-4 top-4 text-[#050607] text-[14px] font-[400] transition-all duration-200 ease-in-out
-      peer-placeholder-shown:top-4 peer-placeholder-shown:text-[16px] peer-placeholder-shown:text-gray-500
-      peer-focus:top-1 peer-focus:text-[12px] peer-focus:text-black
-      peer-valid:top-1 peer-valid:text-[12px] peer-valid:text-black"
+          className={`absolute left-4 font-[400] text-[#050607] transition-all duration-200 ease-in-out
+      ${
+        form[name]
+          ? "top-1 text-[12px] text-black"
+          : "top-4 text-[16px] text-gray-500"
+      }
+      peer-focus:top-1 peer-focus:text-[12px] peer-focus:text-black`}
         >
           {label}
         </label>
       </motion.div>
-
     );
   };
 
@@ -140,8 +141,7 @@ export default function GoogleRoiContactForm() {
               transition: { duration: 1 },
             }
           : {})}
-      >
-      </motion.div>
+      ></motion.div>
 
       <motion.div
         {...(hasMounted
@@ -154,36 +154,34 @@ export default function GoogleRoiContactForm() {
         className="rounded-3xl bg-white shadow px-6 lg:px-12 py-8 relative"
       >
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            {renderInput("your-name", "text", "Name")}{" "}
-          </div>
+          <div>{renderInput("your-name", "text", "Name")} </div>
 
-          <div>
-            {renderInput("your-email", "email", "Email")}{" "}
-          </div>
-
+          <div>{renderInput("your-email", "email", "Email")} </div>
 
           <motion.div
             variants={inputVariants}
-            animate={errors["your-message"] ? "shake" : ""}
+            animate={errors["your-message"] ? "shake" : undefined}
             className="relative"
           >
             <textarea
               name="your-message"
-              rows="4"
+              rows={4}
               value={form["your-message"]}
               onChange={handleChange}
-              placeholder=" " // optional
-              className={`peer w-full border px-4 pt-7 pb-4 text-[#050607] text-[16px] font-[400] resize-none ${
-                errors["your-message"] ? "border-red-500" : "border-[#e7e7e7]"
-              } focus:border-black focus:outline-none`}
+              placeholder=" "
+              className={`peer w-full border px-4 pt-7 pb-4 text-[#050607] text-[16px] font-[400] resize-none
+      ${errors["your-message"] ? "border-red-500" : "border-[#e7e7e7]"}
+      focus:border-black focus:outline-none transition-colors duration-200`}
             />
+
             <label
-              className={`absolute left-4  transition-all duration-200 ease-in-out text-[14px] font-[400] ${
-                form["your-message"]
-                  ? "top-1 text-[12px] text-black"
-                  : "top-4 text-[16px] text-gray-500"
-              }`}
+              className={`absolute left-4 transition-all duration-200 ease-in-out text-[14px] font-[400] pointer-events-none
+      ${
+        form["your-message"]
+          ? "top-1 text-[12px] text-black"
+          : "top-4 text-[16px] text-gray-500"
+      } 
+      peer-focus:top-1 peer-focus:text-[12px] peer-focus:text-black`}
             >
               Message
             </label>
@@ -198,7 +196,7 @@ export default function GoogleRoiContactForm() {
               }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="w-full lg:w-[300px] bg-[#0e71b9] text-white rounded-full px-6 py-4 text-[15px] font-[500] shadow-md hover:bg-[#0e71b9] focus:outline-none"
+              className="w-full lg:w-[300px] cursor-pointer bg-[#0e71b9] text-white rounded-full px-6 py-4 text-[15px] font-[500] shadow-md hover:bg-[#0e71b9] focus:outline-none"
             >
               Submit
             </motion.button>

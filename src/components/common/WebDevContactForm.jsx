@@ -50,9 +50,7 @@ export default function WebDevContactForm() {
     if (Object.keys(newErrors).length > 0) return;
 
     const formData = new FormData();
-    Object.entries(form).forEach(([key, val]) =>
-      formData.append(key, val)
-    );
+    Object.entries(form).forEach(([key, val]) => formData.append(key, val));
 
     // CF7 hidden fields (for ID 1176)
     formData.append("_wpcf7", "1176");
@@ -124,34 +122,40 @@ export default function WebDevContactForm() {
     if (type === "select") {
       return (
         <>
-        
-        
-        <motion.div
-  variants={inputVariants}
-  animate={errors[name] ? "shake" : ""}
-  className="mb-4"
->
-  <label className="block text-[#747a80] text-[14px] font-[500] mb-2">
-    {label}
-  </label>
+          <motion.div
+            variants={inputVariants}
+            animate={errors[name] ? "shake" : undefined}
+            className="mb-4"
+          >
+            <label className="block text-[#747a80] text-[14px] font-[500] mb-2">
+              {label}
+            </label>
 
-  <select
-  name={name}
-  value={form[name]}
-  onChange={handleChange}
-  className={`w-full border px-4 py-3 text-[#747a80] text-[16px] font-[400] appearance-none
-    ${errors[name] ? "border-red-500" : "border-[#e7e7e7]"} 
-    focus:border-black focus:outline-none`}
->
-  {options.map((opt, idx) => (
-    <option key={idx} value={opt} disabled={idx === 0} hidden={idx === 0}>
-      {opt}
-    </option>
-  ))}
-</select>
-
-</motion.div>
-
+            <select
+              name={name}
+              value={form[name]}
+              onChange={handleChange}
+              className={`w-full border px-4 py-3 text-[16px] font-[400] cursor-pointer
+      ${
+        form[name] && form[name] !== options[0]
+          ? "text-black"
+          : "text-[#747a80]"
+      }
+      ${errors[name] ? "border-red-500" : "border-[#e7e7e7]"}
+      focus:border-black focus:outline-none`}
+            >
+              {options.map((opt, idx) => (
+                <option
+                  key={idx}
+                  value={opt}
+                  disabled={idx === 0}
+                  hidden={idx === 0}
+                >
+                  {opt}
+                </option>
+              ))}
+            </select>
+          </motion.div>
         </>
       );
     }
@@ -159,7 +163,7 @@ export default function WebDevContactForm() {
     return (
       <motion.div
         variants={inputVariants}
-        animate={errors[name] ? "shake" : ""}
+        animate={errors[name] ? "shake" : undefined}
         className="relative"
       >
         <input
@@ -169,19 +173,23 @@ export default function WebDevContactForm() {
           onChange={handleChange}
           required
           placeholder=" "
-          className={`peer w-full border px-4 pt-6 pb-2 text-[#050607] text-[16px] font-[400] ${errors[name] ? "border-red-500" : "border-[#e7e7e7]"
-            } focus:border-black focus:outline-none rounded-md`}
+          autoComplete="off"
+          className={`peer w-full border px-4 pt-6 pb-2 text-[#050607] text-[16px] font-[400] ${
+            errors[name] ? "border-red-500" : "border-[#e7e7e7]"
+          } focus:border-black focus:outline-none`}
         />
         <label
-          className="absolute left-4 top-4 text-[#050607] text-[14px] font-[400] transition-all duration-200 ease-in-out
-      peer-placeholder-shown:top-4 peer-placeholder-shown:text-[16px] peer-placeholder-shown:text-gray-500
-      peer-focus:top-1 peer-focus:text-[12px] peer-focus:text-black
-      peer-valid:top-1 peer-valid:text-[12px] peer-valid:text-black"
+          className={`absolute left-4 font-[400] text-[#050607] transition-all duration-200 ease-in-out
+      ${
+        form[name]
+          ? "top-1 text-[12px] text-black"
+          : "top-4 text-[16px] text-gray-500"
+      }
+      peer-focus:top-1 peer-focus:text-[12px] peer-focus:text-black`}
         >
           {label}
         </label>
       </motion.div>
-
     );
   };
 
@@ -195,8 +203,7 @@ export default function WebDevContactForm() {
               transition: { duration: 1 },
             }
           : {})}
-      >
-      </motion.div>
+      ></motion.div>
 
       <motion.div
         {...(hasMounted
@@ -225,28 +232,31 @@ export default function WebDevContactForm() {
             "Reason to Contact",
             formFields.find((f) => f.name === "select-578").options
           )}
-          
+
           <motion.div
             variants={inputVariants}
-            animate={errors["your-message"] ? "shake" : ""}
+            animate={errors["your-message"] ? "shake" : undefined}
             className="relative"
           >
             <textarea
               name="your-message"
-              rows="4"
+              rows={4}
               value={form["your-message"]}
               onChange={handleChange}
-              placeholder=" " // optional
-              className={`peer w-full border px-4 pt-7 pb-4 text-[#050607] text-[16px] font-[400] resize-none ${
-                errors["your-message"] ? "border-red-500" : "border-[#e7e7e7]"
-              } focus:border-black focus:outline-none rounded-md`}
+              placeholder=" "
+              className={`peer w-full border px-4 pt-7 pb-4 text-[#050607] text-[16px] font-[400] resize-none
+      ${errors["your-message"] ? "border-red-500" : "border-[#e7e7e7]"}
+      focus:border-black focus:outline-none transition-colors duration-200`}
             />
+
             <label
-              className={`absolute left-4  transition-all duration-200 ease-in-out text-[14px] font-[400] ${
-                form["your-message"]
-                  ? "top-1 text-[12px] text-black"
-                  : "top-4 text-[16px] text-gray-500"
-              }`}
+              className={`absolute left-4 transition-all duration-200 ease-in-out text-[14px] font-[400] pointer-events-none
+      ${
+        form["your-message"]
+          ? "top-1 text-[12px] text-black"
+          : "top-4 text-[16px] text-gray-500"
+      } 
+      peer-focus:top-1 peer-focus:text-[12px] peer-focus:text-black`}
             >
               Message
             </label>
@@ -261,7 +271,7 @@ export default function WebDevContactForm() {
               }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="w-full lg:w-[300px] bg-[#0e71b9] text-white rounded-full px-6 py-4 text-[15px] font-[500] shadow-md hover:bg-[#0e71b9] focus:outline-none"
+              className="w-full lg:w-[300px] cursor-pointer bg-[#0e71b9] text-white rounded-full px-6 py-4 text-[15px] font-[500] shadow-md hover:bg-[#0e71b9] focus:outline-none"
             >
               Request Demo
             </motion.button>
