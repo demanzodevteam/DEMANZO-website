@@ -26,7 +26,7 @@ const HeroTwoAnnimation = ({ image, alt }) => {
       /> */}
       <motion.img
   src={image}
-  alt={alt}
+  alt={alt || "Why Choose Demanzo"}
   animate={{ y: [0, -50, 0, 50, 0] }} // More float range
   transition={{ 
     duration: 3, // Faster loop (lower = faster)
