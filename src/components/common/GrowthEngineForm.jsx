@@ -30,6 +30,7 @@ const NavigationButtons = ({ step, setStep, totalSteps, handleSubmit, handleNext
     {step !== 1 && (
       <motion.button
         onClick={() => setStep(step - 1)}
+        aria-label="previous"
         whileHover={{
           scale: 1.05,
           boxShadow: "0px 0px 16px rgba(0, 123, 255, 0.6)",
@@ -47,6 +48,7 @@ const NavigationButtons = ({ step, setStep, totalSteps, handleSubmit, handleNext
         scale: 1.05,
         boxShadow: "0px 0px 16px rgba(0, 123, 255, 0.6)",
       }}
+      aria-label="next"
       whileTap={{ scale: 0.95 }}
       transition={{ type: "spring", stiffness: 300 }}
       className={`${

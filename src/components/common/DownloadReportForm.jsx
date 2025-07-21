@@ -301,6 +301,7 @@ const handleSubmit = async (e) => {
             }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300 }}
+            aria-label="Download-now"
             className="w-full lg:w-[200px] bg-[#0e71b9] text-white rounded-full px-6 py-4 text-[15px] font-[500] shadow-md hover:bg-[#0e71b9] focus:outline-none"
           >
             Download Now

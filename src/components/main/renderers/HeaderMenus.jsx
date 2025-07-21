@@ -89,7 +89,7 @@ const HeaderMenus = ({ navLinks, currentPath }) => {
 
             {/* Mobile Nav Toggle */}
             <div className="lg:hidden p-4 z-50 relative">
-                <button onClick={() => setMenuOpen(true)}>
+                <button onClick={() => setMenuOpen(true)} aria-label="Open menu">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="border p-2 text-black"
@@ -118,6 +118,7 @@ const HeaderMenus = ({ navLinks, currentPath }) => {
                             }`}
                     >
                         <button
+                        aria-label="Open menu"
                             onClick={() => setMenuOpen(false)}
                             className="absolute top-4 right-4"
                         >
@@ -148,6 +149,7 @@ const HeaderMenus = ({ navLinks, currentPath }) => {
                                 return (
                                     <li key={item.id}>
                                         <button
+                                        aria-label="active menu"
                                             onClick={() =>
                                                 setActiveMenu(activeMenu === index ? null : index)
                                             }

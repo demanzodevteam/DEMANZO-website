@@ -206,6 +206,7 @@ export default function ContactForm({ category }) {
           </motion.div>
 
           <motion.button
+          aria-label="submit"
             type="submit"
             whileHover={{
               scale: 1.05,

@@ -73,7 +73,7 @@ const CaseStudyForm = () => {
               required
             />
             <button
-              type="submit"
+              type="submit" aria-label="Submit"
               className="demanzo-form-button"
             >
               Submit

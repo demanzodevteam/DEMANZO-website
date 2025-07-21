@@ -37,6 +37,7 @@ export default function ProjectGallery() {
       <div className="flex flex-wrap justify-center gap-3 mb-8">
         {categories.map((cat) => (
           <button
+          aria-label="show all"
             key={cat}
             onClick={() => setSelectedCategory(cat)}
             className={`px-4 py-2 text-sm rounded-full transition-all ${

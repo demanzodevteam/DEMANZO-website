@@ -309,6 +309,7 @@ export default function WhiteLabelContactForm({ category }) {
           <div className="text-center">
             <motion.button
               type="submit"
+              aria-label="submit"
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0px 0px 16px rgba(0, 123, 255, 0.6)",

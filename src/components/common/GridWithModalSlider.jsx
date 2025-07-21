@@ -73,6 +73,7 @@ export default function GridWithModalSlider() {
     {modalOpen && (
       <div className="fixed inset-0 z-50 bg-black/30 flex items-center justify-center px-4">
         <button
+        aria-label="close popup"
           onClick={closeModal}
           className="absolute top-4 right-6 text-white text-3xl font-bold z-50  cursor-pointer"
         >
@@ -81,12 +82,14 @@ export default function GridWithModalSlider() {
 
         <button
           id="custom-prev"
+          aria-label="previous"
           className="absolute left-4 text-white text-4xl z-50 hover:scale-125 transition-transform cursor-pointer"
         >
           ❮
         </button>
         <button
           id="custom-next"
+          aria-label="next"
           className="absolute right-4 text-white text-4xl z-50 hover:scale-125 transition-transform cursor-pointer"
         >
           ❯

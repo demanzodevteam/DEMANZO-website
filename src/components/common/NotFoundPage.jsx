@@ -61,7 +61,7 @@ export default function NotFoundPage() {
                 Demanzo is a B2B digital marketing agency offering SaaS digital marketing and digital
                 marketing for IT companies to increase leads and online visibility.
               </p>
-              <a href="/"><button>Return TO Home</button></a>
+              <a href="/"><button aria-label="return home">Return TO Home</button></a>
             </article>
           </div>
         </div>

@@ -134,6 +134,7 @@ export default function SalesForm() {
 
         <div className="text-center">
           <motion.button
+          aria-label="submit"
             type="submit"
             whileHover={{
               scale: 1.05,

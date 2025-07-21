@@ -12,7 +12,8 @@ const HeroAnimation = () => {
         ease: "easeIn"
       }}
     >
-      <img src={hero.src} alt="image" className="w-[600px] md:mx-auto lg:mx-0" />
+      <img src={hero.src} alt="image" className="w-[600px] md:mx-auto lg:mx-0" fetchpriority="high" 
+  decoding="async" />
     </motion.div>
 
   )

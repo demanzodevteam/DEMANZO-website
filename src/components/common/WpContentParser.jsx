@@ -163,6 +163,7 @@ export function Accordion({ node }) {
     <div className="border border-gray-300 rounded-lg my-4">
       <button
         onClick={() => setIsOpen((prev) => !prev)}
+        aria-label="submit"
         className="w-full text-left px-4 py-3 bg-gray-100 hover:bg-gray-200 rounded-t-lg flex items-center justify-between"
       >
         <span className="font-semibold text-gray-800">{headerContent}</span>
@@ -238,6 +239,7 @@ const handleClick = (e) => {
 
         <button
           onClick={() => setIsOpen((prev) => !prev)}
+          aria-label="show or hide"
           className="flex items-center gap-1 px-3 py-1.5 text-sm font-medium text-white bg-[linear-gradient(to_right,_#ff8c00,_#f12500)] hover:bg-[linear-gradient(to_right,_#ff8c00,_#f12500)] rounded-md transition"
         >
           {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}

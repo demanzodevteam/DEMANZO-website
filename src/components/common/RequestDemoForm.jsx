@@ -283,6 +283,7 @@ export default function RequestDemoForm() {
                 scale: 1.05,
                 boxShadow: "0px 0px 16px rgba(0, 123, 255, 0.6)",
               }}
+              aria-label="request demo"
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300 }}
               className="w-full lg:w-[300px] bg-[#0e71b9] text-white rounded-full px-6 py-4 text-[15px] font-[500] shadow-md hover:bg-[#0e71b9] focus:outline-none"

@@ -65,6 +65,7 @@ const ResultSlider = ({ pageData }) => {
         <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center px-2">
           {/* Close Button */}
           <button
+          aria-label="show preview"
             className="absolute top-4 right-4 text-white text-3xl md:text-4xl font-bold z-50 hover:cursor-pointer"
             onClick={() => setShowPreview(false)}
           >
