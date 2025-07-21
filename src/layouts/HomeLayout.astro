@@ -6,7 +6,7 @@ import NavLinks from "../components/navitems/NavLinks.astro";
 import Header from "../components/main/Header.astro";
 import "../styles/global.css";
 import HeaderMenus from "../components/main/renderers/HeaderMenus";
-import { NAV_URLS } from "../config/urls";
+import { NAV_URLS, SOURCE_BASE_URL } from "../config/urls";
 import PageProgressBar from "../components/common/pageProgressBar";
 import Breadcrumb from "../components/common/BreadCrumb";
 import ToasterProvider from "../components/common/ToasterProvider";
@@ -30,7 +30,7 @@ const {
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://example.com/page-url">
+<link rel="canonical" href={`${SOURCE_BASE_URL}${Astro.url.pathname}`} />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
