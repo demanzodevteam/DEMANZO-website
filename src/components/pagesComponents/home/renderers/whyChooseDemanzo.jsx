@@ -13,10 +13,10 @@ const WhyChooseDemanzo = ({ data }) => {
     <>
 
       <div className="flex flex-col justify-center gap-4 ">
-        <p className="text-[40px] font-[700] text-[#191d27]" data-aos="fade-up"
+        <h2 className="text-[40px] font-[700] text-[#191d27]" data-aos="fade-up"
           data-aos-anchor-placement="bottom-bottom" data-aos-duration="2000">
           {data?.title}
-        </p>
+        </h2>
         <p
           className="text-[16px] font-[500] text-[#616670] leading-relaxed" data-aos="fade-up"
           data-aos-anchor-placement="bottom-bottom" data-aos-duration="2000"

@@ -88,9 +88,9 @@ export default function Caurosel({ category }) {
                       </svg>
                     ))}
                   </div>
-                  <h6 className="text-[20px] font-[600] text-center text-[#30353b]">
+                  <p className="text-[20px] font-[600] text-center text-[#30353b]">
                     {testimonial.title}
-                  </h6>
+                  </p>
                 </div>
               </SwiperSlide>
             ))}

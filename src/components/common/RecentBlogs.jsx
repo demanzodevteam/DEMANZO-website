@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -82,10 +84,10 @@ export default function BlogCards({ BlogData }) {
                       <div className="flex flex-col flex-grow justify-between">
                         <div>
                           <span className="demanzo-rounded-pill bg-[linear-gradient(to_right,_#ff8c00,_#f12500)]">{card?.category}</span>
-                          <h2 className="demanzo-h3 line-clamp-2 mt-2">{card.title}</h2>
+                          <h3 className="demanzo-h3 line-clamp-2 mt-2">{card.title}</h3>
                           <p className="demanzo-p">{card.description || ""}</p>
                         </div>
-                        <a href={card.link} className="demanzo-read-more mt-4">
+                        <a href={card?.link} className="demanzo-read-more mt-4" aria-label={card?.title}>
                           Learn more →
                         </a>
                       </div>

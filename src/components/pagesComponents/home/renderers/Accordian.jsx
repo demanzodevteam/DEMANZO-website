@@ -42,17 +42,26 @@ export default function FaqAccordion({ category }) {
       </div>
 
 
-      {category.description.split(/\r?\n/).map((line, index) => (
-        <p
+      {category.description.split(/\r?\n/).map((line, index) => {
+        const isSecondLine = index === 1;
 
-          data-aos="fade-up" data-aos-duration="2000"
-          key={index}
-          className={`mb-5 text-2xl lg:text-4xl font-semibold text-center leading-tight ${index === 0 ? "text-[#191d27]" : "text-[#f15a29]"}`}
-        >
-          {line}
-        </p>
+        const commonProps = {
+          'data-aos': 'fade-up',
+          'data-aos-duration': '2000',
+          key: index,
+          className: `mb-5 text-center leading-tight font-semibold ${isSecondLine
+              ? 'text-[#f15a29] text-xl lg:text-3xl'
+              : 'text-[#191d27] text-2xl lg:text-4xl'
+            }`
+        };
 
-      ))}
+        return isSecondLine ? (
+          <h3 {...commonProps}>{line}</h3>
+        ) : (
+          <h2 {...commonProps}>{line}</h2>
+        );
+      })}
+
       <Accordion
         type="single"
         collapsible
@@ -63,7 +72,8 @@ export default function FaqAccordion({ category }) {
       >
         {category.posts?.map((faq, index) => (
           <AccordionItem value={`item-${index}`}>
-            <AccordionTrigger className="text-[16px] font-[600] px-3 py-2">{faq.title}</AccordionTrigger>
+           
+            <AccordionTrigger className="text-[16px] font-[600] px-3 py-2"> <h4>{faq.title}</h4></AccordionTrigger>
             <AccordionContent className="flex flex-col gap-4 text-balance">
               <p className="text-[16px] font-[500] text-[#616670] px-6 py-4">
                 {faq.content}

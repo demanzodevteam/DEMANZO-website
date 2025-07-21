@@ -32,12 +32,12 @@ const GrowthAnimation = ({ category }) => {
 
   return (
     <>
-      <p
+      <h2
         className="text-[30px] md:text-[35px] lg:text-[50px] font-[600] text-center text-[#191d27]"
         {...(mounted ? { "data-aos": "fade-up", "data-aos-duration": "2000" } : {})}
       >
         {category.name}
-      </p>
+      </h2>
 
       <svg width="100%" height="18" viewBox="0 0 246 18" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M3 15C61.0465 4.16687 163.744 -2.79729 243 9.58344" stroke="url(#paint0_linear_1_401)" strokeWidth="6" strokeLinecap="round" />
@@ -131,7 +131,7 @@ const ParticleCard = ({ post }) => {
           ))}
       </AnimatePresence>
 
-      <p className="text-[19px] font-[600] text-[#191d27]">{post.title}</p>
+      <h2 className="text-[19px] font-[600] text-[#191d27]">{post.title}</h2>
       <p className="text-[15px] font-[400] text-[#616670] pt-3 pb-8">{post.content}</p>
       <hr className="text-[#ebebeb] pb-4" />
       <a className="text-[16px] font-[400] text-[#2d89bf]" href={'/' + post.slug} aria-label={'Learn more about' + post.title}>

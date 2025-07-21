@@ -24,7 +24,7 @@ export default function TrustCaurocelHome({ category }) {
     
       {!category?.heading &&
         category?.description.split(/\r?\n/).map((line, index) => (
-          <p
+          <h2
             key={index}
             data-aos="fade-up"
             className={`text-[30px] lg:text-[40px] font-[600] text-center leading-tight ${
@@ -32,7 +32,7 @@ export default function TrustCaurocelHome({ category }) {
             }`}
           >
             {line}
-          </p>
+          </h2>
         ))}
         </div>
                <TrustCaurocel client:visible />

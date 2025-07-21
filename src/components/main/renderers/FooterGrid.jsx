@@ -3,9 +3,9 @@ export default function FooterGrid({ category }) {
 		<>
 			{category?.map((Menu, index) => (
 				<div key={Menu.id || index} className="md:px-6">
-					<h5 className="text-[20px] font-[600] text-[#191d27] py-6">
+					<p className="text-[20px] font-[600] text-[#191d27] py-6">
 						{Menu.label}
-					</h5>
+					</p>
 
 					{Menu?.children?.map((subMenu, subIndex) => (
 						<div key={subMenu.id || subIndex}>

@@ -143,9 +143,9 @@ export default function ContactForm({ category }) {
           }
           : {})}
       >
-        <p className="text-[30px] md:text-[40px] font-[600] text-[#e05c24] pb-4">
+        <h2 className="text-[30px] md:text-[40px] font-[600] text-[#e05c24] pb-4">
           {category.name}
-        </p>
+        </h2>
         {category.posts?.map((post) =>
           post.list_items?.map((listGroup, groupIndex) =>
             listGroup.map((item, itemIndex) => (
