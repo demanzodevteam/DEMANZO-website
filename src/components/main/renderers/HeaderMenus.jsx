@@ -9,7 +9,7 @@ const HeaderMenus = ({ navLinks, currentPath }) => {
     return (
         <nav>
             {/* Desktop Nav */}
-            <div className="max-w-7xl mx-auto px-2 hidden lg:flex justify-between items-center h-16">
+            <div className="max-w-7xl mx-auto px-2 hidden xl:flex justify-between items-center h-16">
                 <div className="flex gap-4">
                     {navLinks.map((link) => {
                         const isActive =
@@ -88,7 +88,7 @@ const HeaderMenus = ({ navLinks, currentPath }) => {
             </div>
 
             {/* Mobile Nav Toggle */}
-            <div className="lg:hidden p-4 z-50 relative">
+            <div className="xl:hidden p-4 z-50 relative">
                 <button onClick={() => setMenuOpen(true)} aria-label="Open menu">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
