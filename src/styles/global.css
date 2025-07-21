@@ -278,6 +278,10 @@ h3[id] {
   @apply !flex !justify-center items-center mx-auto px-10 ;
 }
 
+.demanzo-header-container{
+@apply !flex justify-between w-full items-center ;
+}
+
 .demanzo-container-auto {
   @apply mx-auto w-full max-w-[1400px] py-5;
 }
