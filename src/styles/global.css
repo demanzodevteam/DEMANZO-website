@@ -279,7 +279,7 @@ h3[id] {
 }
 
 .demanzo-header-container{
-@apply !flex justify-between w-full items-center ;
+@apply !flex justify-between w-full items-center  md:mx-auto md:px-10 ;
 }
 
 .demanzo-container-auto {
