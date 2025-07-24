@@ -73,7 +73,8 @@ export default function BlogCards({ BlogData }) {
                       viewport={{ once: true, amount: 0.3 }}
                       className="bg-white shadow-lg rounded-2xl p-5 hover:shadow-xl transition overflow-hidden flex flex-col h-full"
                     >
-                      <motion.img
+                      <a href={card?.link}>
+<motion.img
                         src={card?.image}
                         alt={card?.alt || ""}
                         className="rounded-lg mb-4 w-full aspect-[4/3] object-cover "
@@ -91,6 +92,8 @@ export default function BlogCards({ BlogData }) {
                           Learn more →
                         </a>
                       </div>
+                      </a>
+                      
                     </motion.div>
 
                   </SwiperSlide>
