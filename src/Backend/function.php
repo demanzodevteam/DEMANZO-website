@@ -641,3 +641,112 @@ $block['card_details'] = $card_details;
         'permission_callback' => '__return_true',
     ]);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//to get whole page data in blocks
+
+add_action('rest_api_init', function () {
+    register_rest_route('custom/v1', '/blocksaa/(?P<id>\d+)', [
+        'methods'  => 'GET',
+        'callback' => 'get_all_posts_custom',
+        'permission_callback' => '__return_true',
+    ]);
+});
+
+function get_all_posts_custom($data) {
+    echo 'binu';die;
+    $post_id = $data['id'];
+    return parse_content_blocksa($post_id);
+}
+function parse_content_blocksa($post_id) {
+    $post = get_post($post_id);
+    $html = $post->post_content;
+
+    $dom = new DOMDocument();
+    libxml_use_internal_errors(true); // Suppress HTML5 tag warnings
+    $dom->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
+
+    $blocks = [];
+    foreach ($dom->getElementsByTagName('section') as $section) {
+        $block = [];
+
+        $h1 = $section->getElementsByTagName('title')->item(0);
+        if ($h1) {
+            $block['title'] = $h1->textContent;
+        }
+
+         // Get all <h1> tags
+        $headings = [];
+        
+        $block['headings'] = array_values($headings);
+
+$paragraphs = [];
+
+
+    }
+
+    return $blocks;
+}
+
+
+
+
+add_action('rest_api_init', function () {
+    register_rest_route('custom/v1', '/all-posts', [
+        'methods'  => 'GET',
+        'callback' => 'get_all_posts_custom',
+        'permission_callback' => '__return_true',
+    ]);
+});
+
+function get_all_posts_custom($request) {
+    $args = [
+        'post_type'      => 'post',
+        'posts_per_page' => 1000,
+        'post_status'    => 'publish',
+    ];
+
+    $query = new WP_Query($args);
+    $posts = [];
+
+    foreach ($query->posts as $post) {
+        $posts[] = [
+            'id'    => $post->ID,
+            'title' => get_the_title($post),
+            'slug'  => $post->post_name,
+            'link'  => get_permalink($post),
+            'date'  => get_the_date('', $post),
+        ];
+    }
+
+    return rest_ensure_response($posts);
+}
+

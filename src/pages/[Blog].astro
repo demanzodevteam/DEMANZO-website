@@ -3,11 +3,10 @@ import { ArticleFooter } from "../components/common/ArticleFooter";
 import { ArticlesHeader } from "../components/common/ArticlesHeader";
 import RecentBlogs from "../components/common/RecentBlogs";
 import WpContentParser from "../components/common/WpContentParser";
-import { ARTICLE_URLS, BLOGS } from "../config/urls";
 import HomeLayout from "../layouts/HomeLayout.astro";
 
 export async function getStaticPaths() {
-  const res = await fetch(ARTICLE_URLS + "posts?per_page=100");
+  const res = await fetch(import.meta.env.ARTICLE_URLS  + "posts?per_page=100");
   const posts = await res.json();
 
   const paths = posts.map((post: { slug: string }) => ({
@@ -20,18 +19,18 @@ export async function getStaticPaths() {
 const { Blog: slug } = Astro.params;
 
 // Fetch current post
-const postRes = await fetch(ARTICLE_URLS + `posts?slug=${slug}`);
+const postRes = await fetch(import.meta.env.ARTICLE_URLS + `posts?slug=${slug}`);
 const postData = await postRes.json();
 const post = postData[0];
 
 // ✅ Fetch all posts to find previous/next
-const allRes = await fetch(ARTICLE_URLS + "posts?per_page=100");
+const allRes = await fetch(import.meta.env.ARTICLE_URLS + "posts?per_page=100");
 const posts = await allRes.json();
 
 
 // for recent blogs sectionn 
 
- const res = await fetch(BLOGS);
+ const res = await fetch(import.meta.env.BLOGS);
   const blogs = await res.json();
 const blogArray = Object.values(blogs);
 
