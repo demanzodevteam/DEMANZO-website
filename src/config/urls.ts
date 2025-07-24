@@ -7,3 +7,4 @@ export const ARTICLE_URLS = 'https://demanzo.com/wp-json/wp/v2/';
 export const BLOGS = 'https://demanzo.com/wp-json/custom/v1/post_details';
 // export const BLOGS = 'https://a2.techbuzz360.com/demanzo/wp-json/custom/v1/blog/details';
 export const SOURCE_BASE_URL = 'https://demanzo.com';
+export const CURRENT_DOMAIN = 'https://demanzo-website.vercel.app';

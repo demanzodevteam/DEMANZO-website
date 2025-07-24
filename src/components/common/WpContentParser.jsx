@@ -1,6 +1,6 @@
 import parse, { domToReact, Element } from "html-react-parser";
 import { useState,useEffect } from "react";
-import { MEDIA_URL, SOURCE_BASE_URL } from "../../config/urls";
+import { CURRENT_DOMAIN,BASE_URL, SOURCE_BASE_URL } from "../../config/urls";
 import { motion, AnimatePresence } from "framer-motion";
 import { ListTree, ChevronDown, ChevronUp } from "lucide-react";
 
@@ -27,12 +27,12 @@ export default function WpContentParser({ content }) {
                     if (node instanceof Element && node.name === "a") {
                       let cleanHref = node.attribs?.href || "#";
                       if (cleanHref.startsWith(SOURCE_BASE_URL)) {
-                        cleanHref = cleanHref.replace(SOURCE_BASE_URL, "/");
+                        cleanHref = cleanHref.replace(SOURCE_BASE_URL, "");
                       }
 
                       return (
                         <a
-                          href={cleanHref}
+                          href={CURRENT_DOMAIN + cleanHref}
                           className="text-blue-800 underline hover:text-blue-600 transition-colors duration-200"
                         >
                           {domToReact(node.children)}
