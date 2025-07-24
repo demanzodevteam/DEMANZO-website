@@ -47,16 +47,26 @@ export default function WpContentParser({ content }) {
 
 
               // Detect the Quick-summary div
-              if (
-                name === "div" &&
-                attribs?.class?.includes("Quick-summary")
-              ) {
-                return (
-                  <div className="border border-gray-200 rounded-lg bg-gray-50 p-5 my-6">
-                    {domToReact(children)}
-                  </div>
-                );
-              }
+          if (
+  name === "div" &&
+  attribs?.class?.includes("Quick-summary")
+) {
+  return (
+    <div className="border border-gray-200 rounded-lg bg-gray-50 p-10 my-6">
+      {domToReact(children, {
+        replace: (node) => {
+          if (node instanceof Element && (node.name === "ul" || node.name === "p" || node.name === "ol")) {
+            return (
+              <div className="pl-6">
+                {domToReact([node])}
+              </div>
+            );
+          }
+        }
+      })}
+    </div>
+  );
+}
               // const { name, children, attribs } = node;
 
               // --- Handle Accordion Component ---

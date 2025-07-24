@@ -20,26 +20,27 @@ export default function BlogCards({ BlogData }) {
     <div className="demanzo-container-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
       {loading
         ? skeletonArray.map((_, idx) => (
-            <div
-              key={idx}
-              className="bg-white shadow-lg rounded-2xl p-5 animate-pulse"
-            >
-              <div className="h-48 bg-gray-200 rounded-lg mb-4" />
-              <div className="h-4 w-20 bg-gray-300 rounded mb-2" />
-              <div className="h-5 w-full bg-gray-300 rounded mb-2" />
-              <div className="h-4 w-3/4 bg-gray-300 rounded" />
-              <div className="h-4 w-24 bg-gray-200 rounded mt-4" />
-            </div>
-          ))
+          <div
+            key={idx}
+            className="bg-white shadow-lg rounded-2xl p-5 animate-pulse"
+          >
+            <div className="h-48 bg-gray-200 rounded-lg mb-4" />
+            <div className="h-4 w-20 bg-gray-300 rounded mb-2" />
+            <div className="h-5 w-full bg-gray-300 rounded mb-2" />
+            <div className="h-4 w-3/4 bg-gray-300 rounded" />
+            <div className="h-4 w-24 bg-gray-200 rounded mt-4" />
+          </div>
+        ))
         : cards.map((card, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 100 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: idx * 0.02 }} // <- This is the stagger
-              viewport={{ once: true, amount: 0.3 }}
-              className="bg-white shadow-lg rounded-2xl p-5 hover:shadow-xl transition overflow-hidden"
-            >
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: idx * 0.02 }} // <- This is the stagger
+            viewport={{ once: true, amount: 0.3 }}
+            className="bg-white shadow-lg rounded-2xl p-5 hover:shadow-xl transition overflow-hidden"
+          >
+            <a href={card?.link}>
               <motion.img
                 src={card?.image}
                 alt={card?.alt || ""}
@@ -55,8 +56,10 @@ export default function BlogCards({ BlogData }) {
               <a href={card.link} className="demanzo-read-more">
                 Learn more →
               </a>
-            </motion.div>
-          ))}
+            </a>
+
+          </motion.div>
+        ))}
     </div>
   );
 }

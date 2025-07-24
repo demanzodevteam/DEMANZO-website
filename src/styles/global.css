@@ -250,7 +250,7 @@ h3[id] {
 }
 
 .demanzo-form-button {
-  @apply w-full lg:w-[300px] bg-[#0e71b9]  md:w-[200px] text-white rounded-full px-6 py-4 text-[15px] font-[500] shadow-md hover:bg-[#0e71b9] focus:outline-none self-center;
+  @apply w-full lg:w-[300px] bg-[#0e71b9] md:w-[200px] text-white rounded-full px-6 py-4 text-[15px] font-[500] shadow-md hover:bg-[#0e71b9] focus:outline-none self-center;
 }
 
 .demanzo-rounded-pill {
@@ -274,12 +274,12 @@ h3[id] {
 }
 
 
-.demanzo-container{
-  @apply !flex !justify-center items-center mx-auto px-10 ;
+.demanzo-container {
+  @apply !flex !justify-center items-center mx-auto px-10;
 }
 
-.demanzo-header-container{
-@apply !flex justify-between w-full items-center xl:mx-auto lg:mx-auto md:mx-auto md:px-10 ;
+.demanzo-header-container {
+  @apply !flex justify-between w-full items-center xl:mx-auto lg:mx-auto md:mx-auto md:px-10;
 }
 
 .demanzo-container-auto {
@@ -287,7 +287,7 @@ h3[id] {
 }
 
 .demanzo-grid {
-  @apply grid grid-cols-1 lg:grid-cols-[1fr_0.8fr]  gap-2 bg-no-repeat bg-bottom bg-cover;
+  @apply grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] gap-2 bg-no-repeat bg-bottom bg-cover;
 }
 
 .demanzo-max-screen-width {
@@ -297,13 +297,16 @@ h3[id] {
 .demanzo-accordian-heading {
   @apply text-[16px] font-[600] px-3 py-3 rounded-sm;
 }
-.demanzo-section{
+
+.demanzo-section {
   @apply py-16 space-y-4;
 }
+
 .demanzo-accordian-content {
   @apply text-[16px] font-[500] text-[#616670] px-6 py-4
 }
-.demanzo-article-footer-h{
+
+.demanzo-article-footer-h {
   @apply font-semibold text-gray-800 group-hover:text-black line-clamp-2
 }
 
@@ -313,7 +316,8 @@ h3[id] {
   text-align: center !important;
   font-size: 18px !important;
   background: #fff0 !important;
-  display: flex !important; /* You must use flex for justify/align to work */
+  display: flex !important;
+  /* You must use flex for justify/align to work */
   justify-content: center !important;
   align-items: center !important;
 }
@@ -337,8 +341,12 @@ h3[id] {
 }
 
 .avatar {
-              background-color: #2b2b2b00 !important;
+  background-color: #2b2b2b00 !important;
   background-image: url("https://demanzo.com/wp-content/uploads/2022/09/cropped-demanzo-logo.png") !important;
-              background-size: 29px;
-            }
-          
+  background-size: 29px;
+}
+
+.has-medium-font-size {
+  margin-left: -15px !important;
+  padding-bottom: 10px !important;
+}
