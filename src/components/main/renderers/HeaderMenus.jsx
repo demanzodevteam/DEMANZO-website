@@ -51,7 +51,7 @@ const HeaderMenus = ({ navLinks, currentPath }) => {
                                     </svg>
                                 </div>
 
-                                <div className="absolute z-10 left-0 hidden group-hover:block bg-white border rounded shadow-lg w-[180px]">
+                                <div className="absolute z-10 left-0 hidden group-hover:block bg-white border rounded shadow-lg w-[200px]">
                                     {link.children.map((sub, subIdx) => {
                                         const isSubActive =
                                             normalizePath(currentPath) === normalizePath(sub.url);
