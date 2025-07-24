@@ -64,10 +64,11 @@ export default function Caurosel({ category }) {
                   boxShadow: "0 8px 8px rgba(0, 0, 0, 0.08)", 
                   background: "#fff",
                   borderRadius: "12px",
+                  minHeight:"320px",
                 }}
               >
                 <div className="p-8 bg-white rounded-xl shadow-[0_4px_14px_rgba(0,0,0,0.08)] transition-all duration-300 hover:shadow-[0_10px_10px_rgba(0,0,0,0.08)]">
-                  <p className="text-[16px] font-[500] text-[#616670]">
+                  <p className="text-[16px] font-[500] text-[#616670] min-h-[180px]">
                     {testimonial.content}
                   </p>
                   <div className="flex justify-center items-center mx-auto w-fit bg-[#fef9d9] py-1 my-4">
