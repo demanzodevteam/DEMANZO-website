@@ -45,5 +45,11 @@ const description = "";
   <ArticlesHeader SectionData={post} />
   <WpContentParser content={post.content.rendered} client:load />
   <ArticleFooter posts={posts} currentSlug={slug} />
+
+
+<div class="bg-gradient-to-b from-[#fff8eb] to-[#ffffff] demanzo-section">
+    <!-- <BlogCaurocel category={category}  client:load/> -->
     <RecentBlogs BlogData={combinedData} client:load/>
+</div>
+
 </HomeLayout>

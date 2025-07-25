@@ -350,3 +350,7 @@ h3[id] {
   margin-left: -15px !important; 
   padding-bottom: 10px !important;
 }
+
+.ez-toc-icon-toggle-span{
+  display: none;
+}

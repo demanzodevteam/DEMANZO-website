@@ -1,6 +1,6 @@
 import parse, { domToReact, Element } from "html-react-parser";
-import { useState,useEffect } from "react";
-import { CURRENT_DOMAIN,BASE_URL, SOURCE_BASE_URL } from "../../config/urls";
+import { useState, useEffect } from "react";
+import { CURRENT_DOMAIN, BASE_URL, SOURCE_BASE_URL } from "../../config/urls";
 import { motion, AnimatePresence } from "framer-motion";
 import { ListTree, ChevronDown, ChevronUp } from "lucide-react";
 
@@ -10,7 +10,7 @@ export default function WpContentParser({ content }) {
 
   return (
     <section className="container mx-auto px-4 sm:px-6 lg:px-8 my-10">
-                <div class="px-4 py-25` relative">
+      <div class="px-4 py-25` relative">
         {parse(content, {
           replace: (node) => {
 
@@ -18,12 +18,49 @@ export default function WpContentParser({ content }) {
 
               const { name, attribs, children } = node;
 
+   // Remove span containing the two TOC icons
+    if (
+      name === "span" &&
+      attribs?.class?.includes("ez-toc-icon-toggle-span")
+    ) {
+      return null;
+    }
 
+              const getTextContent = (children) =>
+                children
+                  ?.map((child) => {
+                    if (child.type === "text") return child.data?.trim();
+                    if (child instanceof Element) return getTextContent(child.children);
+                    return "";
+                  })
+                  .join("")
+                  .trim()
+                  .toLowerCase();
+
+              // Remove any element with visible "table of contents" text
+              const innerText = getTextContent(children);
+              if (innerText.includes("table of contents")) {
+                return null;
+              }
+              
+
+              
+              
+   
               // Detect the Table of Contents (TOC) <nav> block
               if (name === "nav") {
                 // Clean links inside TOC children before passing
                 const cleanedChildren = domToReact(children, {
                   replace: (node) => {
+                     // --- Remove <div class="widget ez-toc-widget-sticky"> blocks ---
+    if (
+      name === "div" &&
+      attribs?.class?.includes("ez-toc-container") &&
+      attribs?.class?.includes("ez-toc-title-container") 
+    ) {
+      return null;
+    }
+
                     if (node instanceof Element && node.name === "a") {
                       let cleanHref = node.attribs?.href || "#";
                       if (cleanHref.startsWith(SOURCE_BASE_URL)) {
@@ -47,26 +84,26 @@ export default function WpContentParser({ content }) {
 
 
               // Detect the Quick-summary div
-          if (
-  name === "div" &&
-  attribs?.class?.includes("Quick-summary")
-) {
-  return (
-    <div className="border border-gray-200 rounded-lg bg-gray-50 p-10 my-6">
-      {domToReact(children, {
-        replace: (node) => {
-          if (node instanceof Element && (node.name === "ul" || node.name === "p" || node.name === "ol")) {
-            return (
-              <div className="pl-6">
-                {domToReact([node])}
-              </div>
-            );
-          }
-        }
-      })}
-    </div>
-  );
-}
+              if (
+                name === "div" &&
+                attribs?.class?.includes("Quick-summary")
+              ) {
+                return (
+                  <div className="border border-gray-200 rounded-lg bg-gray-50 p-10 my-6">
+                    {domToReact(children, {
+                      replace: (node) => {
+                        if (node instanceof Element && (node.name === "ul" || node.name === "p" || node.name === "ol")) {
+                          return (
+                            <div className="pl-6">
+                              {domToReact([node])}
+                            </div>
+                          );
+                        }
+                      }
+                    })}
+                  </div>
+                );
+              }
               // const { name, children, attribs } = node;
 
               // --- Handle Accordion Component ---
@@ -195,45 +232,45 @@ export function TableOfContents({ children }) {
   const [isOpen, setIsOpen] = useState(false);
 
 
-const handleClick = (e) => {
-  const anchor = e.target.closest("a[href^='#']");
-  if (!anchor) return;
+  const handleClick = (e) => {
+    const anchor = e.target.closest("a[href^='#']");
+    if (!anchor) return;
 
-  const hash = anchor.getAttribute("href");
-  const id = hash.slice(1);
-  const target = document.getElementById(id);
-  if (!target) return;
+    const hash = anchor.getAttribute("href");
+    const id = hash.slice(1);
+    const target = document.getElementById(id);
+    if (!target) return;
 
-  e.preventDefault();
+    e.preventDefault();
 
-  // Check if target is inside a collapsible/accordion
-  const accordion = target.closest(".accordion-container"); // or whatever class you use
+    // Check if target is inside a collapsible/accordion
+    const accordion = target.closest(".accordion-container"); // or whatever class you use
 
-  if (accordion) {
-    // Find the toggle button inside the accordion
-    const toggleBtn = accordion.querySelector("button");
+    if (accordion) {
+      // Find the toggle button inside the accordion
+      const toggleBtn = accordion.querySelector("button");
 
-    // If it's not already open, click to open it
-    const isOpen = accordion.classList.contains("open"); // optional if you track state via class
-    if (!isOpen && toggleBtn) toggleBtn.click();
+      // If it's not already open, click to open it
+      const isOpen = accordion.classList.contains("open"); // optional if you track state via class
+      if (!isOpen && toggleBtn) toggleBtn.click();
 
-    // Wait for the accordion to expand
-    setTimeout(() => {
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-      history.pushState(null, "", hash);
-    }, 300); // wait for your accordion animation duration
-  } else {
-    // Not inside accordion, scroll immediately
-    setTimeout(() => {
-  scrollToCenter(target);
-  history.pushState(null, "", hash);
-}, 300); // Adjust delay based on any animation
+      // Wait for the accordion to expand
+      setTimeout(() => {
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+        history.pushState(null, "", hash);
+      }, 300); // wait for your accordion animation duration
+    } else {
+      // Not inside accordion, scroll immediately
+      setTimeout(() => {
+        scrollToCenter(target);
+        history.pushState(null, "", hash);
+      }, 300); // Adjust delay based on any animation
 
-  }
-};
+    }
+  };
 
 
 
