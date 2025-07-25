@@ -1,16 +1,17 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, FreeMode } from "swiper/modules";
-import { API_URL } from "../../config/urls";
+import { BASE_URL } from "../../config/urls";
 import "swiper/css";
 import "../styles.css";
 
-const res = await fetch(API_URL + "category/4");
+const res = await fetch(BASE_URL + "wp-json/custom/v1/client-titles");
 const category = await res.json();
 
 export default function TrustCaurocel() {
+
   return (
- <div className="demanzo-container-auto px-4 md:px-6 py-8">
+    <div className="demanzo-container-auto px-4 md:px-6 py-8">
       <Swiper
         modules={[Autoplay, FreeMode]} // ✅ Include FreeMode
         loop={true}
@@ -35,15 +36,23 @@ export default function TrustCaurocel() {
         spaceBetween={30}
         className="mySwiper py-10"
       >
-        {category.posts[0]?.content_images?.map((image, index) => (
+        {category.map((item, index) => (
           <SwiperSlide key={index}>
             <div className="card-wrapper">
               <div className="card-inner">
                 <div className="card-face card-front">
-                  <img src={image} className="w-28" alt={`Front ${index}`} />
+                  <img
+                    src={`${BASE_URL}${item["front-image"]}`}
+                    className="w-28"
+                    alt={`${item.title}`}
+                  />
                 </div>
                 <div className="card-face card-back">
-                  <img src={image} className="w-28" alt={`Back ${index}`} />
+                  <img
+                    src={`${BASE_URL}${item["back-image"]}`}
+                    className="w-28"
+                    alt={`${item.title}`}
+                  />
                 </div>
               </div>
             </div>
@@ -51,6 +60,5 @@ export default function TrustCaurocel() {
         ))}
       </Swiper>
     </div>
-   
   );
 }
