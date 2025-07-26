@@ -144,9 +144,20 @@ export default function ContactForm({ category }) {
           : {})}
       >
         <h2 className="text-[30px] md:text-[40px] font-[600] text-[#e05c24] pb-4">
-          {category.name}
+          {category.title}
         </h2>
-        {category.posts?.map((post) =>
+        {category.card_details?.map((post,ind) =>
+          
+            
+              <div key={`${ind}`} className="flex gap-2 items-start py-3">
+                <div className="text-[#61ce70] text-xl pt-1">✔️</div>
+                <p className="text-[18px] font-[700] md:text-[20px] md:font-[600] text-[#191d27]">
+                  {post?.para[0]}
+                </p>
+              </div>
+          
+        )}
+        {/* {category.card_details?.map((post) =>
           post.list_items?.map((listGroup, groupIndex) =>
             listGroup.map((item, itemIndex) => (
               <div key={`${groupIndex}-${itemIndex}`} className="flex gap-2 items-start py-3">
@@ -157,10 +168,10 @@ export default function ContactForm({ category }) {
               </div>
             ))
           )
-        )}
+        )} */}
 
         <p className="text-[16px] lg:text-[18px] font-[400] text-[#616670] py-3 pl-6">
-          🎯 {category.description}
+          🎯 {category.paragraphs[0]}
         </p>
       </motion.div>
 

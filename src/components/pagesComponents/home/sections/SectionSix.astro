@@ -1,8 +1,8 @@
 ---
-import { API_URL } from "../../../../config/urls";
+import { API_URL, BASE_URL } from "../../../../config/urls";
 import FormComponent from "../renderers/FormComponent"
 
-const res = await fetch(API_URL + 'category/14');
+const res = await fetch(BASE_URL + 'wp-json/custom/v1/blocks/53075');
 const category = await res.json();
 ---
 
@@ -27,7 +27,7 @@ const category = await res.json();
   {/* Section Content */} 
   <div class="demanzo-container bg-gradient-to-b from-[#f8f8f8] to-white gap-4 demanzo-section">
    <div class="demanzo-grid demanzo-max-screen-width">
-    <FormComponent category={category} client:load/>
+    <FormComponent category={category[1]} client:load/>
     </div> 
   </div>
 </div>

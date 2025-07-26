@@ -1,8 +1,8 @@
 ---
-import { API_URL } from "../../../../config/urls";
+import { API_URL, BASE_URL } from "../../../../config/urls";
 import GrowthAnimation from "../renderers/GrowthAnimation"
 
-const res = await fetch('https://a2.techbuzz360.com/demanzo/wp-json/custom/v1/blocks/53075');
+const res = await fetch(BASE_URL+ 'wp-json/custom/v1/blocks/53075');
 const category = await res.json();
 
 
