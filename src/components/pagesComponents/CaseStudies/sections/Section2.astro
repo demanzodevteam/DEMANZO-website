@@ -1,8 +1,8 @@
 ---
 import CaseStudyCard from "../../../common/CaseStudyCard";
-import { API_URL } from '../../../../config/urls';
+import { BASE_URL } from '../../../../config/urls';
 
-const resond = await fetch(API_URL + "category/7");
+const resond = await fetch(`${BASE_URL}wp-json/custom/v1/case-studies`);
 const category = await resond.json();
 const button = false;
 
@@ -11,4 +11,4 @@ const combinedData = { ...category, button };
 
 <!-- ------------------ Section 2 ------------------ -->
 
- <CaseStudyCard category={combinedData} /> 
+ <CaseStudyCard categories={combinedData} client:load/> 

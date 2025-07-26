@@ -161,7 +161,7 @@ endif;
 //custom api
 
 
-// 🔥 Register "client" post type
+// ðŸ”¥ Register "client" post type
 
 
 add_action('rest_api_init', function () {
@@ -221,6 +221,208 @@ add_action('rest_api_init', function () {
 
 
 
+add_action('rest_api_init', function () {
+    // Get all case studies
+    register_rest_route('custom/v1', '/case-studies', [
+        'methods'  => 'GET',
+        'callback' => 'get_all_case_studies',
+        'permission_callback' => '__return_true',
+    ]);
+
+    // Get content blocks from post content
+    register_rest_route('custom/v1', '/case-study-blocks/(?P<id>\d+)', [
+        'methods'  => 'GET',
+        'callback' => 'get_content_blocks_cs',
+        'permission_callback' => '__return_true',
+    ]);
+});
+
+function get_all_case_studies() {
+    $posts = get_posts([
+        'post_type'      => 'case-study',
+        'posts_per_page' => -1,
+        'post_status'    => 'publish',
+    ]);
+
+    $data = array_map(function ($post) {
+        $acf_fields = get_fields($post->ID);
+        if ($acf_fields) {
+            foreach ($acf_fields as $key => $value) {
+                if (is_string($value) && str_contains($value, site_url())) {
+                    $acf_fields[$key] = str_replace(site_url() . '/', '', $value);
+                }
+            }
+        }
+
+        return [
+            'id'         => $post->ID,
+            'title'      => get_the_title($post),
+            'content'    => wp_strip_all_tags($post->post_content),
+            'acf_fields' => $acf_fields,
+            'link'       => wp_parse_url(get_permalink($post), PHP_URL_PATH),
+        ];
+    }, $posts);
+
+    return rest_ensure_response($data);
+}
+
+function get_content_blocks_cs($data) {
+    $post_id = $data['id'];
+    return parse_content_blocks_cs($post_id);
+}
+
+function parse_content_blocks_cs($post_id) {
+    $post = get_post($post_id);
+    $html = $post->post_content;
+    if (empty($html)) {
+        print_r($post);die;
+        return []; // Nothing to parse
+    }
+
+    $dom = new DOMDocument();
+    libxml_use_internal_errors(true);
+    $dom->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
+
+    $blocks = [];
+
+    foreach ($dom->getElementsByTagName('section') as $section) {
+        $block = [];
+
+        // Headings (h1)
+        $headings = [];
+        foreach ($section->getElementsByTagName('h1') as $h1) {
+            $text = trim($h1->textContent);
+            if (!empty($text)) {
+                $headings[] = $text;
+            }
+        }
+        $block['headings'] = array_values($headings);
+
+        // Paragraphs (excluding nested ones)
+        $paragraphs = [];
+        foreach ($section->getElementsByTagName('p') as $p) {
+            $exclude = false;
+            $parent = $p->parentNode;
+            while ($parent !== null && $parent !== $section) {
+                if (in_array($parent->nodeName, ['ul', 'li', 'span'])) {
+                    $exclude = true;
+                    break;
+                }
+                $parent = $parent->parentNode;
+            }
+            if (!$exclude && $p->getElementsByTagName('img')->length === 0) {
+                $paragraphs[] = trim($p->textContent);
+            }
+        }
+        $block['paragraphs'] = $paragraphs;
+
+        // Images
+        $images = [];
+        foreach ($section->getElementsByTagName('img') as $img) {
+            $images[] = [
+                'src'    => $img->getAttribute('src'),
+                'alt'    => $img->getAttribute('alt'),
+                'width'  => $img->getAttribute('width'),
+                'height' => $img->getAttribute('height')
+            ];
+        }
+        $block['images'] = array_values($images);
+
+        // List Items with <span>, <h2>, <p>, <svg>
+        $list_items = [];
+        foreach ($section->getElementsByTagName('ul') as $ul) {
+            $ul_items = [];
+            foreach ($ul->getElementsByTagName('li') as $li) {
+                $text = '';
+                $svg = '';
+                $heading = '';
+
+                $spanElement = $li->getElementsByTagName('span')->item(0);
+                if ($spanElement) {
+                    $h2Element = $spanElement->getElementsByTagName('h2')->item(0);
+                    if ($h2Element) {
+                        $heading = trim($h2Element->textContent);
+                    }
+
+                    $pElement = $spanElement->getElementsByTagName('p')->item(0);
+                    if ($pElement) {
+                        $text = trim($pElement->textContent);
+                    }
+                }
+
+                $svgElement = $li->getElementsByTagName('svg')->item(0);
+                if ($svgElement) {
+                    $svg = $dom->saveHTML($svgElement);
+                }
+
+                if ($heading || $text || $svg) {
+                    $ul_items[] = [
+                        'heading' => $heading,
+                        'svg'     => $svg,
+                        'para'    => $text,
+                    ];
+                }
+            }
+            if (!empty($ul_items)) {
+                $list_items[] = $ul_items;
+            }
+        }
+        $block['list_items'] = $list_items;
+
+        // Card-style Details in <div><span>
+        $card_details = [];
+        foreach ($section->getElementsByTagName('div') as $div) {
+            foreach ($div->getElementsByTagName('span') as $span) {
+                $h2 = '';
+                $svg = '';
+                $paras = [];
+                $list_items = [];
+
+                $h2Element = $span->getElementsByTagName('h2')->item(0);
+                if ($h2Element) {
+                    $h2 = trim($h2Element->textContent);
+                }
+
+                $svgElement = $span->getElementsByTagName('svg')->item(0);
+                if ($svgElement) {
+                    $svg = $dom->saveHTML($svgElement);
+                }
+
+                foreach ($span->getElementsByTagName('p') as $ptag) {
+                    $paras[] = trim($ptag->textContent);
+                }
+
+                foreach ($span->getElementsByTagName('ul') as $ul) {
+                    foreach ($ul->getElementsByTagName('li') as $li) {
+                        $list_items[] = trim($li->textContent);
+                    }
+                }
+
+                if ($h2 || $svg || !empty($paras)) {
+                    $card_details[] = [
+                        'heading' => $h2,
+                        'svg'     => $svg,
+                        'para'    => $paras,
+                        'list'    => $list_items
+                    ];
+                }
+            }
+        }
+        $block['card_details'] = $card_details;
+
+        $blocks[] = $block;
+    }
+
+    return $blocks;
+}
+
+
+
+
+
+
+
+
 
 //to get Testimonials 
 
@@ -248,6 +450,50 @@ add_action('rest_api_init', function () {
         'permission_callback' => '__return_true',
     ]);
 });
+
+
+
+
+//To get faq's
+
+
+add_action('rest_api_init', function () {
+    register_rest_route('custom/v1', '/faq-details', [
+        'methods' => 'GET',
+        'callback' => function (WP_REST_Request $request) {
+            $post_id = $request->get_param('id');
+
+            if (!$post_id || !get_post($post_id)) {
+                return new WP_Error('invalid_post', 'Invalid or missing post ID', ['status' => 400]);
+            }
+
+            $content = get_post_field('post_content', $post_id);
+
+            // Match <h3>Question</h3> followed by <p>Answer</p>
+            preg_match_all(
+                '/<h3 class="wp-block-heading">(.*?)<\/h3>\s*.*?<p>(.*?)<\/p>/s',
+                $content,
+                $matches,
+                PREG_SET_ORDER
+            );
+
+            if (!$matches) {
+                return new WP_Error('no_faqs', 'No FAQs found in post content', ['status' => 204]);
+            }
+
+            $faqs = array_map(function ($match) {
+                return [
+                    'title'       => wp_strip_all_tags($match[1]),
+                    'content' => wp_strip_all_tags($match[2]),
+                ];
+            }, $matches);
+
+            return rest_ensure_response($faqs);
+        },
+        'permission_callback' => '__return_true',
+    ]);
+});
+
 
 
 
@@ -296,7 +542,7 @@ function get_custom_page_data_by_slug($data) {
         'title'   => $title,
         'content' => wp_strip_all_tags($content),
         'button'  => $button,
-        'link'    => $link,        // ✅ Now included
+        'link'    => $link,        // âœ… Now included
         'image'   => $image,
     ];
 }
@@ -587,7 +833,7 @@ $block['paragraphs'] = $paragraphs;
 }
 $block['images'] = array_values($images); // ensure index
 
- // ✅ Extract list items with span and svg
+ // âœ… Extract list items with span and svg
 $list_items = [];
 
 foreach ($section->getElementsByTagName('ul') as $ul) {
