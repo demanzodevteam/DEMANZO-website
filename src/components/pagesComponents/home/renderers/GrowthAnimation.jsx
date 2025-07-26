@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from 'react';
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { BASE_URL } from "../../../../config/urls";
 
 const GrowthAnimation = ({ category }) => {
   const [mounted, setMounted] = useState(false);
@@ -12,7 +11,6 @@ const GrowthAnimation = ({ category }) => {
 
   useEffect(() => {
     console.log(category);
-    
     setMounted(true);
     AOS.init({ once: true });
   }, []);
@@ -29,8 +27,8 @@ const GrowthAnimation = ({ category }) => {
     return posts.slice(0, posts.length - remainder);
   };
 
-  const nonLastRowPosts = getNonLastRowPosts(category.posts, columns);
-  const lastRowPosts = getLastRowPosts(category.posts, columns);
+  const nonLastRowPosts = getNonLastRowPosts(category.card_details, columns);
+  const lastRowPosts = getLastRowPosts(category.card_details, columns);
 
   return (
     <>
@@ -38,7 +36,7 @@ const GrowthAnimation = ({ category }) => {
         className="text-[30px] md:text-[35px] lg:text-[50px] font-[600] text-center text-[#191d27]"
         {...(mounted ? { "data-aos": "fade-up", "data-aos-duration": "2000" } : {})}
       >
-        {category.name}
+        {category.title}
       </h2>
 
       <svg width="100%" height="18" viewBox="0 0 246 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -133,10 +131,10 @@ const ParticleCard = ({ post }) => {
           ))}
       </AnimatePresence>
 
-      <h2 className="text-[19px] font-[600] text-[#191d27]">{post.title}</h2>
-      <p className="text-[15px] font-[400] text-[#616670] pt-3 pb-8">{post.content}</p>
+      <h2 className="text-[19px] font-[600] text-[#191d27]">{post.heading}</h2>
+      <p className="text-[15px] font-[400] text-[#616670] pt-3 pb-8">{post.para[0]}</p>
       <hr className="text-[#ebebeb] pb-4" />
-      <a className="text-[16px] font-[400] text-[#2d89bf]" href={'/' + post.slug} aria-label={'Learn more about' + post.title}>
+      <a className="text-[16px] font-[400] text-[#2d89bf]" href={'/' + post.links[0]?.href} aria-label={'Learn more about' + post.title}>
         Learn More
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" className="inline" viewBox="0 0 24 24">
           <path

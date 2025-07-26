@@ -2,14 +2,26 @@
 import { API_URL } from "../../../../config/urls";
 import GrowthAnimation from "../renderers/GrowthAnimation"
 
-const res = await fetch(API_URL + 'category/3');
+const res = await fetch('https://a2.techbuzz360.com/demanzo/wp-json/custom/v1/blocks/53075');
 const category = await res.json();
+
+
+
+const resp = await fetch(API_URL + 'blocks/314');
+const SectionData = await resp.json();
+const colVal = [
+  { value: 1 },
+  { value: 2 },
+  { value: 4 }
+];
+const background = 'bg-[#FFFFFF]';
+
 ---
 
 <!-- -----------------section 3---------------- -->
 
 <div class="demanzo-container bg-gradient-to-b from-[#fef1ee] to-[#fcf8f9]">
   <div class="demanzo-max-screen-width  py-[50px]">
-    <GrowthAnimation category={category}  client:load/>
+    <GrowthAnimation category={category[0]}  client:load/>
   </div>
 </div>
