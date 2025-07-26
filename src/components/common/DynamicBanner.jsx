@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { MEDIA_URL } from "../../config/urls";
 
 
 const DynamicBanner = ({ pageData }) => {
+  
   return (
     <div className="bg-[#e6f8ff] px-[15px] py-[90px] relative">
       <div className="relative mx-auto lg:mx-0 text-center flex items-center justify-center">

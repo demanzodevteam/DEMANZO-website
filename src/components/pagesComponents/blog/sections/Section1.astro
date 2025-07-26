@@ -3,10 +3,19 @@ import { API_URL } from '../../../../config/urls';
 import DynamicBanner from "../../../common/DynamicBanner";
 
 const resond = await fetch(API_URL + "category/8");
-const category = await resond.json();
+const category = [
+  {
+    "id": 8,
+    "name": "Recent Blogs",
+    "description": "",
+    "slug": "recent-blogs",
+    "link": "https://a2.techbuzz360.com/demanzo/category/recent-blogs/"
+  }
+]
+;
 
 ---
 
 <!-- ------------------ Section 1 ------------------ -->
 
-<DynamicBanner pageData={category}/>
+<DynamicBanner pageData={category[0]} client:load/>

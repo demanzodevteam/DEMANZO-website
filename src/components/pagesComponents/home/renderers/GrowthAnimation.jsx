@@ -11,6 +11,8 @@ const GrowthAnimation = ({ category }) => {
   const columns = 3;
 
   useEffect(() => {
+    console.log(category);
+    
     setMounted(true);
     AOS.init({ once: true });
   }, []);
