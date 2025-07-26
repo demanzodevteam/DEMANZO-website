@@ -23,7 +23,11 @@ export default function Caurosel({ category }) {
   if (!hasMounted) return null;
   return (
     <>
-      <h2 className="text-[30px] lg:text-[40px] font-[600] text-[#191d27] text-center pb-6" data-aos="fade-up" data-aos-duration="2000" >
+      <h2
+        className="text-[30px] lg:text-[40px] font-[600] text-[#191d27] text-center pb-6"
+        data-aos="fade-up"
+        data-aos-duration="2000"
+      >
         {category.name}
       </h2>
       <div className="demanzo-container">
@@ -35,7 +39,7 @@ export default function Caurosel({ category }) {
           <Swiper
             loop={true}
             loopAdditionalSlides={1} // Helps Swiper loop even if # of slides = view
-            slidesPerView={2.9}       //  Slightly less than 3
+            slidesPerView={2.9} //  Slightly less than 3
             spaceBetween={32}
             autoplay={{
               delay: 3500,
@@ -52,19 +56,17 @@ export default function Caurosel({ category }) {
                 slidesPerView: 2.5,
               },
             }}
-
             modules={[Autoplay]}
           >
-
-            {[...category.posts, ...category.posts].map((testimonial, index) => (
+            {category.map((testimonial, index) => (
               <SwiperSlide
                 key={`${testimonial.title}-${index}`}
-                className="bg-white rounded-xl shadow-xl overflow-visible my-4" 
+                className="bg-white rounded-xl shadow-xl overflow-visible my-4"
                 style={{
-                  boxShadow: "0 8px 8px rgba(0, 0, 0, 0.08)", 
+                  boxShadow: "0 8px 8px rgba(0, 0, 0, 0.08)",
                   background: "#fff",
                   borderRadius: "12px",
-                  minHeight:"320px",
+                  minHeight: "320px",
                 }}
               >
                 <div className="p-8 bg-white rounded-xl shadow-[0_4px_14px_rgba(0,0,0,0.08)] transition-all duration-300 hover:shadow-[0_10px_10px_rgba(0,0,0,0.08)]">
@@ -92,13 +94,15 @@ export default function Caurosel({ category }) {
                   <p className="text-[20px] font-[600] text-center text-[#30353b]">
                     {testimonial.title}
                   </p>
+                  <p className="text-[16px] font-[500] text-[#616670]">
+                    {testimonial.address}
+                  </p>
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
       </div>
-
     </>
   );
 }
