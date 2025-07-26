@@ -1,7 +1,7 @@
 ---
-import { API_URL } from '../../../../config/urls';
+import { API_URL, BASE_URL } from '../../../../config/urls';
 
-// const resond = await fetch(API_URL + "category/7");
+// const resond = await fetch(`${BASE_URL}wp-json/custom/v1/case-studies`);
 const resond = await fetch(API_URL + "blocks/196");
 
 const category = await resond.json();

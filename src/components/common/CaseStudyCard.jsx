@@ -3,7 +3,7 @@ import cs1 from "../../assets/cs1.webp";
 import { BASE_URL } from "../../config/urls";
 
 export default function CaseStudyCard({ categories }) {
-  // console.log(categories,'categories');
+  console.log(categories,'categories');
   
   useEffect(() => {
     console.log(categories);
@@ -22,7 +22,6 @@ export default function CaseStudyCard({ categories }) {
             {category.title}
           </h2>
         )} */}
-{console.log(category.acf_fields,'category.acf_fields')}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 lg:px-8">
           <a
             href={`/case-studies/${category.slug ?? category.link?.split('/').filter(Boolean).pop()}`}

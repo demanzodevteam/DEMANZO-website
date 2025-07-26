@@ -3,7 +3,7 @@ import { MEDIA_URL } from "../../config/urls";
 
 
 const DynamicBanner = ({ pageData }) => {
-  // console.log(pageData,'pageData list');
+  console.log(pageData,'pageData list');
   
   return (
     <div className="bg-[#e6f8ff] px-[15px] py-[90px] relative">
