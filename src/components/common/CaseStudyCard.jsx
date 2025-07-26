@@ -3,6 +3,8 @@ import cs1 from "../../assets/cs1.webp";
 import { BASE_URL } from "../../config/urls";
 
 export default function CaseStudyCard({ categories }) {
+  console.log(categories,'categories');
+  
   useEffect(() => {
     console.log(categories);
   }, [categories]);
@@ -20,7 +22,7 @@ export default function CaseStudyCard({ categories }) {
             {category.title}
           </h2>
         )} */}
-
+{console.log(category.acf_fields,'category.acf_fields')}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 lg:px-8">
           <a
             href={`/case-studies/${category.slug ?? category.link?.split('/').filter(Boolean).pop()}`}
@@ -31,7 +33,7 @@ export default function CaseStudyCard({ categories }) {
               {category.title}
             </p>
             <img
-              src={BASE_URL+'wp-content/uploads/'+ category.acf_fields?.featured_image?.url	|| cs1.src}
+              src={BASE_URL+ category.acf_fields?.featured_image?.url	|| cs1.src}
               alt={category.title}
               className="w-full h-full object-cover rounded z-0"
             />
