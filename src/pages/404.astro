@@ -1,7 +1,7 @@
 
 ---
-import Footer from "../components/main/Footer.astro";
 import logo from "../assets/logo.png";
+import Footer from "../components/main/Footer.astro";
 import favicon from "../../public/demanzo-logo.png";
 import NavLinks from "../components/navitems/NavLinks.astro";
 import Header from "../components/main/Header.astro";
@@ -64,7 +64,12 @@ const { title = "B2B &; SaaS Digital Marketing Agency For IT Companies - Demanzo
 
     <nav>
         <div class="menu">
-            <p class="website_name">Demanzo</p>
+            <!-- <p class="website_name">Demanzo</p> -->
+            <img
+                  src={logo.src}
+                  alt="logo"
+                  class="w-[170px] md:w-[190px] lg:w-[200px]"
+                />
             <div class="menu_links">
 
             </div>
@@ -117,7 +122,7 @@ const { title = "B2B &; SaaS Digital Marketing Agency For IT Companies - Demanzo
 
             <div class="text">
                 <article>
-                    <p>Demanzo is a B2B digital marketing agency offering SaaS digital marketing and digital marketing for IT companies to increase leads and online visibility.</p>
+                    <p class="">Demanzo is a B2B digital marketing agency offering SaaS digital marketing and digital marketing for IT companies to increase leads and online visibility.</p>
                     <a href='/'><button>Return TO Home</button></a>
                 </article>
             </div>
@@ -620,7 +625,7 @@ const { title = "B2B &; SaaS Digital Marketing Agency For IT Companies - Demanzo
     }
 
     .wrapper .container .text article {
-        width: 400px;
+        width: 500px;
         position: absolute;
         bottom: 0;
         z-index: 4;
