@@ -60,27 +60,32 @@ const GrowthAnimation = ({ category }) => {
         {/* Full rows */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {nonLastRowPosts.map((post, index) => (
-            <ParticleCard key={index} post={post} />
+            <ParticleCard key={index} post={post} index={index} />
           ))}
         </div>
 
         {/* Centered last row */}
-        {lastRowPosts.length > 0 && (
-          <div className="flex justify-center gap-8 flex-wrap">
-            {lastRowPosts.map((post, index) => (
-              <div key={`last-${index}`} className="w-full max-w-[400px]">
-                <ParticleCard post={post} />
-              </div>
-            ))}
-          </div>
-        )}
+
+        {lastRowPosts.map((post) => {
+          const realIndex = category.card_details.findIndex(p => p === post);
+          return (
+            <div className="flex justify-center gap-8 flex-wrap">
+              {lastRowPosts.map((post, index) => (
+                <div key={`last-${index}`} className="w-full max-w-[400px]">
+                  <ParticleCard post={post} index={6} />
+                </div>
+              ))}
+            </div>
+          );
+        })}
+
       </div>
     </>
   );
 };
 
 // Reusable ParticleCard Component
-const ParticleCard = ({ post }) => {
+const ParticleCard = ({ post, index }) => {
   const [hasMounted, setHasMounted] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [particles, setParticles] = useState([]);
@@ -107,16 +112,16 @@ const ParticleCard = ({ post }) => {
 
   const motionProps = hasMounted
     ? {
-        initial: { opacity: 0, y: 200 },
-        whileInView: { opacity: 1, y: 0 },
-        whileHover: {
-          scale: 1.03,
-          y: -5,
-          boxShadow: "0 0 30px rgba(125, 128, 230, 0.5)"
-        },
-        transition: { duration: 0.4 },
-        viewport: { once: true }
-      }
+      initial: { opacity: 0, y: 200 },
+      whileInView: { opacity: 1, y: 0 },
+      whileHover: {
+        scale: 1.03,
+        y: -5,
+        boxShadow: "0 0 30px rgba(125, 128, 230, 0.5)"
+      },
+      transition: { duration: 0.4 },
+      viewport: { once: true }
+    }
     : {};
 
   return (
@@ -134,7 +139,7 @@ const ParticleCard = ({ post }) => {
       <h2 className="text-[19px] font-[600] text-[#191d27]">{post.heading}</h2>
       <p className="text-[15px] font-[400] text-[#616670] pt-3 pb-8">{post.para[0]}</p>
       <hr className="text-[#ebebeb] pb-4" />
-      <a className="text-[16px] font-[400] text-[#2d89bf]" href={'/' + post.links[0]?.href} aria-label={'Learn more about' + post.title}>
+      <a className="text-[16px] font-[400] text-[#2d89bf]" href={'/' + post.links[index]?.href} aria-label={'Learn more about' + post.title}>
         Learn More
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" className="inline" viewBox="0 0 24 24">
           <path
