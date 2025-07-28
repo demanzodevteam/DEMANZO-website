@@ -118,7 +118,7 @@ const HeaderMenus = ({ navLinks, currentPath }) => {
                             }`}
                     >
                         <button
-                        aria-label="Open menu"
+                            aria-label="Open menu"
                             onClick={() => setMenuOpen(false)}
                             className="absolute top-4 right-4"
                         >
@@ -149,13 +149,13 @@ const HeaderMenus = ({ navLinks, currentPath }) => {
                                 return (
                                     <li key={item.id}>
                                         <button
-                                        aria-label="active menu"
+                                            aria-label="active menu"
                                             onClick={() =>
                                                 setActiveMenu(activeMenu === index ? null : index)
                                             }
                                             className={`w-full text-left flex justify-between items-center text-[13px] font-[600] px-3 py-2 rounded-md transition-colors duration-200 ${isActive
-                                                 ? "bg-[linear-gradient(#2d89bf)] text-white px-2 py-1 rounded-2xl"
-                                            : "text-gray-700 hover:text-[#2d89bf]"
+                                                ? "bg-[linear-gradient(#2d89bf)] text-white px-2 py-1 rounded-2xl"
+                                                : "text-gray-700 hover:text-[#2d89bf]"
                                                 }`}
                                         >
                                             {item.label.toUpperCase()}
@@ -195,7 +195,7 @@ const HeaderMenus = ({ navLinks, currentPath }) => {
                                                                 href={sub.url}
                                                                 className={`block transition-colors duration-200 ${isSubActive
                                                                     ? "text-[#2d89bf] bg-[#a6cfe78e] p-0.5 rounded-2xl"
-                                                        : "text-gray-700 hover:text-[#2d89bf] p-0.5"
+                                                                    : "text-gray-700 hover:text-[#2d89bf] p-0.5"
                                                                     }`}
                                                             >
                                                                 {sub.label}
