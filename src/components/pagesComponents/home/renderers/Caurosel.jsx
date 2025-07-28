@@ -1,30 +1,33 @@
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
+// Caurosel.jsx
+'use client';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { useEffect, useState } from 'react';
-import AOS from "aos";
-import "aos/dist/aos.css";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Autoplay } from 'swiper/modules';
 
-// Import required modules
-import { Autoplay } from "swiper/modules";
+import '../../../styles.css';
 
-import "../../../styles.css";
-
-export default function Caurosel({ category }) {
+export default function Caurosel({ category = [] }) {
   const [hasMounted, setHasMounted] = useState(false);
-
-  // Duplicate slides to ensure looping works properly with 3 items
-  const categoryLoopSafe = [...category, ...category];
 
   useEffect(() => {
     AOS.init();
-    setHasMounted(true); // ensure client-only rendering
+    setHasMounted(true);
   }, []);
 
-  if (!hasMounted) return null;
+  // Check if category is actually an array
+  if (!hasMounted || !Array.isArray(category)) {
+    console.warn('Invalid or missing `category` data:', category);
+    return null;
+  }
+
+  // Duplicate slides for seamless loop
+  const categoryLoopSafe = [...category, ...category];
 
   return (
     <>
@@ -49,20 +52,14 @@ export default function Caurosel({ category }) {
             spaceBetween={32}
             speed={5000}
             autoplay={{
-              delay: 0, // continuous scroll
+              delay: 0,
               disableOnInteraction: false,
             }}
-            allowTouchMove={false} // disables manual swipe for continuous auto-scroll
+            allowTouchMove={false}
             breakpoints={{
-              0: {
-                slidesPerView: 1,
-              },
-              640: {
-                slidesPerView: 2,
-              },
-              1024: {
-                slidesPerView: 3,
-              },
+              0: { slidesPerView: 1 },
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
             }}
             modules={[Autoplay]}
           >
@@ -71,10 +68,10 @@ export default function Caurosel({ category }) {
                 key={`${testimonial.title}-${index}`}
                 className="bg-white rounded-xl shadow-xl overflow-visible my-4"
                 style={{
-                  boxShadow: "0 8px 8px rgba(0, 0, 0, 0.08)",
-                  background: "#fff",
-                  borderRadius: "12px",
-                  minHeight: "320px",
+                  boxShadow: '0 8px 8px rgba(0, 0, 0, 0.08)',
+                  background: '#fff',
+                  borderRadius: '12px',
+                  minHeight: '320px',
                 }}
               >
                 <div className="p-8 bg-white rounded-xl shadow-[0_4px_14px_rgba(0,0,0,0.08)] transition-all duration-300 hover:shadow-[0_10px_10px_rgba(0,0,0,0.08)]">
@@ -94,7 +91,7 @@ export default function Caurosel({ category }) {
                         <path
                           fill="currentColor"
                           d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2
-                            L9.19 8.63L2 9.24l5.46 4.73L5.82 21z"
+                          L9.19 8.63L2 9.24l5.46 4.73L5.82 21z"
                         />
                       </svg>
                     ))}
@@ -102,7 +99,7 @@ export default function Caurosel({ category }) {
                   <p className="text-[20px] font-[600] text-center text-[#30353b]">
                     {testimonial.title}
                   </p>
-                  <p className="text-[16px] font-[500] text-[#616670]">
+                  <p className="text-[16px] font-[500] text-[#616670] text-center">
                     {testimonial.address}
                   </p>
                 </div>
