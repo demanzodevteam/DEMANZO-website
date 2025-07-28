@@ -4,17 +4,26 @@ import { API_URL, BASE_URL } from '../../../../config/urls';
 // const resond = await fetch(`${BASE_URL}wp-json/custom/v1/case-studies`);
 const resond = await fetch(API_URL + "blocks/196");
 
-const category = await resond.json();
 
 import DynamicBanner from "../../../common/DynamicBanner";
 
+const category = [
+  {
+    "id": 8,
+    "name": "Case Studies",
+    "description": "",
+    "slug": "recent-blogs",
+    "link": "https://a2.techbuzz360.com/demanzo/category/recent-blogs/"
+  }
+]
+;
 ---
 
 
 <!-- ------------------ Section 1 ------------------ -->
 
 
-<DynamicBanner pageData={category}/>
+<DynamicBanner pageData={category[0]}/>
 
 
 <!-- <CardSection pageData={combinedData} client:load /> -->
