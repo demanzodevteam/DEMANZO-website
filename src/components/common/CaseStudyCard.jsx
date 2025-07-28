@@ -3,11 +3,8 @@ import cs1 from "../../assets/cs1.webp";
 import { BASE_URL } from "../../config/urls";
 
 export default function CaseStudyCard({ categories }) {
-  console.log(categories,'categories');
   
-  useEffect(() => {
-    console.log(categories);
-  }, [categories]);
+
 
   return (
     <>

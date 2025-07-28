@@ -2,7 +2,6 @@
 // import { MEDIA_URL } from "../../config/urls";
 
 // export default function HeroSection({ pageData }) {
-//   console.log(pageData,'dsfgdsgdsfg');
 
 //   return (
 //     <>

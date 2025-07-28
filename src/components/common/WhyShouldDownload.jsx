@@ -1,5 +1,4 @@
 export default function WhyShouldDownload({ pageData }) {
-    // console.log(pageData?.list_items, 'pagedata')
     return (
       <>
         <div className="demanzo-container-auto mx-8 my-10 sm:mx-[60px] sm:my-[100px] px-10">

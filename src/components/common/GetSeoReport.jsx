@@ -4,7 +4,6 @@ import skyImg from "../../assets/sky2.png";
 import SEOReportForm from "./SEOReportForm";
 
 export default function GetSeoReport({ pageData }) {
-  console.log(pageData?.list_items[0], "pagedata");
 
   return (
     <div

@@ -13,7 +13,6 @@ export default function HeroPiplineSection() {
       .get(API_URL + "enterprise-seo-for-it-companies")
       .then((res) => {
         setPageData(res.data);
-        // console.log(res.data)
       })
       .catch((err) => {
         console.error("Error in browser:", err);

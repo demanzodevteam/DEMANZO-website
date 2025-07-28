@@ -71,7 +71,6 @@ export default SecondSection;
 //       .get(`${API_URL}${slug}`)
 //       .then((res) => {
 //         setPageData(res.data);
-//         // console.log(res.data)
 //       })
 //       .catch((err) => {
 //         console.error("Error in browser:", err);

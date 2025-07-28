@@ -12,12 +12,10 @@ export default function HeroSection({pageData}) {
 
     // const [pageData, setPageData] = useState({})
     // useEffect(() => {
-    //     console.log(pageData);
         
         // axios.get(API_URL + 'home-hero')
         //     .then((res) => {
         //         setPageData(res.data);
-        //         // console.log(res.data)
         //     })
         //     .catch((err) => {
         //         console.error('Error in browser:', err);
