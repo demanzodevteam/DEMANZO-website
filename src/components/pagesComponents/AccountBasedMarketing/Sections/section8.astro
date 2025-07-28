@@ -1,5 +1,6 @@
 ---
 import { API_URL } from "../../../../config/urls";
+import RequestDemoForm from "../../../common/RequestDemoForm";
 import SalesContactSection from "../../../common/SalesContactSection";
 
 
@@ -9,4 +10,7 @@ const pageData = await res.json();
 
 <!-- ----- section 8 ---- -->
  
-<SalesContactSection  SectionData={pageData[8]} client:only="react"/>
+<!-- <SalesContactSection  SectionData={pageData[8]} client:only="react"/> -->
+<SalesContactSection  SectionData={pageData[8]} client:only="react">
+     <RequestDemoForm client:load/>
+</SalesContactSection>

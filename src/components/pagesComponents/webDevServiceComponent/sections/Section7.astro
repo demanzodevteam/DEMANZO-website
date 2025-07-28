@@ -1,10 +1,9 @@
 ---
-import { API_URL } from '../../../../config/urls';
-import CaseStudyCard from '../../../common/CaseStudyCard';
+import CaseStudyCard from "../../../common/CaseStudyCard";
+import { BASE_URL } from '../../../../config/urls';
 
-
-const res = await fetch(API_URL + 'category/7');
-const category = await res.json();
+const resond = await fetch(`${BASE_URL}wp-json/custom/v1/case-studies`);
+const category = await resond.json();
 ---
 
 
@@ -12,5 +11,5 @@ const category = await res.json();
 
 
 <section class="!py-[50px] px-4 lg:px-8 bg-[#f8f8f8]">
- <CaseStudyCard categories={category} />
+ <CaseStudyCard categories={category} client:load/>
 </section>
