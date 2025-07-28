@@ -1,8 +1,8 @@
 ---
-import { API_URL } from "../../../../../config/urls";
+import { API_URL, BASE_URL } from "../../../../../config/urls";
 import Caurosel from "../../../home/renderers/Caurosel";
 
-const res = await fetch(API_URL + 'category/5');
+const res = await fetch(BASE_URL+ 'wp-json/custom/v1/testimonials');
 const category = await res.json();
 ---
 
