@@ -6,21 +6,21 @@ const categories = ["Show All", "Business", "Educational", "Matrimony", "eCommer
 
 // Replace with your real data
 const projects = [
-  { id: 1, category: "Business", image: SOURCE_BASE_URL +"wp-content/uploads/2024/11/Tadashie.png" },
-  { id: 2, category: "Business", image: SOURCE_BASE_URL +"wp-content/uploads/2024/11/dance.png" },
-  { id: 3, category: "Business", image: SOURCE_BASE_URL +"wp-content/uploads/2023/07/26.jpg" },
-  { id: 4, category: "Business", image: SOURCE_BASE_URL +"wp-content/uploads/2023/07/lakme-chennai.jpg" },
-  { id: 5, category: "Business", image: SOURCE_BASE_URL +"wp-content/uploads/2023/07/anit.jpg" },
-  { id: 6, category: "Business", image: SOURCE_BASE_URL +"wp-content/uploads/2024/11/dmi.jpg" },
-  { id: 7, category: "Business", image: SOURCE_BASE_URL +"wp-content/uploads/2023/07/spacey.jpg" },
-  { id: 8, category: "Business", image: SOURCE_BASE_URL +"wp-content/uploads/2023/07/Gain.jpg" },
-  { id: 9, category: "Business", image: SOURCE_BASE_URL +"wp-content/uploads/2023/07/archi.jpg" },
-  { id: 10, category: "Educational", image: SOURCE_BASE_URL +"wp-content/uploads/2024/11/spoton.jpg" },
-  { id: 11, category: "Educational", image: SOURCE_BASE_URL +"wp-content/uploads/2023/07/lakme-chennai.jpg" },
-  { id: 12, category: "Matrimony", image: SOURCE_BASE_URL +"wp-content/uploads/2023/07/matrimony.jpg" },
-  { id: 13, category: "eCommerce", image: SOURCE_BASE_URL +"wp-content/uploads/2024/11/Sharon-Furniture.png" },
-  { id: 14, category: "eCommerce", image: SOURCE_BASE_URL +"wp-content/uploads/2024/11/centram.jpg" },
-  { id: 15, category: "eCommerce", image: SOURCE_BASE_URL +"wp-content/uploads/2023/07/Cholas.jpg" },
+  { id: 1, category: "Business", image: SOURCE_BASE_URL +"/wp-content/uploads/2024/11/Tadashie.png" },
+  { id: 2, category: "Business", image: SOURCE_BASE_URL +"/wp-content/uploads/2024/11/dance.png" },
+  { id: 3, category: "Business", image: SOURCE_BASE_URL +"/wp-content/uploads/2023/07/26.jpg" },
+  { id: 4, category: "Business", image: SOURCE_BASE_URL +"/wp-content/uploads/2023/07/lakme-chennai.jpg" },
+  { id: 5, category: "Business", image: SOURCE_BASE_URL +"/wp-content/uploads/2023/07/anit.jpg" },
+  { id: 6, category: "Business", image: SOURCE_BASE_URL +"/wp-content/uploads/2024/11/dmi.jpg" },
+  { id: 7, category: "Business", image: SOURCE_BASE_URL +"/wp-content/uploads/2023/07/spacey.jpg" },
+  { id: 8, category: "Business", image: SOURCE_BASE_URL +"/wp-content/uploads/2023/07/Gain.jpg" },
+  { id: 9, category: "Business", image: SOURCE_BASE_URL +"/wp-content/uploads/2023/07/archi.jpg" },
+  { id: 10, category: "Educational", image: SOURCE_BASE_URL +"/wp-content/uploads/2024/11/spoton.jpg" },
+  { id: 11, category: "Educational", image: SOURCE_BASE_URL +"/wp-content/uploads/2023/07/lakme-chennai.jpg" },
+  { id: 12, category: "Matrimony", image: SOURCE_BASE_URL +"/wp-content/uploads/2023/07/matrimony.jpg" },
+  { id: 13, category: "eCommerce", image: SOURCE_BASE_URL +"/wp-content/uploads/2024/11/Sharon-Furniture.png" },
+  { id: 14, category: "eCommerce", image: SOURCE_BASE_URL +"/wp-content/uploads/2024/11/centram.jpg" },
+  { id: 15, category: "eCommerce", image: SOURCE_BASE_URL +"/wp-content/uploads/2023/07/Cholas.jpg" },
 ];
 
 export default function ProjectGallery() {
