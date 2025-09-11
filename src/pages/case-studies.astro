@@ -6,18 +6,14 @@ import { SEO_URL } from '../config/urls';
 import he from 'he';
 
 // Fetch from WordPress REST API
-const res = await fetch(SEO_URL +"196");
+const res = await fetch(SEO_URL +"689");
 const pageData = await res.json();
 
 // Extract Rank Math SEO fields
-// const seo = pageData.rank_math_meta || {};
-
-// const title = seo.title || "Fallback Title";
-// const description = seo.description || "Fallback description";
-// const permalink = seo.permalink || "";
-
-const title = "Case Studies - Demanzo";
-const description = "Home Case Studies Case Studies Transforming Sales and Expanding Horizons Transforming Beauty Retail SEO IoT Dento Facial & Cosmetic Treatment From 0 to";
+const seo = pageData.rank_math_meta || {};
+const title = seo.title ? he.decode(seo.title) : "Fallback Title";
+const description = seo.description ? he.decode(seo.description) : "Fallback description";
+const permalink = seo.permalink || "";
 ---
 
 <HomeLayout title={title} description={description}>
