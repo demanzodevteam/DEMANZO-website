@@ -2,8 +2,18 @@
 // import Welcome from '../components/Welcome.astro';
 import HomeLayout from '../layouts/HomeLayout.astro';
 import AnalyticsReportingServicesComponent from '../components/pagesComponents/AnalyticsReportingServices/AnalyticsReportingServicesComponent.astro';
-const title = "Google Analytics 4 Reporting & Data Studio Looker Services - Demanzo";
-const description = "Enhance your reporting efficiency with Google Analytics 4 reporting services and Google Data Studio Looker services, delivering accurate insights.";
+import { SEO_URL } from '../config/urls';
+import he from 'he';
+
+// Fetch from WordPress REST API
+const res = await fetch(SEO_URL +"184");
+const pageData = await res.json();
+
+// Extract Rank Math SEO fields
+const seo = pageData.rank_math_meta || {};
+const title = seo.title ? he.decode(seo.title) : "Fallback Title";
+const description = seo.description ? he.decode(seo.description) : "Fallback description";
+const permalink = seo.permalink || "";
 ---
 
 <HomeLayout title={title} description={description}>

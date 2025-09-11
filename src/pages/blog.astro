@@ -2,8 +2,18 @@
 // import Welcome from '../components/Welcome.astro';
 import HomeLayout from '../layouts/HomeLayout.astro';
 import BlogComponent from '../components/pagesComponents/blog/BlogComponent.astro';
-const title = "Blog on Small Business Digital Marketing Tips - SEO, Google Ads, Facebook Marketing - Demanzo";
-const description = "Blog from Demanzo which talks about digital marketing, SEO, PPC tips for startups and small business.";
+import { SEO_URL } from '../config/urls';
+import he from 'he';
+
+// Fetch from WordPress REST API
+const res = await fetch(SEO_URL +"165");
+const pageData = await res.json();
+
+// Extract Rank Math SEO fields
+const seo = pageData.rank_math_meta || {};
+const title = seo.title ? he.decode(seo.title) : "Fallback Title";
+const description = seo.description ? he.decode(seo.description) : "Fallback description";
+const permalink = seo.permalink || "";
 ---
 
 <HomeLayout title={title} description={description}>

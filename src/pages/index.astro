@@ -1,9 +1,21 @@
 ---
 import HomeLayout from '../layouts/HomeLayout.astro';
 import HomeComponent from '../components/pagesComponents/home/HomeComponent.astro';
+import { SEO_URL } from '../config/urls';
+import he from "he";
 
-const title = "B2B & SaaS Digital Marketing Agency For IT Companies - Demanzo";
-const description = "Demanzo is a B2B digital marketing agency offering SaaS digital marketing and digital marketing for IT companies to increase leads and online visibility.";
+// Fetch from WordPress REST API
+const res = await fetch(SEO_URL +"53075");
+const pageData = await res.json();
+
+// Extract Rank Math SEO fields
+
+
+const seo = pageData.rank_math_meta || {};
+const title = seo.title ? he.decode(seo.title) : "Fallback Title";
+const description = seo.description ? he.decode(seo.description) : "Fallback description";
+const permalink = seo.permalink || "";
+
 ---
 
 <HomeLayout title={title} description={description}>

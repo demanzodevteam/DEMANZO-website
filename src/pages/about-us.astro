@@ -1,8 +1,22 @@
 ---
 import HomeLayout from '../layouts/HomeLayout.astro';
 import AboutUsPage from '../components/pagesComponents/AboutUs/AboutUsPage.astro';
-const title = "About Demanzo - Digital Marketing Agency, B2B Lead Generation";
-const description = "Demanzo, a digital marketing agency based out of India, provides out of the box digital demand generation services for businesses. Our team of digital marketing specialists brings together over 60+ years of experience in digital marketing to provide you high ROI digital marketing service.";
+import { SEO_URL } from '../config/urls';
+import he from 'he';
+// const title = "About Demanzo - Digital Marketing Agency, B2B Lead Generation";
+// const description = "Demanzo, a digital marketing agency based out of India, provides out of the box digital demand generation services for businesses. Our team of digital marketing specialists brings together over 60+ years of experience in digital marketing to provide you high ROI digital marketing service.";
+
+
+
+// Fetch from WordPress REST API
+const res = await fetch(SEO_URL +"203");
+const pageData = await res.json();
+
+// Extract Rank Math SEO fields
+const seo = pageData.rank_math_meta || {};
+const title = seo.title ? he.decode(seo.title) : "Fallback Title";
+const description = seo.description ? he.decode(seo.description) : "Fallback description";
+const permalink = seo.permalink || "";
 ---
 
 <HomeLayout title={title} description={description}>

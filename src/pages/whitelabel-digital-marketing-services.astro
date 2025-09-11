@@ -2,8 +2,23 @@
 import HomeLayout from "../layouts/HomeLayout.astro";
 import WhitelabelDigitalComponent from '../components/pagesComponents/whitelabelDigitalComponent/WhitelabelDigitalComponent.astro'
 
-const title = "Best Whitelabel Digital Marketing Agency For Australian Agencies | Demanzo";
-const description = "Demanzo, the best white label digital marketing agency, provides white label digital marketing services for digital marketing and web development agencies in Australia. Currently serving companies in Queensland, Victoria, Tasmania.";
+
+import { SEO_URL } from '../config/urls';
+import he from "he";
+
+// Fetch from WordPress REST API
+const res = await fetch(SEO_URL +"204");
+const pageData = await res.json();
+
+// Extract Rank Math SEO fields
+const seo = pageData.rank_math_meta || {};
+const title = seo.title ? he.decode(seo.title) : "Fallback Title";
+const description = seo.description ? he.decode(seo.description) : "Fallback description";
+const permalink = seo.permalink || "";
+
+
+// const title = "Best Whitelabel Digital Marketing Agency For Australian Agencies | Demanzo";
+// const description = "Demanzo, the best white label digital marketing agency, provides white label digital marketing services for digital marketing and web development agencies in Australia. Currently serving companies in Queensland, Victoria, Tasmania.";
 ---
 
 <HomeLayout title={title} description={description}>

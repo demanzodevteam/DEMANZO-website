@@ -1,8 +1,18 @@
 ---
 import IndustriesWeServeComponent from '../components/pagesComponents/IndustriesWeServe/IndustriesWeServeComponent.astro';
 import HomeLayout from '../layouts/HomeLayout.astro';
-const title = "Top SaaS & B2B Software Marketing Agency - Demanzo";
-const description = "We help SaaS and B2B software companies grow with proven marketing strategies. Partner with a trusted SaaS marketing agency to scale faster.";
+import { SEO_URL } from '../config/urls';
+import he from 'he';
+
+// Fetch from WordPress REST API
+const res = await fetch(SEO_URL +"510");
+const pageData = await res.json();
+
+// Extract Rank Math SEO fields
+const seo = pageData.rank_math_meta || {};
+const title = seo.title ? he.decode(seo.title) : "Fallback Title";
+const description = seo.description ? he.decode(seo.description) : "Fallback description";
+const permalink = seo.permalink || "";
 ---
 
 <HomeLayout title={title} description={description}>

@@ -2,8 +2,18 @@
 // import Welcome from '../components/Welcome.astro';
 import HomeLayout from '../layouts/HomeLayout.astro';
 import WebsitePerformance from '../components/pagesComponents/WebsitePerformanceChecklist/WebsitePerformance.astro';
-const title = "IT Website Performance Checklist - Demanzo";
-const description = "Your IT website is your most valuable asset—but is it delivering the speed, security, and SEO results you need? This comprehensive performance checklist will";
+import { SEO_URL } from '../config/urls';
+import he from 'he';
+
+// Fetch from WordPress REST API
+const res = await fetch(SEO_URL +"689");
+const pageData = await res.json();
+
+// Extract Rank Math SEO fields
+const seo = pageData.rank_math_meta || {};
+const title = seo.title ? he.decode(seo.title) : "Fallback Title";
+const description = seo.description ? he.decode(seo.description) : "Fallback description";
+const permalink = seo.permalink || "";
 ---
 
 <HomeLayout title={title} description={description}>

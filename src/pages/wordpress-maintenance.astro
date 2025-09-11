@@ -1,8 +1,23 @@
 ---
 import WordPressMaintenanceComponent from "../components/pagesComponents/WordPressMaintenanceServices/WordPressMaintenanceComponent.astro";
 import HomeLayout from "../layouts/HomeLayout.astro";
-const title = "Expert White Label Wordpress Maintenance Service &amp; Packages - Demanzo";
-const description = "Get expert WordPress maintenance with flexible monthly packages. Ideal for agencies needing white label support and businesses needing site care.";
+
+import { SEO_URL } from '../config/urls';
+import he from "he";
+
+// Fetch from WordPress REST API
+const res = await fetch(SEO_URL +"189");
+const pageData = await res.json();
+
+// Extract Rank Math SEO fields
+const seo = pageData.rank_math_meta || {};
+const title = seo.title ? he.decode(seo.title) : "Fallback Title";
+const description = seo.description ? he.decode(seo.description) : "Fallback description";
+const permalink = seo.permalink || "";
+
+
+// const title = "Expert White Label Wordpress Maintenance Service &amp; Packages - Demanzo";
+// const description = "Get expert WordPress maintenance with flexible monthly packages. Ideal for agencies needing white label support and businesses needing site care.";
 ---
 
 <HomeLayout title={title} description={description}>

@@ -2,8 +2,18 @@
 // import Welcome from '../components/Welcome.astro';
 import HomeLayout from '../layouts/HomeLayout.astro';
 import PerformanceComponent from '../components/pagesComponents/performanceMarketing/PerformanceComponent.astro';
-const title = "Best Performance Marketing Agency For B2B - Demanzo";
-const description = "Need a performance marketing agency that delivers? Demanzo drives measurable growth for B2B companies through data-led marketing strategies.";
+import { SEO_URL } from '../config/urls';
+import he from 'he';
+
+// Fetch from WordPress REST API
+const res = await fetch(SEO_URL +"457");
+const pageData = await res.json();
+
+// Extract Rank Math SEO fields
+const seo = pageData.rank_math_meta || {};
+const title = seo.title ? he.decode(seo.title) : "Fallback Title";
+const description = seo.description ? he.decode(seo.description) : "Fallback description";
+const permalink = seo.permalink || "";
 ---
 
 <HomeLayout title={title} description={description}>

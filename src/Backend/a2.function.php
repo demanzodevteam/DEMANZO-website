@@ -245,12 +245,33 @@ function get_all_case_studies() {
     ]);
 
     $data = array_map(function ($post) {
-        $acf_fields = get_fields($post->ID);
-        if ($acf_fields) {
-            foreach ($acf_fields as $key => $value) {
+        // Get ACF fields and clean URLs
+        $acf_fields = function_exists('get_fields') ? get_fields($post->ID) : [];
+        if (is_array($acf_fields)) {
+            array_walk_recursive($acf_fields, function (&$value) {
                 if (is_string($value) && str_contains($value, site_url())) {
-                    $acf_fields[$key] = str_replace(site_url() . '/', '', $value);
+                    $value = str_replace(site_url() . '/', '', $value);
                 }
+            });
+        }
+
+        // Extract <img> tags from post content
+        $images = [];
+        $html = $post->post_content;
+
+        if (!empty(trim($html))) {
+            $dom = new DOMDocument();
+            libxml_use_internal_errors(true);
+            $dom->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
+
+            foreach ($dom->getElementsByTagName('img') as $img) {
+                $src = $img->getAttribute('src');
+                $images[] = [
+                    'src'    => str_replace(site_url() . '/', '', $src),
+                    'alt'    => $img->getAttribute('alt'),
+                    'width'  => $img->getAttribute('width'),
+                    'height' => $img->getAttribute('height'),
+                ];
             }
         }
 
@@ -259,12 +280,14 @@ function get_all_case_studies() {
             'title'      => get_the_title($post),
             'content'    => wp_strip_all_tags($post->post_content),
             'acf_fields' => $acf_fields,
-            'link'       => wp_parse_url(get_permalink($post), PHP_URL_PATH),
+            'link'       => get_permalink($post),
+            'images'     => $images,
         ];
     }, $posts);
 
     return rest_ensure_response($data);
 }
+
 
 function get_content_blocks_cs($data) {
     $post_id = $data['id'];
@@ -469,9 +492,13 @@ add_action('rest_api_init', function () {
 
             $content = get_post_field('post_content', $post_id);
 
-            // Match <h3>Question</h3> followed by <p>Answer</p>
+            // Extract h2 as title (if present)
+            preg_match('/<h2.*?>(.*?)<\/h2>/', $content, $h2Match);
+            $main_title = isset($h2Match[1]) ? wp_strip_all_tags($h2Match[1]) : '';
+
+            // Match <h3 class="wp-block-heading">Question</h3> followed by <p>Answer</p>
             preg_match_all(
-                '/<h3 class="wp-block-heading">(.*?)<\/h3>\s*.*?<p>(.*?)<\/p>/s',
+                '/<h3[^>]*class="[^"]*wp-block-heading[^"]*"[^>]*>(.*?)<\/h3>\s*.*?<p>(.*?)<\/p>/s',
                 $content,
                 $matches,
                 PREG_SET_ORDER
@@ -483,16 +510,20 @@ add_action('rest_api_init', function () {
 
             $faqs = array_map(function ($match) {
                 return [
-                    'title'       => wp_strip_all_tags($match[1]),
+                    'title'   => wp_strip_all_tags($match[1]),
                     'content' => wp_strip_all_tags($match[2]),
                 ];
             }, $matches);
 
-            return rest_ensure_response($faqs);
+            return rest_ensure_response([
+                'main_title' => $main_title,
+                'faqs'       => $faqs,
+            ]);
         },
         'permission_callback' => '__return_true',
     ]);
 });
+
 
 
 
@@ -741,6 +772,22 @@ add_action('rest_api_init', function () {
     ]);
 });
 
+add_action( 'rest_api_init', function() {
+    register_rest_field( 
+        ['post', 'page'], // post types
+        'rank_math_meta', // field name in REST
+        [
+            'get_callback' => function( $object ) {
+                return get_post_meta( $object['id'], 'rank_math_description', true );
+            },
+            'schema' => null,
+        ]
+    );
+});
+
+
+
+
 function get_content_blocks($data) {
     $post_id = $data['id'];
     return parse_content_blocks($post_id);
@@ -923,15 +970,27 @@ $list_items = [];
         }
         // Optional: Get <ul> if you need it
 
+// ✅ Get all <a> tags (links)
+        foreach ($span->getElementsByTagName('a') as $aTag) {
+            $href = $aTag->getAttribute('href');
+            $linkText = trim($aTag->textContent);
+
+            $links[] = [
+                'href' => $href,
+                'text' => $linkText
+            ];
+        }
+        
         // $ulElement = $span->getElementsByTagName('ul')->item(0);
         // $ulHTML = $ulElement ? $dom->saveHTML($ulElement) : '';
 
-        if ($h2 || $svg || !empty($paras)) {
+        if ($h2 || $svg || !empty($paras) || !empty($links)) {
             $card_details[] = [
                 'heading' => $h2,
                 'svg'     => $svg,
                 'para'    => $paras, 
-                'list'    => $list_items
+                'list'    => $list_items,
+                'links'   => $links  // ✅ include links array
                 // You can implode if you want a single string
                 // 'list' => $ulHTML,
             ];
@@ -946,7 +1005,6 @@ $block['card_details'] = $card_details;
 
     return $blocks;
 }
-
 
 
 
@@ -1051,6 +1109,3 @@ function get_all_posts_custom($request) {
 
     return rest_ensure_response($posts);
 }
-
-
-

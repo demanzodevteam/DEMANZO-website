@@ -2,8 +2,18 @@
 // import Welcome from '../components/Welcome.astro';
 import HomeLayout from '../layouts/HomeLayout.astro';
 import PipelineComponent from '../components/pagesComponents/pipelineComponent/PipelineComponent.astro';
-const title = "MQL To SQL Services From A Leading Pipeline Acceleration Agency - Demanzo";
-const description = "Accelerate your pipeline with Demanzo’s MQL to SQL services. As a top pipeline acceleration agency, we help B2B businesses convert leads and drive growth faster";
+import { SEO_URL } from '../config/urls';
+import he from 'he';
+
+// Fetch from WordPress REST API
+const res = await fetch(SEO_URL +"280");
+const pageData = await res.json();
+
+// Extract Rank Math SEO fields
+const seo = pageData.rank_math_meta || {};
+const title = seo.title ? he.decode(seo.title) : "Fallback Title";
+const description = seo.description ? he.decode(seo.description) : "Fallback description";
+const permalink = seo.permalink || "";
 ---
 
 <HomeLayout title={title} description={description}>

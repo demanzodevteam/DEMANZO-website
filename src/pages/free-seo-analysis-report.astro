@@ -2,8 +2,18 @@
 // import Welcome from '../components/Welcome.astro';
 import HomeLayout from '../layouts/HomeLayout.astro';
 import SeoCompetitorAuditComponent from '../components/pagesComponents/SeoCompetitorAudit/SeoCompetitorAuditComponent.astro';
-const title = "Find Your Website's SEO Score: Best Free Google SEO Checker | Demanzo";
-const description = "We analyze your website using our SEO tools to generate insightful SEO reports. We verify the data points manually to summarize our findings and the recommended next steps.";
+import { SEO_URL } from '../config/urls';
+import he from 'he';
+
+// Fetch from WordPress REST API
+const res = await fetch(SEO_URL +"201");
+const pageData = await res.json();
+
+// Extract Rank Math SEO fields
+const seo = pageData.rank_math_meta || {};
+const title = seo.title ? he.decode(seo.title) : "Fallback Title";
+const description = seo.description ? he.decode(seo.description) : "Fallback description";
+const permalink = seo.permalink || "";
 ---
 
 <HomeLayout title={title} description={description}>

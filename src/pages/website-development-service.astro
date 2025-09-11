@@ -2,8 +2,22 @@
 // import Welcome from '../components/Welcome.astro';
 import HomeLayout from '../layouts/HomeLayout.astro';
 import WebDevComponent from '../components/pagesComponents/webDevServiceComponent/WebDevComponent.astro';
-const title = "Professional Custom Website Development Services | Demanzo";
-const description = "Choose Demanzo for custom website development services. Our experienced team builds corporate, eCommerce, travel, and local business websites.";
+
+import { SEO_URL } from '../config/urls';
+import he from 'he';
+
+// Fetch from WordPress REST API
+const res = await fetch(SEO_URL +"188");
+const pageData = await res.json();
+
+// Extract Rank Math SEO fields
+const seo = pageData.rank_math_meta || {};
+const title = seo.title ? he.decode(seo.title) : "Fallback Title";
+const description = seo.description ? he.decode(seo.description) : "Fallback description";
+const permalink = seo.permalink || "";
+
+// const title = "Professional Custom Website Development Services | Demanzo";
+// const description = "Choose Demanzo for custom website development services. Our experienced team builds corporate, eCommerce, travel, and local business websites.";
 ---
 
 <HomeLayout title={title} description={description}>

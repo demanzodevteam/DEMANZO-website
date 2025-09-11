@@ -2,8 +2,19 @@
 import HomeLayout from '../layouts/HomeLayout.astro';
 // import ITMarketingBenchMark from '../components/pagesComponents/ITMartketingBenchMark/ITMarketingBenchMarkReport.astro';
 import BuildMyGrowthEngineComponent from '../components/pagesComponents/BuildMyGrowthEngine/BuildMyGrowthEngineComponent.astro';
-const title = "Build My Growth Engine - Demanzo";
-const description = "Ready to move beyond random marketing tactics and start building a predictable growth system?";
+
+import { SEO_URL } from '../config/urls';
+import he from 'he';
+
+// Fetch from WordPress REST API
+const res = await fetch(SEO_URL +"202");
+const pageData = await res.json();
+
+// Extract Rank Math SEO fields
+const seo = pageData.rank_math_meta || {};
+const title = seo.title ? he.decode(seo.title) : "Fallback Title";
+const description = seo.description ? he.decode(seo.description) : "Fallback description";
+const permalink = seo.permalink || "";
 ---
 
 <HomeLayout title={title} description={description}>

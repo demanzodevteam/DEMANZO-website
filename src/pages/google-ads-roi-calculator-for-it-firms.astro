@@ -2,8 +2,18 @@
 // import Welcome from '../components/Welcome.astro';
 import HomeLayout from '../layouts/HomeLayout.astro';
 import GoogleAdsComponent from '../components/pagesComponents/googleadsroicomponent/GoogleAdsComponent.astro';
-const title = "Free Google Ads ROI Calculator for IT Firms | Demanzo";
-const description = "Use our free Google Ads ROI calculator to track ad spend, revenue, and profits. Get data-driven insights to optimize PPC campaigns for maximum ROI.";
+import { SEO_URL } from '../config/urls';
+import he from 'he';
+
+// Fetch from WordPress REST API
+const res = await fetch(SEO_URL +"199");
+const pageData = await res.json();
+
+// Extract Rank Math SEO fields
+const seo = pageData.rank_math_meta || {};
+const title = seo.title ? he.decode(seo.title) : "Fallback Title";
+const description = seo.description ? he.decode(seo.description) : "Fallback description";
+const permalink = seo.permalink || "";
 ---
 
 <HomeLayout title={title} description={description}>

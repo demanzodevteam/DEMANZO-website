@@ -2,8 +2,22 @@
 // import Welcome from '../components/Welcome.astro';
 import HomeLayout from '../layouts/HomeLayout.astro';
 import SEOChecklistComponent from '../components/pagesComponents/SEOchecklist/SEOChecklistComponent.astro';
-const title = "Free SEO Audit Checklist For IT Companies | SEO Issues | Demanzo";
-const description = "Download our free SEO audit checklist for IT companies to analyze technical SEO, fix errors, improve rankings, and enhance website performance for better search visibility.";
+import { SEO_URL } from '../config/urls';
+import he from 'he';
+
+// Fetch from WordPress REST API
+const res = await fetch(SEO_URL +"197");
+const pageData = await res.json();
+
+// Extract Rank Math SEO fields
+const seo = pageData.rank_math_meta || {};
+const title = seo.title ? he.decode(seo.title) : "Fallback Title";
+const description = seo.description ? he.decode(seo.description) : "Fallback description";
+const permalink = seo.permalink || "";
+
+
+// const title = "Free SEO Audit Checklist For IT Companies | SEO Issues | Demanzo";
+// const description = "Download our free SEO audit checklist for IT companies to analyze technical SEO, fix errors, improve rankings, and enhance website performance for better search visibility.";
 ---
 
 <HomeLayout title={title} description={description}>

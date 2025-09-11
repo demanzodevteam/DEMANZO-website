@@ -2,8 +2,18 @@
 // import Welcome from '../components/Welcome.astro';
 import HomeLayout from '../layouts/HomeLayout.astro';
 import CareersComponent from '../components/pagesComponents/careersComponent/CareersComponent.astro';
-const title = "Jobs in Nagercoil - SEO, Content, PPC, Web Development Jobs | Demanzo";
-const description = "Demazno, a top digital agency in Nagercoil has the following job openings: SEO, PPC, Content Writing, Social Media, web development, web designing, PHP developer.";
+import { SEO_URL } from '../config/urls';
+import he from 'he';
+
+// Fetch from WordPress REST API
+const res = await fetch(SEO_URL +"206");
+const pageData = await res.json();
+
+// Extract Rank Math SEO fields
+const seo = pageData.rank_math_meta || {};
+const title = seo.title ? he.decode(seo.title) : "Fallback Title";
+const description = seo.description ? he.decode(seo.description) : "Fallback description";
+const permalink = seo.permalink || "";
 ---
 
 <HomeLayout title={title} description={description}>
