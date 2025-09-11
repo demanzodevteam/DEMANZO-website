@@ -6,35 +6,61 @@ import SingleCaseStudiesComponent from "../../components/pagesComponents/CaseStu
 import { ARTICLE_URLS } from "../../config/urls";
 import HomeLayout from "../../layouts/HomeLayout.astro";
 
+/**
+ * Safe fetch helper
+ */
+async function fetchJSON(url: string) {
+  const res = await fetch(url);
+  const text = await res.text();
+
+  try {
+    return JSON.parse(text);
+  } catch (err) {
+    console.error("Failed to parse JSON from:", url);
+    console.error("Response text:", text);
+    throw err;
+  }
+}
+
+/**
+ * Generate static paths for Astro
+ */
 export async function getStaticPaths() {
-  const res = await fetch(ARTICLE_URLS + "case-studies");
-  const posts = await res.json();
+  const posts = await fetchJSON(ARTICLE_URLS + "case-studies");
 
   const paths = posts.map((post: { slug: string }) => ({
     params: { CaseStudies: post.slug },
   }));
 
-  return paths;
+  return { paths }; // Must return an object with `paths`
 }
 
+// Extract slug from URL
 const { CaseStudies: slug } = Astro.params;
 
 // Fetch current post
-const postRes = await fetch(ARTICLE_URLS + `case-studies?slug=${slug}`);
-const postData = await postRes.json();
+const postData = await fetchJSON(ARTICLE_URLS + `case-studies?slug=${slug}`);
 const post = postData[0];
 
-// Fetch all posts to find previous/next
-const allRes = await fetch(ARTICLE_URLS + "case-studies");
-const posts = await allRes.json();
-const title = "";
-const description = "";
+// Fetch all posts for previous/next
+const allPosts = await fetchJSON(ARTICLE_URLS + "case-studies");
+
+// Fallback metadata
+const title = post?.title?.rendered || "Case Study";
+const description = post?.excerpt?.rendered || "";
 ---
 
 <HomeLayout title={title} description={description}>
-  <!-- <ArticlesHeader SectionData={post} />
-  <WpContentParser content={post.content.rendered} client:load />
-  <ArticleFooter posts={posts} currentSlug={slug} /> -->
+  {post ? (
+    <>
+      <ArticlesHeader SectionData={post} />
+      <WpContentParser content={post.content.rendered} client:load />
+      <ArticleFooter posts={allPosts} currentSlug={slug} />
+    </>
+  ) : (
+    <p>Post not found.</p>
+  )}
 
-  <SingleCaseStudiesComponent/>
+  {/* Optional component */}
+  <SingleCaseStudiesComponent />
 </HomeLayout>
