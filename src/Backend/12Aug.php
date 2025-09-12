@@ -1079,12 +1079,16 @@ $block['card_details'] = $card_details;
                 $categories    = get_the_category($post->ID);
                 $category_name = !empty($categories) ? $categories[0]->name : null;
 
+ // ✅ Get last part of permalink path
+                $path      = wp_parse_url(get_permalink($post), PHP_URL_PATH);
+                $last_part = basename(untrailingslashit($path));
+                
                 return [
                     'title'    => get_the_title($post),
                     'slug'     => $post->post_name,
                     'image'    => $image_url,
                     'alt'      => $alt_text,
-                    'link'     => wp_parse_url(get_permalink($post), PHP_URL_PATH),
+                    'link'     => $last_part,
                     'category' => $category_name,
                 ];
             }, $posts);
