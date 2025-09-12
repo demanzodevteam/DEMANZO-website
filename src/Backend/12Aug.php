@@ -281,6 +281,8 @@ function get_all_case_studies() {
     ]);
 
     $data = array_map(function ($post) {
+        $id = $post->ID;
+        $slug = get_post_field('post_name', $id);
         // Get ACF fields and clean URLs
         $acf_fields = function_exists('get_fields') ? get_fields($post->ID) : [];
         if (is_array($acf_fields)) {
@@ -313,6 +315,7 @@ function get_all_case_studies() {
 
         return [
             'id'         => $post->ID,
+            'slug'           => $slug,
             'title'      => get_the_title($post),
             'content'    => wp_strip_all_tags($post->post_content),
             'acf_fields' => $acf_fields,
