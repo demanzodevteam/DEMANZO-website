@@ -1,0 +1,40 @@
+---
+import { ArticleFooter } from "../../components/common/ArticleFooter";
+import { ArticlesHeader } from "../../components/common/ArticlesHeader";
+import WpContentParser from "../../components/common/WpContentParser";
+import SingleCaseStudiesComponent from "../../components/pagesComponents/CaseStudies/SingleCaseStudies/SingleCaseStudiesComponent.astro";
+import { ARTICLE_URLS } from "../../config/urls";
+import HomeLayout from "../../layouts/HomeLayout.astro";
+
+export async function getStaticPaths() {
+  const res = await fetch(ARTICLE_URLS + "case-studies");
+  const posts = await res.json();
+
+  const paths = posts.map((post: { slug: string }) => ({
+    params: { CaseStudies: post.slug },
+  }));
+
+  return paths;
+}
+
+const { CaseStudies: slug } = Astro.params;
+
+// Fetch current post
+const postRes = await fetch(ARTICLE_URLS + `case-studies?slug=${slug}`);
+const postData = await postRes.json();
+const post = postData[0];
+
+// Fetch all posts to find previous/next
+const allRes = await fetch(ARTICLE_URLS + "case-studies");
+const posts = await allRes.json();
+const title = "";
+const description = "";
+---
+
+<HomeLayout title={title} description={description}>
+  <!-- <ArticlesHeader SectionData={post} />
+  <WpContentParser content={post.content.rendered} client:load />
+  <ArticleFooter posts={posts} currentSlug={slug} /> -->
+
+  <SingleCaseStudiesComponent/>
+</HomeLayout>

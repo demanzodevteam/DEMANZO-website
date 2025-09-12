@@ -1,0 +1,67 @@
+---
+import { ArticleFooter } from "../../components/common/ArticleFooter";
+import { ArticlesHeader } from "../../components/common/ArticlesHeader";
+import WpContentParser from "../../components/common/WpContentParser";
+import SingleCaseStudiesComponent from "../../components/pagesComponents/CaseStudies/SingleCaseStudies/SingleCaseStudiesComponent.astro";
+import { ARTICLE_URLS } from "../../config/urls";
+import HomeLayout from "../../layouts/HomeLayout.astro";
+
+/**
+ * Safe fetch helper
+ */
+async function fetchJSON(url: any) {
+  console.log(url)
+  const res = await fetch(url);
+  const text = await res.text();
+
+  try {
+    return JSON.parse(text);
+  } catch (err) {
+    console.error("Failed to parse JSON from:", url);
+    console.error("Response text:", text);
+    throw err;
+  }
+} 
+
+/**
+ * Generate static paths for Astro
+ */
+export async function getStaticPaths() {
+  const posts = await fetchJSON(ARTICLE_URLS + "case-studies");
+
+  const paths = posts.map((post: { slug: string }) => ({
+    params: { CaseStudies: post.slug },
+  }));
+
+  return { paths }; // Must return an object with `paths`
+}
+
+// Extract slug from URL
+const { CaseStudies: slug } = Astro.params;
+
+// Fetch current post
+const postData = await fetchJSON(ARTICLE_URLS + `case-studies?slug=${slug}`);
+const post = postData[0];
+
+// Fetch all posts for previous/next
+const allPosts = await fetchJSON(ARTICLE_URLS + "case-studies");
+
+// Fallback metadata
+const title = post?.title?.rendered || "Case Study";
+const description = post?.excerpt?.rendered || "";
+---
+
+<HomeLayout title={title} description={description}>
+  {post ? (
+    <>
+      <ArticlesHeader SectionData={post} />
+      <WpContentParser content={post.content.rendered} client:load />
+      <ArticleFooter posts={allPosts} currentSlug={slug} />
+    </>
+  ) : (
+    <p>Post not found.</p>
+  )}
+
+  {/* Optional component */}
+  <SingleCaseStudiesComponent />
+</HomeLayout>
