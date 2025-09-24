@@ -15,27 +15,54 @@ export default function TrustCaurocelHome({ category }) {
     setMounted(true);
   }, []);
 
-  if (!mounted || !category) return null;
+  if (!mounted) return null; // delay only until mounted
 
   return (
     <>
-    <div className="pb-5">
-      
-    
-      {!category?.heading &&
-        category?.description.split(/\r?\n/).map((line, index) => (
+      {/* <div className="pb-5">
+        {category?.heading ? (
           <h2
-            key={index}
             data-aos="fade-up"
-            className={`text-[30px] lg:text-[40px] font-[600] text-center leading-tight ${
-              index === 0 ? "text-[#191d27]" : "text-[#f15a29]"
-            }`}
+            className="text-[30px] lg:text-[40px] font-[600] text-center leading-tight text-[#191d27]"
           >
-            {line}
+            {category.heading}
           </h2>
-        ))}
-        </div>
-               <TrustCaurocel client:visible />
+        ) : (
+          category?.description
+            ?.split(/\r?\n/)
+            .map((line, index) => (
+              <h2
+                key={index}
+                data-aos="fade-up"
+                className={`text-[30px] lg:text-[40px] font-[600] text-center leading-tight ${
+                  index === 0 ? "text-[#191d27]" : "text-[#f15a29]"
+                }`}
+              >Trusted by IT teams and
+SaaS leaders across industries
+                {line}
+              </h2>
+            ))
+        )}
+      </div> */}
+      
+<div className="pb-5 text-center">
+  <h2
+    data-aos="fade-up"
+    className="text-[30px] lg:text-[40px] font-[600] leading-tight text-[#191d27]"
+  >
+    Trusted By IT Teams And
+  </h2>
+  <h2
+    data-aos="fade-up"
+    className="text-[30px] lg:text-[40px] font-[600] leading-tight text-[#f15a29]"
+  >
+    SaaS Leaders Across Industries
+  </h2>
+</div>
+
+
+      {/* Normal React usage here */}
+      <TrustCaurocel />
     </>
   );
 }
