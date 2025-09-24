@@ -70,7 +70,7 @@ const GrowthAnimation = ({ category }) => {
           return (
             <div className="flex justify-center gap-8 flex-wrap">
               {lastRowPosts.map((post, index) => (
-                <div key={`last-${index}`} className="w-full max-w-[400px]">
+                <div key={`last-${index}`} className="w-full max-w-[365px]">
                   <ParticleCard post={post} index={6} />
                 </div>
               ))}
