@@ -34,7 +34,7 @@ export default function WhyYouNeedReport({pageData}) {
                     <div className="border-2 border-dotted text-red-500 border-red-500 rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0 p-1.5">
                       <h2>{index + 1}</h2>
                     </div>
-                    <p className="demanzo-p mb-3">
+                    <p className="demanzo-p mb-3 !mx-0">
                       <strong>{item?.heading}</strong> {item?.para}
                     </p>
                   </li>
