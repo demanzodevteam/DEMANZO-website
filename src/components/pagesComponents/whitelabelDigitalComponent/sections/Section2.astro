@@ -9,6 +9,7 @@ const data = await res.json();
 const pageData = data[1];
 const list = pageData?.list_items[0];
 ---
+<!-- section 2 -->
 
 <div class="demanzo-container-auto !py-[60px] px-[15px]">
     <h2 class="pb-[16px] demanzo-h1 text-center">{pageData.headings[0]}</h2>
@@ -25,7 +26,7 @@ const list = pageData?.list_items[0];
             />
         </div>
         <div class="pt-[16px] tl-[32px]">
-            <h1 class="text-[30px] text-[#191d27] font-[600] pb-[16px] mb-[20px]">{pageData.headings[1]}</h1>
+            <h3 class="text-[30px] text-[#191d27] font-[600] pb-[16px] mb-[20px]">{pageData.headings[1]}</h3>
             {
             list?.map((item: any) => (
                 <div class="mb-[16px] flex">

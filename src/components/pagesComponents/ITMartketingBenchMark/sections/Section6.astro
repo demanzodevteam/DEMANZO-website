@@ -8,6 +8,9 @@ import SalesContactSection from "../../../common/SalesContactSection";
 const res = await fetch(API_URL + 'blocks/200');
 const pageData = await res.json();
 ---
+
+<!-- section 6 -->
+
 <!-- <DownloadReport pageData={pageData[5]}  client:only="react"/> -->
 
 <SalesContactSection  SectionData={pageData[5]} client:only="react">

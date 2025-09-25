@@ -7,7 +7,7 @@ export default function AboutUsFeatures({ pageData }) {
       class="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] px-2 gap-2 lg:px-14 lg:py-10 bg-no-repeat bg-bottom bg-cover min-h-[80vh] bg-gradient-to-t from-[#fef1ee] "
     >
       <div className="col-span-2 px-4 lg:px-15">
-        <p class="demanzo-bold-p leading-9">{pageData?.paragraphs[0]}</p>
+        <p class="demanzo-bold-p leading-9 text-center">{pageData?.paragraphs[0]}</p>
       </div>
       <div class=" col-span-2 lg:col-span-1 flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0 ">
         <img

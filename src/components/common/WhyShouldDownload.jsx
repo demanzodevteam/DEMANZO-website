@@ -3,7 +3,7 @@ export default function WhyShouldDownload({ pageData }) {
       <>
         <div className="demanzo-container-auto mx-8 my-10 sm:mx-[60px] sm:my-[100px] px-10">
           <div className="flex flex-col items-center justify-center p-8 rounded-xl bg-pink-50 px-[40px]">
-            <h2 className="demanzo-h1 text-center">
+            <h2 className="demanzo-h1 text-center pb-5">
               {/* Who Should Download? */}
               {pageData?.headings[0]}
             </h2>
@@ -11,7 +11,7 @@ export default function WhyShouldDownload({ pageData }) {
             <div className="w-full flex flex-col md:flex-row justify-center gap-4">
               <div className="md:w-1/2 flex flex-col gap-4">
                 {pageData?.list_items[0]?.slice(0, 3).map((item, index) => (
-                  <div key={index} className="flex items-center justify-evenly">
+                  <div key={index} className="flex ">
                     <svg
                       className="w-5 h-5 mr-2 text-red-500"
                       fill="none"
@@ -34,13 +34,13 @@ export default function WhyShouldDownload({ pageData }) {
                         d="M6 10l4 4 7-7"
                       />
                     </svg>
-                    <span className="demanzo-p">{item.para}</span>
+                    <span className="demanzo-p !mx-0">{item.para}</span>
                   </div>
                 ))}
               </div>
               <div className="md:w-1/2 flex flex-col gap-4">
                 {pageData?.list_items[0]?.slice(3, 5).map((item, index) => (
-                  <div key={index} className="flex items-center justify-evenly">
+                  <div key={index} className="flex ">
                     <svg
                       className="w-5 h-5 mr-2 text-red-500"
                       fill="none"
@@ -63,7 +63,7 @@ export default function WhyShouldDownload({ pageData }) {
                         d="M6 10l4 4 7-7"
                       />
                     </svg>
-                    <span className="demanzo-p">{item.para}</span>
+                    <span className="demanzo-p !mx-0 ">{item.para}</span>
                   </div>
                 ))}
               </div>

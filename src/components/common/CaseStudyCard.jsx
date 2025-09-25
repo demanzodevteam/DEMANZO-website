@@ -5,7 +5,7 @@ import { BASE_URL } from "../../config/urls";
 export default function CaseStudyCard({ categories }) {
   
 
-
+const sectionHead = categories.sectionHeading
   return (
     <>
     {Object.keys(categories)
@@ -19,6 +19,15 @@ export default function CaseStudyCard({ categories }) {
             {category.title}
           </h2>
         )} */}
+        {!sectionHead ? (
+  <h2 className="demanzo-h1 text-center pb-5">
+    CaseStudies
+  </h2>
+) : (
+  ""
+)}
+
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 lg:px-8">
           <a
             href={`/case-studies/${category.slug ?? category.link?.split('/').filter(Boolean).pop()}`}

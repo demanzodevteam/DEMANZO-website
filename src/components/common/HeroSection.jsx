@@ -134,6 +134,8 @@ import curveImg from "../../assets/Curve-main-bg.webp";
 import { MEDIA_URL } from "../../config/urls";
 
 export default function HeroSection({ pageData }) {
+
+  const sectionNumber = pageData.sectionNumber;
   return (
     <>
       <div
@@ -149,9 +151,18 @@ export default function HeroSection({ pageData }) {
             </p>
 
             <div class="inline-block relative mx-auto lg:mx-0 ">
-              <h1 class="text-[45px] md:text-[48px] lg:text-[50px] font-semibold relative z-10">
-                {pageData.headings[0]}
-              </h1>
+              {sectionNumber === 2 ? (
+                <h2 className="text-[45px] md:text-[48px] lg:text-[50px] font-semibold relative z-10">
+                  {pageData.headings[0]}
+                </h2>
+                
+              ) : (
+                <h1 className="text-[45px] md:text-[48px] lg:text-[50px] font-semibold relative z-10">
+                  {pageData.headings[0]}
+                </h1>
+              )}
+
+
               <svg
                 class="absolute left-1/2 -translate-x-1/2 lg:left-30 lg:translate-x-0 bottom-20 z-0"
                 width="270"
@@ -185,10 +196,11 @@ export default function HeroSection({ pageData }) {
                   <div class="absolute inset-0 h-[300px] bg-gray-100 transform translate-x-10 -translate-y-12 rounded-[30px] shadow-lg"></div>
                   <div class="relative z-10 flex items-center justify-center pt-8 pb-12 lg:pt-0 lg:pb-0">
                     <img
-                      src={MEDIA_URL + pageData.images?.[0]?.src}
-                      alt={pageData.images?.[0]?.alt}
-                      class="w-[500px] md:mx-auto lg:mx-0 rounded-[30px] "
-                    />
+  src={`${MEDIA_URL}${pageData.images?.[0]?.src}`}
+  alt={pageData.images?.[0]?.alt || "GIF"}
+  className="w-[500px] md:mx-auto lg:mx-0 rounded-[30px]"
+/>
+
                   </div>
                 </div>
               </>

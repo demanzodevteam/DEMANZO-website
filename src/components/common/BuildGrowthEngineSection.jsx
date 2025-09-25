@@ -8,8 +8,8 @@ export default function BuildGrowthEngineSection({ pageData }) {
           className="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] px-4 gap-2 lg:py-25  "
           // style={{ backgroundImage: bgImg ? "none" : `url('${curveImg.src}')` }}
         >
-          <div className="flex flex-col justify-center items-center gap-4 py-8 px-4 lg:px-15 lg:py-10">
-            <h2 className="demanzo-title ">{pageData[0].title}</h2>
+          <div className="flex flex-col justify-center items-left gap-4 py-8 px-4 lg:px-15 lg:py-10">
+            <p className="demanzo-title ">{pageData[0].title}</p>
 
             <div className="inline-block relative mx-auto lg:mx-0 ">
               <h1 className="demanzo-h1 relative z-10">

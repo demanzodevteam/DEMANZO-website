@@ -6,7 +6,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 const BusinessSection = ({ SectionData, Background }) => {
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(true);
 
   useEffect(() => {
     setMounted(true);
@@ -48,6 +48,7 @@ const BusinessSection = ({ SectionData, Background }) => {
               />
             </div>
 
+{/* cardflip section  */}
             <div className="grid lg:grid-cols-1 gap-6 lg:px-10">
               {SectionData?.list_items[0]?.map((list, index) => (
                 <div

@@ -10,6 +10,8 @@ const list1 = pageData?.list_items[0];
 const list2 = pageData?.list_items[1];
 ---
 
+<!-- section 9 -->
+
 <div class="demanzo-container-auto !pt-[60px] px-[15px]">
     <div class="mx-[10px] lg:mx-[28px] grid grid-cols-1 md:grid-cols-2">
         <h2 class="px-[10px] pt-[10px] pb-[26px] demanzo-h1 leading-12 text-center md:text-left">{pageData.headings[0]}</h2>
@@ -31,7 +33,7 @@ const list2 = pageData?.list_items[1];
             />
         </div>
         <div class="lg:pl-[80px] pt-[16px]">
-            <h1 class="mb-[36px] text-[30px] font-[600] text-[#191d27] text-center md:text-left">{pageData.headings[1]}</h1>
+            <h3 class="mb-[36px] text-[30px] font-[600] text-[#191d27] text-center md:text-left">{pageData.headings[1]}</h3>
             <div>
                 {
                     list1.map((item: any, index: number) => (

@@ -9,13 +9,14 @@ export default function BookMeetingSection({ pageData }) {
       style={{ backgroundImage: `url('${BackGroundImg.src}')` }}
     >
       <div className="mx-auto lg:mx-[280px] mb-[20px]">
-        <h2 className="demanzo-h1 pb-[20px] !text-white text-center leading-16">
+        {/* <h2 className="demanzo-h1 pb-[20px] !text-white text-center leading-16">
           {pageData.headings[0]}
-        </h2>
+        </h2> */}
         <div className="relative text-center flex items-center justify-center">
-          <h1 className="demanzo-h1 pb-[25px] !text-white leading-12">
+          <h2 className="demanzo-h1 pb-[25px] !text-white leading-12">
+            {pageData.headings[0]} <br />
             {pageData.headings[1]}
-          </h1>
+          </h2>
           <svg
             className="mt-2 mx-auto w-[200px] h-[20px] absolute bottom-5"
             viewBox="0 0 208 16"

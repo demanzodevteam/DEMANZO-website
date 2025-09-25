@@ -50,14 +50,15 @@ SaaS leaders across industries
     data-aos="fade-up"
     className="text-[30px] lg:text-[40px] font-[600] leading-tight text-[#191d27]"
   >
-    Trusted By IT Teams And
+    Trusted By IT Teams And <br />
+    SaaS Leaders Across Industries
   </h2>
-  <h2
+  {/* <h2
     data-aos="fade-up"
     className="text-[30px] lg:text-[40px] font-[600] leading-tight text-[#f15a29]"
   >
     SaaS Leaders Across Industries
-  </h2>
+  </h2> */}
 </div>
 
 

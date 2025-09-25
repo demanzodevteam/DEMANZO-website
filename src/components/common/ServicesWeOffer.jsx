@@ -18,11 +18,12 @@ const ServicesWeOffer = ({ SectionData, colVal }) => {
             {SectionData?.title && (
               <h2 className="demanzo-title my-3">{SectionData.title}</h2>
             )}
-            <h2 className="demanzo-h1 text-center lg:text-center">
+            <h2 className="1 demanzo-h1 text-center lg:text-center">
               {SectionData.headings[0]}{" "}
             </h2>
-            <svg
-              className="absolute left-1/2 -translate-x-1/2 bottom-[-10px] lg:left-[140px] lg:translate-x-0 z-0"
+            <div className="absolute w-full flex justify-center bottom-[-10px] text-center">
+<svg
+              className=""
               width="270"
               height="20"
               viewBox="0 0 270 20"
@@ -36,6 +37,8 @@ const ServicesWeOffer = ({ SectionData, colVal }) => {
                 strokeLinecap="round"
               />
             </svg>
+            </div>
+            
             <h2 className="demanzo-h1 text-center lg:text-center">
               {SectionData.heading}{" "}
             </h2>
@@ -50,7 +53,7 @@ const ServicesWeOffer = ({ SectionData, colVal }) => {
           {SectionData?.list_items[0]?.map((card, index) => (
             <div
               key={index}
-              className="bg-white shadow-md rounded-xl p-6 flex flex-col items-center space-y-4 hover:shadow-lg transition"
+              className="bg-white shadow-md rounded-xl p-6 flex justify-start items-start flex-col space-y-4 hover:shadow-lg transition"
               data-aos="zoom-in"
             >
               <div className="flex pb-2 justify-center items-center text-gray-700">

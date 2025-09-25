@@ -5,8 +5,9 @@ import { BASE_URL } from '../../../../config/urls';
 const resond = await fetch(`${BASE_URL}wp-json/custom/v1/case-studies`);
 const category = await resond.json();
 const button = false;
+const sectionHeading = true;
 
-const combinedData = { ...category, button };
+const combinedData = { ...category, button ,sectionHeading};
 ---
 
 <!-- ------------------ Section 2 ------------------ -->

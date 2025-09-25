@@ -8,8 +8,8 @@ export default function ResourceHeader({ pageData }) {
         <div className="bg-[#e6f8ff] px-[15px] py-[90px] relative">
           <div className="relative mx-auto lg:mx-[260px] text-center flex items-center justify-center">
             <div className="flex flex-col">
-              <h1 className="demanzo-h1">{pageData.headings[0]}</h1>
-              <h1 className="demanzo-h1">{pageData.headings[1]}</h1>
+              <h1 className="demanzo-h1">{pageData.headings[0]} <br/> {pageData.headings[1]}</h1>
+              {/* <h1 className="demanzo-h1">{pageData.headings[1]}</h1> */}
             </div>
             <svg
               className="mt-2 mx-auto w-[270px] h-[20px] absolute bottom-0"
