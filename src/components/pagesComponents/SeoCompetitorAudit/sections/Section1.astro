@@ -4,7 +4,7 @@ import HeroSection from "../../../common/HeroSection";
 
 const res = await fetch(API_URL + 'blocks/201');
 const data = await res.json();
-const sectionNumber =2;
+const sectionNumber =1;
 
 // Take first block and attach sectionNumber
 const pageData = { ...data[0], sectionNumber };

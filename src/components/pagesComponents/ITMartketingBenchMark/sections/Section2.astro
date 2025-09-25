@@ -6,9 +6,10 @@ const res = await fetch(API_URL + 'blocks/200');
 const pageData = await res.json();
 
 const bgImg= true
+const sectionNumber = 2;
 const combinedData ={
     ...pageData[1],
-    bgImg
+    bgImg,sectionNumber
 }
 ---
 <!-- section 2 -->
