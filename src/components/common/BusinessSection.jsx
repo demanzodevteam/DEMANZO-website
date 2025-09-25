@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useEffect, useState } from "react";
 import { MEDIA_URL } from "../../config/urls";
 import AOS from "aos";

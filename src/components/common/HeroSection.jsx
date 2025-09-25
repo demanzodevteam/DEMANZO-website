@@ -144,9 +144,9 @@ export default function HeroSection({ pageData }) {
       >
         <div className="demanzo-container-auto grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] px-2 gap-2 lg:px-14 lg:py-10 ">
           <div class="flex flex-col justify-center gap-4 py-8 px-4 lg:px-15 lg:py-10">
-            <h1 class="text-[#FF5F55] font-semibold text-[18px] lg:text-[20px]">
+            <p class="text-[#FF5F55] font-semibold text-[18px] lg:text-[20px]">
               {pageData.title}
-            </h1>
+            </p>
 
             <div class="inline-block relative mx-auto lg:mx-0 ">
               <h1 class="text-[45px] md:text-[48px] lg:text-[50px] font-semibold relative z-10">

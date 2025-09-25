@@ -9,14 +9,14 @@ export default function HeroSection({ pageData }) {
     <section className="demanzo-container-auto demanzo-section">
       <div class="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] px-2 gap-2 lg:px-14  bg-no-repeat bg-bottom bg-cover ">
         <div class="flex flex-col justify-center gap-4 py-8 px-4 lg:px-15 lg:py-10">
-          <h2 class="text-[#FF5F55] font-semibold text-[18px] lg:text-[20px]">
+          <p class="text-[#FF5F55] font-semibold text-[18px] lg:text-[20px]">
             {pageData.title}
-          </h2>
+          </p>
 
           <div class="inline-block relative mx-auto lg:mx-0 ">
-            <h1 class="text-[45px] md:text-[48px] lg:text-[48px] font-semibold relative z-10">
+            <h2 class="text-[45px] md:text-[48px] lg:text-[48px] font-semibold relative z-10">
               {pageData.headings[0]}
-            </h1>
+            </h2>
           </div>
           {pageData?.card_details?.map((para, index) => (
             <div key={index} className="mb-6">

@@ -6,10 +6,10 @@ export default function WhyMarketing({ pageData }) {
     <div className="demanzo-container-auto demanzo-section">
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] gap-2 bg-no-repeat bg-bottom bg-cover ">
         <div className="flex flex-col justify-center gap-4 py-8 px-4 lg:px-15 lg:py-10">
-          <h2 className="demanzo-title">{pageData.title}</h2>
+          <p className="demanzo-title">{pageData.title}</p>
 
           <div className="inline-block relative mx-auto lg:mx-0">
-            <h1 className="demanzo-h1">{pageData.headings[0]}</h1>
+            <h2 className="demanzo-h1">{pageData.headings[0]}</h2>
           </div>
 
           {pageData?.paragraphs?.map((para, index) => (

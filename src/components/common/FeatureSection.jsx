@@ -51,13 +51,13 @@ const FeatureSection = ({ pageData }) => {
                 ? { "data-aos": "zoom-in-down", "data-aos-duration": "500" }
                 : {})}
             >
-              <div className="flex flex-row items-center justify-center px-3 space-x-2">
+              <div className="flex flex-row items-center justify-center px-1 space-x-2">
                 <div className="text-[#447EFC]">
                   <CircleCheckBig />
                 </div>
-                <h5 className="demanzo-h2 mb-2">{card_details.heading}</h5>
+                <h5 className="demanzo-h2 mb-2 text-left">{card_details.heading}</h5>
               </div>
-              <p className="demanzo-p text-start px-4">{card_details.para}</p>
+              <p className="demanzo-p text-start pl-10">{card_details.para}</p>
               <hr className="border-t border-[#E0E0E0] w-full mb-6" />
             </div>
           ))}

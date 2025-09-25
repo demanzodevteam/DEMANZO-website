@@ -18,26 +18,28 @@ const FiveFeatureSection = ({ pageData }) => {
       <div className="demanzo-container-auto px-4 md:px-10 lg:px-20 py-16 space-y-4 text-center">
         {/* Title and SVG underline */}
         <div className="inline-block relative mx-auto lg:mx-0 mb-20">
-          <div className="relative inline-block">
-            <h2 className="demanzo-h1 leading-tight text-center lg:text-left">
-              {pageData.title}
-            </h2>
-            <svg
-              className="absolute left-1/2 -translate-x-1/2 bottom-[-10px] lg:left-[180px] lg:translate-x-0 z-0"
-              width="270"
-              height="20"
-              viewBox="0 0 270 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M5 15C80 5 190 0 265 12"
-                stroke="#7D80E6"
-                strokeWidth="6"
-                strokeLinecap="round"
-              />
-            </svg>
-          </div>
+          <div className="relative inline-block text-center lg:text-left">
+  <h2 className="demanzo-h1 leading-tight">
+    {pageData.title}
+  </h2>
+
+  <svg
+    className="absolute left-1/2 -translate-x-1/2 bottom-[-10px] z-0"
+    width="270"
+    height="20"
+    viewBox="0 0 270 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M5 15C80 5 190 0 265 12"
+      stroke="#7D80E6"
+      strokeWidth="6"
+      strokeLinecap="round"
+    />
+  </svg>
+</div>
+
         </div>
 
         {/* First row: 3 cards */}

@@ -16,10 +16,10 @@ export default function LeadSection({ pageData }) {
       >
         <div className="flex flex-col justify-center gap-2 py-8 px-4 lg:px-15 ">
           {pageData.title && (
-            <h2 className="demanzo-title">{pageData.title}</h2>
+            <p className="demanzo-title">{pageData.title}</p>
           )}
           <div className="inline-block relative mx-auto lg:mx-0">
-            <h1 className="demanzo-h1">{pageData.headings[0]}</h1>
+            <h2 className="demanzo-h1">{pageData.headings[0]}</h2>
           </div>
 
           {pageData?.card_details?.map((para, index) => (

@@ -22,28 +22,29 @@ const WhyYouNeedSection = ({ SectionData, colVal, background }) => {
         )}
         <div className="inline-block relative mx-auto lg:mx-0 mb-10">
           <div className="relative inline-block">
-            <h2 className="demanzo-h1 text-center lg:text-center">
-              {SectionData.headings[0]}{" "}
-            </h2>
-            <svg
-              className="absolute left-1/2 -translate-x-1/2 bottom-[-10px] lg:left-[140px] lg:translate-x-0 z-0"
-              width="270"
-              height="20"
-              viewBox="0 0 270 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M5 15C80 5 190 0 265 12"
-                stroke="#7D80E6"
-                strokeWidth="6"
-                strokeLinecap="round"
-              />
-            </svg>
-            <h2 className="demanzo-h1 text-center lg:text-center">
-              {SectionData.headings[1]}{" "}
-            </h2>
-          </div>
+  <h2 className="demanzo-h1 text-center lg:text-center items-center">
+    {SectionData.headings[0]} <br />
+    {SectionData.headings[1]}
+  </h2>
+
+  <div className="absolute left-1/2 -translate-x-1/2 bottom-[-10px] z-0">
+    <svg
+      width="270"
+      height="20"
+      viewBox="0 0 270 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M5 15C80 5 190 0 265 12"
+        stroke="#7D80E6"
+        strokeWidth="6"
+        strokeLinecap="round"
+      />
+    </svg>
+  </div>
+</div>
+
         </div>
         <p className="demanzo-p  max-w-7xl mx-auto text-[16px]">
           {SectionData.paragraphs[0]}

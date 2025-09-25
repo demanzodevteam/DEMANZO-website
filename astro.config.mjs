@@ -15,6 +15,12 @@ export default defineConfig({
         '@': path.resolve('./src'),
       },
     },
+    server: {
+      host: true,          // listen on all network interfaces
+      port: 4321,          // your dev port
+      strictPort: true,    // optional: prevents switching ports
+      allowedHosts: ['slouchy-burthensome-junie.ngrok-free.dev'], // allow all hosts (including ngrok)
+    },
   },
 
   integrations: [

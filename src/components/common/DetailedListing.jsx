@@ -17,26 +17,56 @@ const DetailedListing = ({ pageData }) => {
     <section className={`${pageData.background} demanzo-section`}>
       <div className="demanzo-container-auto  text-center">
         <div className="inline-block relative mx-auto lg:mx-0 mb-10">
-          <div className="relative inline-block">
-            <h2 className="demanzo-h1 leading-tight text-center lg:text-center">
-              {pageData.headings[0]}{" "}
-            </h2>
-            <svg
-              className="absolute left-1/2 -translate-x-1/2 bottom-[-10px] lg:left-[140px] lg:translate-x-0 z-0"
-              width="270"
-              height="20"
-              viewBox="0 0 270 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M5 15C80 5 190 0 265 12"
-                stroke="#7D80E6"
-                strokeWidth="6"
-                strokeLinecap="round"
-              />
-            </svg>
-          </div>
+          <div className="inline-block relative mx-auto lg:mx-0 mb-10">
+  <div className="inline-block relative mx-auto lg:mx-0 mb-10 text-center">
+  <h2 className="demanzo-h1 leading-tight">
+    {(() => {
+      const fullText = pageData.headings.join(" ");
+      const firstLineLimit = 20;
+
+      const words = fullText.split(" ");
+      let firstLine = "";
+      let secondLine = "";
+      let charCount = 0;
+
+      for (let i = 0; i < words.length; i++) {
+        if (charCount + words[i].length + 1 <= firstLineLimit) {
+          firstLine += (firstLine ? " " : "") + words[i];
+          charCount += words[i].length + 1;
+        } else {
+          secondLine = words.slice(i).join(" ");
+          break;
+        }
+      }
+
+      return (
+        <>
+          {firstLine} <br />
+          {secondLine}
+        </>
+      );
+    })()}
+  </h2>
+
+  <svg
+    className="absolute left-1/2 bottom-[-10px] -translate-x-1/2 z-0"
+    width="270"
+    height="20"
+    viewBox="0 0 270 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M5 15C80 5 190 0 265 12"
+      stroke="#7D80E6"
+      strokeWidth="6"
+      strokeLinecap="round"
+    />
+  </svg>
+</div>
+
+</div>
+
         </div>
 
         <div
@@ -45,7 +75,7 @@ const DetailedListing = ({ pageData }) => {
           {pageData?.card_details?.map((card, index) => (
             <div
               key={index}
-              className="bg-white shadow-md rounded-xl flex flex-col items-start space-y-4 hover:shadow-lg transition p-10"
+              className="bg-white shadow-md rounded-xl flex flex-col items-start space-y-0 hover:shadow-lg transition p-10"
               data-aos="zoom-in-up"
             >
               {card?.svg && (
